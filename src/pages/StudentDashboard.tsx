@@ -16,7 +16,9 @@ import {
   Bell,
   Settings,
   Trophy,
-  Target
+  Target,
+  GraduationCap,
+  LogOut
 } from "lucide-react";
 import { Chatbot } from "@/components/Chatbot";
 import { MapView } from "@/components/MapView";
