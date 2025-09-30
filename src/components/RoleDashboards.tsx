@@ -76,9 +76,14 @@ export const RoleDashboards = () => {
           {roles.map((role, index) => (
             <Card 
               key={index}
-              className="group relative overflow-hidden p-6 transition-all hover:shadow-large hover:-translate-y-1"
+              className={`group relative overflow-hidden p-6 transition-all hover:shadow-large hover:-translate-y-1 ${
+                role.color === 'bg-blue-500' ? 'bg-blue-50 border-blue-200' :
+                role.color === 'bg-green-500' ? 'bg-green-50 border-green-200' :
+                role.color === 'bg-primary' ? 'bg-primary/5 border-primary/20' :
+                'bg-accent/5 border-accent/20'
+              }`}
             >
-              <div className={`absolute top-0 right-0 h-24 w-24 ${role.color} opacity-10 rounded-bl-full`} />
+              <div className={`absolute top-0 right-0 h-24 w-24 ${role.color} opacity-20 rounded-bl-full`} />
 
               <div className={`mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl ${role.color}`}>
                 <role.icon className="h-8 w-8 text-white" />
