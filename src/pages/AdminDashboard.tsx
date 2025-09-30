@@ -96,6 +96,22 @@ const AdminDashboard = () => {
     navigate("/auth");
   };
 
+  const handleDemoLogin = (role: string) => {
+    // Demo login functionality for different roles
+    const demoCredentials = {
+      admin: { email: "admin@nedp.gov.in", name: "System Administrator" },
+      student: { email: "student@university.edu", name: "Demo Student" },
+      teacher: { email: "teacher@university.edu", name: "Demo Teacher" },
+      institution: { email: "admin@university.edu", name: "Institution Admin" }
+    };
+    
+    const cred = demoCredentials[role as keyof typeof demoCredentials];
+    if (cred) {
+      setUser({ email: cred.email, user_metadata: { name: cred.name } });
+      navigate(`/${role}-dashboard`);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b bg-card">
@@ -109,9 +125,22 @@ const AdminDashboard = () => {
               <p className="text-sm text-muted-foreground">{user?.email}</p>
             </div>
           </div>
-          <Button onClick={handleLogout} variant="outline">
-            <LogOut className="mr-2 h-4 w-4" /> Logout
-          </Button>
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
+              <Button onClick={() => handleDemoLogin('student')} size="sm" variant="ghost">
+                Student Demo
+              </Button>
+              <Button onClick={() => handleDemoLogin('teacher')} size="sm" variant="ghost">
+                Teacher Demo
+              </Button>
+              <Button onClick={() => handleDemoLogin('institution')} size="sm" variant="ghost">
+                Institution Demo
+              </Button>
+            </div>
+            <Button onClick={handleLogout} variant="outline">
+              <LogOut className="mr-2 h-4 w-4" /> Logout
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -500,7 +529,7 @@ const AdminDashboard = () => {
                         <AlertTriangle className="h-5 w-5 text-red-600" />
                         <h5 className="font-semibold text-red-800">Urgent: Dropout Risk</h5>
                       </div>
-                      <p className="text-sm text-red-700">15 institutions show >10% increase in dropout rates</p>
+                      <p className="text-sm text-red-700">15 institutions show &gt;10% increase in dropout rates</p>
                       <Button size="sm" className="mt-2 bg-red-600">Take Action</Button>
                     </div>
                     <div className="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
