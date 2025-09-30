@@ -178,7 +178,7 @@ const TeacherDashboard = () => {
               </TabsTrigger>
               <TabsTrigger value="analytics" className="whitespace-nowrap text-xs">Analytics</TabsTrigger>
             </div>
-          </div>t>
+          </div>
 
           <TabsContent value="overview" className="space-y-6">
             <div className="grid gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
