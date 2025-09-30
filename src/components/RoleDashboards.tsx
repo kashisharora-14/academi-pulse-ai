@@ -31,7 +31,7 @@ const roles = [
       "NIRF ranking insights",
       "Scheme participation"
     ],
-    color: "bg-accent"
+    color: "bg-purple-600"
   },
   {
     icon: GraduationCap,
@@ -80,6 +80,7 @@ export const RoleDashboards = () => {
                 role.color === 'bg-blue-500' ? 'bg-blue-50 border-blue-200' :
                 role.color === 'bg-green-500' ? 'bg-green-50 border-green-200' :
                 role.color === 'bg-primary' ? 'bg-primary/5 border-primary/20' :
+                role.color === 'bg-purple-600' ? 'bg-purple-50 border-purple-200' :
                 'bg-purple-50 border-purple-200'
               }`}
             >

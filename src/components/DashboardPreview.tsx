@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import dashboardImage from "@/assets/dashboard-preview.jpg";
 import { 
   TrendingUp, 
   Users, 
@@ -53,7 +52,7 @@ export const DashboardPreview = () => {
           </p>
         </div>
 
-        <div className="grid gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <Card key={index} className="p-6 bg-background transition-all hover:shadow-medium">
               <div className="flex items-start justify-between mb-4">
@@ -72,14 +71,6 @@ export const DashboardPreview = () => {
             </Card>
           ))}
         </div>
-
-        <Card className="overflow-hidden">
-          <img 
-            src={dashboardImage} 
-            alt="Dashboard Preview" 
-            className="w-full h-auto"
-          />
-        </Card>
       </div>
     </section>
   );
