@@ -668,23 +668,34 @@ const InstitutionDashboard = () => {
           </TabsContent>
 
           <TabsContent value="faculty" className="space-y-6">
-            <div className="grid gap-6 lg:grid-cols-3">
+            <div className="grid gap-6 lg:grid-cols-3 mb-6">
               <Card className="p-6">
                 <h3 className="text-lg font-bold mb-4">Faculty Distribution</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between">
-                    <span>Professors:</span>
-                    <span className="font-semibold">45</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Associate Professors:</span>
-                    <span className="font-semibold">120</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Assistant Professors:</span>
-                    <span className="font-semibold">155</span>
-                  </div>
-                </div>
+                <ResponsiveContainer width="100%" height={200}>
+                  <PieChart>
+                    <Pie
+                      data={[
+                        { name: "Professors", value: 45, fill: "hsl(var(--primary))" },
+                        { name: "Associate Prof", value: 120, fill: "hsl(var(--secondary))" },
+                        { name: "Assistant Prof", value: 155, fill: "hsl(var(--accent))" },
+                      ]}
+                      cx="50%"
+                      cy="50%"
+                      outerRadius={60}
+                      dataKey="value"
+                    >
+                      {[
+                        { name: "Professors", value: 45, fill: "hsl(var(--primary))" },
+                        { name: "Associate Prof", value: 120, fill: "hsl(var(--secondary))" },
+                        { name: "Assistant Prof", value: 155, fill: "hsl(var(--accent))" },
+                      ].map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.fill} />
+                      ))}
+                    </Pie>
+                    <Tooltip />
+                    <Legend />
+                  </PieChart>
+                </ResponsiveContainer>
               </Card>
 
               <Card className="p-6">
@@ -700,6 +711,11 @@ const InstitutionDashboard = () => {
                     <span className="font-semibold">40%</span>
                   </div>
                   <Progress value={40} />
+                  <div className="flex justify-between">
+                    <span>Published Authors:</span>
+                    <span className="font-semibold">62%</span>
+                  </div>
+                  <Progress value={62} />
                 </div>
               </Card>
 
@@ -721,13 +737,319 @@ const InstitutionDashboard = () => {
                 </div>
               </Card>
             </div>
+
+            <div className="grid gap-6 lg:grid-cols-2 mb-6">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Department-wise Faculty Strength</h3>
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart data={departmentData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="faculty" fill="hsl(var(--primary))" name="Faculty Count" />
+                    <Bar dataKey="ratio" fill="hsl(var(--secondary))" name="Student-Faculty Ratio" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Faculty Recruitment Timeline</h3>
+                <div className="space-y-4">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h4 className="font-semibold text-blue-800 mb-2">Ongoing Recruitment</h4>
+                    <p className="text-sm text-blue-700">Computer Science - 5 positions</p>
+                    <p className="text-xs text-blue-600">Applications close: April 15, 2024</p>
+                    <Button size="sm" className="mt-2">View Applications</Button>
+                  </div>
+                  <div className="p-4 bg-green-50 rounded-lg">
+                    <h4 className="font-semibold text-green-800 mb-2">Interview Schedule</h4>
+                    <p className="text-sm text-green-700">Mechanical Engg - 3 candidates</p>
+                    <p className="text-xs text-green-600">Date: March 25-27, 2024</p>
+                    <Button size="sm" className="mt-2">Manage Interviews</Button>
+                  </div>
+                  <div className="p-4 bg-purple-50 rounded-lg">
+                    <h4 className="font-semibold text-purple-800 mb-2">Joining Soon</h4>
+                    <p className="text-sm text-purple-700">Electronics - 2 new faculty</p>
+                    <p className="text-xs text-purple-600">Expected: May 1, 2024</p>
+                    <Button size="sm" className="mt-2">Onboarding Prep</Button>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-3">
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">Faculty Development</h3>
+                <div className="space-y-3">
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold text-sm">Workshops Attended</h4>
+                    <p className="text-xs text-muted-foreground">85 faculty in Q1 2024</p>
+                    <Progress value={85} className="mt-1" />
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold text-sm">Conference Participation</h4>
+                    <p className="text-xs text-muted-foreground">45 international, 78 national</p>
+                    <Progress value={75} className="mt-1" />
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold text-sm">Research Collaboration</h4>
+                    <p className="text-xs text-muted-foreground">32 active projects</p>
+                    <Progress value={68} className="mt-1" />
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">Recognition & Awards</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 p-2 bg-yellow-50 rounded">
+                    <Award className="h-5 w-5 text-yellow-500" />
+                    <div>
+                      <p className="font-medium text-sm">Dr. Sharma - Best Teacher Award</p>
+                      <p className="text-xs text-muted-foreground">National Level - 2024</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-2 bg-blue-50 rounded">
+                    <BookOpen className="h-5 w-5 text-blue-500" />
+                    <div>
+                      <p className="font-medium text-sm">Prof. Kumar - Research Excellence</p>
+                      <p className="text-xs text-muted-foreground">IEEE Recognition - 2024</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-2 bg-green-50 rounded">
+                    <CheckCircle className="h-5 w-5 text-green-500" />
+                    <div>
+                      <p className="font-medium text-sm">Dr. Patel - Innovation Grant</p>
+                      <p className="text-xs text-muted-foreground">DST Grant - ₹25L</p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">Quick Actions</h3>
+                <div className="space-y-3">
+                  <Button className="w-full justify-start" variant="outline">
+                    <Users className="mr-2 h-4 w-4" />
+                    Add New Faculty
+                  </Button>
+                  <Button className="w-full justify-start" variant="outline">
+                    <BarChart3 className="mr-2 h-4 w-4" />
+                    Performance Review
+                  </Button>
+                  <Button className="w-full justify-start" variant="outline">
+                    <GraduationCap className="mr-2 h-4 w-4" />
+                    Training Schedule
+                  </Button>
+                  <Button className="w-full justify-start" variant="outline">
+                    <FileText className="mr-2 h-4 w-4" />
+                    Generate Report
+                  </Button>
+                </div>
+              </Card>
+            </div>
           </TabsContent>
 
           <TabsContent value="campus" className="space-y-6">
-            <Card className="p-6">
-              <h3 className="text-xl font-bold mb-4">Campus Infrastructure</h3>
-              <MapView locations={campusLocations} center={[28.5449, 77.1925]} zoom={15} />
-            </Card>
+            <div className="grid gap-6 lg:grid-cols-2 mb-6">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Campus Infrastructure Map</h3>
+                <MapView locations={campusLocations} center={[28.5449, 77.1925]} zoom={15} />
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Infrastructure Statistics</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-center p-4 bg-blue-50 rounded-lg">
+                    <div className="text-2xl font-bold text-blue-600">200</div>
+                    <div className="text-sm text-blue-700">Total Acres</div>
+                  </div>
+                  <div className="text-center p-4 bg-green-50 rounded-lg">
+                    <div className="text-2xl font-bold text-green-600">45</div>
+                    <div className="text-sm text-green-700">Buildings</div>
+                  </div>
+                  <div className="text-center p-4 bg-purple-50 rounded-lg">
+                    <div className="text-2xl font-bold text-purple-600">120</div>
+                    <div className="text-sm text-purple-700">Classrooms</div>
+                  </div>
+                  <div className="text-center p-4 bg-orange-50 rounded-lg">
+                    <div className="text-2xl font-bold text-orange-600">35</div>
+                    <div className="text-sm text-orange-700">Laboratories</div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-3 mb-6">
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">Facility Utilization</h3>
+                <div className="space-y-4">
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-sm">Classrooms</span>
+                      <span className="text-sm font-semibold">85%</span>
+                    </div>
+                    <Progress value={85} />
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-sm">Laboratories</span>
+                      <span className="text-sm font-semibold">78%</span>
+                    </div>
+                    <Progress value={78} />
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-sm">Library</span>
+                      <span className="text-sm font-semibold">92%</span>
+                    </div>
+                    <Progress value={92} />
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-sm">Auditorium</span>
+                      <span className="text-sm font-semibold">65%</span>
+                    </div>
+                    <Progress value={65} />
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">Maintenance Status</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 p-2 bg-green-50 rounded">
+                    <CheckCircle className="h-5 w-5 text-green-500" />
+                    <div>
+                      <p className="font-medium text-sm">Electrical Systems</p>
+                      <p className="text-xs text-muted-foreground">Last checked: March 15</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-2 bg-yellow-50 rounded">
+                    <AlertTriangle className="h-5 w-5 text-yellow-500" />
+                    <div>
+                      <p className="font-medium text-sm">HVAC Systems</p>
+                      <p className="text-xs text-muted-foreground">Maintenance due</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-2 bg-green-50 rounded">
+                    <CheckCircle className="h-5 w-5 text-green-500" />
+                    <div>
+                      <p className="font-medium text-sm">Network Infrastructure</p>
+                      <p className="text-xs text-muted-foreground">Optimal performance</p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">Security & Safety</h3>
+                <div className="space-y-3">
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold text-sm">CCTV Cameras</h4>
+                    <p className="text-xs text-muted-foreground">450 active cameras</p>
+                    <Badge className="bg-success mt-1">100% operational</Badge>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold text-sm">Fire Safety</h4>
+                    <p className="text-xs text-muted-foreground">All systems checked</p>
+                    <Badge className="bg-success mt-1">Compliant</Badge>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold text-sm">Security Personnel</h4>
+                    <p className="text-xs text-muted-foreground">24/7 coverage</p>
+                    <Badge className="bg-success mt-1">Full staffed</Badge>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Recent Infrastructure Projects</h3>
+                <div className="space-y-4">
+                  <div className="p-4 border rounded-lg">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="font-semibold">New Computer Lab</h4>
+                      <Badge className="bg-green-500">Completed</Badge>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-2">State-of-the-art computing facility with 60 workstations</p>
+                    <div className="text-xs text-muted-foreground">
+                      Budget: ₹50L | Completed: March 2024
+                    </div>
+                  </div>
+                  
+                  <div className="p-4 border rounded-lg">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="font-semibold">Solar Power Installation</h4>
+                      <Badge className="bg-blue-500">In Progress</Badge>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-2">500KW solar panel installation for sustainable energy</p>
+                    <Progress value={75} className="mb-2" />
+                    <div className="text-xs text-muted-foreground">
+                      Budget: ₹2.5Cr | Expected: April 2024
+                    </div>
+                  </div>
+                  
+                  <div className="p-4 border rounded-lg">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="font-semibold">Student Recreation Center</h4>
+                      <Badge className="bg-yellow-500">Planning</Badge>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-2">Multi-purpose facility with gym, games, and cafeteria</p>
+                    <div className="text-xs text-muted-foreground">
+                      Budget: ₹8Cr | Expected Start: June 2024
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Campus Services</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-3 bg-blue-50 rounded-lg text-center">
+                    <Building2 className="h-8 w-8 text-blue-600 mx-auto mb-2" />
+                    <h4 className="font-semibold text-sm">Hostels</h4>
+                    <p className="text-xs text-muted-foreground">8 blocks, 3000 capacity</p>
+                    <Badge className="bg-success mt-1">95% occupied</Badge>
+                  </div>
+                  
+                  <div className="p-3 bg-green-50 rounded-lg text-center">
+                    <BookOpen className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                    <h4 className="font-semibold text-sm">Library</h4>
+                    <p className="text-xs text-muted-foreground">5 floors, 50K books</p>
+                    <Badge className="bg-success mt-1">Digital enabled</Badge>
+                  </div>
+                  
+                  <div className="p-3 bg-purple-50 rounded-lg text-center">
+                    <Users className="h-8 w-8 text-purple-600 mx-auto mb-2" />
+                    <h4 className="font-semibold text-sm">Cafeteria</h4>
+                    <p className="text-xs text-muted-foreground">4 outlets, 1200 seats</p>
+                    <Badge className="bg-success mt-1">Hygienic certified</Badge>
+                  </div>
+                  
+                  <div className="p-3 bg-orange-50 rounded-lg text-center">
+                    <Target className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+                    <h4 className="font-semibold text-sm">Sports Complex</h4>
+                    <p className="text-xs text-muted-foreground">10 sports, Olympic size</p>
+                    <Badge className="bg-success mt-1">Award winning</Badge>
+                  </div>
+                </div>
+                
+                <div className="mt-4 space-y-2">
+                  <Button className="w-full justify-start" variant="outline">
+                    <FileText className="mr-2 h-4 w-4" />
+                    Book Facility
+                  </Button>
+                  <Button className="w-full justify-start" variant="outline">
+                    <BarChart3 className="mr-2 h-4 w-4" />
+                    Usage Analytics
+                  </Button>
+                </div>
+              </Card>
+            </div>
           </TabsContent>
 
           <TabsContent value="analytics" className="space-y-6">
