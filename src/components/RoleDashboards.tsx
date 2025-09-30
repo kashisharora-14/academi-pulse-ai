@@ -43,7 +43,7 @@ const roles = [
       "Placement assistance",
       "Skill gap analysis"
     ],
-    color: "bg-secondary"
+    color: "bg-blue-500"
   },
   {
     icon: UserCircle,
@@ -55,7 +55,7 @@ const roles = [
       "Training certifications",
       "Student outcome analytics"
     ],
-    color: "bg-success"
+    color: "bg-green-500"
   }
 ];
 
