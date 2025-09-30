@@ -117,35 +117,68 @@ const StudentDashboard = () => {
         </div>
 
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-6 lg:grid-cols-12 text-xs">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="lifecycle">Life Cycle</TabsTrigger>
-            <TabsTrigger value="journey">
-              <Route className="h-4 w-4 mr-1" />
-              Journey
-            </TabsTrigger>
-            <TabsTrigger value="gamification">
-              <Trophy className="h-4 w-4 mr-1" />
-              Achievements
-            </TabsTrigger>
-            <TabsTrigger value="qr">
-              <QrCode className="h-4 w-4 mr-1" />
-              QR Code
-            </TabsTrigger>
-            <TabsTrigger value="export">
-              <Download className="h-4 w-4 mr-1" />
-              Export
-            </TabsTrigger>
-            <TabsTrigger value="ai">
-              <Sparkles className="h-4 w-4 mr-1" />
-              AI Recommendations
-            </TabsTrigger>
-            <TabsTrigger value="academics">Academics</TabsTrigger>
-            <TabsTrigger value="schemes">Schemes</TabsTrigger>
-            <TabsTrigger value="documents">Documents</TabsTrigger>
-            <TabsTrigger value="chat">EduBot</TabsTrigger>
-            <TabsTrigger value="map">Campus Map</TabsTrigger>
-          </TabsList>
+          {/* Desktop Tabs */}
+          <div className="hidden lg:block">
+            <TabsList className="grid w-full grid-cols-12 text-xs">
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="lifecycle">Life Cycle</TabsTrigger>
+              <TabsTrigger value="journey">
+                <Route className="h-4 w-4 mr-1" />
+                Journey
+              </TabsTrigger>
+              <TabsTrigger value="gamification">
+                <Trophy className="h-4 w-4 mr-1" />
+                Achievements
+              </TabsTrigger>
+              <TabsTrigger value="qr">
+                <QrCode className="h-4 w-4 mr-1" />
+                QR Code
+              </TabsTrigger>
+              <TabsTrigger value="export">
+                <Download className="h-4 w-4 mr-1" />
+                Export
+              </TabsTrigger>
+              <TabsTrigger value="ai">
+                <Sparkles className="h-4 w-4 mr-1" />
+                AI
+              </TabsTrigger>
+              <TabsTrigger value="academics">Academics</TabsTrigger>
+              <TabsTrigger value="schemes">Schemes</TabsTrigger>
+              <TabsTrigger value="documents">Documents</TabsTrigger>
+              <TabsTrigger value="chat">EduBot</TabsTrigger>
+              <TabsTrigger value="map">Campus</TabsTrigger>
+            </TabsList>
+          </div>
+
+          {/* Mobile Tabs - Horizontal Scrollable */}
+          <div className="block lg:hidden">
+            <div className="overflow-x-auto">
+              <TabsList className="flex w-max min-w-full gap-1 p-1 bg-muted">
+                <TabsTrigger value="overview" className="flex-shrink-0 text-xs px-3">Overview</TabsTrigger>
+                <TabsTrigger value="lifecycle" className="flex-shrink-0 text-xs px-3">Life Cycle</TabsTrigger>
+                <TabsTrigger value="journey" className="flex-shrink-0 text-xs px-3">
+                  <Route className="h-3 w-3" />
+                </TabsTrigger>
+                <TabsTrigger value="gamification" className="flex-shrink-0 text-xs px-3">
+                  <Trophy className="h-3 w-3" />
+                </TabsTrigger>
+                <TabsTrigger value="qr" className="flex-shrink-0 text-xs px-3">
+                  <QrCode className="h-3 w-3" />
+                </TabsTrigger>
+                <TabsTrigger value="export" className="flex-shrink-0 text-xs px-3">
+                  <Download className="h-3 w-3" />
+                </TabsTrigger>
+                <TabsTrigger value="ai" className="flex-shrink-0 text-xs px-3">
+                  <Sparkles className="h-3 w-3" />
+                </TabsTrigger>
+                <TabsTrigger value="academics" className="flex-shrink-0 text-xs px-3">Academics</TabsTrigger>
+                <TabsTrigger value="schemes" className="flex-shrink-0 text-xs px-3">Schemes</TabsTrigger>
+                <TabsTrigger value="documents" className="flex-shrink-0 text-xs px-3">Docs</TabsTrigger>
+                <TabsTrigger value="chat" className="flex-shrink-0 text-xs px-3">EduBot</TabsTrigger>
+                <TabsTrigger value="map" className="flex-shrink-0 text-xs px-3">Campus</TabsTrigger>
+              </TabsList>
+            </div>
+          </div>
 
           <TabsContent value="lifecycle" className="space-y-6">
             <StudentLifeCycleTracker />
