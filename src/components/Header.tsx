@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Menu } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -34,10 +36,10 @@ export const Header = () => {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button variant="ghost" className="hidden md:inline-flex">
+          <Button variant="ghost" className="hidden md:inline-flex" onClick={() => navigate("/auth")}>
             Login
           </Button>
-          <Button>Get Started</Button>
+          <Button onClick={() => navigate("/auth")}>Demo Login</Button>
           <Button
             variant="ghost"
             size="icon"
