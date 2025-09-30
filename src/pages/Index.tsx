@@ -5,6 +5,7 @@ import { AIFeatures } from "@/components/AIFeatures";
 import { RoleDashboards } from "@/components/RoleDashboards";
 import { DashboardPreview } from "@/components/DashboardPreview";
 import { Footer } from "@/components/Footer";
+import { MapView } from "@/components/MapView";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
         <AIFeatures />
         <RoleDashboards />
         <DashboardPreview />
+        <MapView />
       </main>
       <Footer />
     </div>
