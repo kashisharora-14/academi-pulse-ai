@@ -75,17 +75,39 @@ const StudentDashboard = () => {
               <GraduationCap className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold">Student Dashboard</h1>
-              <p className="text-sm text-muted-foreground">{user?.email}</p>
+              <h1 className="text-2xl font-bold">Student Life Cycle Portal</h1>
+              <p className="text-sm text-muted-foreground">{user?.email || 'student@nedp.gov.in'} • Student ID: STU-2024-001</p>
             </div>
           </div>
-          <Button onClick={handleLogout} variant="outline">
-            <LogOut className="mr-2 h-4 w-4" /> Logout
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button onClick={() => navigate("/")} variant="ghost">
+              <GraduationCap className="mr-2 h-4 w-4" /> Return to Home
+            </Button>
+            <Button onClick={handleLogout} variant="outline">
+              <LogOut className="mr-2 h-4 w-4" /> Logout
+            </Button>
+          </div>
         </div>
       </header>
 
       <main className="container mx-auto px-4 py-8">
+        {/* Welcome Banner */}
+        <div className="mb-8 p-6 bg-gradient-to-r from-secondary/10 to-primary/10 rounded-lg border">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold mb-2">Welcome, Arjun Patel! 🎓</h2>
+              <p className="text-muted-foreground">
+                Track your complete academic journey from admission to graduation. Your current CGPA: <span className="font-semibold text-primary">8.9/10</span>
+              </p>
+            </div>
+            <div className="text-right">
+              <div className="text-lg font-semibold">Semester 6</div>
+              <div className="text-sm text-muted-foreground">B.Tech Computer Science</div>
+              <Badge className="mt-1 bg-success">On Track</Badge>
+            </div>
+          </div>
+        </div>
+
         <Tabs defaultValue="overview" className="space-y-6">
           <TabsList className="grid w-full grid-cols-8">
             <TabsTrigger value="overview">Overview</TabsTrigger>

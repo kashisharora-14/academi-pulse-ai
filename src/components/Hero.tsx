@@ -37,56 +37,49 @@ export const Hero = () => {
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mt-6">
-              <h3 className="text-white font-semibold mb-3 text-center">Try Demo Dashboards</h3>
-              <div className="text-center mb-3 p-2 bg-white/20 rounded text-white text-xs">
-                <strong>Demo Credentials:</strong> student@demo.com / admin@demo.com<br/>
-                <strong>Password:</strong> password123
+              <h3 className="text-white font-semibold mb-3 text-center">Demo Login - Use Secure Authentication</h3>
+              <div className="text-center mb-3 p-3 bg-white/20 rounded text-white text-sm">
+                <p className="font-semibold mb-2">🛡️ Secure Demo Access</p>
+                <p className="text-xs mb-2">Use the Login button below to access demo dashboards</p>
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div className="bg-white/20 p-2 rounded">
+                    <strong>Demo Aadhaar:</strong><br/>
+                    1234-5678-9012
+                  </div>
+                  <div className="bg-white/20 p-2 rounded">
+                    <strong>Demo OTP:</strong><br/>
+                    123456
+                  </div>
+                </div>
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="border-white/20 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm text-xs flex flex-col h-16 gap-1"
-                  onClick={() => navigate("/admin")}
-                >
-                  <Users className="h-4 w-4" />
-                  <span>Admin Portal</span>
-                  <span className="text-xs opacity-80">Gov. Dashboard</span>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="border-white/20 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm text-xs flex flex-col h-16 gap-1"
-                  onClick={() => navigate("/institution")}
-                >
-                  <Building2 className="h-4 w-4" />
-                  <span>Institution</span>
-                  <span className="text-xs opacity-80">College Portal</span>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="border-white/20 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm text-xs flex flex-col h-16 gap-1"
-                  onClick={() => navigate("/student")}
-                >
-                  <GraduationCap className="h-4 w-4" />
-                  <span>Student</span>
-                  <span className="text-xs opacity-80">Life Tracker</span>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="border-white/20 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm text-xs flex flex-col h-16 gap-1"
-                  onClick={() => navigate("/teacher")}
-                >
-                  <UserCircle className="h-4 w-4" />
-                  <span>Faculty</span>
-                  <span className="text-xs opacity-80">APAR Portal</span>
-                </Button>
+                <div className="border border-white/20 bg-white/10 rounded p-3 text-center">
+                  <Users className="h-6 w-6 mx-auto mb-1 text-white" />
+                  <p className="text-white text-xs font-medium">Admin Portal</p>
+                  <p className="text-white/70 text-xs">Government Dashboard</p>
+                </div>
+                <div className="border border-white/20 bg-white/10 rounded p-3 text-center">
+                  <Building2 className="h-6 w-6 mx-auto mb-1 text-white" />
+                  <p className="text-white text-xs font-medium">Institution</p>
+                  <p className="text-white/70 text-xs">College Portal</p>
+                </div>
+                <div className="border border-white/20 bg-white/10 rounded p-3 text-center">
+                  <GraduationCap className="h-6 w-6 mx-auto mb-1 text-white" />
+                  <p className="text-white text-xs font-medium">Student</p>
+                  <p className="text-white/70 text-xs">Life Cycle Tracker</p>
+                </div>
+                <div className="border border-white/20 bg-white/10 rounded p-3 text-center">
+                  <UserCircle className="h-6 w-6 mx-auto mb-1 text-white" />
+                  <p className="text-white text-xs font-medium">Faculty</p>
+                  <p className="text-white/70 text-xs">APAR Portal</p>
+                </div>
               </div>
-              <p className="text-white/70 text-xs text-center mt-3">
-                Click any demo to explore role-specific features and AI-powered insights
-              </p>
+              <Button 
+                className="w-full mt-4 bg-white text-primary hover:bg-white/90" 
+                onClick={() => navigate("/auth")}
+              >
+                🔐 Secure Demo Login - Use Aadhaar Authentication
+              </Button>
             </div>
 
             <div className="flex gap-8 pt-4">
