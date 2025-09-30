@@ -9,7 +9,6 @@ export default defineConfig(({ mode }) => ({
     host: "0.0.0.0",
     port: 5000,
     strictPort: false,
-    allowedHosts: ['.replit.dev', '.replit.app', '.replit.co'],
     hmr: {
       overlay: false,
     },
@@ -18,7 +17,6 @@ export default defineConfig(({ mode }) => ({
     host: "0.0.0.0",
     port: 5000,
     strictPort: false,
-    allowedHosts: ['.replit.dev', '.replit.app', '.replit.co'],
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
