@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Chatbot } from "@/components/Chatbot";
-import MapView from "@/components/MapView";
+import { MapView } from "@/components/MapView";
 import { LogOut, Building2, Users, GraduationCap, BookOpen } from "lucide-react";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
