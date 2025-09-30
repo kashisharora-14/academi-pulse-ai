@@ -121,12 +121,13 @@ const InstitutionDashboard = () => {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-8">
+          <TabsList className="grid w-full grid-cols-9">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="academics">Academics</TabsTrigger>
             <TabsTrigger value="placements">Placements</TabsTrigger>
             <TabsTrigger value="research">Research</TabsTrigger>
             <TabsTrigger value="compliance">Compliance</TabsTrigger>
+            <TabsTrigger value="schemes">Schemes</TabsTrigger>
             <TabsTrigger value="faculty">Faculty</TabsTrigger>
             <TabsTrigger value="campus">Campus</TabsTrigger>
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
@@ -401,6 +402,268 @@ const InstitutionDashboard = () => {
                   </div>
                 </Card>
               ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="schemes" className="space-y-6">
+            <div className="grid gap-6 lg:grid-cols-3">
+              <Card className="p-6 lg:col-span-2">
+                <h3 className="text-xl font-bold mb-4">Government Schemes Management</h3>
+                <div className="space-y-6">
+                  
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Select Scheme Category</label>
+                      <select className="w-full p-2 border rounded-md">
+                        <option>All Categories</option>
+                        <option>Merit Scholarships</option>
+                        <option>Need-based Aid</option>
+                        <option>Research Grants</option>
+                        <option>Infrastructure Development</option>
+                        <option>Skill Development</option>
+                      </select>
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Academic Year</label>
+                      <select className="w-full p-2 border rounded-md">
+                        <option>2024-25</option>
+                        <option>2023-24</option>
+                        <option>2022-23</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    {[
+                      {
+                        name: "National Scholarship Portal (NSP)",
+                        category: "Merit Scholarship",
+                        budget: "₹50,00,000",
+                        allocated: "₹45,00,000",
+                        utilized: "₹38,50,000",
+                        beneficiaries: 320,
+                        status: "Active",
+                        deadline: "March 31, 2024",
+                        criteria: "Family income < ₹2.5 LPA, Min 75% marks",
+                        documents: ["Income Certificate", "Marksheet", "Bank Details"],
+                        contact: "nsp@education.gov.in"
+                      },
+                      {
+                        name: "Post Matric Scholarship SC/ST",
+                        category: "Need-based Aid", 
+                        budget: "₹35,00,000",
+                        allocated: "₹35,00,000",
+                        utilized: "₹28,75,000",
+                        beneficiaries: 185,
+                        status: "Active",
+                        deadline: "April 15, 2024",
+                        criteria: "SC/ST category, Family income < ₹2 LPA",
+                        documents: ["Caste Certificate", "Income Certificate", "Marksheet"],
+                        contact: "pmss@tribal.gov.in"
+                      },
+                      {
+                        name: "INSPIRE Scholarship",
+                        category: "Research Grants",
+                        budget: "₹25,00,000", 
+                        allocated: "₹20,00,000",
+                        utilized: "₹15,50,000",
+                        beneficiaries: 50,
+                        status: "Active",
+                        deadline: "May 31, 2024",
+                        criteria: "Top 1% in Board exams, Science stream",
+                        documents: ["Marksheet", "Research Proposal", "Recommendation Letter"],
+                        contact: "inspire@dst.gov.in"
+                      },
+                      {
+                        name: "PMKVY 4.0 - Skill Development",
+                        category: "Skill Development",
+                        budget: "₹15,00,000",
+                        allocated: "₹12,00,000", 
+                        utilized: "₹10,80,000",
+                        beneficiaries: 120,
+                        status: "Ongoing",
+                        deadline: "June 30, 2024",
+                        criteria: "Age 18-35, Class 10+ pass",
+                        documents: ["Age Proof", "Educational Certificate", "Aadhar Card"],
+                        contact: "pmkvy@msde.gov.in"
+                      }
+                    ].map((scheme, index) => (
+                      <div key={index} className="border rounded-lg p-4 space-y-4">
+                        <div className="flex justify-between items-start">
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-lg mb-1">{scheme.name}</h4>
+                            <div className="flex items-center gap-2 mb-2">
+                              <Badge variant="outline">{scheme.category}</Badge>
+                              <Badge variant={scheme.status === "Active" ? "default" : "secondary"}>
+                                {scheme.status}
+                              </Badge>
+                            </div>
+                          </div>
+                          <Button size="sm" variant="outline">
+                            <FileText className="h-4 w-4 mr-1" />
+                            View Details
+                          </Button>
+                        </div>
+
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                          <div>
+                            <span className="text-muted-foreground">Total Budget:</span>
+                            <div className="font-semibold text-primary">{scheme.budget}</div>
+                          </div>
+                          <div>
+                            <span className="text-muted-foreground">Allocated:</span>
+                            <div className="font-semibold text-blue-600">{scheme.allocated}</div>
+                          </div>
+                          <div>
+                            <span className="text-muted-foreground">Utilized:</span>
+                            <div className="font-semibold text-green-600">{scheme.utilized}</div>
+                          </div>
+                          <div>
+                            <span className="text-muted-foreground">Beneficiaries:</span>
+                            <div className="font-semibold">{scheme.beneficiaries}</div>
+                          </div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <div className="flex justify-between text-sm">
+                            <span>Utilization Progress</span>
+                            <span>{((parseFloat(scheme.utilized.replace(/[₹,]/g, '')) / parseFloat(scheme.allocated.replace(/[₹,]/g, ''))) * 100).toFixed(1)}%</span>
+                          </div>
+                          <Progress value={(parseFloat(scheme.utilized.replace(/[₹,]/g, '')) / parseFloat(scheme.allocated.replace(/[₹,]/g, ''))) * 100} />
+                        </div>
+
+                        <div className="bg-gray-50 rounded p-3 space-y-2">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                            <div>
+                              <span className="font-medium">Deadline: </span>
+                              <span className="text-red-600">{scheme.deadline}</span>
+                            </div>
+                            <div>
+                              <span className="font-medium">Contact: </span>
+                              <span className="text-blue-600">{scheme.contact}</span>
+                            </div>
+                          </div>
+                          <div>
+                            <span className="font-medium">Eligibility: </span>
+                            <span>{scheme.criteria}</span>
+                          </div>
+                          <div>
+                            <span className="font-medium">Required Documents: </span>
+                            <div className="flex flex-wrap gap-1 mt-1">
+                              {scheme.documents.map((doc, docIndex) => (
+                                <Badge key={docIndex} variant="outline" className="text-xs">
+                                  {doc}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex gap-2">
+                          <Button size="sm" className="flex-1">
+                            <CheckCircle className="h-4 w-4 mr-1" />
+                            Add Beneficiary
+                          </Button>
+                          <Button size="sm" variant="outline">
+                            <BarChart3 className="h-4 w-4 mr-1" />
+                            View Analytics
+                          </Button>
+                          <Button size="sm" variant="outline">
+                            <Users className="h-4 w-4 mr-1" />
+                            Student List
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+
+              <div className="space-y-6">
+                <Card className="p-6">
+                  <h3 className="text-lg font-bold mb-4">Quick Actions</h3>
+                  <div className="space-y-3">
+                    <Button className="w-full justify-start" variant="outline">
+                      <Target className="mr-2 h-4 w-4" />
+                      Apply New Scheme
+                    </Button>
+                    <Button className="w-full justify-start" variant="outline">
+                      <FileText className="mr-2 h-4 w-4" />
+                      Generate Report
+                    </Button>
+                    <Button className="w-full justify-start" variant="outline">
+                      <AlertTriangle className="mr-2 h-4 w-4" />
+                      Compliance Check
+                    </Button>
+                    <Button className="w-full justify-start" variant="outline">
+                      <DollarSign className="mr-2 h-4 w-4" />
+                      Budget Planning
+                    </Button>
+                  </div>
+                </Card>
+
+                <Card className="p-6">
+                  <h3 className="text-lg font-bold mb-4">Add New Beneficiary</h3>
+                  <div className="space-y-3">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Student ID</label>
+                      <input 
+                        type="text" 
+                        placeholder="Enter Student ID"
+                        className="w-full p-2 border rounded-md text-sm"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Scheme</label>
+                      <select className="w-full p-2 border rounded-md text-sm">
+                        <option>Select Scheme</option>
+                        <option>NSP Scholarship</option>
+                        <option>Post Matric SC/ST</option>
+                        <option>INSPIRE</option>
+                        <option>PMKVY 4.0</option>
+                      </select>
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Amount</label>
+                      <input 
+                        type="number" 
+                        placeholder="Enter amount"
+                        className="w-full p-2 border rounded-md text-sm"
+                      />
+                    </div>
+                    <Button size="sm" className="w-full">
+                      <CheckCircle className="h-4 w-4 mr-1" />
+                      Add Beneficiary
+                    </Button>
+                  </div>
+                </Card>
+
+                <Card className="p-6">
+                  <h3 className="text-lg font-bold mb-4">Scheme Analytics</h3>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Total Applications</span>
+                      <span className="font-semibold">1,240</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Approved</span>
+                      <span className="font-semibold text-green-600">896</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Pending</span>
+                      <span className="font-semibold text-yellow-600">234</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Rejected</span>
+                      <span className="font-semibold text-red-600">110</span>
+                    </div>
+                    <div className="pt-2">
+                      <div className="text-sm mb-2">Approval Rate: 72.3%</div>
+                      <Progress value={72.3} />
+                    </div>
+                  </div>
+                </Card>
+              </div>
             </div>
           </TabsContent>
 
