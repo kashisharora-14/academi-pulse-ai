@@ -1,16 +1,14 @@
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
-// Fix for default marker icon
-const icon = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+// Fix default markers
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
 interface Location {
@@ -26,24 +24,25 @@ interface MapViewProps {
   zoom?: number;
 }
 
-const MapView = ({ locations, center = [20.5937, 78.9629], zoom = 5 }: MapViewProps) => {
+export const MapView = ({ locations, center = [20.5937, 78.9629], zoom = 5 }: MapViewProps) => {
   return (
-    <div style={{ height: "400px", width: "100%", borderRadius: "8px" }}>
+    <div className="h-64 w-full rounded-lg overflow-hidden">
       <MapContainer
-        // @ts-ignore - react-leaflet types issue
         center={center}
         zoom={zoom}
-        style={{ height: "100%", width: "100%", borderRadius: "8px" }}
-        className="z-0"
+        style={{ height: '100%', width: '100%' }}
       >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
         {locations.map((location) => (
-          // @ts-ignore - react-leaflet types issue
-          <Marker key={location.id} position={location.position} icon={icon}>
+          <Marker key={location.id} position={location.position}>
             <Popup>
               <div>
-                <h3 className="font-bold">{location.name}</h3>
-                <p className="text-sm">{location.data}</p>
+                <strong>{location.name}</strong>
+                <br />
+                {location.data}
               </div>
             </Popup>
           </Marker>
@@ -52,5 +51,3 @@ const MapView = ({ locations, center = [20.5937, 78.9629], zoom = 5 }: MapViewPr
     </div>
   );
 };
-
-export { MapView };

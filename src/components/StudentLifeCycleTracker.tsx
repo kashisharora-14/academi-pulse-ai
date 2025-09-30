@@ -1,310 +1,239 @@
-
-import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { Button } from "@/components/ui/button";
 import { 
-  Calendar, 
+  CheckCircle, 
+  Clock, 
+  BookOpen, 
   GraduationCap, 
   Briefcase, 
-  Star, 
-  TrendingUp, 
-  Gift,
-  Bot,
-  AlertCircle,
-  CheckCircle,
-  Clock
+  Award,
+  TrendingUp,
+  Target,
+  Users,
+  FileText
 } from "lucide-react";
 
-interface TimelineEvent {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-  status: "completed" | "in-progress" | "upcoming";
-  category: "academic" | "scheme" | "career" | "certification";
-  aiRecommended?: boolean;
-}
-
-interface SchemeRecommendation {
-  id: string;
-  name: string;
-  amount: string;
-  eligibility: number;
-  deadline: string;
-  category: string;
-  aiConfidence: number;
-}
-
-const timelineEvents: TimelineEvent[] = [
+const lifeCycleStages = [
   {
-    id: "1",
-    title: "Enrolled in B.Tech Computer Science",
-    description: "Admission to XYZ University with 85% in 12th grade",
+    id: 1,
+    title: "Admission",
+    status: "completed",
     date: "Aug 2021",
-    status: "completed",
-    category: "academic"
+    description: "Successfully enrolled in B.Tech Computer Science",
+    icon: BookOpen,
+    color: "bg-green-500"
   },
   {
-    id: "2",
-    title: "PMKVY Certification - AI/ML",
-    description: "Completed 6-month certification program",
-    date: "Feb 2022",
-    status: "completed",
-    category: "certification",
-    aiRecommended: true
-  },
-  {
-    id: "3",
-    title: "Merit-cum-Means Scholarship",
-    description: "₹48,000 per year for excellent academic performance",
-    date: "Jul 2022",
-    status: "completed",
-    category: "scheme"
-  },
-  {
-    id: "4",
-    title: "Summer Internship - TCS",
-    description: "AI/ML Developer Intern position",
-    date: "Jun 2024",
+    id: 2,
+    title: "Academic Progress",
     status: "in-progress",
-    category: "career",
-    aiRecommended: true
+    date: "Current",
+    description: "Semester 6 - CGPA: 8.9",
+    icon: TrendingUp,
+    color: "bg-blue-500"
   },
   {
-    id: "5",
-    title: "Final Year Project",
-    description: "AI-powered Education Analytics Platform",
-    date: "Dec 2024",
+    id: 3,
+    title: "Skill Development",
     status: "in-progress",
-    category: "academic"
+    date: "Ongoing",
+    description: "Certifications: 5 completed, 2 in progress",
+    icon: Award,
+    color: "bg-purple-500"
   },
   {
-    id: "6",
-    title: "Campus Placement",
-    description: "Expected placement in top tech companies",
-    date: "Mar 2025",
+    id: 4,
+    title: "Placement Preparation",
     status: "upcoming",
-    category: "career"
+    date: "Jan 2024",
+    description: "Career guidance and interview preparation",
+    icon: Target,
+    color: "bg-orange-500"
+  },
+  {
+    id: 5,
+    title: "Graduation",
+    status: "upcoming",
+    date: "May 2025",
+    description: "Expected graduation with honors",
+    icon: GraduationCap,
+    color: "bg-indigo-500"
+  },
+  {
+    id: 6,
+    title: "Career",
+    status: "future",
+    date: "Jun 2025",
+    description: "Job placement and career tracking",
+    icon: Briefcase,
+    color: "bg-green-600"
   }
 ];
 
-const aiRecommendations: SchemeRecommendation[] = [
-  {
-    id: "1",
-    name: "Dr. A.P.J. Abdul Kalam Technical Scholarship",
-    amount: "₹50,000",
-    eligibility: 95,
-    deadline: "30 Dec 2024",
-    category: "Technical Education",
-    aiConfidence: 92
-  },
-  {
-    id: "2",
-    name: "National Scholarship for Innovation",
-    amount: "₹75,000",
-    eligibility: 88,
-    deadline: "15 Jan 2025",
-    category: "Research & Innovation",
-    aiConfidence: 85
-  },
-  {
-    id: "3",
-    name: "AI/ML Skill Development Grant",
-    amount: "₹25,000",
-    eligibility: 98,
-    deadline: "20 Dec 2024",
-    category: "Skill Development",
-    aiConfidence: 96
-  }
+const academicMilestones = [
+  { semester: "Sem 1", gpa: 8.2, credits: 24, status: "completed" },
+  { semester: "Sem 2", gpa: 8.5, credits: 24, status: "completed" },
+  { semester: "Sem 3", gpa: 8.8, credits: 24, status: "completed" },
+  { semester: "Sem 4", gpa: 9.1, credits: 24, status: "completed" },
+  { semester: "Sem 5", gpa: 8.9, credits: 24, status: "completed" },
+  { semester: "Sem 6", gpa: 9.0, credits: 20, status: "in-progress" },
+  { semester: "Sem 7", gpa: 0, credits: 24, status: "upcoming" },
+  { semester: "Sem 8", gpa: 0, credits: 20, status: "upcoming" },
+];
+
+const schemes = [
+  { name: "NSP Scholarship", status: "active", amount: "₹48,000/year", duration: "4 years" },
+  { name: "Merit Scholarship", status: "active", amount: "₹25,000/year", duration: "2 years" },
+  { name: "PMKVY Certification", status: "completed", amount: "Free", duration: "3 months" },
 ];
 
 export const StudentLifeCycleTracker = () => {
-  const [selectedEvent, setSelectedEvent] = useState<TimelineEvent | null>(null);
-  const currentCGPA = 8.7;
-  const completionPercentage = 75;
-  const totalSchemesBenefited = 5;
-  const predictedPlacementScore = 92;
-
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case "completed":
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case "in-progress":
-        return <Clock className="h-4 w-4 text-blue-500" />;
-      case "upcoming":
-        return <AlertCircle className="h-4 w-4 text-orange-500" />;
-      default:
-        return <Clock className="h-4 w-4" />;
-    }
-  };
-
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case "academic":
-        return "bg-blue-100 text-blue-800";
-      case "scheme":
-        return "bg-green-100 text-green-800";
-      case "career":
-        return "bg-purple-100 text-purple-800";
-      case "certification":
-        return "bg-orange-100 text-orange-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
-  };
+  const completedStages = lifeCycleStages.filter(stage => stage.status === "completed").length;
+  const progressPercentage = (completedStages / lifeCycleStages.length) * 100;
 
   return (
     <div className="space-y-6">
-      {/* Overview Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="p-4">
-          <div className="flex items-center gap-3">
-            <GraduationCap className="h-8 w-8 text-primary" />
-            <div>
-              <p className="text-2xl font-bold">{currentCGPA}</p>
-              <p className="text-sm text-muted-foreground">Current CGPA</p>
+      <div className="grid gap-6 lg:grid-cols-3">
+        <Card className="p-6 lg:col-span-2">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-xl font-bold">Academic Journey Timeline</h3>
+            <Badge className="bg-primary">
+              {completedStages}/{lifeCycleStages.length} Stages Completed
+            </Badge>
+          </div>
+
+          <div className="mb-6">
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-sm font-medium">Overall Progress</span>
+              <span className="text-sm text-muted-foreground">{progressPercentage.toFixed(0)}%</span>
             </div>
+            <Progress value={progressPercentage} className="h-2" />
+          </div>
+
+          <div className="space-y-4">
+            {lifeCycleStages.map((stage, index) => (
+              <div key={stage.id} className="flex items-start gap-4">
+                <div className={`flex-shrink-0 w-10 h-10 rounded-full ${stage.color} flex items-center justify-center`}>
+                  <stage.icon className="h-5 w-5 text-white" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <h4 className="font-semibold">{stage.title}</h4>
+                    <Badge variant={
+                      stage.status === "completed" ? "default" : 
+                      stage.status === "in-progress" ? "secondary" : "outline"
+                    }>
+                      {stage.status === "completed" ? "Completed" :
+                       stage.status === "in-progress" ? "In Progress" : "Upcoming"}
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{stage.description}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{stage.date}</p>
+                </div>
+                {index < lifeCycleStages.length - 1 && (
+                  <div className="w-px h-8 bg-border ml-5 mt-2" />
+                )}
+              </div>
+            ))}
           </div>
         </Card>
-        
-        <Card className="p-4">
-          <div className="flex items-center gap-3">
-            <TrendingUp className="h-8 w-8 text-green-500" />
-            <div>
-              <p className="text-2xl font-bold">{completionPercentage}%</p>
-              <p className="text-sm text-muted-foreground">Degree Progress</p>
-            </div>
-          </div>
-        </Card>
-        
-        <Card className="p-4">
-          <div className="flex items-center gap-3">
-            <Gift className="h-8 w-8 text-orange-500" />
-            <div>
-              <p className="text-2xl font-bold">{totalSchemesBenefited}</p>
-              <p className="text-sm text-muted-foreground">Schemes Benefited</p>
-            </div>
-          </div>
-        </Card>
-        
-        <Card className="p-4">
-          <div className="flex items-center gap-3">
-            <Briefcase className="h-8 w-8 text-purple-500" />
-            <div>
-              <p className="text-2xl font-bold">{predictedPlacementScore}%</p>
-              <p className="text-sm text-muted-foreground">AI Placement Score</p>
-            </div>
+
+        <Card className="p-6">
+          <h3 className="text-lg font-bold mb-4">Active Schemes & Benefits</h3>
+          <div className="space-y-4">
+            {schemes.map((scheme, index) => (
+              <div key={index} className="p-3 border rounded-lg">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-medium text-sm">{scheme.name}</h4>
+                  <Badge variant={scheme.status === "active" ? "default" : "secondary"}>
+                    {scheme.status}
+                  </Badge>
+                </div>
+                <p className="text-sm text-muted-foreground">{scheme.amount}</p>
+                <p className="text-xs text-muted-foreground">{scheme.duration}</p>
+              </div>
+            ))}
           </div>
         </Card>
       </div>
 
-      {/* AI Recommendations Section */}
-      <Card className="p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <Bot className="h-6 w-6 text-primary animate-pulse" />
-          <h3 className="text-xl font-bold">AI-Powered Scheme Recommendations</h3>
-          <Badge className="bg-accent text-white animate-bounce">Live</Badge>
-        </div>
-        
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {aiRecommendations.map((scheme) => (
-            <Card key={scheme.id} className="p-4 border-2 border-accent/30 hover:border-accent/60 transition-colors">
-              <div className="flex items-start justify-between mb-3">
-                <h4 className="font-semibold text-sm">{scheme.name}</h4>
-                <Badge className="bg-accent/20 text-accent text-xs">
-                  {scheme.aiConfidence}% match
-                </Badge>
-              </div>
-              
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Amount:</span>
-                  <span className="font-semibold text-green-600">{scheme.amount}</span>
-                </div>
-                
-                <div className="space-y-1">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Eligibility:</span>
-                    <span className="font-semibold">{scheme.eligibility}%</span>
+      <div className="grid gap-6 lg:grid-cols-2">
+        <Card className="p-6">
+          <h3 className="text-lg font-bold mb-4">Academic Performance Tracker</h3>
+          <div className="space-y-3">
+            {academicMilestones.map((milestone, index) => (
+              <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
+                <div className="flex items-center gap-3">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                    milestone.status === "completed" ? "bg-green-100 text-green-600" :
+                    milestone.status === "in-progress" ? "bg-blue-100 text-blue-600" :
+                    "bg-gray-100 text-gray-400"
+                  }`}>
+                    {milestone.status === "completed" ? <CheckCircle className="h-4 w-4" /> :
+                     milestone.status === "in-progress" ? <Clock className="h-4 w-4" /> :
+                     <BookOpen className="h-4 w-4" />}
                   </div>
-                  <Progress value={scheme.eligibility} className="h-2" />
+                  <div>
+                    <p className="font-medium">{milestone.semester}</p>
+                    <p className="text-sm text-muted-foreground">{milestone.credits} credits</p>
+                  </div>
                 </div>
-                
-                <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Deadline:</span>
-                  <span className="font-medium text-red-600">{scheme.deadline}</span>
+                <div className="text-right">
+                  {milestone.status !== "upcoming" && (
+                    <p className="font-semibold">{milestone.gpa.toFixed(1)}</p>
+                  )}
+                  <p className="text-sm text-muted-foreground capitalize">{milestone.status}</p>
                 </div>
-                
-                <Badge className={getCategoryColor("scheme")}>
-                  {scheme.category}
-                </Badge>
               </div>
-              
-              <Button className="w-full mt-3" size="sm">
-                Apply Now
-              </Button>
-            </Card>
-          ))}
-        </div>
-      </Card>
+            ))}
+          </div>
+        </Card>
 
-      {/* Timeline Section */}
-      <Card className="p-6">
-        <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-          <Calendar className="h-6 w-6" />
-          Academic Journey Timeline
-        </h3>
-        
-        <div className="space-y-4">
-          {timelineEvents.map((event, index) => (
-            <div key={event.id} className="flex gap-4">
-              <div className="flex flex-col items-center">
-                <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center ${
-                  event.status === "completed" ? "bg-green-50 border-green-500" :
-                  event.status === "in-progress" ? "bg-blue-50 border-blue-500" :
-                  "bg-gray-50 border-gray-300"
-                }`}>
-                  {getStatusIcon(event.status)}
-                </div>
-                {index < timelineEvents.length - 1 && (
-                  <div className="w-0.5 h-12 bg-gray-200 mt-2" />
-                )}
+        <Card className="p-6">
+          <h3 className="text-lg font-bold mb-4">Career Readiness Assessment</h3>
+          <div className="space-y-4">
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm font-medium">Technical Skills</span>
+                <span className="text-sm text-muted-foreground">85%</span>
               </div>
-              
-              <Card 
-                className={`flex-1 p-4 cursor-pointer hover:shadow-md transition-shadow ${
-                  event.aiRecommended ? 'ring-2 ring-accent/30' : ''
-                }`}
-                onClick={() => setSelectedEvent(event)}
-              >
-                <div className="flex items-start justify-between mb-2">
-                  <h4 className="font-semibold">{event.title}</h4>
-                  <div className="flex gap-2">
-                    {event.aiRecommended && (
-                      <Badge className="bg-accent text-white text-xs">
-                        <Bot className="h-3 w-3 mr-1" />
-                        AI Recommended
-                      </Badge>
-                    )}
-                    <Badge className={getCategoryColor(event.category)}>
-                      {event.category}
-                    </Badge>
-                  </div>
-                </div>
-                
-                <p className="text-sm text-muted-foreground mb-2">{event.description}</p>
-                
-                <div className="flex items-center gap-2 text-sm">
-                  <Calendar className="h-4 w-4" />
-                  <span>{event.date}</span>
-                </div>
-              </Card>
+              <Progress value={85} />
             </div>
-          ))}
-        </div>
-      </Card>
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm font-medium">Communication</span>
+                <span className="text-sm text-muted-foreground">78%</span>
+              </div>
+              <Progress value={78} />
+            </div>
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm font-medium">Leadership</span>
+                <span className="text-sm text-muted-foreground">72%</span>
+              </div>
+              <Progress value={72} />
+            </div>
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm font-medium">Industry Knowledge</span>
+                <span className="text-sm text-muted-foreground">80%</span>
+              </div>
+              <Progress value={80} />
+            </div>
+          </div>
+
+          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+            <h4 className="font-semibold text-blue-800 mb-2">Recommended Actions</h4>
+            <ul className="text-sm text-blue-700 space-y-1">
+              <li>• Complete advanced Java certification</li>
+              <li>• Join technical societies for leadership experience</li>
+              <li>• Attend industry workshops and seminars</li>
+            </ul>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 };
