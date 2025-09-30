@@ -1,284 +1,390 @@
 
-import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { 
   Trophy, 
   Star, 
-  Zap, 
+  Medal, 
   Target, 
+  Zap, 
+  Crown, 
+  Gift, 
+  Users, 
   BookOpen, 
   Award,
-  Gift,
-  Sparkles,
-  PartyPopper
+  TrendingUp,
+  Calendar,
+  CheckCircle
 } from "lucide-react";
 
-interface Achievement {
-  id: string;
-  title: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-  points: number;
-  unlocked: boolean;
-  category: "academic" | "scheme" | "milestone" | "ai";
-}
-
-interface PartyPopup {
-  id: string;
-  title: string;
-  message: string;
-  type: "achievement" | "milestone" | "recommendation";
-  show: boolean;
-}
-
-const achievements: Achievement[] = [
+const achievements = [
   {
-    id: "first_login",
-    title: "Welcome Explorer!",
-    description: "Completed your first login to NEDP",
-    icon: Star,
-    points: 50,
-    unlocked: true,
-    category: "milestone"
-  },
-  {
-    id: "ai_interaction",
-    title: "AI Whisperer",
-    description: "Had your first conversation with EduBot",
-    icon: Zap,
-    points: 100,
-    unlocked: true,
-    category: "ai"
-  },
-  {
-    id: "scheme_eligible",
-    title: "Opportunity Finder",
-    description: "AI found 3+ schemes you're eligible for",
-    icon: Gift,
-    points: 200,
-    unlocked: true,
-    category: "scheme"
-  },
-  {
-    id: "high_performer",
-    title: "Academic Star",
-    description: "Maintained 8.5+ CGPA for 2 semesters",
+    id: 1,
+    title: "Academic Excellence",
+    description: "Maintain CGPA above 9.0 for 2 semesters",
     icon: Trophy,
     points: 500,
+    progress: 85,
     unlocked: false,
-    category: "academic"
+    category: "Academic",
+    color: "bg-yellow-500"
   },
   {
-    id: "research_contributor",
+    id: 2,
+    title: "Perfect Attendance",
+    description: "100% attendance for a complete semester",
+    icon: Calendar,
+    points: 300,
+    progress: 100,
+    unlocked: true,
+    category: "Discipline",
+    color: "bg-green-500"
+  },
+  {
+    id: 3,
+    title: "Certification Master",
+    description: "Complete 5 professional certifications",
+    icon: Medal,
+    points: 400,
+    progress: 100,
+    unlocked: true,
+    category: "Skills",
+    color: "bg-blue-500"
+  },
+  {
+    id: 4,
     title: "Research Pioneer",
-    description: "Published your first research paper",
+    description: "Publish a research paper",
     icon: BookOpen,
-    points: 1000,
+    points: 800,
+    progress: 60,
     unlocked: false,
-    category: "academic"
+    category: "Research",
+    color: "bg-purple-500"
   },
   {
-    id: "scheme_beneficiary",
-    title: "Scheme Champion",
-    description: "Successfully enrolled in 5+ government schemes",
-    icon: Award,
-    points: 750,
+    id: 5,
+    title: "Community Helper",
+    description: "Participate in 10 community service activities",
+    icon: Users,
+    points: 350,
+    progress: 70,
     unlocked: false,
-    category: "scheme"
+    category: "Social",
+    color: "bg-pink-500"
+  },
+  {
+    id: 6,
+    title: "Innovation Champion",
+    description: "Win a hackathon or innovation contest",
+    icon: Zap,
+    points: 600,
+    progress: 0,
+    unlocked: false,
+    category: "Innovation",
+    color: "bg-orange-500"
   }
 ];
 
+const leaderboard = [
+  { rank: 1, name: "Priya Sharma", points: 2850, level: "Diamond", avatar: "PS" },
+  { rank: 2, name: "Rahul Kumar", points: 2720, level: "Diamond", avatar: "RK" },
+  { rank: 3, name: "Anita Singh", points: 2650, level: "Platinum", avatar: "AS" },
+  { rank: 4, name: "Vikash Raj", points: 2480, level: "Platinum", avatar: "VR" },
+  { rank: 5, name: "You", points: 2350, level: "Platinum", avatar: "YO", isCurrentUser: true },
+  { rank: 6, name: "Neha Gupta", points: 2200, level: "Gold", avatar: "NG" },
+  { rank: 7, name: "Amit Patel", points: 2150, level: "Gold", avatar: "AP" },
+  { rank: 8, name: "Sneha Das", points: 2050, level: "Gold", avatar: "SD" }
+];
+
+const challenges = [
+  {
+    id: 1,
+    title: "7-Day Study Streak",
+    description: "Study for at least 2 hours daily for 7 consecutive days",
+    progress: 5,
+    target: 7,
+    reward: 150,
+    expires: "2 days",
+    difficulty: "Easy",
+    icon: BookOpen
+  },
+  {
+    id: 2,
+    title: "Assignment Sprint",
+    description: "Submit all assignments 2 days before deadline",
+    progress: 2,
+    target: 4,
+    reward: 200,
+    expires: "1 week",
+    difficulty: "Medium",
+    icon: Target
+  },
+  {
+    id: 3,
+    title: "Skill Builder",
+    description: "Complete 3 online courses this month",
+    progress: 1,
+    target: 3,
+    reward: 300,
+    expires: "3 weeks",
+    difficulty: "Hard",
+    icon: Star
+  }
+];
+
+const playerStats = {
+  level: 24,
+  currentXP: 2350,
+  nextLevelXP: 2500,
+  totalPoints: 8750,
+  rank: 5,
+  streak: 12,
+  unlockedAchievements: 8,
+  totalAchievements: 15
+};
+
 export const Gamification = () => {
-  const [userPoints, setUserPoints] = useState(350);
-  const [currentLevel, setCurrentLevel] = useState(2);
-  const [partyPopup, setPartyPopup] = useState<PartyPopup | null>(null);
-  const [showAchievements, setShowAchievements] = useState(false);
-
-  const unlockedAchievements = achievements.filter(a => a.unlocked);
-  const nextLevelPoints = currentLevel * 500;
-  const progressToNext = (userPoints % 500) / 500 * 100;
-
-  useEffect(() => {
-    // Simulate party popup for new achievement
-    const timer = setTimeout(() => {
-      setPartyPopup({
-        id: "ai_recommendation",
-        title: "🎉 AI Found Perfect Match!",
-        message: "The AI discovered 2 new scholarships worth ₹50,000 that match your profile perfectly!",
-        type: "recommendation",
-        show: true
-      });
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const closePartyPopup = () => {
-    setPartyPopup(null);
-  };
-
-  const triggerNewAchievement = () => {
-    setPartyPopup({
-      id: "new_achievement",
-      title: "🏆 Achievement Unlocked!",
-      message: "Congratulations! You've earned the 'Data Explorer' badge for viewing your complete academic timeline!",
-      type: "achievement",
-      show: true
-    });
-    setUserPoints(prev => prev + 150);
-  };
+  const xpProgress = (playerStats.currentXP / playerStats.nextLevelXP) * 100;
 
   return (
     <div className="space-y-6">
-      {/* Level Progress Card */}
-      <Card className="p-6 bg-gradient-to-r from-primary/10 to-accent/10">
+      {/* Player Stats Header */}
+      <Card className="p-6 bg-gradient-to-r from-purple-500 to-blue-600 text-white">
         <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center">
-              <Sparkles className="h-6 w-6 text-primary" />
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+              <Crown className="h-8 w-8" />
             </div>
             <div>
-              <h3 className="text-xl font-bold">Level {currentLevel} Scholar</h3>
-              <p className="text-sm text-muted-foreground">{userPoints} points earned</p>
+              <h2 className="text-2xl font-bold">Level {playerStats.level}</h2>
+              <p className="text-white/80">Platinum Scholar</p>
             </div>
           </div>
-          <Badge className="bg-accent text-white">
-            {nextLevelPoints - userPoints} to next level
-          </Badge>
+          <div className="text-right">
+            <div className="text-3xl font-bold">{playerStats.totalPoints}</div>
+            <div className="text-white/80">Total Points</div>
+          </div>
         </div>
         
-        <div className="w-full bg-muted rounded-full h-3 mb-2">
-          <div 
-            className="bg-gradient-to-r from-primary to-accent h-3 rounded-full transition-all duration-500"
-            style={{ width: `${progressToNext}%` }}
-          />
+        <div className="mb-2">
+          <div className="flex justify-between text-sm">
+            <span>XP Progress</span>
+            <span>{playerStats.currentXP}/{playerStats.nextLevelXP}</span>
+          </div>
+          <Progress value={xpProgress} className="h-2 bg-white/20" />
         </div>
-        <p className="text-xs text-muted-foreground text-center">
-          {progressToNext.toFixed(0)}% progress to Level {currentLevel + 1}
-        </p>
+        
+        <div className="grid grid-cols-4 gap-4 mt-4">
+          <div className="text-center">
+            <div className="text-xl font-bold">{playerStats.rank}</div>
+            <div className="text-xs text-white/80">Rank</div>
+          </div>
+          <div className="text-center">
+            <div className="text-xl font-bold">{playerStats.streak}</div>
+            <div className="text-xs text-white/80">Day Streak</div>
+          </div>
+          <div className="text-center">
+            <div className="text-xl font-bold">{playerStats.unlockedAchievements}</div>
+            <div className="text-xs text-white/80">Achievements</div>
+          </div>
+          <div className="text-center">
+            <div className="text-xl font-bold">94%</div>
+            <div className="text-xs text-white/80">Completion</div>
+          </div>
+        </div>
       </Card>
 
-      {/* Quick Actions */}
-      <div className="grid grid-cols-2 gap-4">
-        <Button 
-          onClick={() => setShowAchievements(true)}
-          className="h-16 flex flex-col gap-1"
-          variant="outline"
-        >
-          <Trophy className="h-5 w-5" />
-          <span className="text-sm">View Achievements</span>
-        </Button>
-        <Button 
-          onClick={triggerNewAchievement}
-          className="h-16 flex flex-col gap-1"
-        >
-          <Target className="h-5 w-5" />
-          <span className="text-sm">Explore Timeline</span>
-        </Button>
+      <div className="grid gap-6 lg:grid-cols-2">
+        {/* Achievements */}
+        <Card className="p-6">
+          <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+            <Trophy className="h-6 w-6 text-yellow-500" />
+            Achievements
+          </h3>
+          <div className="space-y-4">
+            {achievements.map((achievement) => (
+              <div
+                key={achievement.id}
+                className={`p-4 rounded-lg border-2 ${
+                  achievement.unlocked 
+                    ? 'border-yellow-200 bg-yellow-50' 
+                    : 'border-gray-200 bg-gray-50'
+                }`}
+              >
+                <div className="flex items-start gap-3">
+                  <div className={`w-10 h-10 rounded-full ${achievement.color} flex items-center justify-center ${
+                    !achievement.unlocked ? 'opacity-50' : ''
+                  }`}>
+                    <achievement.icon className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h4 className="font-semibold">{achievement.title}</h4>
+                      {achievement.unlocked && (
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                      )}
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      {achievement.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Badge variant="outline" className="text-xs">
+                          {achievement.category}
+                        </Badge>
+                        <span className="text-sm font-medium">
+                          {achievement.points} points
+                        </span>
+                      </div>
+                      <div className="text-sm">
+                        {achievement.progress}%
+                      </div>
+                    </div>
+                    <Progress value={achievement.progress} className="mt-2" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        {/* Leaderboard */}
+        <Card className="p-6">
+          <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+            <TrendingUp className="h-6 w-6 text-blue-500" />
+            Class Leaderboard
+          </h3>
+          <div className="space-y-3">
+            {leaderboard.map((player) => (
+              <div
+                key={player.rank}
+                className={`flex items-center gap-3 p-3 rounded-lg ${
+                  player.isCurrentUser ? 'bg-blue-50 border-2 border-blue-200' : 'bg-gray-50'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white ${
+                    player.rank === 1 ? 'bg-yellow-500' :
+                    player.rank === 2 ? 'bg-gray-400' :
+                    player.rank === 3 ? 'bg-orange-600' : 'bg-gray-600'
+                  }`}>
+                    {player.rank <= 3 ? (
+                      <Crown className="h-4 w-4" />
+                    ) : (
+                      player.rank
+                    )}
+                  </div>
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white text-sm font-bold">
+                    {player.avatar}
+                  </div>
+                </div>
+                
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <span className={`font-medium ${player.isCurrentUser ? 'text-blue-600' : ''}`}>
+                      {player.name}
+                    </span>
+                    <div className="text-right">
+                      <div className="font-bold">{player.points}</div>
+                      <Badge variant="outline" className="text-xs">
+                        {player.level}
+                      </Badge>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
       </div>
 
-      {/* Recent Achievements */}
-      <Card className="p-4">
-        <h4 className="font-semibold mb-3 flex items-center gap-2">
-          <Award className="h-4 w-4" />
-          Recent Achievements
-        </h4>
-        <div className="space-y-2">
-          {unlockedAchievements.slice(0, 3).map((achievement) => (
-            <div key={achievement.id} className="flex items-center gap-3 p-2 rounded-lg bg-muted/50">
-              <achievement.icon className="h-5 w-5 text-primary" />
-              <div className="flex-1">
-                <p className="text-sm font-medium">{achievement.title}</p>
-                <p className="text-xs text-muted-foreground">{achievement.description}</p>
+      {/* Active Challenges */}
+      <Card className="p-6">
+        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+          <Target className="h-6 w-6 text-orange-500" />
+          Active Challenges
+        </h3>
+        <div className="grid gap-4 lg:grid-cols-3">
+          {challenges.map((challenge) => (
+            <div key={challenge.id} className="p-4 border rounded-lg">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
+                  <challenge.icon className="h-5 w-5 text-orange-600" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-semibold">{challenge.title}</h4>
+                  <p className="text-sm text-muted-foreground">
+                    {challenge.description}
+                  </p>
+                </div>
               </div>
-              <Badge variant="secondary" className="text-xs">
-                +{achievement.points}
-              </Badge>
+              
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm">Progress</span>
+                  <span className="text-sm font-medium">
+                    {challenge.progress}/{challenge.target}
+                  </span>
+                </div>
+                <Progress value={(challenge.progress / challenge.target) * 100} />
+                
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className="text-xs">
+                      {challenge.difficulty}
+                    </Badge>
+                    <span className="text-sm text-muted-foreground">
+                      Expires in {challenge.expires}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 text-sm font-medium">
+                    <Gift className="h-4 w-4 text-green-500" />
+                    {challenge.reward}
+                  </div>
+                </div>
+                
+                <Button size="sm" className="w-full">
+                  Continue Challenge
+                </Button>
+              </div>
             </div>
           ))}
         </div>
       </Card>
 
-      {/* Party Popup Dialog */}
-      {partyPopup && (
-        <Dialog open={partyPopup.show} onOpenChange={closePartyPopup}>
-          <DialogContent className="max-w-md">
-            <DialogHeader>
-              <DialogTitle className="text-center text-xl flex items-center gap-2 justify-center">
-                <PartyPopper className="h-6 w-6 text-primary animate-bounce" />
-                {partyPopup.title}
-              </DialogTitle>
-            </DialogHeader>
-            <div className="text-center py-4">
-              <div className="mb-4 flex justify-center">
-                {partyPopup.type === "recommendation" ? (
-                  <div className="h-16 w-16 rounded-full bg-accent/20 flex items-center justify-center animate-pulse">
-                    <Zap className="h-8 w-8 text-accent" />
-                  </div>
-                ) : (
-                  <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center animate-pulse">
-                    <Trophy className="h-8 w-8 text-primary" />
-                  </div>
-                )}
+      {/* Rewards Store */}
+      <Card className="p-6">
+        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+          <Gift className="h-6 w-6 text-green-500" />
+          Rewards Store
+        </h3>
+        <div className="grid gap-4 lg:grid-cols-4">
+          {[
+            { name: "Library Extension Pass", cost: 200, description: "Extended library hours access", icon: BookOpen },
+            { name: "Cafeteria Voucher", cost: 150, description: "₹100 food credit", icon: Gift },
+            { name: "Lab Priority Access", cost: 300, description: "Skip queue in computer labs", icon: Zap },
+            { name: "Certificate Frame", cost: 100, description: "Premium certificate frame", icon: Award }
+          ].map((reward, index) => (
+            <div key={index} className="p-4 border rounded-lg text-center">
+              <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-3">
+                <reward.icon className="h-6 w-6 text-green-600" />
               </div>
-              <p className="text-muted-foreground mb-6">{partyPopup.message}</p>
-              <Button onClick={closePartyPopup} className="w-full">
-                Awesome! Continue
+              <h4 className="font-semibold mb-1">{reward.name}</h4>
+              <p className="text-sm text-muted-foreground mb-3">{reward.description}</p>
+              <div className="flex items-center justify-center gap-1 mb-3">
+                <Star className="h-4 w-4 text-yellow-500" />
+                <span className="font-bold">{reward.cost}</span>
+              </div>
+              <Button size="sm" variant="outline" className="w-full">
+                Redeem
               </Button>
             </div>
-          </DialogContent>
-        </Dialog>
-      )}
-
-      {/* Achievements Modal */}
-      <Dialog open={showAchievements} onOpenChange={setShowAchievements}>
-        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <Trophy className="h-6 w-6 text-primary" />
-              Your Achievements
-            </DialogTitle>
-          </DialogHeader>
-          <div className="grid gap-4 mt-4">
-            {achievements.map((achievement) => (
-              <Card 
-                key={achievement.id} 
-                className={`p-4 ${achievement.unlocked ? 'border-primary/50 bg-primary/5' : 'opacity-60'}`}
-              >
-                <div className="flex items-center gap-4">
-                  <div className={`h-12 w-12 rounded-full flex items-center justify-center ${
-                    achievement.unlocked ? 'bg-primary/20' : 'bg-muted'
-                  }`}>
-                    <achievement.icon className={`h-6 w-6 ${
-                      achievement.unlocked ? 'text-primary' : 'text-muted-foreground'
-                    }`} />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold">{achievement.title}</h4>
-                    <p className="text-sm text-muted-foreground">{achievement.description}</p>
-                    <div className="flex items-center gap-2 mt-2">
-                      <Badge variant={achievement.unlocked ? "default" : "secondary"}>
-                        {achievement.category}
-                      </Badge>
-                      <Badge variant="outline">
-                        {achievement.points} points
-                      </Badge>
-                    </div>
-                  </div>
-                  {achievement.unlocked && (
-                    <div className="text-green-500">
-                      <Trophy className="h-5 w-5" />
-                    </div>
-                  )}
-                </div>
-              </Card>
-            ))}
-          </div>
-        </DialogContent>
-      </Dialog>
+          ))}
+        </div>
+      </Card>
     </div>
   );
 };

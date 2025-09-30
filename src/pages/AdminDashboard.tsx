@@ -320,29 +320,205 @@ const AdminDashboard = () => {
           </TabsContent>
 
           <TabsContent value="analytics" className="space-y-6">
-            <Card className="p-6">
-              <h3 className="text-xl font-bold mb-4">Predictive Analytics Dashboard</h3>
-              <div className="grid gap-6 lg:grid-cols-2">
+            <div className="grid gap-6 lg:grid-cols-2 mb-6">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Student Life Cycle Analytics</h3>
                 <div className="space-y-4">
-                  <h4 className="font-semibold">Student Success Predictions</h4>
-                  <div className="p-4 bg-green-50 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600">87.3%</div>
-                    <div className="text-sm text-green-700">Predicted graduation rate</div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="p-4 bg-green-50 rounded-lg text-center">
+                      <div className="text-2xl font-bold text-green-600">87.3%</div>
+                      <div className="text-sm text-green-700">Graduation Rate</div>
+                    </div>
+                    <div className="p-4 bg-blue-50 rounded-lg text-center">
+                      <div className="text-2xl font-bold text-blue-600">92.1%</div>
+                      <div className="text-sm text-blue-700">Employability</div>
+                    </div>
+                    <div className="p-4 bg-purple-50 rounded-lg text-center">
+                      <div className="text-2xl font-bold text-purple-600">2.8%</div>
+                      <div className="text-sm text-purple-700">Dropout Risk</div>
+                    </div>
+                    <div className="p-4 bg-orange-50 rounded-lg text-center">
+                      <div className="text-2xl font-bold text-orange-600">78%</div>
+                      <div className="text-sm text-orange-700">Scheme Uptake</div>
+                    </div>
                   </div>
-                  <div className="p-4 bg-blue-50 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600">92.1%</div>
-                    <div className="text-sm text-blue-700">Employability score</div>
+                  
+                  <div className="space-y-3">
+                    <h4 className="font-semibold">Key Insights</h4>
+                    <div className="space-y-2">
+                      <div className="p-3 bg-blue-50 rounded border-l-4 border-blue-400">
+                        <p className="text-sm text-blue-800">Engineering students show 15% higher placement rates when enrolled in PMKVY schemes</p>
+                      </div>
+                      <div className="p-3 bg-green-50 rounded border-l-4 border-green-400">
+                        <p className="text-sm text-green-800">Rural students benefit 40% more from NSP scholarships than urban counterparts</p>
+                      </div>
+                      <div className="p-3 bg-yellow-50 rounded border-l-4 border-yellow-400">
+                        <p className="text-sm text-yellow-800">AI predicts 12% increase in STEM enrollment for next academic year</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Institutional Performance Matrix</h3>
                 <div className="space-y-4">
-                  <h4 className="font-semibold">Risk Assessment</h4>
-                  <div className="p-4 bg-red-50 rounded-lg">
-                    <div className="text-2xl font-bold text-red-600">2.8%</div>
-                    <div className="text-sm text-red-700">Dropout risk</div>
+                  <div className="space-y-3">
+                    {[
+                      { name: "NIRF Parameters", score: 85, target: 90, trend: "+5" },
+                      { name: "NAAC Compliance", score: 94, target: 95, trend: "+2" },
+                      { name: "Research Output", score: 78, target: 85, trend: "+12" },
+                      { name: "Student Satisfaction", score: 88, target: 90, trend: "+3" },
+                      { name: "Faculty Performance", score: 82, target: 88, trend: "+8" },
+                      { name: "Infrastructure Score", score: 91, target: 95, trend: "+1" }
+                    ].map((metric, index) => (
+                      <div key={index} className="space-y-2">
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm font-medium">{metric.name}</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm">{metric.score}%</span>
+                            <Badge className={`text-xs ${
+                              parseInt(metric.trend) > 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                            }`}>
+                              {metric.trend}%
+                            </Badge>
+                          </div>
+                        </div>
+                        <Progress value={metric.score} />
+                      </div>
+                    ))}
                   </div>
-                  <div className="p-4 bg-yellow-50 rounded-lg">
-                    <div className="text-2xl font-bold text-yellow-600">15</div>
-                    <div className="text-sm text-yellow-700">Institutions at risk</div>
+                </div>
+              </Card>
+            </div>
+
+            <Card className="p-6">
+              <h3 className="text-xl font-bold mb-4">Data Integration & Quality Dashboard</h3>
+              <div className="grid gap-6 lg:grid-cols-3">
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Data Sources Integration</h4>
+                  <div className="space-y-3">
+                    {[
+                      { source: "AISHE", status: "Connected", quality: 98, records: "50.2K institutions" },
+                      { source: "NIRF", status: "Connected", quality: 96, records: "11.9K ranked" },
+                      { source: "NAAC", status: "Connected", quality: 94, records: "8.7K accredited" },
+                      { source: "AICTE", status: "Connected", quality: 99, records: "4.3K approved" },
+                      { source: "UGC", status: "Syncing", quality: 92, records: "1.1K universities" },
+                      { source: "DigiLocker", status: "Connected", quality: 97, records: "120M documents" }
+                    ].map((source, index) => (
+                      <div key={index} className="flex justify-between items-center p-2 border rounded">
+                        <div>
+                          <p className="font-medium text-sm">{source.source}</p>
+                          <p className="text-xs text-muted-foreground">{source.records}</p>
+                        </div>
+                        <div className="text-right">
+                          <Badge variant={source.status === "Connected" ? "default" : "secondary"} className="text-xs">
+                            {source.status}
+                          </Badge>
+                          <p className="text-xs text-muted-foreground">{source.quality}% quality</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Real-time Processing</h4>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-green-50 rounded">
+                      <div className="text-lg font-bold text-green-600">2.8M</div>
+                      <div className="text-sm text-green-700">Records processed today</div>
+                    </div>
+                    <div className="p-3 bg-blue-50 rounded">
+                      <div className="text-lg font-bold text-blue-600">15.2K</div>
+                      <div className="text-sm text-blue-700">API calls/hour</div>
+                    </div>
+                    <div className="p-3 bg-purple-50 rounded">
+                      <div className="text-lg font-bold text-purple-600">99.9%</div>
+                      <div className="text-sm text-purple-700">System uptime</div>
+                    </div>
+                    <div className="p-3 bg-orange-50 rounded">
+                      <div className="text-lg font-bold text-orange-600">45ms</div>
+                      <div className="text-sm text-orange-700">Avg response time</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Identity Linkage</h4>
+                  <div className="space-y-3">
+                    {[
+                      { type: "Aadhaar Linkage", linked: 95.8, total: "Students & Teachers" },
+                      { type: "AISHE Code Mapping", linked: 99.2, total: "Institutions" },
+                      { type: "APAR ID Integration", linked: 88.4, total: "Faculty Records" },
+                      { type: "Enrollment Matching", linked: 96.7, total: "Academic Records" },
+                      { type: "Scheme Beneficiary ID", linked: 91.3, total: "Government Programs" }
+                    ].map((identity, index) => (
+                      <div key={index} className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span className="font-medium">{identity.type}</span>
+                          <span>{identity.linked}%</span>
+                        </div>
+                        <Progress value={identity.linked} />
+                        <p className="text-xs text-muted-foreground">{identity.total}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-6">
+              <h3 className="text-xl font-bold mb-4">AI-Powered Recommendations</h3>
+              <div className="grid gap-4 lg:grid-cols-2">
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Policy Recommendations</h4>
+                  <div className="space-y-3">
+                    <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                      <h5 className="font-semibold text-blue-800">Increase STEM Funding</h5>
+                      <p className="text-sm text-blue-700">AI analysis suggests 25% increase in STEM scholarships could boost enrollment by 18% in rural areas</p>
+                      <Badge className="mt-2 bg-blue-100 text-blue-800">High Impact</Badge>
+                    </div>
+                    <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-400">
+                      <h5 className="font-semibold text-green-800">Teacher Training Programs</h5>
+                      <p className="text-sm text-green-700">Implement AI-based pedagogy training for 40% improvement in student outcomes</p>
+                      <Badge className="mt-2 bg-green-100 text-green-800">Medium Impact</Badge>
+                    </div>
+                    <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-400">
+                      <h5 className="font-semibold text-purple-800">Infrastructure Optimization</h5>
+                      <p className="text-sm text-purple-700">Redistribute resources to northeastern states for balanced educational development</p>
+                      <Badge className="mt-2 bg-purple-100 text-purple-800">High Impact</Badge>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Intervention Alerts</h4>
+                  <div className="space-y-3">
+                    <div className="p-4 bg-red-50 rounded-lg border-l-4 border-red-400">
+                      <div className="flex items-center gap-2 mb-2">
+                        <AlertTriangle className="h-5 w-5 text-red-600" />
+                        <h5 className="font-semibold text-red-800">Urgent: Dropout Risk</h5>
+                      </div>
+                      <p className="text-sm text-red-700">15 institutions show >10% increase in dropout rates</p>
+                      <Button size="sm" className="mt-2 bg-red-600">Take Action</Button>
+                    </div>
+                    <div className="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Clock className="h-5 w-5 text-yellow-600" />
+                        <h5 className="font-semibold text-yellow-800">Moderate: Compliance Gap</h5>
+                      </div>
+                      <p className="text-sm text-yellow-700">28 institutions pending NAAC reaccreditation</p>
+                      <Button size="sm" variant="outline" className="mt-2">Review</Button>
+                    </div>
+                    <div className="p-4 bg-orange-50 rounded-lg border-l-4 border-orange-400">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Target className="h-5 w-5 text-orange-600" />
+                        <h5 className="font-semibold text-orange-800">Opportunity: Excellence</h5>
+                      </div>
+                      <p className="text-sm text-orange-700">12 institutions ready for NIRF ranking improvement</p>
+                      <Button size="sm" variant="outline" className="mt-2">Support</Button>
+                    </div>
                   </div>
                 </div>
               </div>

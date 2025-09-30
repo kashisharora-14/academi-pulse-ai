@@ -213,23 +213,324 @@ const StudentDashboard = () => {
           </TabsContent>
 
           <TabsContent value="academics" className="space-y-6">
-            {/* Academics content would go here */}
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Academic Records</h3>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div className="p-4 bg-blue-50 rounded-lg">
+                      <div className="text-2xl font-bold text-blue-600">8.9</div>
+                      <div className="text-sm text-blue-700">Current CGPA</div>
+                    </div>
+                    <div className="p-4 bg-green-50 rounded-lg">
+                      <div className="text-2xl font-bold text-green-600">148</div>
+                      <div className="text-sm text-green-700">Credits Earned</div>
+                    </div>
+                    <div className="p-4 bg-purple-50 rounded-lg">
+                      <div className="text-2xl font-bold text-purple-600">92%</div>
+                      <div className="text-sm text-purple-700">Attendance</div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <h4 className="font-semibold">Current Semester Courses</h4>
+                    {[
+                      { name: "Machine Learning", code: "CS642", credits: 4, grade: "A", marks: 89 },
+                      { name: "Software Engineering", code: "CS630", credits: 3, grade: "A+", marks: 95 },
+                      { name: "Database Management", code: "CS620", credits: 4, grade: "A", marks: 87 },
+                      { name: "Computer Networks", code: "CS610", credits: 3, grade: "B+", marks: 82 }
+                    ].map((course, index) => (
+                      <div key={index} className="flex justify-between items-center p-3 border rounded">
+                        <div>
+                          <p className="font-medium">{course.name}</p>
+                          <p className="text-sm text-muted-foreground">{course.code} • {course.credits} Credits</p>
+                        </div>
+                        <div className="text-right">
+                          <Badge className="mb-1">{course.grade}</Badge>
+                          <p className="text-sm">{course.marks}%</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Certifications & Achievements</h3>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="p-3 bg-yellow-50 rounded-lg text-center">
+                      <Award className="h-8 w-8 text-yellow-600 mx-auto mb-2" />
+                      <div className="text-lg font-bold">5</div>
+                      <div className="text-sm">Certifications</div>
+                    </div>
+                    <div className="p-3 bg-green-50 rounded-lg text-center">
+                      <Trophy className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                      <div className="text-lg font-bold">3</div>
+                      <div className="text-sm">Awards</div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    {[
+                      { name: "AWS Cloud Practitioner", issuer: "Amazon", date: "Dec 2023", status: "Active" },
+                      { name: "Google Analytics", issuer: "Google", date: "Nov 2023", status: "Active" },
+                      { name: "Machine Learning Basics", issuer: "Coursera", date: "Oct 2023", status: "Active" },
+                      { name: "Python Programming", issuer: "HackerRank", date: "Sep 2023", status: "Active" },
+                      { name: "Data Structures", issuer: "LeetCode", date: "Aug 2023", status: "Active" }
+                    ].map((cert, index) => (
+                      <div key={index} className="flex justify-between items-center p-3 border rounded">
+                        <div>
+                          <p className="font-medium">{cert.name}</p>
+                          <p className="text-sm text-muted-foreground">{cert.issuer} • {cert.date}</p>
+                        </div>
+                        <Badge className="bg-success">{cert.status}</Badge>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            </div>
           </TabsContent>
 
           <TabsContent value="schemes" className="space-y-6">
-            {/* Schemes content would go here */}
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Active Schemes & Benefits</h3>
+                <div className="space-y-4">
+                  {[
+                    { 
+                      name: "National Scholarship Portal (NSP)", 
+                      type: "Merit Scholarship", 
+                      amount: "₹48,000/year", 
+                      status: "Active", 
+                      duration: "4 years",
+                      disbursed: "₹96,000",
+                      nextDue: "Apr 2024"
+                    },
+                    { 
+                      name: "PMKVY 4.0", 
+                      type: "Skill Development", 
+                      amount: "Free Training", 
+                      status: "Completed", 
+                      duration: "6 months",
+                      disbursed: "Certificate",
+                      nextDue: "N/A"
+                    },
+                    { 
+                      name: "SWAYAM NPTEL", 
+                      type: "Online Courses", 
+                      amount: "Free", 
+                      status: "Ongoing", 
+                      duration: "12 weeks",
+                      disbursed: "4 Courses",
+                      nextDue: "May 2024"
+                    }
+                  ].map((scheme, index) => (
+                    <div key={index} className="p-4 border rounded-lg">
+                      <div className="flex justify-between items-start mb-3">
+                        <div>
+                          <h4 className="font-semibold">{scheme.name}</h4>
+                          <p className="text-sm text-muted-foreground">{scheme.type}</p>
+                        </div>
+                        <Badge variant={scheme.status === "Active" ? "default" : scheme.status === "Completed" ? "secondary" : "outline"}>
+                          {scheme.status}
+                        </Badge>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                          <span className="text-muted-foreground">Amount:</span>
+                          <span className="ml-2 font-medium">{scheme.amount}</span>
+                        </div>
+                        <div>
+                          <span className="text-muted-foreground">Duration:</span>
+                          <span className="ml-2 font-medium">{scheme.duration}</span>
+                        </div>
+                        <div>
+                          <span className="text-muted-foreground">Total Received:</span>
+                          <span className="ml-2 font-medium">{scheme.disbursed}</span>
+                        </div>
+                        <div>
+                          <span className="text-muted-foreground">Next Due:</span>
+                          <span className="ml-2 font-medium">{scheme.nextDue}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Scheme Eligibility Checker</h3>
+                <div className="space-y-4">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h4 className="font-semibold text-blue-800 mb-2">AI-Powered Recommendations</h4>
+                    <p className="text-sm text-blue-700">Based on your profile, you're eligible for 8 new schemes</p>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    {[
+                      { name: "Post Matric Scholarship", eligibility: "95%", amount: "₹1,200/month", deadline: "Mar 30, 2024" },
+                      { name: "Merit-cum-Means Scholarship", eligibility: "87%", amount: "₹20,000/year", deadline: "Apr 15, 2024" },
+                      { name: "Research Fellowship", eligibility: "82%", amount: "₹31,000/month", deadline: "May 01, 2024" },
+                      { name: "Innovation Challenge", eligibility: "78%", amount: "₹1,00,000", deadline: "Jun 15, 2024" }
+                    ].map((scheme, index) => (
+                      <div key={index} className="p-3 border rounded">
+                        <div className="flex justify-between items-start mb-2">
+                          <h5 className="font-medium">{scheme.name}</h5>
+                          <Badge variant="outline">{scheme.eligibility} match</Badge>
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          <p>Amount: {scheme.amount}</p>
+                          <p>Deadline: {scheme.deadline}</p>
+                        </div>
+                        <Button size="sm" className="mt-2 w-full">Apply Now</Button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            </div>
           </TabsContent>
 
           <TabsContent value="documents" className="space-y-6">
-            {/* Documents content would go here */}
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Academic Documents</h3>
+                <div className="space-y-3">
+                  {[
+                    { name: "Degree Certificate", type: "PDF", size: "2.4 MB", date: "Expected: May 2025", status: "Pending" },
+                    { name: "Transcript (Semester 1-5)", type: "PDF", size: "1.8 MB", date: "Updated: Jan 2024", status: "Available" },
+                    { name: "Character Certificate", type: "PDF", size: "0.9 MB", date: "Issued: Dec 2023", status: "Available" },
+                    { name: "Migration Certificate", type: "PDF", size: "1.2 MB", date: "Expected: May 2025", status: "Pending" },
+                    { name: "Provisional Certificate", type: "PDF", size: "1.1 MB", date: "Expected: May 2025", status: "Pending" }
+                  ].map((doc, index) => (
+                    <div key={index} className="flex items-center justify-between p-3 border rounded">
+                      <div className="flex items-center gap-3">
+                        <FileText className="h-5 w-5 text-blue-500" />
+                        <div>
+                          <p className="font-medium">{doc.name}</p>
+                          <p className="text-sm text-muted-foreground">{doc.type} • {doc.size} • {doc.date}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Badge variant={doc.status === "Available" ? "default" : "secondary"}>
+                          {doc.status}
+                        </Badge>
+                        {doc.status === "Available" && (
+                          <Button size="sm" variant="outline">Download</Button>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">DigiLocker Integration</h3>
+                <div className="space-y-4">
+                  <div className="p-4 bg-green-50 rounded-lg">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle className="h-5 w-5 text-green-600" />
+                      <h4 className="font-semibold text-green-800">Connected to DigiLocker</h4>
+                    </div>
+                    <p className="text-sm text-green-700">All documents are securely synced with your DigiLocker account</p>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <h4 className="font-semibold">Available Documents</h4>
+                    {[
+                      { name: "Aadhaar Card", issuer: "UIDAI", verified: true },
+                      { name: "PAN Card", issuer: "Income Tax Department", verified: true },
+                      { name: "Class 12 Certificate", issuer: "CBSE", verified: true },
+                      { name: "Class 10 Certificate", issuer: "CBSE", verified: true },
+                      { name: "Driving License", issuer: "RTO", verified: false }
+                    ].map((doc, index) => (
+                      <div key={index} className="flex justify-between items-center p-2 border rounded">
+                        <div>
+                          <p className="font-medium text-sm">{doc.name}</p>
+                          <p className="text-xs text-muted-foreground">{doc.issuer}</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          {doc.verified ? (
+                            <Badge className="bg-success text-xs">Verified</Badge>
+                          ) : (
+                            <Badge variant="outline" className="text-xs">Pending</Badge>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            </div>
           </TabsContent>
 
           <TabsContent value="chat" className="space-y-6">
-            {/* Chatbot content is already included in overview, but could be a separate tab */}
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Chatbot />
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Quick Actions</h3>
+                <div className="grid grid-cols-2 gap-3">
+                  <Button variant="outline" className="h-16 flex-col">
+                    <BookOpen className="h-6 w-6 mb-1" />
+                    <span className="text-xs">Course Registration</span>
+                  </Button>
+                  <Button variant="outline" className="h-16 flex-col">
+                    <Award className="h-6 w-6 mb-1" />
+                    <span className="text-xs">Apply Scholarship</span>
+                  </Button>
+                  <Button variant="outline" className="h-16 flex-col">
+                    <FileText className="h-6 w-6 mb-1" />
+                    <span className="text-xs">Request Documents</span>
+                  </Button>
+                  <Button variant="outline" className="h-16 flex-col">
+                    <Calendar className="h-6 w-6 mb-1" />
+                    <span className="text-xs">Exam Schedule</span>
+                  </Button>
+                  <Button variant="outline" className="h-16 flex-col">
+                    <Users className="h-6 w-6 mb-1" />
+                    <span className="text-xs">Faculty Contact</span>
+                  </Button>
+                  <Button variant="outline" className="h-16 flex-col">
+                    <Target className="h-6 w-6 mb-1" />
+                    <span className="text-xs">Career Guidance</span>
+                  </Button>
+                </div>
+              </Card>
+            </div>
           </TabsContent>
 
           <TabsContent value="map" className="space-y-6">
-            {/* Map content is already included in overview, but could be a separate tab */}
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Campus Navigation</h3>
+                <MapView locations={nearbyInstitutions} center={[28.5449, 77.1925]} zoom={14} />
+              </Card>
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Campus Services</h3>
+                <div className="space-y-3">
+                  {[
+                    { name: "Central Library", status: "Open", hours: "24/7", distance: "200m" },
+                    { name: "Computer Lab", status: "Open", hours: "8 AM - 10 PM", distance: "150m" },
+                    { name: "Cafeteria", status: "Open", hours: "7 AM - 11 PM", distance: "300m" },
+                    { name: "Sports Complex", status: "Open", hours: "6 AM - 10 PM", distance: "400m" },
+                    { name: "Medical Center", status: "Open", hours: "24/7", distance: "250m" },
+                    { name: "ATM", status: "Available", hours: "24/7", distance: "100m" }
+                  ].map((service, index) => (
+                    <div key={index} className="flex justify-between items-center p-3 border rounded">
+                      <div>
+                        <p className="font-medium">{service.name}</p>
+                        <p className="text-sm text-muted-foreground">{service.hours} • {service.distance}</p>
+                      </div>
+                      <Badge className={service.status === "Open" || service.status === "Available" ? "bg-success" : "bg-secondary"}>
+                        {service.status}
+                      </Badge>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
           </TabsContent>
         </Tabs>
       </main>
