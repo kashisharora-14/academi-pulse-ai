@@ -178,7 +178,7 @@ const AdminDashboard = () => {
 
           {/* Mobile Tabs - Scrollable */}
           <div className="block lg:hidden">
-            <div className="flex overflow-x-auto pb-2 space-x-1 mobile-tabs-scroll">
+            <TabsList className="flex overflow-x-auto pb-2 space-x-1 mobile-tabs-scroll h-auto">
               <TabsTrigger value="overview" className="whitespace-nowrap text-xs">Overview</TabsTrigger>
               <TabsTrigger value="institutions" className="whitespace-nowrap text-xs">Institutions</TabsTrigger>
               <TabsTrigger value="schemes" className="whitespace-nowrap text-xs">Schemes</TabsTrigger>
@@ -195,7 +195,7 @@ const AdminDashboard = () => {
                 <Download className="h-4 w-4" />
               </TabsTrigger>
               <TabsTrigger value="ai" className="whitespace-nowrap text-xs">AI</TabsTrigger>
-            </div>
+            </TabsList>
           </div>
 
           <TabsContent value="overview" className="space-y-6">

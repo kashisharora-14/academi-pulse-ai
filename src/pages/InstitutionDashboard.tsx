@@ -152,7 +152,7 @@ const InstitutionDashboard = () => {
 
           {/* Mobile Tabs - Scrollable */}
           <div className="block lg:hidden">
-            <div className="flex overflow-x-auto pb-2 space-x-1 mobile-tabs-scroll">
+            <TabsList className="flex overflow-x-auto pb-2 space-x-1 mobile-tabs-scroll h-auto">
               <TabsTrigger value="overview" className="whitespace-nowrap text-xs">Overview</TabsTrigger>
               <TabsTrigger value="academics" className="whitespace-nowrap text-xs">Academics</TabsTrigger>
               <TabsTrigger value="placements" className="whitespace-nowrap text-xs">Placements</TabsTrigger>
@@ -168,7 +168,7 @@ const InstitutionDashboard = () => {
                 <Download className="h-4 w-4" />
               </TabsTrigger>
               <TabsTrigger value="analytics" className="whitespace-nowrap text-xs">Analytics</TabsTrigger>
-            </div>
+            </TabsList>
           </div>
 
           <TabsContent value="overview" className="space-y-6">
