@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 import { 
-  Shield, 
   Menu,
   Phone,
   Mail,
@@ -43,9 +42,25 @@ export const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            {/* Government Emblem */}
-            <div className="w-12 h-12 bg-blue-800 rounded-full flex items-center justify-center">
-              <Shield className="w-8 h-8 text-white" />
+            {/* Government Emblem - Ashoka Chakra */}
+            <div className="w-12 h-12 bg-blue-800 rounded-full flex items-center justify-center relative">
+              <div className="w-8 h-8 relative">
+                {/* Ashoka Chakra - 24 spokes wheel */}
+                <div className="w-8 h-8 border-2 border-white rounded-full relative flex items-center justify-center">
+                  <div className="absolute w-1 h-1 bg-white rounded-full"></div>
+                  {/* Spokes */}
+                  {Array.from({length: 24}).map((_, i) => (
+                    <div 
+                      key={i}
+                      className="absolute w-0.5 h-3 bg-white origin-bottom"
+                      style={{
+                        transform: `rotate(${i * 15}deg) translateY(-6px)`,
+                        transformOrigin: 'center 12px'
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
             
             <div>
