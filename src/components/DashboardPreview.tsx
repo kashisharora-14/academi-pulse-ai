@@ -54,9 +54,8 @@ export const DashboardPreview = () => {
 
         {/* Image for dashboard preview, fixing undefined error and making it responsive */}
         <div className="mb-16">
-          <div className="w-full h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg shadow-lg flex items-center justify-center">
-              <p className="text-gray-600 text-lg">Dashboard Preview</p>
-            </div>
+          <div className="w-full h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg shadow-lg">
+          </div>
         </div>
 
         {/* Tabs for stats, made responsive for mobile */}
