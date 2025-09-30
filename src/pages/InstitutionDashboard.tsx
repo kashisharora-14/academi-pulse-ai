@@ -68,7 +68,7 @@ const researchData = [
 
 const complianceMetrics = [
   { category: "NAAC", score: 3.2, maxScore: 4, status: "A+", lastUpdated: "2023" },
-  { category: "NIRF", rank: 85, category: "Engineering", improvement: "+5", year: "2024" },
+  { category: "NIRF", rank: 85, type: "Engineering", improvement: "+5", year: "2024" },
   { category: "NBA", programs: 8, accredited: 6, percentage: 75, validity: "2026" },
   { category: "AICTE", status: "Approved", validity: "2025", students: 2000, approved: 2200 },
 ];

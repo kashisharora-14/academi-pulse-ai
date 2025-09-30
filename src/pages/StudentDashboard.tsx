@@ -19,12 +19,20 @@ import {
   Target,
   GraduationCap,
   LogOut,
-  CheckCircle
+  CheckCircle,
+  QrCode,
+  Download,
+  Sparkles,
+  Route
 } from "lucide-react";
 import { Chatbot } from "@/components/Chatbot";
 import { MapView } from "@/components/MapView";
 import { Gamification } from "@/components/Gamification";
 import { StudentLifeCycleTracker } from "@/components/StudentLifeCycleTracker";
+import { QRCodeGenerator } from "@/components/QRCodeGenerator";
+import { ExportTools } from "@/components/ExportTools";
+import { AIRecommendations } from "@/components/AIRecommendations";
+import { JourneyMapper } from "@/components/JourneyMapper";
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 const skillData = [
@@ -109,12 +117,28 @@ const StudentDashboard = () => {
         </div>
 
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-8">
+          <TabsList className="grid w-full grid-cols-6 lg:grid-cols-12 text-xs">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="lifecycle">Life Cycle</TabsTrigger>
+            <TabsTrigger value="journey">
+              <Route className="h-4 w-4 mr-1" />
+              Journey
+            </TabsTrigger>
             <TabsTrigger value="gamification">
               <Trophy className="h-4 w-4 mr-1" />
               Achievements
+            </TabsTrigger>
+            <TabsTrigger value="qr">
+              <QrCode className="h-4 w-4 mr-1" />
+              QR Code
+            </TabsTrigger>
+            <TabsTrigger value="export">
+              <Download className="h-4 w-4 mr-1" />
+              Export
+            </TabsTrigger>
+            <TabsTrigger value="ai">
+              <Sparkles className="h-4 w-4 mr-1" />
+              AI Recommendations
             </TabsTrigger>
             <TabsTrigger value="academics">Academics</TabsTrigger>
             <TabsTrigger value="schemes">Schemes</TabsTrigger>
@@ -129,6 +153,132 @@ const StudentDashboard = () => {
 
           <TabsContent value="gamification" className="space-y-6">
             <Gamification />
+          </TabsContent>
+
+          <TabsContent value="journey" className="space-y-6">
+            <JourneyMapper studentData={{ 
+              name: "Arjun Patel", 
+              id: "STU-2024-001",
+              email: user?.email 
+            }} />
+          </TabsContent>
+
+          <TabsContent value="qr" className="space-y-6">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <QRCodeGenerator 
+                data={{ 
+                  id: "STU-2024-001",
+                  name: "Arjun Patel",
+                  email: user?.email,
+                  cgpa: 8.9,
+                  credits: 148,
+                  attendance: 92,
+                  scholarships: ["NSP", "PMKVY"],
+                  certifications: ["AWS", "Google Analytics", "ML Basics", "Python", "Data Structures"]
+                }} 
+                type="student"
+                title="Student ID Card QR"
+              />
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">QR Code Uses</h3>
+                <div className="space-y-4">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h4 className="font-semibold text-blue-800 mb-2">📱 Student ID Card</h4>
+                    <p className="text-sm text-blue-700">
+                      Print this QR on your student ID card for instant profile access and verification
+                    </p>
+                  </div>
+                  <div className="p-4 bg-green-50 rounded-lg">
+                    <h4 className="font-semibold text-green-800 mb-2">📜 Certificates</h4>
+                    <p className="text-sm text-green-700">
+                      Each certificate gets a unique QR for blockchain-verified authenticity
+                    </p>
+                  </div>
+                  <div className="p-4 bg-purple-50 rounded-lg">
+                    <h4 className="font-semibold text-purple-800 mb-2">👔 Job Applications</h4>
+                    <p className="text-sm text-purple-700">
+                      Employers can scan to view verified achievements and academic records
+                    </p>
+                  </div>
+                  <div className="p-4 bg-orange-50 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">🏛️ University Verification</h4>
+                    <p className="text-sm text-orange-700">
+                      Other institutions can verify your credentials for higher studies
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="export" className="space-y-6">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <ExportTools 
+                data={{
+                  name: "Arjun Patel",
+                  id: "STU-2024-001",
+                  email: user?.email,
+                  cgpa: 8.9,
+                  credits: 148,
+                  attendance: 92,
+                  scholarships: [
+                    { name: "NSP", amount: "₹48,000/year" },
+                    { name: "PMKVY", type: "Skill Development" }
+                  ],
+                  certifications: [
+                    "AWS Cloud Practitioner",
+                    "Google Analytics",
+                    "Machine Learning Basics",
+                    "Python Programming",
+                    "Data Structures Expert"
+                  ]
+                }}
+                title="Student Profile - Arjun Patel"
+                type="student"
+              />
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">Export Features</h3>
+                <div className="space-y-3">
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">📄 Digital Transcript</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Auto-generated PDF with QR authentication - perfect for job applications
+                    </p>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">📊 Performance Report</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Excel sheet with semester-wise grades, attendance, and achievement data
+                    </p>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">🔗 Shareable Profile</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Unique link for employers/universities to view verified profile
+                    </p>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">💳 Offline Wallet Card</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Encrypted PDF for offline access to all your documents
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="ai" className="space-y-6">
+            <AIRecommendations 
+              userType="student" 
+              userData={{
+                cgpa: 8.9,
+                branch: "Computer Science",
+                projects: ["AI Education Platform", "ML Model"],
+                skills: ["React", "Python", "ML"],
+                interests: ["AI", "Machine Learning", "Cloud Computing"]
+              }}
+            />
           </TabsContent>
 
           <TabsContent value="overview" className="space-y-6">

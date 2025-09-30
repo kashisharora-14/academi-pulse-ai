@@ -9,6 +9,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import InstitutionDashboard from "./pages/InstitutionDashboard";
 import StudentDashboard from "./pages/StudentDashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
+import VerifyProfile from "./pages/VerifyProfile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,8 @@ const App = () => (
           <Route path="/institution" element={<InstitutionDashboard />} />
           <Route path="/student" element={<StudentDashboard />} />
           <Route path="/teacher" element={<TeacherDashboard />} />
+          <Route path="/verify/:code" element={<VerifyProfile />} />
+          <Route path="/shared/:code" element={<VerifyProfile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
