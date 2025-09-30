@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -11,12 +10,12 @@ import { Chatbot } from "@/components/Chatbot";
 import { MapView } from "@/components/MapView";
 import { QRCodeGenerator } from "@/components/QRCodeGenerator";
 import { ExportTools } from "@/components/ExportTools";
-import { 
-  LogOut, 
-  UserCircle, 
-  Users, 
-  BookOpen, 
-  Award, 
+import {
+  LogOut,
+  UserCircle,
+  Users,
+  BookOpen,
+  Award,
   TrendingUp,
   FileText,
   Star,
@@ -31,16 +30,16 @@ import {
   Plus,
   Edit
 } from "lucide-react";
-import { 
-  LineChart, 
-  Line, 
-  BarChart, 
-  Bar, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  Legend, 
+import {
+  LineChart,
+  Line,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
   ResponsiveContainer,
   RadarChart,
   PolarGrid,
@@ -162,7 +161,7 @@ const TeacherDashboard = () => {
 
           {/* Mobile Tabs - Scrollable */}
           <div className="block lg:hidden">
-            <div className="flex overflow-x-auto pb-2 space-x-1 mobile-tabs-scroll">
+            <TabsList className="flex flex-wrap gap-2 overflow-x-auto pb-2 h-auto bg-transparent">
               <TabsTrigger value="overview" className="whitespace-nowrap text-xs">Overview</TabsTrigger>
               <TabsTrigger value="teaching" className="whitespace-nowrap text-xs">Teaching</TabsTrigger>
               <TabsTrigger value="research" className="whitespace-nowrap text-xs">Research</TabsTrigger>
@@ -177,7 +176,7 @@ const TeacherDashboard = () => {
                 <Download className="h-4 w-4" />
               </TabsTrigger>
               <TabsTrigger value="analytics" className="whitespace-nowrap text-xs">Analytics</TabsTrigger>
-            </div>
+            </TabsList>
           </div>
 
           <TabsContent value="overview" className="space-y-6">
@@ -608,8 +607,8 @@ const TeacherDashboard = () => {
 
           <TabsContent value="qr" className="space-y-6">
             <div className="grid gap-6 lg:grid-cols-2">
-              <QRCodeGenerator 
-                data={{ 
+              <QRCodeGenerator
+                data={{
                   id: "FAC-2023-001",
                   name: "Dr. Priya Sharma",
                   email: user?.email,
@@ -622,7 +621,7 @@ const TeacherDashboard = () => {
                   awards: ["Best Faculty Award 2023", "Research Excellence 2022", "Teaching Innovation 2023"],
                   students: 303,
                   avgRating: 4.8
-                }} 
+                }}
                 type="faculty"
                 title="Faculty Profile QR"
               />
@@ -682,7 +681,7 @@ const TeacherDashboard = () => {
 
           <TabsContent value="export" className="space-y-6">
             <div className="grid gap-6 lg:grid-cols-2">
-              <ExportTools 
+              <ExportTools
                 data={{
                   name: "Dr. Priya Sharma",
                   id: "FAC-2023-001",
