@@ -146,18 +146,22 @@ const AdminDashboard = () => {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-7">
+          <TabsList className="grid w-full grid-cols-10 text-xs">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="institutions">Institutions</TabsTrigger>
             <TabsTrigger value="schemes">Schemes</TabsTrigger>
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
             <TabsTrigger value="compliance">Compliance</TabsTrigger>
+            <TabsTrigger value="interop">Interoperability</TabsTrigger>
+            <TabsTrigger value="policy">Policy Support</TabsTrigger>
+            <TabsTrigger value="security">Security</TabsTrigger>
             <TabsTrigger value="map">Geo-Analytics</TabsTrigger>
             <TabsTrigger value="ai">AI Insights</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
-            <div className="grid gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
+            {/* Enhanced Real-time Overview Cards */}
+            <div className="grid gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-5">
               <Card className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <Users className="h-8 w-8 text-primary" />
@@ -166,6 +170,7 @@ const AdminDashboard = () => {
                 <div className="text-2xl font-bold">10.2M</div>
                 <div className="text-sm text-muted-foreground">Active Students</div>
                 <Progress value={75} className="mt-2" />
+                <div className="text-xs text-muted-foreground mt-1">Aadhaar Linked: 96.8%</div>
               </Card>
 
               <Card className="p-6">
@@ -176,6 +181,7 @@ const AdminDashboard = () => {
                 <div className="text-2xl font-bold">50,234</div>
                 <div className="text-sm text-muted-foreground">Institutions</div>
                 <Progress value={85} className="mt-2" />
+                <div className="text-xs text-muted-foreground mt-1">AISHE Mapped: 99.2%</div>
               </Card>
 
               <Card className="p-6">
@@ -186,6 +192,7 @@ const AdminDashboard = () => {
                 <div className="text-2xl font-bold">156</div>
                 <div className="text-sm text-muted-foreground">Active Schemes</div>
                 <Progress value={92} className="mt-2" />
+                <div className="text-xs text-muted-foreground mt-1">Real-time Tracking</div>
               </Card>
 
               <Card className="p-6">
@@ -196,6 +203,96 @@ const AdminDashboard = () => {
                 <div className="text-2xl font-bold">₹1,850Cr</div>
                 <div className="text-sm text-muted-foreground">Budget Utilized</div>
                 <Progress value={68} className="mt-2" />
+                <div className="text-xs text-muted-foreground mt-1">Live Updates</div>
+              </Card>
+
+              <Card className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <BookOpen className="h-8 w-8 text-purple-600" />
+                  <Badge className="bg-success">+18.7%</Badge>
+                </div>
+                <div className="text-2xl font-bold">1.2M</div>
+                <div className="text-sm text-muted-foreground">Faculty Records</div>
+                <Progress value={88} className="mt-2" />
+                <div className="text-xs text-muted-foreground mt-1">APAR Integrated</div>
+              </Card>
+            </div>
+
+            {/* Data Redundancy & Interoperability Status */}
+            <div className="grid gap-6 lg:grid-cols-3 mb-6">
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                  <Target className="h-5 w-5 text-blue-600" />
+                  Data Redundancy Elimination
+                </h3>
+                <div className="space-y-3">
+                  <div className="p-3 bg-green-50 rounded border-l-4 border-green-400">
+                    <div className="text-lg font-bold text-green-600">78%</div>
+                    <div className="text-sm text-green-700">Duplicate entries eliminated</div>
+                  </div>
+                  <div className="p-3 bg-blue-50 rounded border-l-4 border-blue-400">
+                    <div className="text-lg font-bold text-blue-600">12.5M</div>
+                    <div className="text-sm text-blue-700">Records deduplicated</div>
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    AI-powered deduplication across departments
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                  <Activity className="h-5 w-5 text-purple-600" />
+                  Format Standardization
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    { format: "Excel → JSON", progress: 95, status: "Completed" },
+                    { format: "PDF → Structured", progress: 87, status: "In Progress" },
+                    { format: "Legacy DB → API", progress: 92, status: "Completed" },
+                    { format: "Manual → Automated", progress: 76, status: "In Progress" }
+                  ].map((item, index) => (
+                    <div key={index} className="space-y-1">
+                      <div className="flex justify-between text-sm">
+                        <span>{item.format}</span>
+                        <Badge variant={item.status === "Completed" ? "default" : "secondary"} className="text-xs">
+                          {item.status}
+                        </Badge>
+                      </div>
+                      <Progress value={item.progress} />
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                  <BarChart3 className="h-5 w-5 text-orange-600" />
+                  Real-time Scalability
+                </h3>
+                <div className="space-y-3">
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="p-2 bg-green-50 rounded text-center">
+                      <div className="text-sm font-bold text-green-600">99.9%</div>
+                      <div className="text-xs text-green-700">Uptime</div>
+                    </div>
+                    <div className="p-2 bg-blue-50 rounded text-center">
+                      <div className="text-sm font-bold text-blue-600">50K+</div>
+                      <div className="text-xs text-blue-700">Concurrent Users</div>
+                    </div>
+                    <div className="p-2 bg-purple-50 rounded text-center">
+                      <div className="text-sm font-bold text-purple-600">2.5s</div>
+                      <div className="text-xs text-purple-700">Avg Load Time</div>
+                    </div>
+                    <div className="p-2 bg-orange-50 rounded text-center">
+                      <div className="text-sm font-bold text-orange-600">15TB</div>
+                      <div className="text-xs text-orange-700">Data Processed</div>
+                    </div>
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Auto-scaling infrastructure supports nationwide access
+                  </div>
+                </div>
               </Card>
             </div>
 
@@ -581,6 +678,418 @@ const AdminDashboard = () => {
             <Card className="p-6">
               <h3 className="text-xl font-bold mb-4">Top Institutions Nationwide</h3>
               <MapView locations={institutionLocations} />
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="interop" className="space-y-6">
+            <Card className="p-6">
+              <h3 className="text-xl font-bold mb-4">Data Interoperability & ETL Pipeline Status</h3>
+              <div className="grid gap-6 lg:grid-cols-3">
+                <div className="space-y-4">
+                  <h4 className="font-semibold">External API Integrations</h4>
+                  <div className="space-y-3">
+                    {[
+                      { api: "AISHE Database", status: "Active", lastSync: "2 min ago", records: "50.2K institutions", health: 98 },
+                      { api: "NIRF Portal", status: "Active", lastSync: "5 min ago", records: "11.9K ranked", health: 96 },
+                      { api: "AICTE Database", status: "Active", lastSync: "1 min ago", records: "4.3K approved", health: 99 },
+                      { api: "UGC Database", status: "Syncing", lastSync: "15 min ago", records: "1.1K universities", health: 94 },
+                      { api: "NAD Repository", status: "Active", lastSync: "3 min ago", records: "120M documents", health: 97 },
+                      { api: "PMKVY Portal", status: "Active", lastSync: "8 min ago", records: "2.8M beneficiaries", health: 95 },
+                      { api: "NSP Database", status: "Active", lastSync: "4 min ago", records: "15M scholarships", health: 96 }
+                    ].map((api, index) => (
+                      <div key={index} className="p-3 border rounded">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-medium text-sm">{api.api}</span>
+                          <Badge variant={api.status === "Active" ? "default" : "secondary"}>
+                            {api.status}
+                          </Badge>
+                        </div>
+                        <div className="text-xs text-muted-foreground space-y-1">
+                          <div>Last sync: {api.lastSync}</div>
+                          <div>Records: {api.records}</div>
+                          <div className="flex items-center gap-2">
+                            <span>Health: {api.health}%</span>
+                            <Progress value={api.health} className="h-1 flex-1" />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold">ETL Pipeline Performance</h4>
+                  <div className="space-y-3">
+                    <div className="p-4 bg-green-50 rounded-lg">
+                      <div className="text-lg font-bold text-green-600">2.8M</div>
+                      <div className="text-sm text-green-700">Records processed today</div>
+                      <Progress value={85} className="mt-2" />
+                    </div>
+                    <div className="p-4 bg-blue-50 rounded-lg">
+                      <div className="text-lg font-bold text-blue-600">15.2K</div>
+                      <div className="text-sm text-blue-700">API calls/hour</div>
+                      <Progress value={92} className="mt-2" />
+                    </div>
+                    <div className="p-4 bg-purple-50 rounded-lg">
+                      <div className="text-lg font-bold text-purple-600">99.9%</div>
+                      <div className="text-sm text-purple-700">Data quality score</div>
+                      <Progress value={99.9} className="mt-2" />
+                    </div>
+                    <div className="p-4 bg-orange-50 rounded-lg">
+                      <div className="text-lg font-bold text-orange-600">45ms</div>
+                      <div className="text-sm text-orange-700">Avg response time</div>
+                      <Progress value={88} className="mt-2" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Format Standardization</h4>
+                  <div className="space-y-3">
+                    {[
+                      { format: "Excel Sheets", converted: 2500, total: 2800, type: "Institutional Data" },
+                      { format: "PDF Documents", converted: 1200, total: 1500, type: "Certificates" },
+                      { format: "Legacy Databases", converted: 45, total: 50, type: "Historical Records" },
+                      { format: "Manual Entries", converted: 8500, total: 12000, type: "Student Records" }
+                    ].map((item, index) => (
+                      <div key={index} className="space-y-2 p-3 border rounded">
+                        <div className="flex justify-between text-sm">
+                          <span className="font-medium">{item.format}</span>
+                          <span>{((item.converted / item.total) * 100).toFixed(1)}%</span>
+                        </div>
+                        <Progress value={(item.converted / item.total) * 100} />
+                        <div className="text-xs text-muted-foreground">
+                          {item.converted.toLocaleString()} / {item.total.toLocaleString()} {item.type}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="policy" className="space-y-6">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Policy Decision Support Analytics</h3>
+                <div className="space-y-4">
+                  <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                    <h4 className="font-semibold text-blue-800 mb-2">Resource Allocation Recommendation</h4>
+                    <p className="text-sm text-blue-700 mb-3">
+                      Analysis shows northeastern states need 40% more infrastructure funding. 
+                      Redistribution could improve overall national education index by 12 points.
+                    </p>
+                    <div className="flex gap-2">
+                      <Button size="sm" className="bg-blue-600">Implement Policy</Button>
+                      <Button size="sm" variant="outline">View Details</Button>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-400">
+                    <h4 className="font-semibold text-green-800 mb-2">STEM Excellence Initiative</h4>
+                    <p className="text-sm text-green-700 mb-3">
+                      25% increase in STEM scholarship allocation could boost rural enrollment by 18% 
+                      and improve India's global competitiveness ranking.
+                    </p>
+                    <div className="flex gap-2">
+                      <Button size="sm" className="bg-green-600">Draft Proposal</Button>
+                      <Button size="sm" variant="outline">Impact Analysis</Button>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-400">
+                    <h4 className="font-semibold text-purple-800 mb-2">Faculty Development Program</h4>
+                    <p className="text-sm text-purple-700 mb-3">
+                      AI-powered pedagogy training for 40,000 faculty members could improve 
+                      student outcomes by 35% based on pilot program results.
+                    </p>
+                    <div className="flex gap-2">
+                      <Button size="sm" className="bg-purple-600">Scale Program</Button>
+                      <Button size="sm" variant="outline">Review Pilots</Button>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Real-time Policy Impact Monitoring</h3>
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Active Policy Interventions</h4>
+                  <div className="space-y-3">
+                    {[
+                      { 
+                        policy: "NEP 2020 Implementation", 
+                        progress: 68, 
+                        impact: "Positive", 
+                        institutions: 15000,
+                        budget: "₹2,500 Cr",
+                        timeline: "2020-2025"
+                      },
+                      { 
+                        policy: "Digital India - Education", 
+                        progress: 85, 
+                        impact: "High Positive", 
+                        institutions: 45000,
+                        budget: "₹1,200 Cr",
+                        timeline: "2021-2024"
+                      },
+                      { 
+                        policy: "PM-YUVA Scheme", 
+                        progress: 92, 
+                        impact: "Excellent", 
+                        institutions: 8500,
+                        budget: "₹500 Cr",
+                        timeline: "2022-2027"
+                      },
+                      { 
+                        policy: "RUSA 2.0 Initiative", 
+                        progress: 75, 
+                        impact: "Positive", 
+                        institutions: 12000,
+                        budget: "₹13,000 Cr",
+                        timeline: "2018-2026"
+                      }
+                    ].map((policy, index) => (
+                      <div key={index} className="p-3 border rounded">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-medium text-sm">{policy.policy}</span>
+                          <Badge className={`text-xs ${
+                            policy.impact === "Excellent" ? "bg-green-100 text-green-800" :
+                            policy.impact === "High Positive" ? "bg-blue-100 text-blue-800" :
+                            "bg-purple-100 text-purple-800"
+                          }`}>
+                            {policy.impact}
+                          </Badge>
+                        </div>
+                        <Progress value={policy.progress} className="mb-2" />
+                        <div className="text-xs text-muted-foreground space-y-1">
+                          <div>Progress: {policy.progress}%</div>
+                          <div>Institutions: {policy.institutions.toLocaleString()}</div>
+                          <div>Budget: {policy.budget}</div>
+                          <div>Timeline: {policy.timeline}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <Card className="p-6">
+              <h3 className="text-xl font-bold mb-4">Predictive Policy Modeling</h3>
+              <div className="grid gap-6 lg:grid-cols-3">
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Economic Impact Projections</h4>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-blue-50 rounded">
+                      <div className="text-lg font-bold text-blue-600">₹85,000 Cr</div>
+                      <div className="text-sm text-blue-700">Projected GDP impact (5 years)</div>
+                    </div>
+                    <div className="p-3 bg-green-50 rounded">
+                      <div className="text-lg font-bold text-green-600">2.5M</div>
+                      <div className="text-sm text-green-700">Additional skilled jobs</div>
+                    </div>
+                    <div className="p-3 bg-purple-50 rounded">
+                      <div className="text-lg font-bold text-purple-600">15%</div>
+                      <div className="text-sm text-purple-700">Innovation index improvement</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Social Impact Metrics</h4>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-orange-50 rounded">
+                      <div className="text-lg font-bold text-orange-600">35%</div>
+                      <div className="text-sm text-orange-700">Rural-urban education gap reduction</div>
+                    </div>
+                    <div className="p-3 bg-pink-50 rounded">
+                      <div className="text-lg font-bold text-pink-600">42%</div>
+                      <div className="text-sm text-pink-700">Female participation increase</div>
+                    </div>
+                    <div className="p-3 bg-indigo-50 rounded">
+                      <div className="text-lg font-bold text-indigo-600">28%</div>
+                      <div className="text-sm text-indigo-700">SC/ST enrollment improvement</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Global Competitiveness</h4>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-teal-50 rounded">
+                      <div className="text-lg font-bold text-teal-600">Top 20</div>
+                      <div className="text-sm text-teal-700">Global education ranking target</div>
+                    </div>
+                    <div className="p-3 bg-cyan-50 rounded">
+                      <div className="text-lg font-bold text-cyan-600">85%</div>
+                      <div className="text-sm text-cyan-700">International standards compliance</div>
+                    </div>
+                    <div className="p-3 bg-emerald-50 rounded">
+                      <div className="text-lg font-bold text-emerald-600">12.5M</div>
+                      <div className="text-sm text-emerald-700">Globally competitive graduates</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="security" className="space-y-6">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Security & Compliance Dashboard</h3>
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Identity & Access Management</h4>
+                  <div className="space-y-3">
+                    {[
+                      { 
+                        type: "Aadhaar Integration", 
+                        coverage: 96.8, 
+                        secure: 99.9, 
+                        status: "Operational",
+                        users: "Students & Faculty"
+                      },
+                      { 
+                        type: "APAR ID Linking", 
+                        coverage: 88.4, 
+                        secure: 99.7, 
+                        status: "Operational",
+                        users: "Faculty Records"
+                      },
+                      { 
+                        type: "AISHE Code Mapping", 
+                        coverage: 99.2, 
+                        secure: 99.8, 
+                        status: "Operational",
+                        users: "Institutions"
+                      },
+                      { 
+                        type: "eKYC Verification", 
+                        coverage: 94.5, 
+                        secure: 99.6, 
+                        status: "Active",
+                        users: "All Stakeholders"
+                      }
+                    ].map((item, index) => (
+                      <div key={index} className="p-3 border rounded">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-medium text-sm">{item.type}</span>
+                          <Badge variant={item.status === "Operational" ? "default" : "secondary"}>
+                            {item.status}
+                          </Badge>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="flex justify-between text-xs">
+                            <span>Coverage: {item.coverage}%</span>
+                            <span>Security: {item.secure}%</span>
+                          </div>
+                          <Progress value={item.coverage} />
+                          <div className="text-xs text-muted-foreground">{item.users}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Data Privacy & Protection</h3>
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Compliance Status</h4>
+                  <div className="space-y-3">
+                    <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-400">
+                      <div className="flex items-center justify-between mb-2">
+                        <h5 className="font-semibold text-green-800">GDPR Compliance</h5>
+                        <Badge className="bg-green-100 text-green-800">98.5%</Badge>
+                      </div>
+                      <p className="text-sm text-green-700">
+                        Data processing, consent management, and right to deletion fully compliant
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                      <div className="flex items-center justify-between mb-2">
+                        <h5 className="font-semibold text-blue-800">Indian Data Privacy</h5>
+                        <Badge className="bg-blue-100 text-blue-800">99.2%</Badge>
+                      </div>
+                      <p className="text-sm text-blue-700">
+                        Personal Data Protection Act compliance with localized data storage
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-400">
+                      <div className="flex items-center justify-between mb-2">
+                        <h5 className="font-semibold text-purple-800">Aadhaar Masking</h5>
+                        <Badge className="bg-purple-100 text-purple-800">100%</Badge>
+                      </div>
+                      <p className="text-sm text-purple-700">
+                        Complete masking of sensitive Aadhaar data with secure hashing
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <Card className="p-6">
+              <h3 className="text-xl font-bold mb-4">Blockchain-based Credential Verification</h3>
+              <div className="grid gap-6 lg:grid-cols-3">
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Certificate Verification</h4>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-blue-50 rounded">
+                      <div className="text-lg font-bold text-blue-600">2.5M</div>
+                      <div className="text-sm text-blue-700">Certificates on blockchain</div>
+                    </div>
+                    <div className="p-3 bg-green-50 rounded">
+                      <div className="text-lg font-bold text-green-600">99.8%</div>
+                      <div className="text-sm text-green-700">Verification accuracy</div>
+                    </div>
+                    <div className="p-3 bg-purple-50 rounded">
+                      <div className="text-lg font-bold text-purple-600">15,000+</div>
+                      <div className="text-sm text-purple-700">Daily verifications</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Security Metrics</h4>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-red-50 rounded">
+                      <div className="text-lg font-bold text-red-600">0</div>
+                      <div className="text-sm text-red-700">Security breaches (2024)</div>
+                    </div>
+                    <div className="p-3 bg-orange-50 rounded">
+                      <div className="text-lg font-bold text-orange-600">256-bit</div>
+                      <div className="text-sm text-orange-700">Encryption standard</div>
+                    </div>
+                    <div className="p-3 bg-yellow-50 rounded">
+                      <div className="text-lg font-bold text-yellow-600">Multi-factor</div>
+                      <div className="text-sm text-yellow-700">Authentication enabled</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold">Fraud Prevention</h4>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-indigo-50 rounded">
+                      <div className="text-lg font-bold text-indigo-600">99.95%</div>
+                      <div className="text-sm text-indigo-700">Fraud detection rate</div>
+                    </div>
+                    <div className="p-3 bg-pink-50 rounded">
+                      <div className="text-lg font-bold text-pink-600">1,250</div>
+                      <div className="text-sm text-pink-700">Fake certificates blocked</div>
+                    </div>
+                    <div className="p-3 bg-teal-50 rounded">
+                      <div className="text-lg font-bold text-teal-600">AI-powered</div>
+                      <div className="text-sm text-teal-700">Anomaly detection</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </Card>
           </TabsContent>
 
