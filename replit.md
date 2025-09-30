@@ -54,6 +54,19 @@ The project uses the following Supabase environment variables (already configure
 - `/src/hooks` - Custom React hooks
 - `/public` - Static assets
 
+## Deployment Configuration
+The project is configured for autoscale deployment:
+- Build command: `npm run build`
+- Run command: `npx vite preview --host 0.0.0.0 --port 5000`
+- Deployment target: autoscale (suitable for static frontend with external backend)
+
+## Recent Changes (September 30, 2025)
+- Successfully imported GitHub repository to Replit
+- Installed all npm dependencies with `--legacy-peer-deps` flag
+- Verified Vite dev server runs correctly on port 5000
+- Confirmed application loads and renders properly
+- Configured deployment settings for production
+
 ## Notes
 - This project was imported from Lovable.dev
 - npm uses `--legacy-peer-deps` for package installation due to react-leaflet peer dependency requirements
