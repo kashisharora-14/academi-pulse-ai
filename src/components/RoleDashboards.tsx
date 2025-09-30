@@ -79,14 +79,14 @@ export const RoleDashboards = () => {
               className="group relative overflow-hidden p-6 transition-all hover:shadow-large hover:-translate-y-1"
             >
               <div className={`absolute top-0 right-0 h-24 w-24 ${role.color} opacity-10 rounded-bl-full`} />
-              
+
               <div className={`mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl ${role.color}`}>
                 <role.icon className="h-8 w-8 text-white" />
               </div>
-              
+
               <h3 className="mb-2 text-xl font-bold">{role.title}</h3>
               <p className="mb-4 text-sm text-muted-foreground">{role.description}</p>
-              
+
               <ul className="mb-6 space-y-2">
                 {role.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-sm">
@@ -95,7 +95,7 @@ export const RoleDashboards = () => {
                   </li>
                 ))}
               </ul>
-              
+
               <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground">
                 Explore
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
