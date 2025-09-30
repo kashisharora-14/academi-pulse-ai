@@ -219,3 +219,24 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Mobile Tab Scrolling */
+.mobile-tabs-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mobile-tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .mobile-tabs-scroll {
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .mobile-tabs-scroll > * {
+    scroll-snap-align: start;
+  }
+}

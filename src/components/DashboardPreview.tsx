@@ -1,10 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  TrendingUp, 
-  Users, 
-  Award, 
-  Activity 
+import {
+  TrendingUp,
+  Users,
+  Award,
+  Activity
 } from "lucide-react";
 
 const stats = [
@@ -52,14 +52,24 @@ export const DashboardPreview = () => {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Image for dashboard preview, fixing undefined error and making it responsive */}
+        <div className="mb-16">
+          <img
+            src="/src/assets/dashboard-preview.jpg"
+            alt="Dashboard Preview"
+            className="w-full h-auto rounded-lg shadow-lg"
+          />
+        </div>
+
+        {/* Tabs for stats, made responsive for mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <Card key={index} className="p-6 bg-background transition-all hover:shadow-medium">
               <div className="flex items-start justify-between mb-4">
                 <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                   <stat.icon className="h-5 w-5 text-primary" />
                 </div>
-                <Badge 
+                <Badge
                   variant={stat.positive ? "default" : "destructive"}
                   className={stat.positive ? "bg-success" : ""}
                 >

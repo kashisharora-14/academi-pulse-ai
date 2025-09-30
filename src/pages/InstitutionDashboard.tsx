@@ -127,25 +127,49 @@ const InstitutionDashboard = () => {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-9">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="academics">Academics</TabsTrigger>
-            <TabsTrigger value="placements">Placements</TabsTrigger>
-            <TabsTrigger value="research">Research</TabsTrigger>
-            <TabsTrigger value="compliance">Compliance</TabsTrigger>
-            <TabsTrigger value="schemes">Schemes</TabsTrigger>
-            <TabsTrigger value="faculty">Faculty</TabsTrigger>
-            <TabsTrigger value="campus">Campus</TabsTrigger>
-            <TabsTrigger value="qr">
-              <QrCode className="h-4 w-4 mr-1" />
-              QR Code
-            </TabsTrigger>
-            <TabsTrigger value="export">
-              <Download className="h-4 w-4 mr-1" />
-              Export
-            </TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
-          </TabsList>
+          {/* Desktop Tabs */}
+          <div className="hidden lg:block">
+            <TabsList className="grid w-full grid-cols-11 text-xs">
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="academics">Academics</TabsTrigger>
+              <TabsTrigger value="placements">Placements</TabsTrigger>
+              <TabsTrigger value="research">Research</TabsTrigger>
+              <TabsTrigger value="compliance">Compliance</TabsTrigger>
+              <TabsTrigger value="schemes">Schemes</TabsTrigger>
+              <TabsTrigger value="faculty">Faculty</TabsTrigger>
+              <TabsTrigger value="campus">Campus</TabsTrigger>
+              <TabsTrigger value="qr">
+                <QrCode className="h-4 w-4 mr-1" />
+                QR Code
+              </TabsTrigger>
+              <TabsTrigger value="export">
+                <Download className="h-4 w-4 mr-1" />
+                Export
+              </TabsTrigger>
+              <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            </TabsList>
+          </div>
+
+          {/* Mobile Tabs - Scrollable */}
+          <div className="block lg:hidden">
+            <div className="flex overflow-x-auto pb-2 space-x-1 mobile-tabs-scroll">
+              <TabsTrigger value="overview" className="whitespace-nowrap text-xs">Overview</TabsTrigger>
+              <TabsTrigger value="academics" className="whitespace-nowrap text-xs">Academics</TabsTrigger>
+              <TabsTrigger value="placements" className="whitespace-nowrap text-xs">Placements</TabsTrigger>
+              <TabsTrigger value="research" className="whitespace-nowrap text-xs">Research</TabsTrigger>
+              <TabsTrigger value="compliance" className="whitespace-nowrap text-xs">Compliance</TabsTrigger>
+              <TabsTrigger value="schemes" className="whitespace-nowrap text-xs">Schemes</TabsTrigger>
+              <TabsTrigger value="faculty" className="whitespace-nowrap text-xs">Faculty</TabsTrigger>
+              <TabsTrigger value="campus" className="whitespace-nowrap text-xs">Campus</TabsTrigger>
+              <TabsTrigger value="qr" className="whitespace-nowrap text-xs">
+                <QrCode className="h-4 w-4" />
+              </TabsTrigger>
+              <TabsTrigger value="export" className="whitespace-nowrap text-xs">
+                <Download className="h-4 w-4" />
+              </TabsTrigger>
+              <TabsTrigger value="analytics" className="whitespace-nowrap text-xs">Analytics</TabsTrigger>
+            </div>
+          </div>
 
           <TabsContent value="overview" className="space-y-6">
             <div className="grid gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">

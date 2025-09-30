@@ -152,26 +152,51 @@ const AdminDashboard = () => {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-12 text-xs">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="institutions">Institutions</TabsTrigger>
-            <TabsTrigger value="schemes">Schemes</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
-            <TabsTrigger value="compliance">Compliance</TabsTrigger>
-            <TabsTrigger value="interop">Interoperability</TabsTrigger>
-            <TabsTrigger value="policy">Policy Support</TabsTrigger>
-            <TabsTrigger value="security">Security</TabsTrigger>
-            <TabsTrigger value="map">Geo-Analytics</TabsTrigger>
-            <TabsTrigger value="qr">
-              <QrCode className="h-4 w-4 mr-1" />
-              QR Codes
-            </TabsTrigger>
-            <TabsTrigger value="export">
-              <Download className="h-4 w-4 mr-1" />
-              Export
-            </TabsTrigger>
-            <TabsTrigger value="ai">AI Insights</TabsTrigger>
-          </TabsList>
+          {/* Desktop Tabs */}
+          <div className="hidden lg:block">
+            <TabsList className="grid w-full grid-cols-12 text-xs">
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="institutions">Institutions</TabsTrigger>
+              <TabsTrigger value="schemes">Schemes</TabsTrigger>
+              <TabsTrigger value="analytics">Analytics</TabsTrigger>
+              <TabsTrigger value="compliance">Compliance</TabsTrigger>
+              <TabsTrigger value="interop">Interoperability</TabsTrigger>
+              <TabsTrigger value="policy">Policy Support</TabsTrigger>
+              <TabsTrigger value="security">Security</TabsTrigger>
+              <TabsTrigger value="map">Geo-Analytics</TabsTrigger>
+              <TabsTrigger value="qr">
+                <QrCode className="h-4 w-4 mr-1" />
+                QR Codes
+              </TabsTrigger>
+              <TabsTrigger value="export">
+                <Download className="h-4 w-4 mr-1" />
+                Export
+              </TabsTrigger>
+              <TabsTrigger value="ai">AI Insights</TabsTrigger>
+            </TabsList>
+          </div>
+
+          {/* Mobile Tabs - Scrollable */}
+          <div className="block lg:hidden">
+            <div className="flex overflow-x-auto pb-2 space-x-1 mobile-tabs-scroll">
+              <TabsTrigger value="overview" className="whitespace-nowrap text-xs">Overview</TabsTrigger>
+              <TabsTrigger value="institutions" className="whitespace-nowrap text-xs">Institutions</TabsTrigger>
+              <TabsTrigger value="schemes" className="whitespace-nowrap text-xs">Schemes</TabsTrigger>
+              <TabsTrigger value="analytics" className="whitespace-nowrap text-xs">Analytics</TabsTrigger>
+              <TabsTrigger value="compliance" className="whitespace-nowrap text-xs">Compliance</TabsTrigger>
+              <TabsTrigger value="interop" className="whitespace-nowrap text-xs">Interop</TabsTrigger>
+              <TabsTrigger value="policy" className="whitespace-nowrap text-xs">Policy</TabsTrigger>
+              <TabsTrigger value="security" className="whitespace-nowrap text-xs">Security</TabsTrigger>
+              <TabsTrigger value="map" className="whitespace-nowrap text-xs">Map</TabsTrigger>
+              <TabsTrigger value="qr" className="whitespace-nowrap text-xs">
+                <QrCode className="h-4 w-4" />
+              </TabsTrigger>
+              <TabsTrigger value="export" className="whitespace-nowrap text-xs">
+                <Download className="h-4 w-4" />
+              </TabsTrigger>
+              <TabsTrigger value="ai" className="whitespace-nowrap text-xs">AI</TabsTrigger>
+            </div>
+          </div>
 
           <TabsContent value="overview" className="space-y-6">
             {/* Enhanced Real-time Overview Cards */}

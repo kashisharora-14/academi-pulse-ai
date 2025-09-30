@@ -138,24 +138,47 @@ const TeacherDashboard = () => {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-8">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="teaching">Teaching</TabsTrigger>
-            <TabsTrigger value="research">Research</TabsTrigger>
-            <TabsTrigger value="apar">APAR</TabsTrigger>
-            <TabsTrigger value="students">Students</TabsTrigger>
-            <TabsTrigger value="development">Development</TabsTrigger>
-            <TabsTrigger value="schedule">Schedule</TabsTrigger>
-            <TabsTrigger value="qr">
-              <QrCode className="h-4 w-4 mr-1" />
-              QR Code
-            </TabsTrigger>
-            <TabsTrigger value="export">
-              <Download className="h-4 w-4 mr-1" />
-              Export
-            </TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
-          </TabsList>
+          {/* Desktop Tabs */}
+          <div className="hidden lg:block">
+            <TabsList className="grid w-full grid-cols-10 text-xs">
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="teaching">Teaching</TabsTrigger>
+              <TabsTrigger value="research">Research</TabsTrigger>
+              <TabsTrigger value="apar">APAR</TabsTrigger>
+              <TabsTrigger value="students">Students</TabsTrigger>
+              <TabsTrigger value="development">Development</TabsTrigger>
+              <TabsTrigger value="schedule">Schedule</TabsTrigger>
+              <TabsTrigger value="qr">
+                <QrCode className="h-4 w-4 mr-1" />
+                QR Code
+              </TabsTrigger>
+              <TabsTrigger value="export">
+                <Download className="h-4 w-4 mr-1" />
+                Export
+              </TabsTrigger>
+              <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            </TabsList>
+          </div>
+
+          {/* Mobile Tabs - Scrollable */}
+          <div className="block lg:hidden">
+            <div className="flex overflow-x-auto pb-2 space-x-1 mobile-tabs-scroll">
+              <TabsTrigger value="overview" className="whitespace-nowrap text-xs">Overview</TabsTrigger>
+              <TabsTrigger value="teaching" className="whitespace-nowrap text-xs">Teaching</TabsTrigger>
+              <TabsTrigger value="research" className="whitespace-nowrap text-xs">Research</TabsTrigger>
+              <TabsTrigger value="apar" className="whitespace-nowrap text-xs">APAR</TabsTrigger>
+              <TabsTrigger value="students" className="whitespace-nowrap text-xs">Students</TabsTrigger>
+              <TabsTrigger value="development" className="whitespace-nowrap text-xs">Development</TabsTrigger>
+              <TabsTrigger value="schedule" className="whitespace-nowrap text-xs">Schedule</TabsTrigger>
+              <TabsTrigger value="qr" className="whitespace-nowrap text-xs">
+                <QrCode className="h-4 w-4" />
+              </TabsTrigger>
+              <TabsTrigger value="export" className="whitespace-nowrap text-xs">
+                <Download className="h-4 w-4" />
+              </TabsTrigger>
+              <TabsTrigger value="analytics" className="whitespace-nowrap text-xs">Analytics</TabsTrigger>
+            </div>
+          </div>t>
 
           <TabsContent value="overview" className="space-y-6">
             <div className="grid gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
