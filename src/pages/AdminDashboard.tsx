@@ -8,6 +8,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Chatbot } from "@/components/Chatbot";
 import { MapView } from "@/components/MapView";
+import { QRCodeGenerator } from "@/components/QRCodeGenerator";
+import { ExportTools } from "@/components/ExportTools";
 import { 
   LogOut, 
   Users, 
@@ -23,7 +25,11 @@ import {
   BarChart3,
   Map,
   Bot,
-  Activity
+  Activity,
+  QrCode,
+  Download,
+  Plus,
+  Edit
 } from "lucide-react";
 import { 
   LineChart, 
@@ -146,7 +152,7 @@ const AdminDashboard = () => {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-10 text-xs">
+          <TabsList className="grid w-full grid-cols-12 text-xs">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="institutions">Institutions</TabsTrigger>
             <TabsTrigger value="schemes">Schemes</TabsTrigger>
@@ -156,6 +162,14 @@ const AdminDashboard = () => {
             <TabsTrigger value="policy">Policy Support</TabsTrigger>
             <TabsTrigger value="security">Security</TabsTrigger>
             <TabsTrigger value="map">Geo-Analytics</TabsTrigger>
+            <TabsTrigger value="qr">
+              <QrCode className="h-4 w-4 mr-1" />
+              QR Codes
+            </TabsTrigger>
+            <TabsTrigger value="export">
+              <Download className="h-4 w-4 mr-1" />
+              Export
+            </TabsTrigger>
             <TabsTrigger value="ai">AI Insights</TabsTrigger>
           </TabsList>
 
@@ -1093,6 +1107,166 @@ const AdminDashboard = () => {
             </Card>
           </TabsContent>
 
+          <TabsContent value="qr" className="space-y-6">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <QRCodeGenerator 
+                data={{ 
+                  id: "NEDP-ADMIN-001",
+                  name: "National Education Data Platform",
+                  type: "admin",
+                  totalStudents: "10.2M",
+                  totalInstitutions: "50,234",
+                  activeSchemes: 156,
+                  budgetUtilized: "₹1,850Cr",
+                  facultyRecords: "1.2M",
+                  complianceRate: 94.5,
+                  dataQuality: 99.9,
+                  systemUptime: 99.9
+                }} 
+                type="institution"
+                title="NEDP Admin Dashboard QR"
+              />
+              <Card className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-bold">Admin QR Management</h3>
+                  <Button size="sm">
+                    <Plus className="h-4 w-4 mr-1" />
+                    Generate System QR
+                  </Button>
+                </div>
+                <div className="space-y-4">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h4 className="font-semibold text-blue-800 mb-2">🏛️ Platform Overview</h4>
+                    <p className="text-sm text-blue-700">
+                      Complete NEDP platform statistics and performance metrics
+                    </p>
+                    <Button size="sm" className="mt-2" variant="outline">
+                      <Edit className="h-4 w-4 mr-1" />
+                      Update Metrics
+                    </Button>
+                  </div>
+                  <div className="p-4 bg-green-50 rounded-lg">
+                    <h4 className="font-semibold text-green-800 mb-2">📊 Scheme Analytics</h4>
+                    <p className="text-sm text-green-700">
+                      Real-time scheme performance and budget utilization
+                    </p>
+                    <Button size="sm" className="mt-2" variant="outline">
+                      <Plus className="h-4 w-4 mr-1" />
+                      Add New Scheme
+                    </Button>
+                  </div>
+                  <div className="p-4 bg-purple-50 rounded-lg">
+                    <h4 className="font-semibold text-purple-800 mb-2">🔐 Security Dashboard</h4>
+                    <p className="text-sm text-purple-700">
+                      Data protection and compliance monitoring
+                    </p>
+                    <Button size="sm" className="mt-2" variant="outline">
+                      <Plus className="h-4 w-4 mr-1" />
+                      Add Security Metric
+                    </Button>
+                  </div>
+                  <div className="p-4 bg-orange-50 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">🌐 State Performance</h4>
+                    <p className="text-sm text-orange-700">
+                      State-wise education performance and rankings
+                    </p>
+                    <Button size="sm" className="mt-2" variant="outline">
+                      <Plus className="h-4 w-4 mr-1" />
+                      Add State Data
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="export" className="space-y-6">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <ExportTools 
+                data={{
+                  name: "National Education Data Platform",
+                  id: "NEDP-ADMIN-001",
+                  totalStudents: "10.2M",
+                  totalInstitutions: "50,234",
+                  activeSchemes: 156,
+                  budgetUtilized: "₹1,850Cr",
+                  facultyRecords: "1.2M",
+                  enrollmentData: enrollmentData,
+                  schemeData: schemeData,
+                  performanceData: performanceData,
+                  complianceRate: 94.5,
+                  dataQuality: 99.9,
+                  systemUptime: 99.9
+                }}
+                title="NEDP Platform Report"
+                type="report"
+              />
+              <Card className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-bold">Admin Export Tools</h3>
+                  <Button size="sm">
+                    <Plus className="h-4 w-4 mr-1" />
+                    Create Custom Report
+                  </Button>
+                </div>
+                <div className="space-y-3">
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">📈 National Education Report</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Comprehensive national education statistics and trends
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <Button size="sm" variant="outline">Generate</Button>
+                      <Button size="sm" variant="outline">
+                        <Plus className="h-4 w-4 mr-1" />
+                        Add State Data
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">💰 Budget Utilization Report</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Scheme-wise budget allocation and utilization analysis
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <Button size="sm" variant="outline">Generate</Button>
+                      <Button size="sm" variant="outline">
+                        <Edit className="h-4 w-4 mr-1" />
+                        Update Budget
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">🎯 Policy Impact Assessment</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Analysis of policy interventions and their outcomes
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <Button size="sm" variant="outline">Generate</Button>
+                      <Button size="sm" variant="outline">
+                        <Plus className="h-4 w-4 mr-1" />
+                        Add Policy
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">🔒 Compliance Audit Report</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Data protection and security compliance status
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <Button size="sm" variant="outline">Generate</Button>
+                      <Button size="sm" variant="outline">
+                        <Edit className="h-4 w-4 mr-1" />
+                        Update Compliance
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </TabsContent>
+
           <TabsContent value="ai" className="space-y-6">
             <div className="grid gap-6 lg:grid-cols-2">
               <Chatbot />
@@ -1108,7 +1282,7 @@ const AdminDashboard = () => {
                     <p className="text-sm text-green-700">Engineering enrollment up 15% this year - prepare infrastructure scaling plans.</p>
                   </div>
                   <div className="p-4 bg-yellow-50 rounded-lg">
-                    <h4 className="font-semibold text-yellow-800">Action Required</h4>
+                    <h4 className="font-semibant text-yellow-800">Action Required</h4>
                     <p className="text-sm text-yellow-700">5 institutions show declining performance metrics - intervention recommended.</p>
                   </div>
                 </div>

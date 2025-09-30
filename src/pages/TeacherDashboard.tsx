@@ -9,6 +9,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Chatbot } from "@/components/Chatbot";
 import { MapView } from "@/components/MapView";
+import { QRCodeGenerator } from "@/components/QRCodeGenerator";
+import { ExportTools } from "@/components/ExportTools";
 import { 
   LogOut, 
   UserCircle, 
@@ -23,7 +25,11 @@ import {
   BarChart3,
   GraduationCap,
   Clock,
-  CheckCircle
+  CheckCircle,
+  QrCode,
+  Download,
+  Plus,
+  Edit
 } from "lucide-react";
 import { 
   LineChart, 
@@ -140,6 +146,14 @@ const TeacherDashboard = () => {
             <TabsTrigger value="students">Students</TabsTrigger>
             <TabsTrigger value="development">Development</TabsTrigger>
             <TabsTrigger value="schedule">Schedule</TabsTrigger>
+            <TabsTrigger value="qr">
+              <QrCode className="h-4 w-4 mr-1" />
+              QR Code
+            </TabsTrigger>
+            <TabsTrigger value="export">
+              <Download className="h-4 w-4 mr-1" />
+              Export
+            </TabsTrigger>
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
           </TabsList>
 
@@ -562,6 +576,167 @@ const TeacherDashboard = () => {
                     <div>
                       <p className="font-medium text-sm">Research Meeting</p>
                       <p className="text-xs text-muted-foreground">2:00 PM - 3:00 PM • Conference Room</p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="qr" className="space-y-6">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <QRCodeGenerator 
+                data={{ 
+                  id: "FAC-2023-001",
+                  name: "Dr. Priya Sharma",
+                  email: user?.email,
+                  department: "Computer Science",
+                  designation: "Associate Professor",
+                  aparRating: 4.6,
+                  courses: courseData,
+                  research: researchMetrics,
+                  publications: 12,
+                  awards: ["Best Faculty Award 2023", "Research Excellence 2022", "Teaching Innovation 2023"],
+                  students: 303,
+                  avgRating: 4.8
+                }} 
+                type="faculty"
+                title="Faculty Profile QR"
+              />
+              <Card className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-bold">Faculty QR Management</h3>
+                  <Button size="sm">
+                    <Plus className="h-4 w-4 mr-1" />
+                    Generate New QR
+                  </Button>
+                </div>
+                <div className="space-y-4">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h4 className="font-semibold text-blue-800 mb-2">👨‍🏫 Faculty Profile</h4>
+                    <p className="text-sm text-blue-700">
+                      Complete faculty profile with APAR rating, courses, and achievements
+                    </p>
+                    <Button size="sm" className="mt-2" variant="outline">
+                      <Edit className="h-4 w-4 mr-1" />
+                      Update Profile
+                    </Button>
+                  </div>
+                  <div className="p-4 bg-green-50 rounded-lg">
+                    <h4 className="font-semibold text-green-800 mb-2">📚 Course Materials</h4>
+                    <p className="text-sm text-green-700">
+                      QR codes for course resources and materials
+                    </p>
+                    <Button size="sm" className="mt-2" variant="outline">
+                      <Plus className="h-4 w-4 mr-1" />
+                      Add Course Material
+                    </Button>
+                  </div>
+                  <div className="p-4 bg-purple-50 rounded-lg">
+                    <h4 className="font-semibold text-purple-800 mb-2">🔬 Research Portfolio</h4>
+                    <p className="text-sm text-purple-700">
+                      Publications, patents, and research projects
+                    </p>
+                    <Button size="sm" className="mt-2" variant="outline">
+                      <Plus className="h-4 w-4 mr-1" />
+                      Add Research Work
+                    </Button>
+                  </div>
+                  <div className="p-4 bg-orange-50 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">🎓 Student Mentoring</h4>
+                    <p className="text-sm text-orange-700">
+                      PhD students, projects, and mentoring record
+                    </p>
+                    <Button size="sm" className="mt-2" variant="outline">
+                      <Plus className="h-4 w-4 mr-1" />
+                      Add Student Project
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="export" className="space-y-6">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <ExportTools 
+                data={{
+                  name: "Dr. Priya Sharma",
+                  id: "FAC-2023-001",
+                  email: user?.email,
+                  department: "Computer Science",
+                  designation: "Associate Professor",
+                  aparRating: 4.6,
+                  courses: courseData,
+                  research: researchMetrics,
+                  publications: 12,
+                  awards: ["Best Faculty Award 2023", "Research Excellence 2022", "Teaching Innovation 2023"],
+                  students: 303,
+                  avgRating: 4.8,
+                  performanceData: performanceData
+                }}
+                title="Faculty Profile - Dr. Priya Sharma"
+                type="faculty"
+              />
+              <Card className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-bold">Faculty Export Tools</h3>
+                  <Button size="sm">
+                    <Plus className="h-4 w-4 mr-1" />
+                    Create Custom CV
+                  </Button>
+                </div>
+                <div className="space-y-3">
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">📄 Academic CV</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Complete academic CV with all achievements and publications
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <Button size="sm" variant="outline">Generate</Button>
+                      <Button size="sm" variant="outline">
+                        <Edit className="h-4 w-4 mr-1" />
+                        Customize
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">🎯 APAR Report</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Annual Performance Assessment Report
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <Button size="sm" variant="outline">Generate</Button>
+                      <Button size="sm" variant="outline">
+                        <Plus className="h-4 w-4 mr-1" />
+                        Add Achievement
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">📊 Teaching Portfolio</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Course evaluations and teaching effectiveness
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <Button size="sm" variant="outline">Generate</Button>
+                      <Button size="sm" variant="outline">
+                        <Plus className="h-4 w-4 mr-1" />
+                        Add Course
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">🔬 Research Summary</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Publications, citations, and research impact
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <Button size="sm" variant="outline">Generate</Button>
+                      <Button size="sm" variant="outline">
+                        <Plus className="h-4 w-4 mr-1" />
+                        Add Publication
+                      </Button>
                     </div>
                   </div>
                 </div>

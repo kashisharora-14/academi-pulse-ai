@@ -9,6 +9,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Chatbot } from "@/components/Chatbot";
 import { MapView } from "@/components/MapView";
+import { QRCodeGenerator } from "@/components/QRCodeGenerator";
+import { ExportTools } from "@/components/ExportTools";
 import { 
   LogOut, 
   Building2, 
@@ -22,7 +24,11 @@ import {
   FileText,
   BarChart3,
   CheckCircle,
-  AlertTriangle
+  AlertTriangle,
+  QrCode,
+  Download,
+  Plus,
+  Edit
 } from "lucide-react";
 import { 
   BarChart, 
@@ -130,6 +136,14 @@ const InstitutionDashboard = () => {
             <TabsTrigger value="schemes">Schemes</TabsTrigger>
             <TabsTrigger value="faculty">Faculty</TabsTrigger>
             <TabsTrigger value="campus">Campus</TabsTrigger>
+            <TabsTrigger value="qr">
+              <QrCode className="h-4 w-4 mr-1" />
+              QR Code
+            </TabsTrigger>
+            <TabsTrigger value="export">
+              <Download className="h-4 w-4 mr-1" />
+              Export
+            </TabsTrigger>
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
           </TabsList>
 
@@ -1047,6 +1061,168 @@ const InstitutionDashboard = () => {
                     <BarChart3 className="mr-2 h-4 w-4" />
                     Usage Analytics
                   </Button>
+                </div>
+              </Card>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="qr" className="space-y-6">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <QRCodeGenerator 
+                data={{ 
+                  id: "INST-2024-001",
+                  name: "XYZ Institute of Technology",
+                  nirfRank: 85,
+                  naacGrade: "A+",
+                  totalStudents: 5240,
+                  faculty: 320,
+                  placementRate: 94,
+                  researchPapers: 82,
+                  patents: 12,
+                  funding: 7.2,
+                  accreditations: ["NAAC A+", "NBA", "AICTE"],
+                  departments: ["CS", "EE", "ME", "CE", "EC"]
+                }} 
+                type="institution"
+                title="Institution Profile QR"
+              />
+              <Card className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-bold">QR Code Management</h3>
+                  <Button size="sm">
+                    <Plus className="h-4 w-4 mr-1" />
+                    Generate New QR
+                  </Button>
+                </div>
+                <div className="space-y-4">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h4 className="font-semibold text-blue-800 mb-2">🏛️ Institution Profile</h4>
+                    <p className="text-sm text-blue-700">
+                      Complete institutional profile with NIRF ranking, accreditations, and performance metrics
+                    </p>
+                    <Button size="sm" className="mt-2" variant="outline">
+                      <Edit className="h-4 w-4 mr-1" />
+                      Update Info
+                    </Button>
+                  </div>
+                  <div className="p-4 bg-green-50 rounded-lg">
+                    <h4 className="font-semibold text-green-800 mb-2">🎓 Department Wise</h4>
+                    <p className="text-sm text-green-700">
+                      Individual QR codes for each department with faculty and student details
+                    </p>
+                    <Button size="sm" className="mt-2" variant="outline">
+                      <Plus className="h-4 w-4 mr-1" />
+                      Add Department
+                    </Button>
+                  </div>
+                  <div className="p-4 bg-purple-50 rounded-lg">
+                    <h4 className="font-semibold text-purple-800 mb-2">🏆 Achievements</h4>
+                    <p className="text-sm text-purple-700">
+                      Awards, recognitions, and milestone achievements
+                    </p>
+                    <Button size="sm" className="mt-2" variant="outline">
+                      <Plus className="h-4 w-4 mr-1" />
+                      Add Achievement
+                    </Button>
+                  </div>
+                  <div className="p-4 bg-orange-50 rounded-lg">
+                    <h4 className="font-semibold text-orange-800 mb-2">🔬 Research Centers</h4>
+                    <p className="text-sm text-orange-700">
+                      Research facilities and ongoing projects
+                    </p>
+                    <Button size="sm" className="mt-2" variant="outline">
+                      <Plus className="h-4 w-4 mr-1" />
+                      Add Research Center
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="export" className="space-y-6">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <ExportTools 
+                data={{
+                  name: "XYZ Institute of Technology",
+                  id: "INST-2024-001",
+                  nirfRank: 85,
+                  naacGrade: "A+",
+                  totalStudents: 5240,
+                  faculty: 320,
+                  placementRate: 94,
+                  researchPapers: 82,
+                  patents: 12,
+                  funding: 7.2,
+                  departments: departmentData,
+                  placementTrends: placementData,
+                  researchMetrics: researchData,
+                  compliance: complianceMetrics
+                }}
+                title="Institution Profile - XYZ Institute"
+                type="institution"
+              />
+              <Card className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-bold">Export Management</h3>
+                  <Button size="sm">
+                    <Plus className="h-4 w-4 mr-1" />
+                    Create Custom Report
+                  </Button>
+                </div>
+                <div className="space-y-3">
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">📊 Annual Report</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Comprehensive yearly performance report with all metrics
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <Button size="sm" variant="outline">Generate</Button>
+                      <Button size="sm" variant="outline">
+                        <Edit className="h-4 w-4 mr-1" />
+                        Customize
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">🎯 NIRF Submission</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Formatted report for NIRF ranking submission
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <Button size="sm" variant="outline">Generate</Button>
+                      <Button size="sm" variant="outline">
+                        <Plus className="h-4 w-4 mr-1" />
+                        Add Data
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">🏛️ NAAC Self Study</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Self-study report for NAAC accreditation
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <Button size="sm" variant="outline">Generate</Button>
+                      <Button size="sm" variant="outline">
+                        <Edit className="h-4 w-4 mr-1" />
+                        Update Criteria
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="p-3 border rounded-lg">
+                    <h4 className="font-semibold mb-1">📈 Performance Dashboard</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Real-time performance metrics and analytics
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <Button size="sm" variant="outline">Export Live</Button>
+                      <Button size="sm" variant="outline">
+                        <Plus className="h-4 w-4 mr-1" />
+                        Add Metric
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </Card>
             </div>

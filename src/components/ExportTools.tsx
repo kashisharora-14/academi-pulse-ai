@@ -9,7 +9,7 @@ import * as XLSX from "xlsx";
 interface ExportToolsProps {
   data: any;
   title: string;
-  type: "student" | "institution" | "report";
+  type: "student" | "institution" | "faculty" | "report";
 }
 
 export const ExportTools = ({ data, title, type }: ExportToolsProps) => {
@@ -56,6 +56,35 @@ export const ExportTools = ({ data, title, type }: ExportToolsProps) => {
           ['Placement Rate', data.placementRate || 'N/A'],
         ],
       });
+    } else if (type === "faculty") {
+      autoTable(doc, {
+        startY: 45,
+        head: [['Field', 'Value']],
+        body: [
+          ['Name', data.name || 'N/A'],
+          ['ID', data.id || 'N/A'],
+          ['Department', data.department || 'N/A'],
+          ['Designation', data.designation || 'N/A'],
+          ['APAR Rating', data.aparRating || 'N/A'],
+          ['Publications', data.publications || 'N/A'],
+          ['Students', data.students || 'N/A'],
+          ['Avg Rating', data.avgRating || 'N/A'],
+        ],
+      });
+    } else if (type === "report") {
+      autoTable(doc, {
+        startY: 45,
+        head: [['Metric', 'Value']],
+        body: [
+          ['Platform Name', data.name || 'N/A'],
+          ['Total Students', data.totalStudents || 'N/A'],
+          ['Total Institutions', data.totalInstitutions || 'N/A'],
+          ['Active Schemes', data.activeSchemes || 'N/A'],
+          ['Budget Utilized', data.budgetUtilized || 'N/A'],
+          ['Faculty Records', data.facultyRecords || 'N/A'],
+          ['System Uptime', data.systemUptime + '%' || 'N/A'],
+        ],
+      });
     }
     
     // Save PDF
@@ -88,6 +117,29 @@ export const ExportTools = ({ data, title, type }: ExportToolsProps) => {
         ['NIRF Rank', data.nirfRank || 'N/A'],
         ['NAAC Grade', data.naacGrade || 'N/A'],
         ['Placement Rate', data.placementRate || 'N/A'],
+      ];
+    } else if (type === "faculty") {
+      worksheetData = [
+        ['Field', 'Value'],
+        ['Name', data.name || 'N/A'],
+        ['ID', data.id || 'N/A'],
+        ['Department', data.department || 'N/A'],
+        ['Designation', data.designation || 'N/A'],
+        ['APAR Rating', data.aparRating || 'N/A'],
+        ['Publications', data.publications || 'N/A'],
+        ['Students', data.students || 'N/A'],
+        ['Avg Rating', data.avgRating || 'N/A'],
+      ];
+    } else if (type === "report") {
+      worksheetData = [
+        ['Metric', 'Value'],
+        ['Platform Name', data.name || 'N/A'],
+        ['Total Students', data.totalStudents || 'N/A'],
+        ['Total Institutions', data.totalInstitutions || 'N/A'],
+        ['Active Schemes', data.activeSchemes || 'N/A'],
+        ['Budget Utilized', data.budgetUtilized || 'N/A'],
+        ['Faculty Records', data.facultyRecords || 'N/A'],
+        ['System Uptime', data.systemUptime + '%' || 'N/A'],
       ];
     }
     
