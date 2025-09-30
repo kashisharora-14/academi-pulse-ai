@@ -52,12 +52,6 @@ export const DashboardPreview = () => {
           </p>
         </div>
 
-        {/* Image for dashboard preview, fixing undefined error and making it responsive */}
-        <div className="mb-16">
-          <div className="w-full h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg shadow-lg">
-          </div>
-        </div>
-
         {/* Tabs for stats, made responsive for mobile */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
