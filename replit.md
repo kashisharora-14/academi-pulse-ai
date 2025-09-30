@@ -19,7 +19,7 @@ This is a Vite + React + TypeScript application for a National Education Data Pl
 - Tailwind CSS
 - Supabase for backend services
 - React Router for navigation
-- React Leaflet for map features
+- React Leaflet v4.2.1 (downgraded from v5.0 for React 18 compatibility)
 
 ## Development Setup
 The project has been configured to run in the Replit environment:
@@ -58,3 +58,4 @@ The project uses the following Supabase environment variables (already configure
 - This project was imported from Lovable.dev
 - npm uses `--legacy-peer-deps` for package installation due to react-leaflet peer dependency requirements
 - Configured for Replit's proxy environment with proper host settings
+- **Important**: react-leaflet was downgraded from v5.0.0 to v4.2.1 to fix "render2 is not a function" error caused by React 18 compatibility issues. v5.0+ requires React 19.
