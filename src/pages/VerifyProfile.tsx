@@ -16,8 +16,21 @@ const VerifyProfile = () => {
     try {
       if (code) {
         const decodedParam = decodeURIComponent(code);
-        const decoded = JSON.parse(atob(decodedParam));
-        setProfileData(decoded);
+        try {
+          // Try new UTF-8 encoding first
+          const binaryString = atob(decodedParam);
+          const utf8Bytes = new Uint8Array(binaryString.length);
+          for (let i = 0; i < binaryString.length; i++) {
+            utf8Bytes[i] = binaryString.charCodeAt(i);
+          }
+          const jsonString = new TextDecoder().decode(utf8Bytes);
+          const decoded = JSON.parse(jsonString);
+          setProfileData(decoded);
+        } catch {
+          // Fallback to old encoding
+          const decoded = JSON.parse(atob(decodedParam));
+          setProfileData(decoded);
+        }
       }
     } catch (error) {
       console.error("Invalid verification code", error);

@@ -17,8 +17,50 @@ export const QRCodeGenerator = ({ data, type, title }: QRCodeGeneratorProps) => 
   // Create a shareable link with URL-safe encoded data
   const generateShareableLink = () => {
     const baseUrl = window.location.origin;
-    const encodedData = encodeURIComponent(btoa(JSON.stringify({ type, data })));
-    return `${baseUrl}/verify/${encodedData}`;
+    
+    // Create a simplified version of data for QR code to avoid size limits
+    const simplifiedData = {
+      type,
+      data: {
+        id: data.id,
+        name: data.name,
+        ...(type === 'student' && {
+          cgpa: data.cgpa,
+          credits: data.credits,
+          attendance: data.attendance
+        }),
+        ...(type === 'faculty' && {
+          department: data.department,
+          designation: data.designation,
+          aparRating: data.aparRating
+        }),
+        ...(type === 'institution' && {
+          nirfRank: data.nirfRank,
+          naacGrade: data.naacGrade,
+          totalStudents: data.totalStudents
+        }),
+        ...(type === 'admin' && {
+          totalStudents: data.totalStudents,
+          totalInstitutions: data.totalInstitutions,
+          complianceRate: data.complianceRate
+        })
+      }
+    };
+    
+    try {
+      // Use TextEncoder to handle UTF-8 characters properly
+      const jsonString = JSON.stringify(simplifiedData);
+      const utf8Bytes = new TextEncoder().encode(jsonString);
+      const binaryString = String.fromCharCode(...utf8Bytes);
+      const encodedData = encodeURIComponent(btoa(binaryString));
+      return `${baseUrl}/verify/${encodedData}`;
+    } catch (error) {
+      console.error('Error encoding QR data:', error);
+      // Fallback with minimal data
+      const minimalData = { type, id: data.id, name: data.name };
+      const encodedData = encodeURIComponent(btoa(JSON.stringify(minimalData)));
+      return `${baseUrl}/verify/${encodedData}`;
+    }
   };
 
   const shareableLink = generateShareableLink();
@@ -29,10 +71,31 @@ export const QRCodeGenerator = ({ data, type, title }: QRCodeGeneratorProps) => 
       QRCodeLib.toCanvas(canvasRef.current, shareableLink, {
         width: 256,
         margin: 2,
-        errorCorrectionLevel: 'H'
+        errorCorrectionLevel: 'M' // Use medium error correction to allow more data
+      }).catch((error) => {
+        console.error('QR Code generation failed:', error);
+        // Try with lower error correction and smaller data
+        const minimalLink = `${window.location.origin}/verify/${type}-${data.id}`;
+        QRCodeLib.toCanvas(canvasRef.current, minimalLink, {
+          width: 256,
+          margin: 2,
+          errorCorrectionLevel: 'L'
+        }).catch(() => {
+          // If still fails, show error message
+          const ctx = canvasRef.current?.getContext('2d');
+          if (ctx) {
+            ctx.fillStyle = '#f0f0f0';
+            ctx.fillRect(0, 0, 256, 256);
+            ctx.fillStyle = '#666';
+            ctx.font = '14px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('QR Code', 128, 120);
+            ctx.fillText('Too Large', 128, 140);
+          }
+        });
       });
     }
-  }, [shareableLink]);
+  }, [shareableLink, type, data.id]);
 
   // Download QR code as PNG
   const downloadQR = () => {
