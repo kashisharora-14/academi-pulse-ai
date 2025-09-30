@@ -38,6 +38,10 @@ export const Hero = () => {
 
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mt-6">
               <h3 className="text-white font-semibold mb-3 text-center">Try Demo Dashboards</h3>
+              <div className="text-center mb-3 p-2 bg-white/20 rounded text-white text-xs">
+                <strong>Demo Credentials:</strong> student@demo.com / admin@demo.com<br/>
+                <strong>Password:</strong> password123
+              </div>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                 <Button 
                   variant="outline" 

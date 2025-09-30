@@ -30,8 +30,8 @@ export const MapView = ({ locations, center = [20.5937, 78.9629], zoom = 5 }: Ma
       <MapContainer
         center={center}
         zoom={zoom}
-        style={{ height: '100%', width: '100%' }}
-        key="map-container"
+        style={{ height: '100%', width: '100%', minHeight: '300px' }}
+        key={`map-${center[0]}-${center[1]}-${zoom}`}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

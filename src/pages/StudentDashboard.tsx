@@ -18,7 +18,8 @@ import {
   Trophy,
   Target,
   GraduationCap,
-  LogOut
+  LogOut,
+  CheckCircle
 } from "lucide-react";
 import { Chatbot } from "@/components/Chatbot";
 import { MapView } from "@/components/MapView";

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -105,7 +104,7 @@ const AdminDashboard = () => {
       teacher: { email: "teacher@university.edu", name: "Demo Teacher" },
       institution: { email: "admin@university.edu", name: "Institution Admin" }
     };
-    
+
     const cred = demoCredentials[role as keyof typeof demoCredentials];
     if (cred) {
       setUser({ email: cred.email, user_metadata: { name: cred.name } });
@@ -469,7 +468,7 @@ const AdminDashboard = () => {
                       <div className="text-sm text-orange-700">Scheme Uptake</div>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-3">
                     <h4 className="font-semibold">Key Insights</h4>
                     <div className="space-y-2">
