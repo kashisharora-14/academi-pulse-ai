@@ -1,110 +1,175 @@
+
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Users, Building2, GraduationCap, UserCircle } from "lucide-react";
-import heroImage from "@/assets/hero-education.jpg";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
+import { 
+  GraduationCap, 
+  Users, 
+  Building2, 
+  UserCheck, 
+  Shield,
+  Globe,
+  BarChart3,
+  CheckCircle
+} from "lucide-react";
 
 export const Hero = () => {
   const navigate = useNavigate();
 
+  const handleDemoLogin = (role: string) => {
+    navigate(`/auth?role=${role}&demo=true`);
+  };
+
   return (
-    <section className="relative overflow-hidden bg-gradient-hero py-20 lg:py-32">
-      <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+    <section className="relative bg-gradient-to-br from-slate-50 to-blue-50 py-16">
+      {/* Government Header Bar */}
+      <div className="absolute top-0 w-full h-2 bg-gradient-to-r from-orange-500 via-white to-green-500"></div>
+      
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          {/* Government Badge */}
+          <div className="flex justify-center mb-6">
+            <Badge className="bg-blue-800 text-white px-6 py-2 text-sm font-semibold">
+              <Shield className="w-4 h-4 mr-2" />
+              Government of India Initiative
+            </Badge>
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl font-bold text-slate-800 mb-6 leading-tight">
+            National Education
+            <span className="block text-blue-800">Data Integration Platform</span>
+          </h1>
+          
+          <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Unified digital ecosystem for seamless data management across educational institutions, 
+            government schemes, and stakeholder coordination under Digital India initiative.
+          </p>
 
-      <div className="container relative mx-auto px-4">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
-              <Sparkles className="h-4 w-4 text-secondary" />
-              <span className="text-sm font-medium text-white">AI-Powered Education Platform</span>
-            </div>
-
-            <h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">
-              National Education Data Platform
-            </h1>
-
-            <p className="text-lg text-white/90 lg:text-xl">
-              Unified ecosystem connecting students, teachers, institutions, and government. 
-              Track progress, analyze performance, and drive educational excellence with AI-powered insights.
-            </p>
-
-            <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
-              <Button size="lg" onClick={() => navigate("/auth")}>
-                Get Started
-              </Button>
-              <Button size="lg" variant="outline" className="border-white/20 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm" onClick={() => navigate("/auth")}>
-                Demo Login
-              </Button>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mt-6">
-              <h3 className="text-white font-semibold mb-3 text-center">Demo Login - Use Secure Authentication</h3>
-              <div className="text-center mb-3 p-3 bg-white/20 rounded text-white text-sm">
-                <p className="font-semibold mb-2">🛡️ Secure Demo Access</p>
-                <p className="text-xs mb-2">Use the Login button below to access demo dashboards</p>
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="bg-white/20 p-2 rounded">
-                    <strong>Demo Aadhaar:</strong><br/>
-                    1234-5678-9012
-                  </div>
-                  <div className="bg-white/20 p-2 rounded">
-                    <strong>Demo OTP:</strong><br/>
-                    123456
-                  </div>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                <div className="border border-white/20 bg-white/10 rounded p-3 text-center">
-                  <Users className="h-6 w-6 mx-auto mb-1 text-white" />
-                  <p className="text-white text-xs font-medium">Admin Portal</p>
-                  <p className="text-white/70 text-xs">Government Dashboard</p>
-                </div>
-                <div className="border border-white/20 bg-white/10 rounded p-3 text-center">
-                  <Building2 className="h-6 w-6 mx-auto mb-1 text-white" />
-                  <p className="text-white text-xs font-medium">Institution</p>
-                  <p className="text-white/70 text-xs">College Portal</p>
-                </div>
-                <div className="border border-white/20 bg-white/10 rounded p-3 text-center">
-                  <GraduationCap className="h-6 w-6 mx-auto mb-1 text-white" />
-                  <p className="text-white text-xs font-medium">Student</p>
-                  <p className="text-white/70 text-xs">Life Cycle Tracker</p>
-                </div>
-                <div className="border border-white/20 bg-white/10 rounded p-3 text-center">
-                  <UserCircle className="h-6 w-6 mx-auto mb-1 text-white" />
-                  <p className="text-white text-xs font-medium">Faculty</p>
-                  <p className="text-white/70 text-xs">APAR Portal</p>
-                </div>
-              </div>
-              <Button 
-                className="w-full mt-4 bg-white text-primary hover:bg-white/90" 
-                onClick={() => navigate("/auth")}
-              >
-                🔐 Secure Demo Login - Use Aadhaar Authentication
-              </Button>
-            </div>
-
-            <div className="flex gap-8 pt-4">
-              <div>
-                <div className="text-3xl font-bold text-white">10M+</div>
-                <div className="text-sm text-white/80">Students Tracked</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-white">50K+</div>
-                <div className="text-sm text-white/80">Institutions</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-white">5L+</div>
-                <div className="text-sm text-white/80">Teachers</div>
-              </div>
-            </div>
+          {/* Key Statistics */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
+            <Card className="p-4 bg-white border-2 border-slate-200">
+              <div className="text-2xl font-bold text-blue-800">50,000+</div>
+              <div className="text-sm text-slate-600">Institutions</div>
+            </Card>
+            <Card className="p-4 bg-white border-2 border-slate-200">
+              <div className="text-2xl font-bold text-green-700">4.5 Cr+</div>
+              <div className="text-sm text-slate-600">Students</div>
+            </Card>
+            <Card className="p-4 bg-white border-2 border-slate-200">
+              <div className="text-2xl font-bold text-orange-600">200+</div>
+              <div className="text-sm text-slate-600">Schemes</div>
+            </Card>
+            <Card className="p-4 bg-white border-2 border-slate-200">
+              <div className="text-2xl font-bold text-purple-700">99.9%</div>
+              <div className="text-sm text-slate-600">Uptime</div>
+            </Card>
           </div>
 
-          <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-accent opacity-20 blur-3xl" />
-            <img 
-              src={heroImage} 
-              alt="Education Platform" 
-              className="relative rounded-2xl shadow-large"
-            />
+          {/* Login Section */}
+          <Card className="max-w-4xl mx-auto p-8 bg-white border-2 border-slate-300 shadow-lg">
+            <h3 className="text-2xl font-bold text-slate-800 mb-6">Access Dashboard</h3>
+            
+            <div className="bg-slate-50 border-2 border-slate-200 rounded-lg p-4 mb-6">
+              <div className="text-sm text-slate-700 mb-2">
+                <strong>Demo Access Credentials:</strong>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="bg-white p-3 rounded border">
+                  <strong>Email:</strong> demo@gov.in<br/>
+                  <strong>Password:</strong> Demo@123
+                </div>
+                <div className="bg-white p-3 rounded border">
+                  <strong>Aadhaar:</strong> 1234-5678-9012<br/>
+                  <strong>Mobile OTP:</strong> 123456
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Card className="p-6 border-2 border-blue-200 hover:border-blue-400 transition-colors cursor-pointer"
+                    onClick={() => handleDemoLogin('student')}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <GraduationCap className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h4 className="font-semibold text-slate-800 mb-2">Student Portal</h4>
+                  <p className="text-sm text-slate-600 mb-4">Academic records, schemes, certificates</p>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                    Login as Student
+                  </Button>
+                </div>
+              </Card>
+
+              <Card className="p-6 border-2 border-green-200 hover:border-green-400 transition-colors cursor-pointer"
+                    onClick={() => handleDemoLogin('teacher')}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <UserCheck className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h4 className="font-semibold text-slate-800 mb-2">Faculty Portal</h4>
+                  <p className="text-sm text-slate-600 mb-4">Teaching records, research, appraisals</p>
+                  <Button className="w-full bg-green-600 hover:bg-green-700">
+                    Login as Faculty
+                  </Button>
+                </div>
+              </Card>
+
+              <Card className="p-6 border-2 border-purple-200 hover:border-purple-400 transition-colors cursor-pointer"
+                    onClick={() => handleDemoLogin('institution')}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Building2 className="w-8 h-8 text-purple-600" />
+                  </div>
+                  <h4 className="font-semibold text-slate-800 mb-2">Institution Portal</h4>
+                  <p className="text-sm text-slate-600 mb-4">Management, compliance, analytics</p>
+                  <Button className="w-full bg-purple-600 hover:bg-purple-700">
+                    Login as Institution
+                  </Button>
+                </div>
+              </Card>
+
+              <Card className="p-6 border-2 border-orange-200 hover:border-orange-400 transition-colors cursor-pointer"
+                    onClick={() => handleDemoLogin('admin')}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <BarChart3 className="w-8 h-8 text-orange-600" />
+                  </div>
+                  <h4 className="font-semibold text-slate-800 mb-2">Ministry Portal</h4>
+                  <p className="text-sm text-slate-600 mb-4">Policy oversight, national analytics</p>
+                  <Button className="w-full bg-orange-600 hover:bg-orange-700">
+                    Login as Ministry
+                  </Button>
+                </div>
+              </Card>
+            </div>
+          </Card>
+
+          {/* Features Grid */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Card className="p-6 bg-white border-2 border-slate-200">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Globe className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="text-lg font-semibold text-slate-800 mb-3">Unified Data Integration</h3>
+              <p className="text-slate-600">Single platform connecting AISHE, NIRF, NAAC, UGC, and state databases</p>
+            </Card>
+
+            <Card className="p-6 bg-white border-2 border-slate-200">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-6 h-6 text-green-600" />
+              </div>
+              <h3 className="text-lg font-semibold text-slate-800 mb-3">Secure & Compliant</h3>
+              <p className="text-slate-600">Aadhaar-based authentication with end-to-end encryption and data protection</p>
+            </Card>
+
+            <Card className="p-6 bg-white border-2 border-slate-200">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-lg font-semibold text-slate-800 mb-3">Real-time Analytics</h3>
+              <p className="text-slate-600">Live dashboards for policy makers with AI-powered insights and recommendations</p>
+            </Card>
           </div>
         </div>
       </div>

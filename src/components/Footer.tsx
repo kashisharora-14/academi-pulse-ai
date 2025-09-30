@@ -1,57 +1,160 @@
-import { GraduationCap } from "lucide-react";
+
+import { Card } from "@/components/ui/card";
+import { 
+  Shield, 
+  Phone, 
+  Mail, 
+  MapPin,
+  ExternalLink,
+  Globe,
+  FileText
+} from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="border-t border-border/40 bg-muted/30">
+    <footer className="bg-slate-800 text-white">
+      {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid gap-8 md:grid-cols-4">
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-hero">
-                <GraduationCap className="h-6 w-6 text-white" />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Government Info */}
+          <div className="col-span-1 md:col-span-2">
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                <Shield className="w-8 h-8 text-white" />
               </div>
               <div>
-                <div className="text-lg font-bold">NEDP</div>
+                <h3 className="text-xl font-bold">National Education Data Platform</h3>
+                <p className="text-slate-300 text-sm">Ministry of Education, Government of India</p>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground">
-              National Education Data Platform - Empowering education through intelligent data management
+            
+            <p className="text-slate-300 mb-6 leading-relaxed">
+              A comprehensive digital platform for unified education data management, 
+              scheme distribution, and policy implementation across India's educational ecosystem.
             </p>
+
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3">
+                <MapPin className="w-4 h-4 text-blue-400" />
+                <span className="text-slate-300 text-sm">
+                  Shastri Bhawan, New Delhi - 110001
+                </span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone className="w-4 h-4 text-blue-400" />
+                <span className="text-slate-300 text-sm">
+                  Helpline: 1800-11-2020 (Toll Free)
+                </span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Mail className="w-4 h-4 text-blue-400" />
+                <span className="text-slate-300 text-sm">
+                  support@education.gov.in
+                </span>
+              </div>
+            </div>
           </div>
 
+          {/* Quick Links */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold">Platform</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Features</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Modules</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Dashboards</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Integrations</a></li>
+            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul className="space-y-3">
+              <li>
+                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                  <ExternalLink className="w-3 h-3 mr-2" />
+                  Ministry of Education
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                  <ExternalLink className="w-3 h-3 mr-2" />
+                  Digital India
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                  <ExternalLink className="w-3 h-3 mr-2" />
+                  National Portal of India
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                  <ExternalLink className="w-3 h-3 mr-2" />
+                  PM-USHA
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                  <ExternalLink className="w-3 h-3 mr-2" />
+                  SWAYAM
+                </a>
+              </li>
             </ul>
           </div>
 
+          {/* Policies & Compliance */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold">Resources</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Documentation</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">API Reference</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Guides</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Support</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-4 text-sm font-semibold">Legal</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Data Protection</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Compliance</a></li>
+            <h4 className="text-lg font-semibold mb-4">Policies & Compliance</h4>
+            <ul className="space-y-3">
+              <li>
+                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                  <FileText className="w-3 h-3 mr-2" />
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                  <FileText className="w-3 h-3 mr-2" />
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                  <FileText className="w-3 h-3 mr-2" />
+                  Data Protection
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                  <FileText className="w-3 h-3 mr-2" />
+                  Accessibility
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                  <FileText className="w-3 h-3 mr-2" />
+                  RTI Information
+                </a>
+              </li>
             </ul>
           </div>
         </div>
+      </div>
 
-        <div className="mt-12 border-t border-border/40 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; 2025 National Education Data Platform. All rights reserved.</p>
+      {/* Government Footer Bar */}
+      <div className="border-t border-slate-700 bg-slate-900 py-6">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="flex items-center space-x-6 text-sm text-slate-400">
+              <span>© 2024 Government of India</span>
+              <span className="flex items-center">
+                <Globe className="w-3 h-3 mr-1" />
+                Last Updated: December 2024
+              </span>
+            </div>
+            
+            <div className="flex items-center space-x-4">
+              <Card className="px-3 py-1 bg-green-800 border-green-600">
+                <span className="text-xs text-green-100 font-medium">ISO 27001 Certified</span>
+              </Card>
+              <Card className="px-3 py-1 bg-blue-800 border-blue-600">
+                <span className="text-xs text-blue-100 font-medium">STQC Audited</span>
+              </Card>
+            </div>
+          </div>
+          
+          {/* Government Color Bar */}
+          <div className="mt-4 h-1 bg-gradient-to-r from-orange-500 via-white to-green-500 rounded"></div>
         </div>
       </div>
     </footer>
