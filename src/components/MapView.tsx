@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -31,6 +31,7 @@ export const MapView = ({ locations, center = [20.5937, 78.9629], zoom = 5 }: Ma
         center={center}
         zoom={zoom}
         style={{ height: '100%', width: '100%' }}
+        key="map-container"
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

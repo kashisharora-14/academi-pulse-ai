@@ -23,7 +23,8 @@ import {
   Clock,
   BarChart3,
   Map,
-  Bot
+  Bot,
+  Activity
 } from "lucide-react";
 import { 
   LineChart, 
