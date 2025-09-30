@@ -329,9 +329,9 @@ const InstitutionDashboard = () => {
           </TabsContent>
 
           <TabsContent value="placements" className="space-y-6">
-            <div className="grid gap-6 lg:grid-cols-2">
+            <div className="grid gap-6 lg:grid-cols-2 mb-6">
               <Card className="p-6">
-                <h3 className="text-xl font-bold mb-4">Placement Statistics</h3>
+                <h3 className="text-xl font-bold mb-4">Placement Statistics Trend</h3>
                 <ResponsiveContainer width="100%" height={300}>
                   <AreaChart data={placementData}>
                     <CartesianGrid strokeDasharray="3 3" />
@@ -344,7 +344,7 @@ const InstitutionDashboard = () => {
               </Card>
 
               <Card className="p-6">
-                <h3 className="text-xl font-bold mb-4">Package Distribution</h3>
+                <h3 className="text-xl font-bold mb-4">Package Distribution by Year</h3>
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={placementData}>
                     <CartesianGrid strokeDasharray="3 3" />
@@ -352,30 +352,396 @@ const InstitutionDashboard = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="packages" fill="hsl(var(--accent))" name="Average Package (K)" />
-                    <Bar dataKey="highest" fill="hsl(var(--success))" name="Highest Package (K)" />
+                    <Bar dataKey="packages" fill="hsl(var(--accent))" name="Average Package (₹L)" />
+                    <Bar dataKey="highest" fill="hsl(var(--success))" name="Highest Package (₹L)" />
                   </BarChart>
                 </ResponsiveContainer>
+              </Card>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-3 mb-6">
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">Top Recruiting Companies (2024)</h3>
+                <div className="space-y-3">
+                  {[
+                    { company: "Microsoft", offers: 45, package: "₹18-25L", type: "Tech" },
+                    { company: "Amazon", offers: 38, package: "₹15-22L", type: "Tech" },
+                    { company: "Infosys", offers: 120, package: "₹6-8L", type: "IT Services" },
+                    { company: "TCS", offers: 95, package: "₹5.5-7L", type: "IT Services" },
+                    { company: "Goldman Sachs", offers: 12, package: "₹20-28L", type: "Finance" },
+                    { company: "Google", offers: 8, package: "₹25-35L", type: "Tech" },
+                    { company: "Wipro", offers: 78, package: "₹5-7L", type: "IT Services" },
+                    { company: "Deloitte", offers: 25, package: "₹8-12L", type: "Consulting" }
+                  ].map((company, index) => (
+                    <div key={index} className="flex justify-between items-center p-3 border rounded">
+                      <div>
+                        <p className="font-semibold text-sm">{company.company}</p>
+                        <p className="text-xs text-muted-foreground">{company.type}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-medium">{company.offers} offers</p>
+                        <p className="text-xs text-muted-foreground">{company.package}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">Department-wise Placement Rates</h3>
+                <div className="space-y-4">
+                  {[
+                    { dept: "Computer Science", placed: 185, total: 195, rate: 94.9 },
+                    { dept: "Electronics & Comm", placed: 78, total: 85, rate: 91.8 },
+                    { dept: "Mechanical", placed: 65, total: 75, rate: 86.7 },
+                    { dept: "Civil", placed: 45, total: 55, rate: 81.8 },
+                    { dept: "Electrical", placed: 52, total: 62, rate: 83.9 }
+                  ].map((dept, index) => (
+                    <div key={index} className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-medium">{dept.dept}</span>
+                        <span className="text-sm">{dept.rate}%</span>
+                      </div>
+                      <Progress value={dept.rate} />
+                      <div className="text-xs text-muted-foreground">
+                        {dept.placed} placed out of {dept.total} students
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">Placement Support Services</h3>
+                <div className="space-y-3">
+                  <div className="p-3 bg-blue-50 rounded-lg">
+                    <h4 className="font-semibold text-blue-800">Training & Development</h4>
+                    <ul className="text-sm text-blue-700 mt-2 space-y-1">
+                      <li>• Technical skill workshops</li>
+                      <li>• Soft skills training</li>
+                      <li>• Mock interviews</li>
+                      <li>• Resume building sessions</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="p-3 bg-green-50 rounded-lg">
+                    <h4 className="font-semibold text-green-800">Industry Partnerships</h4>
+                    <ul className="text-sm text-green-700 mt-2 space-y-1">
+                      <li>• 150+ industry partners</li>
+                      <li>• Regular campus drives</li>
+                      <li>• Internship programs</li>
+                      <li>• Alumni network support</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-3 bg-purple-50 rounded-lg">
+                    <h4 className="font-semibold text-purple-800">Career Guidance</h4>
+                    <ul className="text-sm text-purple-700 mt-2 space-y-1">
+                      <li>• One-on-one counseling</li>
+                      <li>• Career path planning</li>
+                      <li>• Higher studies guidance</li>
+                      <li>• Entrepreneurship support</li>
+                    </ul>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Placement Calendar 2024-25</h3>
+                <div className="space-y-4">
+                  <div className="p-3 border-l-4 border-blue-400 bg-blue-50">
+                    <h4 className="font-semibold text-blue-800">Pre-Placement Talks</h4>
+                    <p className="text-sm text-blue-700">July - August 2024</p>
+                    <p className="text-xs text-blue-600">Company presentations and job descriptions</p>
+                  </div>
+                  
+                  <div className="p-3 border-l-4 border-green-400 bg-green-50">
+                    <h4 className="font-semibold text-green-800">Campus Recruitment Drive</h4>
+                    <p className="text-sm text-green-700">September - December 2024</p>
+                    <p className="text-xs text-green-600">Main placement season with major companies</p>
+                  </div>
+                  
+                  <div className="p-3 border-l-4 border-purple-400 bg-purple-50">
+                    <h4 className="font-semibold text-purple-800">Pool Campus Drives</h4>
+                    <p className="text-sm text-purple-700">January - March 2025</p>
+                    <p className="text-xs text-purple-600">Additional opportunities for remaining students</p>
+                  </div>
+                  
+                  <div className="p-3 border-l-4 border-orange-400 bg-orange-50">
+                    <h4 className="font-semibant text-orange-800">Internship Placements</h4>
+                    <p className="text-sm text-orange-700">April - June 2025</p>
+                    <p className="text-xs text-orange-600">Summer internship opportunities</p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Success Stories & Achievements</h3>
+                <div className="space-y-4">
+                  <div className="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
+                    <h4 className="font-semibold text-yellow-800">Highest Package 2024</h4>
+                    <p className="text-lg font-bold text-yellow-900">₹45 LPA</p>
+                    <p className="text-sm text-yellow-700">International offer from Google (Software Engineer)</p>
+                  </div>
+                  
+                  <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-400">
+                    <h4 className="font-semibold text-green-800">100% Placement Achievement</h4>
+                    <p className="text-sm text-green-700">Computer Science & Engineering department achieves 100% placement for 3rd consecutive year</p>
+                  </div>
+                  
+                  <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                    <h4 className="font-semibold text-blue-800">Alumni Success</h4>
+                    <p className="text-sm text-blue-700">15 alumni in leadership positions at Fortune 500 companies, including 3 CEOs and 8 CTOs</p>
+                  </div>
+                  
+                  <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-400">
+                    <h4 className="font-semibold text-purple-800">Entrepreneurship</h4>
+                    <p className="text-sm text-purple-700">25+ student startups funded, total valuation ₹150 Cr</p>
+                  </div>
+                </div>
               </Card>
             </div>
           </TabsContent>
 
           <TabsContent value="research" className="space-y-6">
-            <Card className="p-6">
-              <h3 className="text-xl font-bold mb-4">Research Performance</h3>
-              <ResponsiveContainer width="100%" height={400}>
-                <LineChart data={researchData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="year" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Line type="monotone" dataKey="publications" stroke="hsl(var(--primary))" strokeWidth={2} name="Publications" />
-                  <Line type="monotone" dataKey="patents" stroke="hsl(var(--secondary))" strokeWidth={2} name="Patents" />
-                  <Line type="monotone" dataKey="funding" stroke="hsl(var(--success))" strokeWidth={2} name="Funding (Cr)" />
-                </LineChart>
-              </ResponsiveContainer>
-            </Card>
+            <div className="grid gap-6 lg:grid-cols-2 mb-6">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Research Performance Metrics</h3>
+                <ResponsiveContainer width="100%" height={300}>
+                  <LineChart data={researchData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="year" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Line type="monotone" dataKey="publications" stroke="hsl(var(--primary))" strokeWidth={2} name="Publications" />
+                    <Line type="monotone" dataKey="patents" stroke="hsl(var(--secondary))" strokeWidth={2} name="Patents" />
+                    <Line type="monotone" dataKey="funding" stroke="hsl(var(--success))" strokeWidth={2} name="Funding (₹Cr)" />
+                  </LineChart>
+                </ResponsiveContainer>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Research Impact Metrics</h3>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="text-center p-4 bg-blue-50 rounded-lg">
+                      <div className="text-2xl font-bold text-blue-600">4,250</div>
+                      <div className="text-sm text-blue-700">Total Citations</div>
+                    </div>
+                    <div className="text-center p-4 bg-green-50 rounded-lg">
+                      <div className="text-2xl font-bold text-green-600">8.2</div>
+                      <div className="text-sm text-green-700">H-Index Score</div>
+                    </div>
+                    <div className="text-center p-4 bg-purple-50 rounded-lg">
+                      <div className="text-2xl font-bold text-purple-600">156</div>
+                      <div className="text-sm text-purple-700">Scopus Indexed</div>
+                    </div>
+                    <div className="text-center p-4 bg-orange-50 rounded-lg">
+                      <div className="text-2xl font-bold text-orange-600">89</div>
+                      <div className="text-sm text-orange-700">SCI Journals</div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Research Quality Score</span>
+                      <span className="font-semibold">85/100</span>
+                    </div>
+                    <Progress value={85} />
+                    
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">International Collaborations</span>
+                      <span className="font-semibold">68%</span>
+                    </div>
+                    <Progress value={68} />
+                    
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm">Industry Partnerships</span>
+                      <span className="font-semibold">72%</span>
+                    </div>
+                    <Progress value={72} />
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-3 mb-6">
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">Research Centers & Labs</h3>
+                <div className="space-y-3">
+                  {[
+                    { name: "AI & Machine Learning Lab", faculty: 12, projects: 28, funding: "₹2.5Cr" },
+                    { name: "Renewable Energy Research Center", faculty: 8, projects: 15, funding: "₹1.8Cr" },
+                    { name: "Biotechnology Research Institute", faculty: 10, projects: 22, funding: "₹3.2Cr" },
+                    { name: "Advanced Materials Lab", faculty: 6, projects: 18, funding: "₹1.5Cr" },
+                    { name: "Cyber Security Research Center", faculty: 9, projects: 25, funding: "₹2.8Cr" },
+                    { name: "Robotics & Automation Lab", faculty: 7, projects: 20, funding: "₹2.1Cr" }
+                  ].map((lab, index) => (
+                    <div key={index} className="p-3 border rounded-lg">
+                      <h4 className="font-semibold text-sm mb-2">{lab.name}</h4>
+                      <div className="grid grid-cols-3 gap-2 text-xs text-muted-foreground">
+                        <div>Faculty: {lab.faculty}</div>
+                        <div>Projects: {lab.projects}</div>
+                        <div>Funding: {lab.funding}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">Current Research Projects</h3>
+                <div className="space-y-3">
+                  {[
+                    { 
+                      title: "AI-Powered Educational Assessment", 
+                      pi: "Dr. Sharma", 
+                      funding: "₹45L", 
+                      agency: "DST",
+                      duration: "2023-2026",
+                      status: "Ongoing"
+                    },
+                    { 
+                      title: "Smart Grid Technologies", 
+                      pi: "Dr. Kumar", 
+                      funding: "₹38L", 
+                      agency: "SERB",
+                      duration: "2022-2025", 
+                      status: "Ongoing"
+                    },
+                    { 
+                      title: "Nano-materials for Water Purification", 
+                      pi: "Dr. Patel", 
+                      funding: "₹52L", 
+                      agency: "DBT",
+                      duration: "2024-2027", 
+                      status: "New"
+                    },
+                    { 
+                      title: "Blockchain in Healthcare", 
+                      pi: "Dr. Singh", 
+                      funding: "₹28L", 
+                      agency: "ICMR",
+                      duration: "2023-2025", 
+                      status: "Ongoing"
+                    }
+                  ].map((project, index) => (
+                    <div key={index} className="p-3 border rounded-lg space-y-2">
+                      <div className="flex justify-between items-start">
+                        <h4 className="font-semibold text-sm">{project.title}</h4>
+                        <Badge variant={project.status === "New" ? "default" : "secondary"}>
+                          {project.status}
+                        </Badge>
+                      </div>
+                      <div className="text-xs text-muted-foreground space-y-1">
+                        <div>PI: {project.pi}</div>
+                        <div>Funding: {project.funding} ({project.agency})</div>
+                        <div>Duration: {project.duration}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4">Research Achievements</h3>
+                <div className="space-y-3">
+                  <div className="p-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
+                    <h4 className="font-semibold text-yellow-800">Patent Filed</h4>
+                    <p className="text-sm text-yellow-700">"Smart IoT Device for Air Quality Monitoring"</p>
+                    <p className="text-xs text-yellow-600">Filed: March 2024</p>
+                  </div>
+                  
+                  <div className="p-3 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                    <h4 className="font-semibold text-blue-800">Best Paper Award</h4>
+                    <p className="text-sm text-blue-700">IEEE International Conference on AI</p>
+                    <p className="text-xs text-blue-600">Dr. Sharma's research team</p>
+                  </div>
+                  
+                  <div className="p-3 bg-green-50 rounded-lg border-l-4 border-green-400">
+                    <h4 className="font-semibold text-green-800">Research Grant Sanctioned</h4>
+                    <p className="text-sm text-green-700">₹85L from ISRO for Satellite Technology</p>
+                    <p className="text-xs text-green-600">3-year project duration</p>
+                  </div>
+                  
+                  <div className="p-3 bg-purple-50 rounded-lg border-l-4 border-purple-400">
+                    <h4 className="font-semibold text-purple-800">Technology Transfer</h4>
+                    <p className="text-sm text-purple-700">2 technologies licensed to industry partners</p>
+                    <p className="text-xs text-purple-600">Revenue: ₹15L generated</p>
+                  </div>
+                  
+                  <div className="p-3 bg-red-50 rounded-lg border-l-4 border-red-400">
+                    <h4 className="font-semibold text-red-800">International Collaboration</h4>
+                    <p className="text-sm text-red-700">MoU signed with MIT for joint research</p>
+                    <p className="text-xs text-red-600">Focus: Clean Energy Solutions</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Research Publications by Domain</h3>
+                <div className="space-y-4">
+                  {[
+                    { domain: "Artificial Intelligence & ML", count: 28, impact: 4.2, trending: "+15%" },
+                    { domain: "Renewable Energy", count: 22, impact: 3.8, trending: "+22%" },
+                    { domain: "Biotechnology", count: 18, impact: 3.9, trending: "+8%" },
+                    { domain: "Materials Science", count: 15, impact: 3.5, trending: "+12%" },
+                    { domain: "Cyber Security", count: 12, impact: 4.1, trending: "+25%" },
+                    { domain: "Robotics & Automation", count: 10, impact: 3.7, trending: "+18%" }
+                  ].map((domain, index) => (
+                    <div key={index} className="flex justify-between items-center p-3 border rounded">
+                      <div>
+                        <p className="font-semibold text-sm">{domain.domain}</p>
+                        <p className="text-xs text-muted-foreground">Impact Factor: {domain.impact}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-bold">{domain.count} papers</p>
+                        <Badge className="bg-green-100 text-green-800 text-xs">{domain.trending}</Badge>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Research Support & Infrastructure</h3>
+                <div className="space-y-4">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h4 className="font-semibold text-blue-800 mb-2">Funding Sources</h4>
+                    <ul className="text-sm text-blue-700 space-y-1">
+                      <li>• Government Agencies: 65% (DST, SERB, DBT, ICMR)</li>
+                      <li>• Industry Partnerships: 25% (TCS, Infosys, BHEL)</li>
+                      <li>• International Grants: 10% (Newton Fund, NSF)</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 bg-green-50 rounded-lg">
+                    <h4 className="font-semibold text-green-800 mb-2">Research Facilities</h4>
+                    <ul className="text-sm text-green-700 space-y-1">
+                      <li>• Central Instrumentation Facility</li>
+                      <li>• High Performance Computing Center</li>
+                      <li>• Advanced Characterization Lab</li>
+                      <li>• Prototype Development Workshop</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 bg-purple-50 rounded-lg">
+                    <h4 className="font-semibold text-purple-800 mb-2">Student Research Programs</h4>
+                    <ul className="text-sm text-purple-700 space-y-1">
+                      <li>• 150+ UG students in research projects</li>
+                      <li>• 85 PhD scholars enrolled</li>
+                      <li>• 25 research publications by students</li>
+                      <li>• Summer Research Internship Program</li>
+                    </ul>
+                  </div>
+                </div>
+              </Card>
+            </div>
           </TabsContent>
 
           <TabsContent value="compliance" className="space-y-6">
