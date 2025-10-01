@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
+import { GovernmentSlideshow } from "@/components/GovernmentSlideshow";
 import { 
   GraduationCap, 
   Users, 
@@ -60,6 +61,9 @@ export const Hero = () => {
             Unified digital ecosystem for seamless data management across educational institutions, 
             government schemes, and stakeholder coordination under Digital India initiative.
           </p>
+
+          {/* Government Slideshow */}
+          <GovernmentSlideshow />
 
           {/* Key Statistics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-8 md:mb-12 max-w-4xl mx-auto">

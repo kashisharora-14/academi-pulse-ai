@@ -1221,7 +1221,7 @@ const StudentDashboard = () => {
                       <div className="text-xs text-muted-foreground">{scheme.description}</div>
                       <Button size="sm" className="mt-2 w-full">Apply Now</Button>
                     </div>
-                  ))
+                  ))}
                 </div>
               </Card>
             </div>
