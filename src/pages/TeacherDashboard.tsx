@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Chatbot } from "@/components/Chatbot";
@@ -91,6 +92,75 @@ const upcomingTasks = [
   { task: "Department Meeting", due: "2024-04-02", priority: "low" },
 ];
 
+const loggedInStudents = [
+  { 
+    id: "STU-2024-001", 
+    name: "Arjun Patel", 
+    email: "arjun.patel@university.edu", 
+    course: "B.Tech CSE", 
+    semester: "6th", 
+    cgpa: 8.9,
+    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    status: "online",
+    lastLogin: "2024-01-15 09:30 AM"
+  },
+  { 
+    id: "STU-2024-002", 
+    name: "Priya Sharma", 
+    email: "priya.sharma@university.edu", 
+    course: "B.Tech CSE", 
+    semester: "6th", 
+    cgpa: 9.2,
+    photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+    status: "online",
+    lastLogin: "2024-01-15 08:45 AM"
+  },
+  { 
+    id: "STU-2024-003", 
+    name: "Rohit Kumar", 
+    email: "rohit.kumar@university.edu", 
+    course: "B.Tech CSE", 
+    semester: "4th", 
+    cgpa: 8.5,
+    photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    status: "offline",
+    lastLogin: "2024-01-14 06:15 PM"
+  },
+  { 
+    id: "STU-2024-004", 
+    name: "Sneha Gupta", 
+    email: "sneha.gupta@university.edu", 
+    course: "B.Tech CSE", 
+    semester: "6th", 
+    cgpa: 8.7,
+    photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+    status: "online",
+    lastLogin: "2024-01-15 10:00 AM"
+  },
+  { 
+    id: "STU-2024-005", 
+    name: "Vikash Singh", 
+    email: "vikash.singh@university.edu", 
+    course: "B.Tech CSE", 
+    semester: "4th", 
+    cgpa: 7.8,
+    photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+    status: "online",
+    lastLogin: "2024-01-15 09:15 AM"
+  },
+  { 
+    id: "STU-2024-006", 
+    name: "Anita Reddy", 
+    email: "anita.reddy@university.edu", 
+    course: "B.Tech CSE", 
+    semester: "6th", 
+    cgpa: 9.0,
+    photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+    status: "offline",
+    lastLogin: "2024-01-14 07:30 PM"
+  }
+];
+
 const departmentLocations = [
   { id: "1", name: "Computer Science Dept", position: [28.5449, 77.1925] as [number, number], data: "Building A, Floor 3" },
   { id: "2", name: "Faculty Lounge", position: [28.5459, 77.1935] as [number, number], data: "Building B, Floor 2" },
@@ -139,12 +209,16 @@ const TeacherDashboard = () => {
         <Tabs defaultValue="overview" className="space-y-6">
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
-            <TabsList className="grid w-full grid-cols-10 text-xs">
+            <TabsList className="grid w-full grid-cols-11 text-xs">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="teaching">Teaching</TabsTrigger>
               <TabsTrigger value="research">Research</TabsTrigger>
               <TabsTrigger value="apar">APAR</TabsTrigger>
               <TabsTrigger value="students">Students</TabsTrigger>
+              <TabsTrigger value="student-management">
+                <Users className="h-4 w-4 mr-1" />
+                Student Mgmt
+              </TabsTrigger>
               <TabsTrigger value="development">Development</TabsTrigger>
               <TabsTrigger value="schedule">Schedule</TabsTrigger>
               <TabsTrigger value="qr">
@@ -167,6 +241,9 @@ const TeacherDashboard = () => {
               <TabsTrigger value="research" className="whitespace-nowrap text-xs">Research</TabsTrigger>
               <TabsTrigger value="apar" className="whitespace-nowrap text-xs">APAR</TabsTrigger>
               <TabsTrigger value="students" className="whitespace-nowrap text-xs">Students</TabsTrigger>
+              <TabsTrigger value="student-management" className="whitespace-nowrap text-xs">
+                <Users className="h-4 w-4" />
+              </TabsTrigger>
               <TabsTrigger value="development" className="whitespace-nowrap text-xs">Development</TabsTrigger>
               <TabsTrigger value="schedule" className="whitespace-nowrap text-xs">Schedule</TabsTrigger>
               <TabsTrigger value="qr" className="whitespace-nowrap text-xs">
@@ -519,6 +596,144 @@ const TeacherDashboard = () => {
                     <Progress value={96} />
                   </div>
                 </div>
+              </div>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="student-management" className="space-y-6">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="text-2xl font-bold">Student Management</h2>
+                <p className="text-muted-foreground">View logged-in students with their profiles and academic information</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <Badge className="bg-green-100 text-green-800">
+                  {loggedInStudents.filter(s => s.status === 'online').length} Online
+                </Badge>
+                <Badge variant="outline">
+                  {loggedInStudents.length} Total Students
+                </Badge>
+              </div>
+            </div>
+
+            {/* Stats Cards */}
+            <div className="grid gap-4 md:grid-cols-4 mb-6">
+              <Card className="p-4">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-green-600">
+                    {loggedInStudents.filter(s => s.status === 'online').length}
+                  </div>
+                  <div className="text-sm text-muted-foreground">Currently Online</div>
+                </div>
+              </Card>
+              <Card className="p-4">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-blue-600">
+                    {loggedInStudents.filter(s => s.cgpa >= 9.0).length}
+                  </div>
+                  <div className="text-sm text-muted-foreground">CGPA ≥ 9.0</div>
+                </div>
+              </Card>
+              <Card className="p-4">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-purple-600">
+                    {loggedInStudents.filter(s => s.semester === '6th').length}
+                  </div>
+                  <div className="text-sm text-muted-foreground">Final Year</div>
+                </div>
+              </Card>
+              <Card className="p-4">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-orange-600">
+                    {(loggedInStudents.reduce((sum, s) => sum + s.cgpa, 0) / loggedInStudents.length).toFixed(1)}
+                  </div>
+                  <div className="text-sm text-muted-foreground">Avg CGPA</div>
+                </div>
+              </Card>
+            </div>
+
+            {/* Student Grid */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {loggedInStudents.map((student) => (
+                <Card key={student.id} className="p-6 hover:shadow-lg transition-shadow">
+                  <div className="flex items-start gap-4">
+                    <div className="relative">
+                      <Avatar className="h-16 w-16">
+                        <AvatarImage src={student.photo} alt={student.name} />
+                        <AvatarFallback>{student.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                      </Avatar>
+                      <div className={`absolute -bottom-1 -right-1 h-5 w-5 rounded-full border-2 border-white ${
+                        student.status === 'online' ? 'bg-green-500' : 'bg-gray-400'
+                      }`} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="font-semibold text-lg truncate">{student.name}</h3>
+                        <Badge variant={student.status === 'online' ? 'default' : 'secondary'}>
+                          {student.status}
+                        </Badge>
+                      </div>
+                      <div className="space-y-1 text-sm text-muted-foreground">
+                        <p><span className="font-medium">ID:</span> {student.id}</p>
+                        <p><span className="font-medium">Email:</span> {student.email}</p>
+                        <p><span className="font-medium">Course:</span> {student.course}</p>
+                        <p><span className="font-medium">Semester:</span> {student.semester}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-4 pt-4 border-t">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-medium">CGPA</span>
+                      <span className={`text-sm font-bold ${
+                        student.cgpa >= 9.0 ? 'text-green-600' : 
+                        student.cgpa >= 8.0 ? 'text-blue-600' : 'text-orange-600'
+                      }`}>
+                        {student.cgpa}/10
+                      </span>
+                    </div>
+                    <Progress 
+                      value={(student.cgpa / 10) * 100} 
+                      className="h-2 mb-3"
+                    />
+                    
+                    <div className="text-xs text-muted-foreground">
+                      <p><span className="font-medium">Last Login:</span> {student.lastLogin}</p>
+                    </div>
+                    
+                    <div className="flex gap-2 mt-4">
+                      <Button size="sm" variant="outline" className="flex-1">
+                        View Profile
+                      </Button>
+                      <Button size="sm" className="flex-1">
+                        Contact
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+
+            {/* Quick Actions */}
+            <Card className="p-6 mt-6">
+              <h3 className="text-lg font-bold mb-4">Quick Actions</h3>
+              <div className="grid gap-3 md:grid-cols-4">
+                <Button variant="outline" className="justify-start">
+                  <Users className="mr-2 h-4 w-4" />
+                  Send Announcement
+                </Button>
+                <Button variant="outline" className="justify-start">
+                  <FileText className="mr-2 h-4 w-4" />
+                  Export Attendance
+                </Button>
+                <Button variant="outline" className="justify-start">
+                  <Award className="mr-2 h-4 w-4" />
+                  Grade Assignment
+                </Button>
+                <Button variant="outline" className="justify-start">
+                  <Calendar className="mr-2 h-4 w-4" />
+                  Schedule Meeting
+                </Button>
               </div>
             </Card>
           </TabsContent>
