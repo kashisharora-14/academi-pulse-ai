@@ -62,7 +62,7 @@ const GovernmentDashboard = () => {
       data: "NIRF: 95 | Placement: 76% | Research: 85 | Status: Good",
       students: 12000,
       city: "Chandigarh",
-      type: "University"
+      type: "Central University"
     },
     {
       id: "3",
