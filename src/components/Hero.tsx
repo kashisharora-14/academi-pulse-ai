@@ -19,22 +19,30 @@ export const Hero = () => {
   const navigate = useNavigate();
 
   const handleDemoLogin = (role: string) => {
-    // Direct navigation to dashboard instead of auth page for demo
-    switch(role) {
-      case 'student':
-        navigate('/student');
-        break;
-      case 'teacher':
-        navigate('/teacher');
-        break;
-      case 'institution':
-        navigate('/institution');
-        break;
-      case 'admin':
-        navigate('/admin');
-        break;
-      default:
-        navigate('/auth');
+    // Navigate directly to dashboard with proper routing
+    console.log(`Navigating to ${role} dashboard`);
+    
+    try {
+      switch(role) {
+        case 'student':
+          navigate('/student', { replace: true });
+          break;
+        case 'teacher':
+          navigate('/teacher', { replace: true });
+          break;
+        case 'institution':
+          navigate('/institution', { replace: true });
+          break;
+        case 'admin':
+          navigate('/admin', { replace: true });
+          break;
+        default:
+          navigate('/auth', { replace: true });
+      }
+    } catch (error) {
+      console.error('Navigation error:', error);
+      // Fallback to auth page
+      navigate('/auth', { replace: true });
     }
   };
 
@@ -123,56 +131,96 @@ export const Hero = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
               <Card className="p-4 md:p-5 lg:p-6 border-2 border-blue-200 hover:border-blue-400 transition-colors cursor-pointer"
-                    onClick={() => handleDemoLogin('student')}>
+                    onClick={(e) => {
+                      e.preventDefault();
+                      console.log('Student portal clicked');
+                      handleDemoLogin('student');
+                    }}>
                 <div className="text-center">
                   <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                     <GraduationCap className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-blue-600" />
                   </div>
                   <h4 className="font-semibold text-sm md:text-base text-slate-800 mb-1.5 md:mb-2">Student Portal</h4>
                   <p className="text-xs md:text-sm text-slate-600 mb-3 md:mb-4">Academic records, schemes, certificates</p>
-                  <Button className="w-full text-xs md:text-sm bg-blue-600 hover:bg-blue-700">
+                  <Button 
+                    className="w-full text-xs md:text-sm bg-blue-600 hover:bg-blue-700"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDemoLogin('student');
+                    }}
+                  >
                     Login as Student
                   </Button>
                 </div>
               </Card>
 
               <Card className="p-4 md:p-5 lg:p-6 border-2 border-green-200 hover:border-green-400 transition-colors cursor-pointer"
-                    onClick={() => handleDemoLogin('teacher')}>
+                    onClick={(e) => {
+                      e.preventDefault();
+                      console.log('Teacher portal clicked');
+                      handleDemoLogin('teacher');
+                    }}>
                 <div className="text-center">
                   <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                     <UserCheck className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-green-600" />
                   </div>
                   <h4 className="font-semibold text-sm md:text-base text-slate-800 mb-1.5 md:mb-2">Faculty Portal</h4>
                   <p className="text-xs md:text-sm text-slate-600 mb-3 md:mb-4">Teaching records, research, appraisals</p>
-                  <Button className="w-full text-xs md:text-sm bg-green-600 hover:bg-green-700">
+                  <Button 
+                    className="w-full text-xs md:text-sm bg-green-600 hover:bg-green-700"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDemoLogin('teacher');
+                    }}
+                  >
                     Login as Faculty
                   </Button>
                 </div>
               </Card>
 
               <Card className="p-4 md:p-5 lg:p-6 border-2 border-purple-200 hover:border-purple-400 transition-colors cursor-pointer"
-                    onClick={() => handleDemoLogin('institution')}>
+                    onClick={(e) => {
+                      e.preventDefault();
+                      console.log('Institution portal clicked');
+                      handleDemoLogin('institution');
+                    }}>
                 <div className="text-center">
                   <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                     <Building2 className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-purple-600" />
                   </div>
                   <h4 className="font-semibold text-sm md:text-base text-slate-800 mb-1.5 md:mb-2">Institution Portal</h4>
                   <p className="text-xs md:text-sm text-slate-600 mb-3 md:mb-4">Management, compliance, analytics</p>
-                  <Button className="w-full text-xs md:text-sm bg-purple-600 hover:bg-purple-700">
+                  <Button 
+                    className="w-full text-xs md:text-sm bg-purple-600 hover:bg-purple-700"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDemoLogin('institution');
+                    }}
+                  >
                     Login as Institution
                   </Button>
                 </div>
               </Card>
 
               <Card className="p-4 md:p-5 lg:p-6 border-2 border-orange-200 hover:border-orange-400 transition-colors cursor-pointer"
-                    onClick={() => handleDemoLogin('admin')}>
+                    onClick={(e) => {
+                      e.preventDefault();
+                      console.log('Admin portal clicked');
+                      handleDemoLogin('admin');
+                    }}>
                 <div className="text-center">
                   <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                     <BarChart3 className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-orange-600" />
                   </div>
                   <h4 className="font-semibold text-sm md:text-base text-slate-800 mb-1.5 md:mb-2">Ministry Portal</h4>
                   <p className="text-xs md:text-sm text-slate-600 mb-3 md:mb-4">Policy oversight, national analytics</p>
-                  <Button className="w-full text-xs md:text-sm bg-orange-600 hover:bg-orange-700">
+                  <Button 
+                    className="w-full text-xs md:text-sm bg-orange-600 hover:bg-orange-700"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDemoLogin('admin');
+                    }}
+                  >
                     Login as Ministry
                   </Button>
                 </div>
