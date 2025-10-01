@@ -25,7 +25,8 @@ import {
   Sparkles,
   Route,
   FolderLock,
-  
+  Clock,
+  AlertTriangle
 } from "lucide-react";
 import { Chatbot } from "@/components/Chatbot";
 import { MapView } from "@/components/MapView";
@@ -524,7 +525,261 @@ const StudentDashboard = () => {
           </TabsContent>
 
           <TabsContent value="schemes" className="space-y-6">
+            {/* Scholarship Application Tracking */}
+            <div className="mb-6">
+              <Card className="p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold flex items-center gap-2">
+                      <Award className="h-6 w-6 text-yellow-500" />
+                      Scholarship Applications & Tracking
+                    </h2>
+                    <p className="text-muted-foreground text-sm mt-1">
+                      Track your scholarship applications from submission to approval
+                    </p>
+                  </div>
+                  <Button className="bg-primary">
+                    <Award className="h-4 w-4 mr-2" />
+                    Apply for Scholarship
+                  </Button>
+                </div>
+
+                {/* Application Status Cards */}
+                <div className="space-y-4 mb-6">
+                  <h3 className="text-lg font-bold">My Applications</h3>
+                  
+                  {/* Application 1 - Under Review */}
+                  <div className="border rounded-lg p-4 bg-blue-50/50">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-bold text-lg">Post Matric Scholarship SC/ST</h4>
+                          <Badge className="bg-blue-500">Under Department Review</Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">₹1,200/month • Applied: March 15, 2024</p>
+                      </div>
+                    </div>
+
+                    {/* Progress Tracker */}
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-500 text-white">
+                          <CheckCircle className="h-5 w-5" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between">
+                            <span className="font-medium text-sm">Application Submitted</span>
+                            <span className="text-xs text-muted-foreground">Mar 15, 2024</span>
+                          </div>
+                          <p className="text-xs text-muted-foreground">Your application has been received</p>
+                        </div>
+                      </div>
+
+                      <div className="ml-4 h-8 w-0.5 bg-green-500"></div>
+
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-500 text-white">
+                          <CheckCircle className="h-5 w-5" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between">
+                            <span className="font-medium text-sm">Document Verification</span>
+                            <span className="text-xs text-muted-foreground">Mar 18, 2024</span>
+                          </div>
+                          <p className="text-xs text-muted-foreground">All documents verified successfully</p>
+                        </div>
+                      </div>
+
+                      <div className="ml-4 h-8 w-0.5 bg-blue-500 animate-pulse"></div>
+
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white animate-pulse">
+                          <Clock className="h-5 w-5" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between">
+                            <span className="font-medium text-sm">Department Review</span>
+                            <span className="text-xs text-blue-600 font-medium">In Progress</span>
+                          </div>
+                          <p className="text-xs text-muted-foreground">Being reviewed by Financial Aid Department</p>
+                        </div>
+                      </div>
+
+                      <div className="ml-4 h-8 w-0.5 bg-gray-300"></div>
+
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-300 text-gray-600">
+                          <Award className="h-5 w-5" />
+                        </div>
+                        <div className="flex-1">
+                          <span className="font-medium text-sm text-gray-500">Final Approval</span>
+                          <p className="text-xs text-muted-foreground">Pending department review</p>
+                        </div>
+                      </div>
+
+                      <div className="ml-4 h-8 w-0.5 bg-gray-300"></div>
+
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-300 text-gray-600">
+                          <TrendingUp className="h-5 w-5" />
+                        </div>
+                        <div className="flex-1">
+                          <span className="font-medium text-sm text-gray-500">Disbursement</span>
+                          <p className="text-xs text-muted-foreground">Will be processed after approval</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 p-3 bg-blue-100 rounded-lg flex items-start gap-2">
+                      <Bell className="h-4 w-4 text-blue-700 mt-0.5" />
+                      <div className="text-sm text-blue-800">
+                        <span className="font-medium">Status Update:</span> Your application is currently under review by the Financial Aid Department. Expected decision by March 25, 2024.
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Application 2 - Approved */}
+                  <div className="border rounded-lg p-4 bg-green-50/50">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-bold text-lg">Merit-cum-Means Scholarship</h4>
+                          <Badge className="bg-green-500">Approved</Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">₹20,000/year • Approved: March 10, 2024</p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div className="p-2 bg-white rounded">
+                        <span className="text-muted-foreground">Amount Sanctioned:</span>
+                        <span className="ml-2 font-bold text-green-600">₹20,000</span>
+                      </div>
+                      <div className="p-2 bg-white rounded">
+                        <span className="text-muted-foreground">Next Disbursement:</span>
+                        <span className="ml-2 font-medium">April 5, 2024</span>
+                      </div>
+                    </div>
+
+                    <div className="mt-3 p-3 bg-green-100 rounded-lg flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-700" />
+                      <span className="text-sm text-green-800 font-medium">
+                        Congratulations! Your scholarship has been approved. First installment will be credited on April 5, 2024.
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Application 3 - Documents Pending */}
+                  <div className="border rounded-lg p-4 bg-orange-50/50">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-bold text-lg">Research Fellowship - CSIR</h4>
+                          <Badge className="bg-orange-500">Documents Required</Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">₹31,000/month • Applied: March 12, 2024</p>
+                      </div>
+                    </div>
+
+                    <div className="mt-3 p-3 bg-orange-100 rounded-lg">
+                      <div className="flex items-start gap-2">
+                        <AlertTriangle className="h-4 w-4 text-orange-700 mt-0.5" />
+                        <div className="text-sm text-orange-800">
+                          <span className="font-medium">Action Required:</span> Please upload the following documents:
+                          <ul className="list-disc list-inside mt-2 space-y-1">
+                            <li>Research Proposal (PDF)</li>
+                            <li>Supervisor Recommendation Letter</li>
+                            <li>GATE Scorecard</li>
+                          </ul>
+                          <Button size="sm" className="mt-3 bg-orange-600 hover:bg-orange-700">
+                            Upload Documents
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            {/* Eligible Scholarships */}
             <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Available Scholarships - You're Eligible! 🎯</h3>
+                <p className="text-sm text-muted-foreground mb-4">Based on your CGPA (8.9), Category (General), and Income level, you qualify for these scholarships:</p>
+                <div className="space-y-4">
+                  {[
+                    { 
+                      name: "Central Sector Scholarship", 
+                      type: "Merit-Based", 
+                      amount: "₹10,000/year",
+                      eligibility: "98% Match",
+                      criteria: "CGPA > 8.5, Family Income < 6 LPA",
+                      deadline: "April 30, 2024",
+                      color: "green"
+                    },
+                    { 
+                      name: "INSPIRE Scholarship", 
+                      type: "Science & Technology", 
+                      amount: "₹80,000/year",
+                      eligibility: "92% Match",
+                      criteria: "Top 1% in 12th, Science Stream",
+                      deadline: "May 15, 2024",
+                      color: "blue"
+                    },
+                    { 
+                      name: "Dr. Ambedkar Post Matric", 
+                      type: "OBC Category", 
+                      amount: "₹1,200/month",
+                      eligibility: "85% Match",
+                      criteria: "OBC Category, Income < 8 LPA",
+                      deadline: "March 31, 2024",
+                      color: "purple"
+                    },
+                    { 
+                      name: "Prime Minister's Scholarship", 
+                      type: "Defense Personnel Ward", 
+                      amount: "₹25,000/year",
+                      eligibility: "90% Match",
+                      criteria: "Defense background, CGPA > 8.0",
+                      deadline: "April 20, 2024",
+                      color: "orange"
+                    }
+                  ].map((scholarship, index) => (
+                    <div key={index} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                      <div className="flex justify-between items-start mb-3">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="font-semibold">{scholarship.name}</h4>
+                            <Badge className={`bg-${scholarship.color}-100 text-${scholarship.color}-800`}>
+                              {scholarship.eligibility}
+                            </Badge>
+                          </div>
+                          <p className="text-sm text-muted-foreground">{scholarship.type}</p>
+                        </div>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-center justify-between">
+                          <span className="text-muted-foreground">Amount:</span>
+                          <span className="font-bold text-green-600">{scholarship.amount}</span>
+                        </div>
+                        <div className="flex items-start justify-between gap-2">
+                          <span className="text-muted-foreground">Criteria:</span>
+                          <span className="text-right font-medium text-xs">{scholarship.criteria}</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-muted-foreground">Deadline:</span>
+                          <span className="font-medium text-red-600">{scholarship.deadline}</span>
+                        </div>
+                      </div>
+                      <Button className="w-full mt-3" size="sm">
+                        Apply Now
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
               <Card className="p-6">
                 <h3 className="text-xl font-bold mb-4">Active Schemes & Benefits</h3>
                 <div className="space-y-4">
@@ -587,37 +842,6 @@ const StudentDashboard = () => {
                       </div>
                     </div>
                   ))}
-                </div>
-              </Card>
-
-              <Card className="p-6">
-                <h3 className="text-xl font-bold mb-4">Scheme Eligibility Checker</h3>
-                <div className="space-y-4">
-                  <div className="p-4 bg-blue-50 rounded-lg">
-                    <h4 className="font-semibold text-blue-800 mb-2">AI-Powered Recommendations</h4>
-                    <p className="text-sm text-blue-700">Based on your profile, you're eligible for 8 new schemes</p>
-                  </div>
-                  
-                  <div className="space-y-3">
-                    {[
-                      { name: "Post Matric Scholarship", eligibility: "95%", amount: "₹1,200/month", deadline: "Mar 30, 2024" },
-                      { name: "Merit-cum-Means Scholarship", eligibility: "87%", amount: "₹20,000/year", deadline: "Apr 15, 2024" },
-                      { name: "Research Fellowship", eligibility: "82%", amount: "₹31,000/month", deadline: "May 01, 2024" },
-                      { name: "Innovation Challenge", eligibility: "78%", amount: "₹1,00,000", deadline: "Jun 15, 2024" }
-                    ].map((scheme, index) => (
-                      <div key={index} className="p-3 border rounded">
-                        <div className="flex justify-between items-start mb-2">
-                          <h5 className="font-medium">{scheme.name}</h5>
-                          <Badge variant="outline">{scheme.eligibility} match</Badge>
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          <p>Amount: {scheme.amount}</p>
-                          <p>Deadline: {scheme.deadline}</p>
-                        </div>
-                        <Button size="sm" className="mt-2 w-full">Apply Now</Button>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </Card>
             </div>
