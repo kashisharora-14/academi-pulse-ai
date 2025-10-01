@@ -1023,8 +1023,9 @@ const TeacherDashboard = () => {
                     </div>
                   </div>
                   
-                  {/* Bottom Government Strip */}
-                  <div className="h-1 bg-gradient-to-r from-orange-500 via-white to-green-500"></div>
+                    {/* Bottom Government Strip */}
+                    <div className="h-1 bg-gradient-to-r from-orange-500 via-white to-green-500"></div>
+                  </div>
                 </Card>
               ))}
             </div>
