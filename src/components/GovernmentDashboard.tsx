@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
@@ -37,220 +36,220 @@ const GovernmentDashboard = () => {
 
   const collegePerformanceData = [
     // Chandigarh - Top Performers
-    { 
-      id: "1", 
-      name: "Punjab Engineering College", 
-      position: [30.7677, 76.7794] as [number, number], 
-      nirfRank: 78, 
-      dropout: 3.2, 
-      placement: 89, 
-      research: 72, 
+    {
+      id: "1",
+      name: "Punjab Engineering College",
+      position: [30.7677, 76.7794] as [number, number],
+      nirfRank: 78,
+      dropout: 3.2,
+      placement: 89,
+      research: 72,
       performance: 'excellent',
       data: "NIRF: 78 | Placement: 89% | Research: 72 | Status: Excellent",
       students: 3500,
       city: "Chandigarh",
       type: "Engineering"
     },
-    { 
-      id: "2", 
-      name: "Panjab University", 
-      position: [30.7590, 76.7865] as [number, number], 
-      nirfRank: 95, 
-      dropout: 4.1, 
-      placement: 76, 
-      research: 85, 
+    {
+      id: "2",
+      name: "Panjab University",
+      position: [30.7590, 76.7865] as [number, number],
+      nirfRank: 95,
+      dropout: 4.1,
+      placement: 76,
+      research: 85,
       performance: 'good',
       data: "NIRF: 95 | Placement: 76% | Research: 85 | Status: Good",
       students: 12000,
       city: "Chandigarh",
       type: "University"
     },
-    { 
-      id: "3", 
-      name: "Government Medical College", 
-      position: [30.7465, 76.7850] as [number, number], 
-      nirfRank: 145, 
-      dropout: 2.1, 
-      placement: 94, 
-      research: 68, 
+    {
+      id: "3",
+      name: "Government Medical College",
+      position: [30.7465, 76.7850] as [number, number],
+      nirfRank: 145,
+      dropout: 2.1,
+      placement: 94,
+      research: 68,
       performance: 'good',
       data: "NIRF: 145 | Placement: 94% | Research: 68 | Status: Good",
       students: 2800,
       city: "Chandigarh",
       type: "Medical"
     },
-    
+
     // Punjab - Excellent Institutions
-    { 
-      id: "4", 
-      name: "IIT Ropar", 
-      position: [30.9675, 76.4748] as [number, number], 
-      nirfRank: 31, 
-      dropout: 1.8, 
-      placement: 95, 
-      research: 92, 
+    {
+      id: "4",
+      name: "IIT Ropar",
+      position: [30.9675, 76.4748] as [number, number],
+      nirfRank: 31,
+      dropout: 1.8,
+      placement: 95,
+      research: 92,
       performance: 'excellent',
       data: "NIRF: 31 | Placement: 95% | Research: 92 | Status: Top Tier",
       students: 1800,
       city: "Rupnagar",
       type: "IIT"
     },
-    { 
-      id: "5", 
-      name: "Thapar Institute of Engineering", 
-      position: [30.3548, 76.3621] as [number, number], 
-      nirfRank: 42, 
-      dropout: 2.5, 
-      placement: 91, 
-      research: 78, 
+    {
+      id: "5",
+      name: "Thapar Institute of Engineering",
+      position: [30.3548, 76.3621] as [number, number],
+      nirfRank: 42,
+      dropout: 2.5,
+      placement: 91,
+      research: 78,
       performance: 'excellent',
       data: "NIRF: 42 | Placement: 91% | Research: 78 | Status: Excellent",
       students: 4200,
       city: "Patiala",
       type: "Engineering"
     },
-    { 
-      id: "6", 
-      name: "NIT Jalandhar", 
-      position: [31.3260, 75.5762] as [number, number], 
-      nirfRank: 52, 
-      dropout: 3.8, 
-      placement: 87, 
-      research: 74, 
+    {
+      id: "6",
+      name: "NIT Jalandhar",
+      position: [31.3260, 75.5762] as [number, number],
+      nirfRank: 52,
+      dropout: 3.8,
+      placement: 87,
+      research: 74,
       performance: 'excellent',
       data: "NIRF: 52 | Placement: 87% | Research: 74 | Status: Excellent",
       students: 3600,
       city: "Jalandhar",
       type: "NIT"
     },
-    
+
     // Punjab - Good Performers
-    { 
-      id: "7", 
-      name: "Punjab Agricultural University", 
-      position: [30.9010, 75.8573] as [number, number], 
-      nirfRank: 89, 
-      dropout: 5.2, 
-      placement: 79, 
-      research: 81, 
+    {
+      id: "7",
+      name: "Punjab Agricultural University",
+      position: [30.9010, 75.8573] as [number, number],
+      nirfRank: 89,
+      dropout: 5.2,
+      placement: 79,
+      research: 81,
       performance: 'good',
       data: "NIRF: 89 | Placement: 79% | Research: 81 | Status: Good",
       students: 5200,
       city: "Ludhiana",
       type: "Agricultural"
     },
-    { 
-      id: "8", 
-      name: "Guru Nanak Dev University", 
-      position: [31.6340, 74.8723] as [number, number], 
-      nirfRank: 112, 
-      dropout: 6.8, 
-      placement: 71, 
-      research: 65, 
+    {
+      id: "8",
+      name: "Guru Nanak Dev University",
+      position: [31.6340, 74.8723] as [number, number],
+      nirfRank: 112,
+      dropout: 6.8,
+      placement: 71,
+      research: 65,
       performance: 'good',
       data: "NIRF: 112 | Placement: 71% | Research: 65 | Status: Good",
       students: 8500,
       city: "Amritsar",
       type: "University"
     },
-    
+
     // Average Performers - Need Monitoring
-    { 
-      id: "9", 
-      name: "Chandigarh College of Engineering", 
-      position: [30.7506, 76.7647] as [number, number], 
-      nirfRank: 156, 
-      dropout: 8.7, 
-      placement: 65, 
-      research: 45, 
+    {
+      id: "9",
+      name: "Chandigarh College of Engineering",
+      position: [30.7506, 76.7647] as [number, number],
+      nirfRank: 156,
+      dropout: 8.7,
+      placement: 65,
+      research: 45,
       performance: 'average',
       data: "NIRF: 156 | Placement: 65% | Research: 45 | Status: Average",
       students: 2100,
       city: "Chandigarh",
       type: "Engineering"
     },
-    { 
-      id: "10", 
-      name: "Punjab Technical University", 
-      position: [31.2560, 75.7047] as [number, number], 
-      nirfRank: 167, 
-      dropout: 9.5, 
-      placement: 62, 
-      research: 42, 
+    {
+      id: "10",
+      name: "Punjab Technical University",
+      position: [31.2560, 75.7047] as [number, number],
+      nirfRank: 167,
+      dropout: 9.5,
+      placement: 62,
+      research: 42,
       performance: 'average',
       data: "NIRF: 167 | Placement: 62% | Research: 42 | Status: Average",
       students: 6800,
       city: "Kapurthala",
       type: "Technical"
     },
-    
+
     // Needs Attention - Government Focus Required
-    { 
-      id: "11", 
-      name: "Government Polytechnic Ludhiana", 
-      position: [30.9000, 75.8500] as [number, number], 
-      nirfRank: 198, 
-      dropout: 12.3, 
-      placement: 52, 
-      research: 38, 
+    {
+      id: "11",
+      name: "Government Polytechnic Ludhiana",
+      position: [30.9000, 75.8500] as [number, number],
+      nirfRank: 198,
+      dropout: 12.3,
+      placement: 52,
+      research: 38,
       performance: 'needs-attention',
       data: "NIRF: 198 | Placement: 52% | Research: 38 | Status: Needs Attention",
       students: 1200,
       city: "Ludhiana",
       type: "Polytechnic"
     },
-    { 
-      id: "12", 
-      name: "Regional College Jalandhar", 
-      position: [31.3200, 75.5800] as [number, number], 
-      nirfRank: 215, 
-      dropout: 14.1, 
-      placement: 48, 
-      research: 35, 
+    {
+      id: "12",
+      name: "Regional College Jalandhar",
+      position: [31.3200, 75.5800] as [number, number],
+      nirfRank: 215,
+      dropout: 14.1,
+      placement: 48,
+      research: 35,
       performance: 'needs-attention',
       data: "NIRF: 215 | Placement: 48% | Research: 35 | Status: Needs Attention",
       students: 1850,
       city: "Jalandhar",
       type: "General"
     },
-    
+
     // Critical - Immediate Intervention Required
-    { 
-      id: "13", 
-      name: "Rural Technical Institute", 
-      position: [30.2048, 76.9348] as [number, number], 
-      nirfRank: 285, 
-      dropout: 18.5, 
-      placement: 35, 
-      research: 25, 
+    {
+      id: "13",
+      name: "Rural Technical Institute",
+      position: [30.2048, 76.9348] as [number, number],
+      nirfRank: 285,
+      dropout: 18.5,
+      placement: 35,
+      research: 25,
       performance: 'critical',
       data: "NIRF: 285 | Placement: 35% | Research: 25 | Status: Critical",
       students: 850,
       city: "Moga",
       type: "Technical"
     },
-    { 
-      id: "14", 
-      name: "District College Bathinda", 
-      position: [30.2100, 74.9455] as [number, number], 
-      nirfRank: 312, 
-      dropout: 21.8, 
-      placement: 28, 
-      research: 22, 
+    {
+      id: "14",
+      name: "District College Bathinda",
+      position: [30.2100, 74.9455] as [number, number],
+      nirfRank: 312,
+      dropout: 21.8,
+      placement: 28,
+      research: 22,
       performance: 'critical',
       data: "NIRF: 312 | Placement: 28% | Research: 22 | Status: Critical",
       students: 1100,
       city: "Bathinda",
       type: "General"
     },
-    { 
-      id: "15", 
-      name: "Sangrur Polytechnic", 
-      position: [30.2458, 75.8421] as [number, number], 
-      nirfRank: 298, 
-      dropout: 19.2, 
-      placement: 31, 
-      research: 18, 
+    {
+      id: "15",
+      name: "Sangrur Polytechnic",
+      position: [30.2458, 75.8421] as [number, number],
+      nirfRank: 298,
+      dropout: 19.2,
+      placement: 31,
+      research: 18,
       performance: 'critical',
       data: "NIRF: 298 | Placement: 31% | Research: 18 | Status: Critical",
       students: 920,
@@ -563,9 +562,9 @@ const GovernmentDashboard = () => {
                     </div>
                   </div>
                 </div>
-                <MapView 
-                  locations={collegePerformanceData} 
-                  center={[30.7677, 76.7794]} 
+                <MapView
+                  locations={collegePerformanceData}
+                  center={[30.7677, 76.7794]}
                   zoom={8}
                 />
               </CardContent>
@@ -607,7 +606,7 @@ const GovernmentDashboard = () => {
                           {college.performance === 'needs-attention' ? 'needs attention' : college.performance}
                         </Badge>
                       </div>
-                      
+
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div className="text-center p-2 bg-gray-50 rounded">
                           <div className="text-lg font-bold">#{college.nirfRank}</div>
@@ -739,6 +738,433 @@ const GovernmentDashboard = () => {
               </CardContent>
             </Card>
           </TabsContent>
+
+          {/* Enhanced Top Performing States */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Award className="h-5 w-5 text-yellow-500" />
+                Top Performing States - Education Excellence Dashboard
+              </CardTitle>
+              <CardDescription>
+                Comprehensive state-wise education performance with detailed analytics and government insights
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Tabs defaultValue="ranking" className="w-full">
+                <TabsList className="grid w-full grid-cols-4">
+                  <TabsTrigger value="ranking">State Rankings</TabsTrigger>
+                  <TabsTrigger value="detailed">Detailed Metrics</TabsTrigger>
+                  <TabsTrigger value="comparison">Compare States</TabsTrigger>
+                  <TabsTrigger value="trends">Performance Trends</TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="ranking" className="space-y-4">
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                      🏆 National Education Performance Rankings
+                      <Badge variant="outline" className="bg-blue-50">Updated: Real-time</Badge>
+                    </h3>
+                    <div className="grid gap-4">
+                      {[
+                        {
+                          state: "Kerala",
+                          score: 92,
+                          rank: 1,
+                          trend: "up",
+                          literacy: 94.0,
+                          nirfCount: 8,
+                          dropout: 2.1,
+                          funding: "₹15,240 Cr",
+                          institutions: 2847,
+                          highlight: "National Leader",
+                          bgColor: "bg-gradient-to-r from-green-50 to-emerald-50",
+                          borderColor: "border-green-500"
+                        },
+                        {
+                          state: "Tamil Nadu",
+                          score: 88,
+                          rank: 2,
+                          trend: "up",
+                          literacy: 80.1,
+                          nirfCount: 12,
+                          dropout: 4.2,
+                          funding: "₹18,650 Cr",
+                          institutions: 3421,
+                          highlight: "Strong Industrial Connect",
+                          bgColor: "bg-gradient-to-r from-blue-50 to-cyan-50",
+                          borderColor: "border-blue-500"
+                        },
+                        {
+                          state: "Karnataka",
+                          score: 85,
+                          rank: 3,
+                          trend: "stable",
+                          literacy: 75.4,
+                          nirfCount: 15,
+                          dropout: 6.8,
+                          funding: "₹16,890 Cr",
+                          institutions: 2987,
+                          highlight: "Tech Education Hub",
+                          bgColor: "bg-gradient-to-r from-purple-50 to-indigo-50",
+                          borderColor: "border-purple-500"
+                        },
+                        {
+                          state: "Gujarat",
+                          score: 82,
+                          rank: 4,
+                          trend: "down",
+                          literacy: 78.0,
+                          nirfCount: 6,
+                          dropout: 8.1,
+                          funding: "₹12,340 Cr",
+                          institutions: 2156,
+                          highlight: "Business Education Focus",
+                          bgColor: "bg-gradient-to-r from-orange-50 to-amber-50",
+                          borderColor: "border-orange-500"
+                        },
+                        {
+                          state: "Maharashtra",
+                          score: 80,
+                          rank: 5,
+                          trend: "up",
+                          literacy: 82.3,
+                          nirfCount: 18,
+                          dropout: 7.5,
+                          funding: "₹22,180 Cr",
+                          institutions: 4512,
+                          highlight: "Largest Higher Ed Network",
+                          bgColor: "bg-gradient-to-r from-red-50 to-pink-50",
+                          borderColor: "border-red-500"
+                        }
+                      ].map((state, index) => (
+                        <div key={state.state} className={`${state.bgColor} border-l-4 ${state.borderColor} rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer`}>
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-4">
+                              <div className={`w-12 h-12 ${state.rank === 1 ? 'bg-gradient-to-r from-yellow-400 to-yellow-500' :
+                                               state.rank === 2 ? 'bg-gradient-to-r from-gray-300 to-gray-400' :
+                                               state.rank === 3 ? 'bg-gradient-to-r from-amber-600 to-amber-700' :
+                                               'bg-gradient-to-r from-blue-500 to-blue-600'}
+                                              rounded-full flex items-center justify-center shadow-md`}>
+                                <span className="text-lg font-bold text-white">#{state.rank}</span>
+                              </div>
+                              <div>
+                                <div className="flex items-center gap-2 mb-1">
+                                  <h4 className="text-xl font-bold text-gray-900">{state.state}</h4>
+                                  <Badge variant="secondary" className={`${state.rank === 1 ? 'bg-yellow-100 text-yellow-800' :
+                                                                           state.rank <= 3 ? 'bg-green-100 text-green-800' :
+                                                                           'bg-blue-100 text-blue-800'}`}>
+                                    {state.highlight}
+                                  </Badge>
+                                </div>
+                                <div className="text-sm text-gray-600">Performance Score: {state.score}/100</div>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <div className="text-right">
+                                <div className="flex items-center gap-1 mb-1">
+                                  {state.trend === "up" && <TrendingUp className="h-5 w-5 text-green-500" />}
+                                  {state.trend === "down" && <TrendingDown className="h-5 w-5 text-red-500" />}
+                                  {state.trend === "stable" && <div className="w-5 h-5 bg-yellow-500 rounded-full"></div>}
+                                  <span className={`text-sm font-medium ${
+                                    state.trend === "up" ? "text-green-600" :
+                                    state.trend === "down" ? "text-red-600" : "text-yellow-600"
+                                  }`}>
+                                    {state.trend === "up" ? "Rising" : state.trend === "down" ? "Declining" : "Stable"}
+                                  </span>
+                                </div>
+                                <Progress value={state.score} className="w-24 h-2" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4 pt-4 border-t border-gray-200">
+                            <div className="text-center">
+                              <div className="text-2xl font-bold text-blue-600">{state.literacy}%</div>
+                              <div className="text-xs text-gray-500">Literacy Rate</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-2xl font-bold text-green-600">{state.nirfCount}</div>
+                              <div className="text-xs text-gray-500">NIRF Ranked</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-2xl font-bold text-purple-600">{state.institutions.toLocaleString()}</div>
+                              <div className="text-xs text-gray-500">Institutions</div>
+                            </div>
+                            <div className="text-center">
+                              <div className={`text-2xl font-bold ${state.dropout < 5 ? 'text-green-600' : state.dropout < 8 ? 'text-yellow-600' : 'text-red-600'}`}>
+                                {state.dropout}%
+                              </div>
+                              <div className="text-xs text-gray-500">Dropout Rate</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-2xl font-bold text-indigo-600">{state.funding}</div>
+                              <div className="text-xs text-gray-500">Annual Budget</div>
+                            </div>
+                          </div>
+
+                          {/* Government Action Indicators */}
+                          <div className="mt-4 pt-3 border-t border-gray-200">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                                <span className="text-sm text-gray-600">Ministry Status: Active Monitoring</span>
+                              </div>
+                              <div className="flex gap-2">
+                                {state.rank <= 2 && <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">Exemplary</Badge>}
+                                {state.rank === 3 && <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">Stable</Badge>}
+                                {state.rank > 3 && state.trend === "down" && <Badge variant="outline" className="bg-yellow-50 text-yellow-700 border-yellow-200">Watch List</Badge>}
+                                {state.nirfCount > 10 && <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-200">Research Leader</Badge>}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="detailed" className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <Card className="bg-gradient-to-br from-blue-50 to-blue-100">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-lg flex items-center gap-2">
+                          <BookOpen className="h-5 w-5 text-blue-600" />
+                          Literacy Excellence
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm">Kerala</span>
+                            <span className="font-bold text-blue-600">94.0%</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm">Maharashtra</span>
+                            <span className="font-bold text-blue-600">82.3%</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm">Tamil Nadu</span>
+                            <span className="font-bold text-blue-600">80.1%</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="bg-gradient-to-br from-green-50 to-green-100">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-lg flex items-center gap-2">
+                          <Star className="h-5 w-5 text-green-600" />
+                          NIRF Champions
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm">Maharashtra</span>
+                            <span className="font-bold text-green-600">18 Institutes</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm">Karnataka</span>
+                            <span className="font-bold text-green-600">15 Institutes</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm">Tamil Nadu</span>
+                            <span className="font-bold text-green-600">12 Institutes</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="bg-gradient-to-br from-purple-50 to-purple-100">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-lg flex items-center gap-2">
+                          <Building2 className="h-5 w-5 text-purple-600" />
+                          Infrastructure Scale
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm">Maharashtra</span>
+                            <span className="font-bold text-purple-600">4,512</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm">Tamil Nadu</span>
+                            <span className="font-bold text-purple-600">3,421</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm">Karnataka</span>
+                            <span className="font-bold text-purple-600">2,987</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  <Card className="bg-gradient-to-r from-orange-50 via-white to-green-50 border-l-4 border-orange-500">
+                    <CardHeader>
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        🏛️ Government Action Dashboard
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="text-center p-4 bg-green-100 rounded-lg">
+                          <div className="text-2xl font-bold text-green-700">₹84,300 Cr</div>
+                          <div className="text-sm text-green-600">Total Annual Education Budget</div>
+                          <div className="text-xs text-gray-500 mt-1">Across Top 5 States</div>
+                        </div>
+                        <div className="text-center p-4 bg-blue-100 rounded-lg">
+                          <div className="text-2xl font-bold text-blue-700">15,923</div>
+                          <div className="text-sm text-blue-600">Higher Education Institutions</div>
+                          <div className="text-xs text-gray-500 mt-1">Combined Network</div>
+                        </div>
+                        <div className="text-center p-4 bg-purple-100 rounded-lg">
+                          <div className="text-2xl font-bold text-purple-700">5.7%</div>
+                          <div className="text-sm text-purple-600">Average Dropout Rate</div>
+                          <div className="text-xs text-gray-500 mt-1">Target: &lt;5% by 2025</div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+
+                <TabsContent value="comparison" className="space-y-4">
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border">
+                    <h3 className="text-lg font-semibold mb-4">Comparative State Analysis</h3>
+                    <div className="overflow-x-auto">
+                      <table className="w-full border-collapse">
+                        <thead>
+                          <tr className="border-b-2 border-gray-200">
+                            <th className="text-left p-3 font-semibold">State</th>
+                            <th className="text-center p-3 font-semibold">Overall Score</th>
+                            <th className="text-center p-3 font-semibold">Literacy %</th>
+                            <th className="text-center p-3 font-semibold">NIRF Count</th>
+                            <th className="text-center p-3 font-semibold">Dropout %</th>
+                            <th className="text-center p-3 font-semibold">Budget (Cr)</th>
+                            <th className="text-center p-3 font-semibold">Gov Priority</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {[
+                            { state: "Kerala", score: 92, literacy: 94.0, nirf: 8, dropout: 2.1, budget: "15,240", priority: "Showcase" },
+                            { state: "Tamil Nadu", score: 88, literacy: 80.1, nirf: 12, dropout: 4.2, budget: "18,650", priority: "Support" },
+                            { state: "Karnataka", score: 85, literacy: 75.4, nirf: 15, dropout: 6.8, budget: "16,890", priority: "Monitor" },
+                            { state: "Gujarat", score: 82, literacy: 78.0, nirf: 6, dropout: 8.1, budget: "12,340", priority: "Improve" },
+                            { state: "Maharashtra", score: 80, literacy: 82.3, nirf: 18, dropout: 7.5, budget: "22,180", priority: "Scale" }
+                          ].map((row, index) => (
+                            <tr key={row.state} className="border-b border-gray-100 hover:bg-white/50">
+                              <td className="p-3 font-medium">{row.state}</td>
+                              <td className="p-3 text-center">
+                                <span className={`font-bold ${
+                                  row.score >= 90 ? 'text-green-600' :
+                                  row.score >= 85 ? 'text-blue-600' :
+                                  row.score >= 80 ? 'text-yellow-600' : 'text-red-600'
+                                }`}>{row.score}</span>
+                              </td>
+                              <td className="p-3 text-center">{row.literacy}%</td>
+                              <td className="p-3 text-center text-green-600 font-semibold">{row.nirf}</td>
+                              <td className="p-3 text-center">
+                                <span className={row.dropout < 5 ? 'text-green-600' : row.dropout < 8 ? 'text-yellow-600' : 'text-red-600'}>
+                                  {row.dropout}%
+                                </span>
+                              </td>
+                              <td className="p-3 text-center">₹{row.budget}</td>
+                              <td className="p-3 text-center">
+                                <Badge variant="outline" className={
+                                  row.priority === "Showcase" ? "bg-green-50 text-green-700 border-green-200" :
+                                  row.priority === "Support" ? "bg-blue-50 text-blue-700 border-blue-200" :
+                                  row.priority === "Monitor" ? "bg-yellow-50 text-yellow-700 border-yellow-200" :
+                                  row.priority === "Improve" ? "bg-orange-50 text-orange-700 border-orange-200" :
+                                  "bg-purple-50 text-purple-700 border-purple-200"
+                                }>
+                                  {row.priority}
+                                </Badge>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="trends" className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-lg">Performance Trajectory</CardTitle>
+                        <CardDescription>5-Year trend analysis</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-4">
+                          {[
+                            { state: "Kerala", trend: [88, 89, 90, 91, 92], change: "+4", color: "green" },
+                            { state: "Tamil Nadu", trend: [84, 85, 86, 87, 88], change: "+4", color: "green" },
+                            { state: "Karnataka", trend: [83, 84, 85, 85, 85], change: "+2", color: "blue" },
+                            { state: "Gujarat", trend: [85, 84, 83, 83, 82], change: "-3", color: "red" },
+                            { state: "Maharashtra", trend: [78, 78, 79, 79, 80], change: "+2", color: "blue" }
+                          ].map((state, index) => (
+                            <div key={state.state} className="flex items-center justify-between p-3 border rounded-lg">
+                              <div className="flex-1">
+                                <div className="font-medium">{state.state}</div>
+                                <div className="flex items-center gap-1 mt-1">
+                                  {state.trend.map((score, i) => (
+                                    <div key={i} className={`h-2 w-8 rounded ${
+                                      state.color === 'green' ? 'bg-green-400' :
+                                      state.color === 'blue' ? 'bg-blue-400' : 'bg-red-400'
+                                    }`} style={{opacity: 0.4 + (i * 0.15)}}></div>
+                                  ))}
+                                </div>
+                              </div>
+                              <div className={`text-sm font-bold ${
+                                state.color === 'green' ? 'text-green-600' :
+                                state.color === 'blue' ? 'text-blue-600' : 'text-red-600'
+                              }`}>
+                                {state.change}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-lg">Government Focus Areas</CardTitle>
+                        <CardDescription>Priority interventions by state</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-4">
+                          <div className="p-3 bg-green-50 border-l-4 border-green-500 rounded">
+                            <h4 className="font-semibold text-green-900">Kerala - Best Practice Model</h4>
+                            <p className="text-sm text-green-700">Document and replicate successful strategies nationally</p>
+                          </div>
+                          <div className="p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
+                            <h4 className="font-semibold text-blue-900">Tamil Nadu - Industry Integration</h4>
+                            <p className="text-sm text-blue-700">Strengthen industry-academia partnerships</p>
+                          </div>
+                          <div className="p-3 bg-purple-50 border-l-4 border-purple-500 rounded">
+                            <h4 className="font-semibold text-purple-900">Karnataka - Tech Innovation</h4>
+                            <p className="text-sm text-purple-700">Digital education infrastructure expansion</p>
+                          </div>
+                          <div className="p-3 bg-orange-50 border-l-4 border-orange-500 rounded">
+                            <h4 className="font-semibold text-orange-900">Gujarat - Dropout Prevention</h4>
+                            <p className="text-sm text-orange-700">Implement targeted retention programs</p>
+                          </div>
+                          <div className="p-3 bg-red-50 border-l-4 border-red-500 rounded">
+                            <h4 className="font-semibold text-red-900">Maharashtra - Quality Assurance</h4>
+                            <p className="text-sm text-red-700">Focus on improving quality across large network</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </TabsContent>
+              </Tabs>
+            </CardContent>
+          </Card>
         </Tabs>
       </div>
     </div>
