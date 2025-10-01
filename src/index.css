@@ -8,13 +8,12 @@
 .custom-performance-marker {
   background: transparent !important;
   border: none !important;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .custom-performance-marker:hover {
-  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
-  transform: scale(1.1);
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+  cursor: pointer;
 }
 
 /* Ensure leaflet doesn't override our custom styles */
@@ -22,32 +21,6 @@
   background: transparent !important;
   border: none !important;
   border-radius: 0 !important;
-}
-
-/* Performance marker hover effects */
-.performance-excellent:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 2px 8px rgba(22, 163, 74, 0.6) !important;
-}
-
-.performance-good:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 2px 8px rgba(37, 99, 235, 0.6) !important;
-}
-
-.performance-average:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 2px 8px rgba(234, 179, 8, 0.6) !important;
-}
-
-.performance-needs-attention:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 2px 8px rgba(234, 88, 12, 0.6) !important;
-}
-
-.performance-critical:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 2px 8px rgba(220, 38, 38, 0.6) !important;
 }
 
 /* Custom Popup Styles */
