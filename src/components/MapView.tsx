@@ -100,15 +100,15 @@ const createCustomIcon = (location: Location) => {
         @keyframes pulse-critical {
           0% { 
             transform: scale(1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 0 0 0 rgba(220, 38, 38, 0.7);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 0 0 0 rgba(220, 38, 38, 0.7);
           }
           50% { 
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 0 0 8px rgba(220, 38, 38, 0.3);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.4), 0 0 0 4px rgba(220, 38, 38, 0.3);
           }
           100% { 
             transform: scale(1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 0 0 0 rgba(220, 38, 38, 0);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 0 0 0 rgba(220, 38, 38, 0);
           }
         }
       </style>
@@ -117,14 +117,14 @@ const createCustomIcon = (location: Location) => {
         background-image: linear-gradient(135deg, ${performanceColor} 0%, ${performanceColor}dd 100%);
         color: ${textColor};
         border-radius: 50%;
-        width: 50px;
-        height: 50px;
+        width: 32px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 4px solid #FFFFFF;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px ${performanceColor}60;
-        font-size: 16px;
+        border: 2px solid #FFFFFF;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 1px 4px ${performanceColor}60;
+        font-size: 10px;
         font-weight: 900;
         position: relative;
         cursor: pointer;
@@ -133,45 +133,45 @@ const createCustomIcon = (location: Location) => {
         ${location.performance === 'critical' ? 'animation: pulse-critical 2s infinite;' : ''}
       ">
         <div style="text-align: center; line-height: 1; position: relative; z-index: 2;">
-          <div style="font-size: 18px; display: block; margin-bottom: 2px;">${symbol}</div>
-          ${location.nirfRank ? `<div style="font-size: 7px; font-weight: 600; color: ${textColor};">#${location.nirfRank}</div>` : ''}
+          <div style="font-size: 12px; display: block; margin-bottom: 1px;">${symbol}</div>
+          ${location.nirfRank ? `<div style="font-size: 5px; font-weight: 600; color: ${textColor};">#${location.nirfRank}</div>` : ''}
         </div>
         ${rankDisplay ? `<div style="
-          font-size: 10px; 
+          font-size: 6px; 
           position: absolute; 
-          top: -8px; 
-          right: -8px; 
+          top: -4px; 
+          right: -4px; 
           background: white; 
           border-radius: 50%; 
-          width: 16px; 
-          height: 16px; 
+          width: 10px; 
+          height: 10px; 
           display: flex; 
           align-items: center; 
           justify-content: center; 
-          border: 2px solid ${performanceColor};
+          border: 1px solid ${performanceColor};
           z-index: 3;
         ">${rankDisplay}</div>` : ''}
         ${getGovernmentAlert() ? `<div style="
-          font-size: 8px; 
+          font-size: 6px; 
           position: absolute; 
-          top: -6px; 
-          left: -6px; 
+          top: -4px; 
+          left: -4px; 
           background: white; 
           border-radius: 50%; 
-          width: 14px; 
-          height: 14px; 
+          width: 10px; 
+          height: 10px; 
           display: flex; 
           align-items: center; 
           justify-content: center; 
-          border: 2px solid #333;
+          border: 1px solid #333;
           z-index: 3;
         ">${getGovernmentAlert()}</div>` : ''}
       </div>
     `,
     className: `custom-performance-marker marker-${location.performance} performance-${location.performance}`,
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0, -25]
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+    popupAnchor: [0, -16]
   });
 };
 
