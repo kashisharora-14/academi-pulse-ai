@@ -60,7 +60,7 @@ const GovernmentDashboard = () => {
       research: 85,
       performance: 'good',
       data: "NIRF: 95 | Placement: 76% | Research: 85 | Status: Good",
-      students: 45000,
+      students: 28500,
       city: "Chandigarh",
       type: "Central University"
     },
@@ -74,7 +74,7 @@ const GovernmentDashboard = () => {
       research: 58,
       performance: 'good',
       data: "NIRF: 125 | Placement: 82% | Research: 58 | Status: Good",
-      students: 32000,
+      students: 48000,
       city: "Chandigarh",
       type: "Private University"
     },
