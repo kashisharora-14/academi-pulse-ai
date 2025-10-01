@@ -36,7 +36,9 @@ import {
   FileText,
   Settings,
   Bell,
-  Shield
+  Shield,
+  GraduationCap,
+  Send
 } from "lucide-react";
 import {
   LineChart,
@@ -436,7 +438,7 @@ const AdminDashboard = () => {
         <Tabs defaultValue="overview" className="space-y-6">
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
-            <TabsList className="grid w-full grid-cols-12 text-xs">
+            <TabsList className="grid w-full grid-cols-13 text-xs">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="institutions">Institutions</TabsTrigger>
               <TabsTrigger value="schemes">Schemes</TabsTrigger>
@@ -445,6 +447,10 @@ const AdminDashboard = () => {
               <TabsTrigger value="interop">Interoperability</TabsTrigger>
               <TabsTrigger value="policy">Policy Support</TabsTrigger>
               <TabsTrigger value="security">Security</TabsTrigger>
+              <TabsTrigger value="authority-requests">
+                <Shield className="h-4 w-4 mr-1" />
+                Authority Requests
+              </TabsTrigger>
               <TabsTrigger value="map">Geo-Analytics</TabsTrigger>
               <TabsTrigger value="qr">
                 <QrCode className="h-4 w-4 mr-1" />
@@ -1426,12 +1432,321 @@ const AdminDashboard = () => {
                     <p className="text-sm text-green-700">Engineering enrollment up 15% this year - prepare infrastructure scaling plans.</p>
                   </div>
                   <div className="p-4 bg-yellow-50 rounded-lg">
-                    <h4 className="font-semibant text-yellow-800">Action Required</h4>
+                    <h4 className="font-semibold text-yellow-800">Action Required</h4>
                     <p className="text-sm text-yellow-700">5 institutions show declining performance metrics - intervention recommended.</p>
                   </div>
                 </div>
               </Card>
             </div>
+          </TabsContent>
+
+          <TabsContent value="authority-requests" className="space-y-6">
+            <Card className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-2xl font-bold flex items-center gap-2">
+                    <Shield className="h-6 w-6 text-red-600" />
+                    Authority Request System
+                  </h2>
+                  <p className="text-muted-foreground text-sm mt-1">
+                    Request detailed information from institutions, teachers, and students. All requests are tracked and logged.
+                  </p>
+                </div>
+                <Button className="bg-red-600 hover:bg-red-700">
+                  <Plus className="h-4 w-4 mr-2" />
+                  New Authority Request
+                </Button>
+              </div>
+
+              {/* Quick Request Categories */}
+              <div className="grid gap-4 md:grid-cols-4 mb-6">
+                <Card className="p-4 cursor-pointer hover:shadow-md transition-shadow bg-blue-50 border-blue-200">
+                  <div className="text-center">
+                    <Building2 className="h-8 w-8 text-blue-600 mx-auto mb-2" />
+                    <h3 className="font-semibold text-blue-800">Institution Data</h3>
+                    <p className="text-xs text-blue-600 mt-1">Request detailed institutional reports</p>
+                    <Badge className="mt-2 bg-blue-100 text-blue-800">245 Available</Badge>
+                  </div>
+                </Card>
+                <Card className="p-4 cursor-pointer hover:shadow-md transition-shadow bg-green-50 border-green-200">
+                  <div className="text-center">
+                    <Users className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                    <h3 className="font-semibold text-green-800">Faculty Records</h3>
+                    <p className="text-xs text-green-600 mt-1">APAR data and performance metrics</p>
+                    <Badge className="mt-2 bg-green-100 text-green-800">12.5K Available</Badge>
+                  </div>
+                </Card>
+                <Card className="p-4 cursor-pointer hover:shadow-md transition-shadow bg-purple-50 border-purple-200">
+                  <div className="text-center">
+                    <GraduationCap className="h-8 w-8 text-purple-600 mx-auto mb-2" />
+                    <h3 className="font-semibold text-purple-800">Student Analytics</h3>
+                    <p className="text-xs text-purple-600 mt-1">Academic progress and outcomes</p>
+                    <Badge className="mt-2 bg-purple-100 text-purple-800">2.1M Available</Badge>
+                  </div>
+                </Card>
+                <Card className="p-4 cursor-pointer hover:shadow-md transition-shadow bg-orange-50 border-orange-200">
+                  <div className="text-center">
+                    <Award className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+                    <h3 className="font-semibold text-orange-800">Scheme Data</h3>
+                    <p className="text-xs text-orange-600 mt-1">Scholarship and program analytics</p>
+                    <Badge className="mt-2 bg-orange-100 text-orange-800">156 Schemes</Badge>
+                  </div>
+                </Card>
+              </div>
+
+              {/* Active Requests */}
+              <div className="space-y-4 mb-6">
+                <h3 className="text-lg font-bold">Active Authority Requests</h3>
+                
+                {/* Request 1 - Pending Approval */}
+                <div className="border rounded-lg p-4 bg-yellow-50/50">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-bold text-lg">Request for IIT Delhi Performance Data</h4>
+                        <Badge className="bg-yellow-500">Awaiting Institution Response</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground">Requested by: Ministry of Education • Priority: High • Due: March 20, 2024</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-50 rounded p-3 space-y-2 mb-4">
+                    <div className="text-sm">
+                      <span className="font-medium">Request Details: </span>
+                      <span>Complete faculty APAR data, NIRF metrics, student placement statistics, and research output for Q4 2023</span>
+                    </div>
+                    <div className="text-sm">
+                      <span className="font-medium">Authority Level: </span>
+                      <span className="text-red-600">Ministry of Education (Level 1)</span>
+                    </div>
+                    <div className="text-sm">
+                      <span className="font-medium">Target: </span>
+                      <span>IIT Delhi Administration</span>
+                    </div>
+                  </div>
+
+                  {/* Progress Tracker */}
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-500 text-white">
+                        <CheckCircle className="h-5 w-5" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                          <span className="font-medium text-sm">Request Initiated</span>
+                          <span className="text-xs text-muted-foreground">Mar 15, 2024</span>
+                        </div>
+                        <p className="text-xs text-muted-foreground">Authority request sent to IIT Delhi</p>
+                      </div>
+                    </div>
+
+                    <div className="ml-4 h-8 w-0.5 bg-green-500"></div>
+
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-500 text-white">
+                        <CheckCircle className="h-5 w-5" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                          <span className="font-medium text-sm">Institution Notified</span>
+                          <span className="text-xs text-muted-foreground">Mar 15, 2024</span>
+                        </div>
+                        <p className="text-xs text-muted-foreground">IIT Delhi administration received request</p>
+                      </div>
+                    </div>
+
+                    <div className="ml-4 h-8 w-0.5 bg-yellow-500 animate-pulse"></div>
+
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-yellow-500 text-white animate-pulse">
+                        <Clock className="h-5 w-5" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                          <span className="font-medium text-sm">Data Compilation</span>
+                          <span className="text-xs text-yellow-600 font-medium">In Progress</span>
+                        </div>
+                        <p className="text-xs text-muted-foreground">Institution compiling requested data</p>
+                      </div>
+                    </div>
+
+                    <div className="ml-4 h-8 w-0.5 bg-gray-300"></div>
+
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-300 text-gray-600">
+                        <FileText className="h-5 w-5" />
+                      </div>
+                      <div className="flex-1">
+                        <span className="font-medium text-sm text-gray-500">Data Submission</span>
+                        <p className="text-xs text-muted-foreground">Expected: March 20, 2024</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 flex gap-2">
+                    <Button size="sm" variant="outline">
+                      <Bell className="h-4 w-4 mr-1" />
+                      Send Reminder
+                    </Button>
+                    <Button size="sm" variant="outline">
+                      <FileText className="h-4 w-4 mr-1" />
+                      View Request Details
+                    </Button>
+                    <Button size="sm" className="bg-red-600 hover:bg-red-700">
+                      <AlertTriangle className="h-4 w-4 mr-1" />
+                      Escalate Request
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Request 2 - Completed */}
+                <div className="border rounded-lg p-4 bg-green-50/50">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-bold text-lg">Punjab State University Data Request</h4>
+                        <Badge className="bg-green-500">Completed</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground">Requested: March 10, 2024 • Completed: March 18, 2024</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4 text-sm mb-3">
+                    <div className="p-2 bg-white rounded">
+                      <span className="text-muted-foreground">Data Points:</span>
+                      <span className="ml-2 font-bold text-green-600">2,847 records</span>
+                    </div>
+                    <div className="p-2 bg-white rounded">
+                      <span className="text-muted-foreground">Response Time:</span>
+                      <span className="ml-2 font-medium">8 days</span>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 p-3 bg-green-100 rounded-lg flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-700" />
+                    <span className="text-sm text-green-800 font-medium">
+                      Complete dataset received. All 156 affiliated colleges' data included.
+                    </span>
+                  </div>
+
+                  <div className="mt-3 flex gap-2">
+                    <Button size="sm" className="bg-green-600 hover:bg-green-700">
+                      <Download className="h-4 w-4 mr-1" />
+                      Download Report
+                    </Button>
+                    <Button size="sm" variant="outline">
+                      <BarChart3 className="h-4 w-4 mr-1" />
+                      View Analytics
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Request 3 - Escalated */}
+                <div className="border rounded-lg p-4 bg-red-50/50">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-bold text-lg">Faculty Performance Review - Bihar Colleges</h4>
+                        <Badge className="bg-red-500">Escalated</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground">Requested: March 5, 2024 • Overdue by: 5 days</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 p-3 bg-red-100 rounded-lg">
+                    <div className="flex items-start gap-2">
+                      <AlertTriangle className="h-4 w-4 text-red-700 mt-0.5" />
+                      <div className="text-sm text-red-800">
+                        <span className="font-medium">Escalation Notice:</span> Request overdue. Director intervention required.
+                        <div className="mt-2">
+                          <span className="font-medium">Issues:</span> 3 institutions non-responsive, data quality concerns
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 flex gap-2">
+                    <Button size="sm" className="bg-red-600 hover:bg-red-700">
+                      <Shield className="h-4 w-4 mr-1" />
+                      Director Intervention
+                    </Button>
+                    <Button size="sm" variant="outline">
+                      <Bell className="h-4 w-4 mr-1" />
+                      Final Notice
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Request Form */}
+              <Card className="p-6 bg-blue-50/30 border-blue-200">
+                <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                  <Plus className="h-5 w-5" />
+                  Create New Authority Request
+                </h3>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div>
+                    <label className="text-sm font-medium">Request Type</label>
+                    <select className="w-full p-2 border rounded-md mt-1">
+                      <option>Institution Performance Data</option>
+                      <option>Faculty APAR Records</option>
+                      <option>Student Analytics Report</option>
+                      <option>Scholarship Utilization Data</option>
+                      <option>Research Output Analysis</option>
+                      <option>NIRF Ranking Data</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Target Entity</label>
+                    <select className="w-full p-2 border rounded-md mt-1">
+                      <option>Select Institution/Department</option>
+                      <option>All IITs (23 institutions)</option>
+                      <option>All NITs (31 institutions)</option>
+                      <option>State Universities - Punjab</option>
+                      <option>Central Universities</option>
+                      <option>Private Universities</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Priority Level</label>
+                    <select className="w-full p-2 border rounded-md mt-1">
+                      <option>High - 7 days</option>
+                      <option>Medium - 15 days</option>
+                      <option>Low - 30 days</option>
+                      <option>Urgent - 3 days</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Data Period</label>
+                    <select className="w-full p-2 border rounded-md mt-1">
+                      <option>Current Academic Year</option>
+                      <option>Last 6 Months</option>
+                      <option>Q4 2023</option>
+                      <option>Full Year 2023</option>
+                      <option>Custom Date Range</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <label className="text-sm font-medium">Detailed Requirements</label>
+                  <textarea
+                    className="w-full p-2 border rounded-md mt-1"
+                    rows={3}
+                    placeholder="Specify exact data requirements, format preferences, and any special instructions..."
+                  />
+                </div>
+                <div className="mt-4 flex gap-2">
+                  <Button className="bg-red-600 hover:bg-red-700">
+                    <Send className="h-4 w-4 mr-2" />
+                    Send Authority Request
+                  </Button>
+                  <Button variant="outline">
+                    <FileText className="h-4 w-4 mr-2" />
+                    Save as Draft
+                  </Button>
+                </div>
+              </Card>
+            </Card>
           </TabsContent>
 
           {/* New Government Tabs */}

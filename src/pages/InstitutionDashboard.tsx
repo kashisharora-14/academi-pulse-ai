@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -28,7 +27,10 @@ import {
   QrCode,
   Download,
   Plus,
-  Edit
+  Edit,
+  Shield, // Added for Authority Request Inbox
+  Bell,   // Added for Authority Request Inbox
+  Send    // Added for Authority Request Inbox
 } from "lucide-react";
 import { 
   BarChart, 
@@ -626,7 +628,7 @@ const InstitutionDashboard = () => {
                       <li>• Resume building sessions</li>
                     </ul>
                   </div>
-                  
+
                   <div className="p-3 bg-green-50 rounded-lg">
                     <h4 className="font-semibold text-green-800">Industry Partnerships</h4>
                     <ul className="text-sm text-green-700 mt-2 space-y-1">
@@ -659,19 +661,19 @@ const InstitutionDashboard = () => {
                     <p className="text-sm text-blue-700">July - August 2024</p>
                     <p className="text-xs text-blue-600">Company presentations and job descriptions</p>
                   </div>
-                  
+
                   <div className="p-3 border-l-4 border-green-400 bg-green-50">
                     <h4 className="font-semibold text-green-800">Campus Recruitment Drive</h4>
                     <p className="text-sm text-green-700">September - December 2024</p>
                     <p className="text-xs text-green-600">Main placement season with major companies</p>
                   </div>
-                  
+
                   <div className="p-3 border-l-4 border-purple-400 bg-purple-50">
                     <h4 className="font-semibold text-purple-800">Pool Campus Drives</h4>
                     <p className="text-sm text-purple-700">January - March 2025</p>
                     <p className="text-xs text-purple-600">Additional opportunities for remaining students</p>
                   </div>
-                  
+
                   <div className="p-3 border-l-4 border-orange-400 bg-orange-50">
                     <h4 className="font-semibant text-orange-800">Internship Placements</h4>
                     <p className="text-sm text-orange-700">April - June 2025</p>
@@ -688,17 +690,17 @@ const InstitutionDashboard = () => {
                     <p className="text-lg font-bold text-yellow-900">₹45 LPA</p>
                     <p className="text-sm text-yellow-700">International offer from Google (Software Engineer)</p>
                   </div>
-                  
+
                   <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-400">
                     <h4 className="font-semibold text-green-800">100% Placement Achievement</h4>
                     <p className="text-sm text-green-700">Computer Science & Engineering department achieves 100% placement for 3rd consecutive year</p>
                   </div>
-                  
+
                   <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
                     <h4 className="font-semibold text-blue-800">Alumni Success</h4>
                     <p className="text-sm text-blue-700">15 alumni in leadership positions at Fortune 500 companies, including 3 CEOs and 8 CTOs</p>
                   </div>
-                  
+
                   <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-400">
                     <h4 className="font-semibold text-purple-800">Entrepreneurship</h4>
                     <p className="text-sm text-purple-700">25+ student startups funded, total valuation ₹150 Cr</p>
@@ -747,20 +749,20 @@ const InstitutionDashboard = () => {
                       <div className="text-sm text-orange-700">SCI Journals</div>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-sm">Research Quality Score</span>
                       <span className="font-semibold">85/100</span>
                     </div>
                     <Progress value={85} />
-                    
+
                     <div className="flex justify-between items-center">
                       <span className="text-sm">International Collaborations</span>
                       <span className="font-semibold">68%</span>
                     </div>
                     <Progress value={68} />
-                    
+
                     <div className="flex justify-between items-center">
                       <span className="text-sm">Industry Partnerships</span>
                       <span className="font-semibold">72%</span>
@@ -857,25 +859,25 @@ const InstitutionDashboard = () => {
                     <p className="text-sm text-yellow-700">"Smart IoT Device for Air Quality Monitoring"</p>
                     <p className="text-xs text-yellow-600">Filed: March 2024</p>
                   </div>
-                  
+
                   <div className="p-3 bg-blue-50 rounded-lg border-l-4 border-blue-400">
                     <h4 className="font-semibold text-blue-800">Best Paper Award</h4>
                     <p className="text-sm text-blue-700">IEEE International Conference on AI</p>
                     <p className="text-xs text-blue-600">Dr. Sharma's research team</p>
                   </div>
-                  
+
                   <div className="p-3 bg-green-50 rounded-lg border-l-4 border-green-400">
                     <h4 className="font-semibold text-green-800">Research Grant Sanctioned</h4>
                     <p className="text-sm text-green-700">₹85L from ISRO for Satellite Technology</p>
                     <p className="text-xs text-green-600">3-year project duration</p>
                   </div>
-                  
+
                   <div className="p-3 bg-purple-50 rounded-lg border-l-4 border-purple-400">
                     <h4 className="font-semibold text-purple-800">Technology Transfer</h4>
                     <p className="text-sm text-purple-700">2 technologies licensed to industry partners</p>
                     <p className="text-xs text-purple-600">Revenue: ₹15L generated</p>
                   </div>
-                  
+
                   <div className="p-3 bg-red-50 rounded-lg border-l-4 border-red-400">
                     <h4 className="font-semibold text-red-800">International Collaboration</h4>
                     <p className="text-sm text-red-700">MoU signed with MIT for joint research</p>
@@ -922,7 +924,7 @@ const InstitutionDashboard = () => {
                       <li>• International Grants: 10% (Newton Fund, NSF)</li>
                     </ul>
                   </div>
-                  
+
                   <div className="p-4 bg-green-50 rounded-lg">
                     <h4 className="font-semibold text-green-800 mb-2">Research Facilities</h4>
                     <ul className="text-sm text-green-700 space-y-1">
@@ -932,7 +934,7 @@ const InstitutionDashboard = () => {
                       <li>• Prototype Development Workshop</li>
                     </ul>
                   </div>
-                  
+
                   <div className="p-4 bg-purple-50 rounded-lg">
                     <h4 className="font-semibold text-purple-800 mb-2">Student Research Programs</h4>
                     <ul className="text-sm text-purple-700 space-y-1">
@@ -993,7 +995,7 @@ const InstitutionDashboard = () => {
               <Card className="p-6 lg:col-span-2">
                 <h3 className="text-xl font-bold mb-4">Government Schemes Management</h3>
                 <div className="space-y-6">
-                  
+
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
                       <label className="text-sm font-medium">Select Scheme Category</label>
@@ -1728,7 +1730,7 @@ const InstitutionDashboard = () => {
                       Budget: ₹50L | Completed: March 2024
                     </div>
                   </div>
-                  
+
                   <div className="p-4 border rounded-lg">
                     <div className="flex justify-between items-start mb-2">
                       <h4 className="font-semibold">Solar Power Installation</h4>
@@ -1740,7 +1742,7 @@ const InstitutionDashboard = () => {
                       Budget: ₹2.5Cr | Expected: April 2024
                     </div>
                   </div>
-                  
+
                   <div className="p-4 border rounded-lg">
                     <div className="flex justify-between items-start mb-2">
                       <h4 className="font-semibold">Student Recreation Center</h4>
@@ -1763,21 +1765,21 @@ const InstitutionDashboard = () => {
                     <p className="text-xs text-muted-foreground">8 blocks, 3000 capacity</p>
                     <Badge className="bg-success mt-1">95% occupied</Badge>
                   </div>
-                  
+
                   <div className="p-3 bg-green-50 rounded-lg text-center">
                     <BookOpen className="h-8 w-8 text-green-600 mx-auto mb-2" />
                     <h4 className="font-semibold text-sm">Library</h4>
                     <p className="text-xs text-muted-foreground">5 floors, 50K books</p>
                     <Badge className="bg-success mt-1">Digital enabled</Badge>
                   </div>
-                  
+
                   <div className="p-3 bg-purple-50 rounded-lg text-center">
                     <Users className="h-8 w-8 text-purple-600 mx-auto mb-2" />
                     <h4 className="font-semibold text-sm">Cafeteria</h4>
                     <p className="text-xs text-muted-foreground">4 outlets, 1200 seats</p>
                     <Badge className="bg-success mt-1">Hygienic certified</Badge>
                   </div>
-                  
+
                   <div className="p-3 bg-orange-50 rounded-lg text-center">
                     <Target className="h-8 w-8 text-orange-600 mx-auto mb-2" />
                     <h4 className="font-semibold text-sm">Sports Complex</h4>
@@ -1785,7 +1787,7 @@ const InstitutionDashboard = () => {
                     <Badge className="bg-success mt-1">Award winning</Badge>
                   </div>
                 </div>
-                
+
                 <div className="mt-4 space-y-2">
                   <Button className="w-full justify-start" variant="outline">
                     <FileText className="mr-2 h-4 w-4" />
@@ -1876,91 +1878,207 @@ const InstitutionDashboard = () => {
 
           <TabsContent value="export" className="space-y-6">
             <div className="grid gap-6 lg:grid-cols-2">
-              <ExportTools 
+              <ExportTools
                 data={{
                   name: "XYZ Institute of Technology",
-                  id: "INST-2024-001",
-                  nirfRank: 85,
-                  naacGrade: "A+",
+                  id: "INST-2023-001",
                   totalStudents: 5240,
-                  faculty: 320,
-                  placementRate: 94,
-                  researchPapers: 82,
+                  totalFaculty: 320,
+                  nirf_rank: 85,
+                  placement_rate: 94,
+                  research_papers: 82,
                   patents: 12,
-                  funding: 7.2,
-                  departments: departmentData,
-                  placementTrends: placementData,
-                  researchMetrics: researchData,
-                  compliance: complianceMetrics
+                  funding: "₹7.2Cr"
                 }}
-                title="Institution Profile - XYZ Institute"
+                title="Institution Report - XYZ Institute"
                 type="institution"
               />
               <Card className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-bold">Export Management</h3>
-                  <Button size="sm">
-                    <Plus className="h-4 w-4 mr-1" />
-                    Create Custom Report
-                  </Button>
-                </div>
+                <h3 className="text-lg font-bold mb-4">Export Options</h3>
                 <div className="space-y-3">
                   <div className="p-3 border rounded-lg">
-                    <h4 className="font-semibold mb-1">📊 Annual Report</h4>
+                    <h4 className="font-semibold mb-1">🏛️ Institutional Report</h4>
                     <p className="text-sm text-muted-foreground">
-                      Comprehensive yearly performance report with all metrics
+                      Complete institutional performance and analytics report
                     </p>
-                    <div className="flex gap-2 mt-2">
-                      <Button size="sm" variant="outline">Generate</Button>
-                      <Button size="sm" variant="outline">
-                        <Edit className="h-4 w-4 mr-1" />
-                        Customize
-                      </Button>
-                    </div>
                   </div>
                   <div className="p-3 border rounded-lg">
-                    <h4 className="font-semibold mb-1">🎯 NIRF Submission</h4>
+                    <h4 className="font-semibold mb-1">👥 Faculty Performance</h4>
                     <p className="text-sm text-muted-foreground">
-                      Formatted report for NIRF ranking submission
+                      APAR data and teaching effectiveness metrics
                     </p>
-                    <div className="flex gap-2 mt-2">
-                      <Button size="sm" variant="outline">Generate</Button>
-                      <Button size="sm" variant="outline">
-                        <Plus className="h-4 w-4 mr-1" />
-                        Add Data
-                      </Button>
-                    </div>
                   </div>
                   <div className="p-3 border rounded-lg">
-                    <h4 className="font-semibold mb-1">🏛️ NAAC Self Study</h4>
+                    <h4 className="font-semibold mb-1">🎓 Student Analytics</h4>
                     <p className="text-sm text-muted-foreground">
-                      Self-study report for NAAC accreditation
+                      Academic outcomes and placement statistics
                     </p>
-                    <div className="flex gap-2 mt-2">
-                      <Button size="sm" variant="outline">Generate</Button>
-                      <Button size="sm" variant="outline">
-                        <Edit className="h-4 w-4 mr-1" />
-                        Update Criteria
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="p-3 border rounded-lg">
-                    <h4 className="font-semibold mb-1">📈 Performance Dashboard</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Real-time performance metrics and analytics
-                    </p>
-                    <div className="flex gap-2 mt-2">
-                      <Button size="sm" variant="outline">Export Live</Button>
-                      <Button size="sm" variant="outline">
-                        <Plus className="h-4 w-4 mr-1" />
-                        Add Metric
-                      </Button>
-                    </div>
                   </div>
                 </div>
               </Card>
             </div>
           </TabsContent>
+          
+          <TabsContent value="authority-requests" className="space-y-6">
+            <Card className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-2xl font-bold flex items-center gap-2">
+                    <Shield className="h-6 w-6 text-red-600" />
+                    Authority Request Inbox
+                  </h2>
+                  <p className="text-muted-foreground text-sm mt-1">
+                    Respond to data requests from higher authorities. All requests are legally binding.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Badge className="bg-red-100 text-red-800">2 Urgent</Badge>
+                  <Badge variant="outline">5 Pending</Badge>
+                </div>
+              </div>
+
+              {/* Urgent Request */}
+              <div className="space-y-4">
+                <div className="border-l-4 border-red-500 bg-red-50 p-4 rounded-r-lg">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-bold text-lg text-red-800">URGENT: Ministry of Education Data Request</h4>
+                        <Badge className="bg-red-500">3 Days Remaining</Badge>
+                      </div>
+                      <p className="text-sm text-red-700">Received: March 15, 2024 • Due: March 20, 2024 • Authority: MoE Level 1</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-3 rounded mb-3">
+                    <h5 className="font-semibold mb-2">Requested Data:</h5>
+                    <ul className="text-sm space-y-1">
+                      <li>• Complete faculty APAR data for 2023-24</li>
+                      <li>• NIRF parameter-wise institutional scores</li>
+                      <li>• Student placement statistics (company-wise)</li>
+                      <li>• Research output and patent information</li>
+                      <li>• Infrastructure utilization metrics</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-red-100 p-3 rounded mb-3">
+                    <div className="text-sm text-red-800">
+                      <span className="font-medium">Legal Notice:</span> This is an official request under the Education Act. 
+                      Non-compliance may result in administrative action.
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <Button className="bg-green-600 hover:bg-green-700">
+                      <CheckCircle className="h-4 w-4 mr-1" />
+                      Submit Response
+                    </Button>
+                    <Button variant="outline">
+                      <FileText className="h-4 w-4 mr-1" />
+                      Upload Documents
+                    </Button>
+                    <Button variant="outline">
+                      <Bell className="h-4 w-4 mr-1" />
+                      Request Extension
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Regular Requests */}
+                <div className="border rounded-lg p-4">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-bold text-lg">UGC Annual Compliance Report</h4>
+                        <Badge className="bg-blue-500">15 Days Remaining</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground">Received: March 10, 2024 • Due: March 30, 2024 • Authority: UGC</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-50 p-3 rounded mb-3 text-sm">
+                    <span className="font-medium">Requirements: </span>
+                    Annual academic audit, financial statements, faculty qualification matrix, student feedback analysis
+                  </div>
+
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="outline">View Details</Button>
+                    <Button size="sm" variant="outline">Start Preparation</Button>
+                  </div>
+                </div>
+
+                <div className="border rounded-lg p-4">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-bold text-lg">AICTE Technical Audit Data</h4>
+                        <Badge className="bg-green-500">Submitted</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground">Submitted: March 8, 2024 • Authority: AICTE</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-green-50 p-3 rounded mb-3 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="text-sm text-green-800">Response submitted successfully. Acknowledgment received.</span>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="outline">
+                      <Download className="h-4 w-4 mr-1" />
+                      Download Receipt
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Response Form */}
+              <Card className="p-6 mt-6 bg-blue-50/30 border-blue-200">
+                <h3 className="text-lg font-bold mb-4">Submit Response to Authority Request</h3>
+                <div className="grid gap-4">
+                  <div>
+                    <label className="text-sm font-medium">Select Request</label>
+                    <select className="w-full p-2 border rounded-md mt-1">
+                      <option>Ministry of Education Data Request (Due: Mar 20)</option>
+                      <option>UGC Annual Compliance Report (Due: Mar 30)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Response Status</label>
+                    <select className="w-full p-2 border rounded-md mt-1">
+                      <option>Complete Response</option>
+                      <option>Partial Response - More time needed</option>
+                      <option>Unable to comply - Request clarification</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Upload Documents</label>
+                    <input type="file" multiple className="w-full p-2 border rounded-md mt-1" />
+                    <p className="text-xs text-muted-foreground mt-1">Accepted formats: PDF, Excel, ZIP (Max 50MB per file)</p>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Additional Comments</label>
+                    <textarea
+                      className="w-full p-2 border rounded-md mt-1"
+                      rows={3}
+                      placeholder="Any additional information or clarifications..."
+                    />
+                  </div>
+                  <div className="flex gap-2">
+                    <Button className="bg-green-600 hover:bg-green-700">
+                      <Send className="h-4 w-4 mr-2" />
+                      Submit Official Response
+                    </Button>
+                    <Button variant="outline">
+                      <FileText className="h-4 w-4 mr-2" />
+                      Save Draft
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            </Card>
+          </TabsContent>
+
 
           <TabsContent value="analytics" className="space-y-6">
             {/* NIRF Analytics Dashboard */}
@@ -1991,7 +2109,7 @@ const InstitutionDashboard = () => {
                       <Progress value={72.5} className="mt-2 h-2" />
                     </div>
                   </Card>
-                  
+
                   <Card className="p-4 bg-gradient-to-br from-green-50 to-green-100">
                     <div className="text-center">
                       <BookOpen className="h-6 w-6 text-green-600 mx-auto mb-2" />
@@ -2000,7 +2118,7 @@ const InstitutionDashboard = () => {
                       <Progress value={64.2} className="mt-2 h-2" />
                     </div>
                   </Card>
-                  
+
                   <Card className="p-4 bg-gradient-to-br from-purple-50 to-purple-100">
                     <div className="text-center">
                       <GraduationCap className="h-6 w-6 text-purple-600 mx-auto mb-2" />
@@ -2009,7 +2127,7 @@ const InstitutionDashboard = () => {
                       <Progress value={75.8} className="mt-2 h-2" />
                     </div>
                   </Card>
-                  
+
                   <Card className="p-4 bg-gradient-to-br from-orange-50 to-orange-100">
                     <div className="text-center">
                       <Building2 className="h-6 w-6 text-orange-600 mx-auto mb-2" />
@@ -2018,7 +2136,7 @@ const InstitutionDashboard = () => {
                       <Progress value={58.3} className="mt-2 h-2" />
                     </div>
                   </Card>
-                  
+
                   <Card className="p-4 bg-gradient-to-br from-pink-50 to-pink-100">
                     <div className="text-center">
                       <Target className="h-6 w-6 text-pink-600 mx-auto mb-2" />
@@ -2189,14 +2307,14 @@ const InstitutionDashboard = () => {
                   <p className="text-sm text-red-700 mt-1">If no action taken</p>
                   <p className="text-xs text-red-600 mt-2">Risk: Research output decline</p>
                 </div>
-                
+
                 <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border-l-4 border-blue-500">
                   <h4 className="font-semibold text-blue-800 mb-2">⚡ With Improvements</h4>
                   <div className="text-2xl font-bold text-blue-900">#75-80</div>
                   <p className="text-sm text-blue-700 mt-1">Moderate improvements</p>
                   <p className="text-xs text-blue-600 mt-2">Timeline: 12-18 months</p>
                 </div>
-                
+
                 <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border-l-4 border-green-500">
                   <h4 className="font-semibold text-green-800 mb-2">🚀 Ambitious Target</h4>
                   <div className="text-2xl font-bold text-green-900">#65-70</div>
@@ -2204,7 +2322,7 @@ const InstitutionDashboard = () => {
                   <p className="text-xs text-green-600 mt-2">Timeline: 24-30 months</p>
                 </div>
               </div>
-              
+
               <div className="mt-4 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
                 <h4 className="font-semibold text-yellow-800 mb-2">🎯 Key Focus Areas for Next NIRF Cycle</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">

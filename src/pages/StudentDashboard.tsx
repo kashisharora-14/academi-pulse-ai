@@ -85,6 +85,17 @@ const StudentDashboard = () => {
     address: ""
   });
 
+  // State for Authority Request System
+  const [isAuthorityRequestDialogOpen, setIsAuthorityRequestDialogOpen] = useState(false);
+  const [requestDetails, setRequestDetails] = useState({
+    requestedBy: "",
+    requestedLevel: "",
+    details: "",
+    requestDate: "",
+    status: "Pending"
+  });
+  const [authorityRequests, setAuthorityRequests] = useState<any[]>([]);
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (!session) {
@@ -133,6 +144,28 @@ const StudentDashboard = () => {
         address: ""
       });
     }, 3000); // Close dialog and reset form after 3 seconds
+  };
+
+  // Handler for Authority Request System
+  const handleAuthorityRequestSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newRequest = {
+      ...requestDetails,
+      requestDate: new Date().toISOString(),
+      requestedBy: user?.email || "Unknown User", // Assuming user object has email
+      status: "Pending"
+    };
+    setAuthorityRequests([...authorityRequests, newRequest]);
+    // In a real app, you'd save this to a database or send it to a backend
+    console.log("New authority request:", newRequest);
+    setIsAuthorityRequestDialogOpen(false);
+    setRequestDetails({ // Reset form
+      requestedBy: "",
+      requestedLevel: "",
+      details: "",
+      requestDate: "",
+      status: "Pending"
+    });
   };
 
   return (
@@ -211,6 +244,10 @@ const StudentDashboard = () => {
               <TabsTrigger value="academics">Academics</TabsTrigger>
               <TabsTrigger value="schemes">Schemes</TabsTrigger>
               <TabsTrigger value="chat">EduBot</TabsTrigger>
+              <TabsTrigger value="authority-requests">
+                <Users className="h-4 w-4 mr-1" /> {/* Icon for Authority Requests */}
+                Authority Requests
+              </TabsTrigger>
             </TabsList>
           </div>
 
@@ -248,6 +285,10 @@ const StudentDashboard = () => {
                 <TabsTrigger value="academics" className="text-xs px-2 py-2 h-auto">Academics</TabsTrigger>
                 <TabsTrigger value="schemes" className="text-xs px-2 py-2 h-auto">Schemes</TabsTrigger>
                 <TabsTrigger value="chat" className="text-xs px-2 py-2 h-auto">EduBot</TabsTrigger>
+                <TabsTrigger value="authority-requests" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
+                  <Users className="h-3 w-3" />
+                  <span>Auth Requests</span>
+                </TabsTrigger>
               </TabsList>
             </div>
           </div>
@@ -393,7 +434,102 @@ const StudentDashboard = () => {
             />
           </TabsContent>
 
+          {/* Authority Request System Tab */}
+          <TabsContent value="authority-requests" className="space-y-6">
+            <Card className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-2xl font-bold flex items-center gap-2">
+                    <Users className="h-6 w-6 text-primary" />
+                    Authority Request System
+                  </h2>
+                  <p className="text-muted-foreground text-sm mt-1">
+                    Request detailed information from lower levels or track your requests.
+                  </p>
+                </div>
+                <Dialog open={isAuthorityRequestDialogOpen} onOpenChange={setIsAuthorityRequestDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button className="bg-primary" onClick={() => setIsAuthorityRequestDialogOpen(true)}>
+                      <Users className="h-4 w-4 mr-2" />
+                      Create New Request
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl">Authority Request Form</DialogTitle>
+                      <DialogDescription>
+                        Fill in the details below to request information from a lower authority level.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <form onSubmit={handleAuthorityRequestSubmit} className="space-y-4 mt-4">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <Label htmlFor="requestedBy">Requested By</Label>
+                          <Input id="requestedBy" value={user?.email || ''} readOnly className="bg-gray-50" />
+                        </div>
+                        <div>
+                          <Label htmlFor="requestedLevel">Requesting From Level *</Label>
+                          <Select value={requestDetails.requestedLevel} onValueChange={(value) => setRequestDetails({...requestDetails, requestedLevel: value})} required>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select the level you are requesting from" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="department">Department</SelectItem>
+                              <SelectItem value="sub-department">Sub-Department</SelectItem>
+                              <SelectItem value="team">Team</SelectItem>
+                              <SelectItem value="individual">Individual</SelectItem>
+                              {/* Add more levels as needed */}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
+                      <div>
+                        <Label htmlFor="details">Request Details *</Label>
+                        <Input
+                          id="details"
+                          placeholder="Specify the information you need and the reason for your request"
+                          value={requestDetails.details}
+                          onChange={(e) => setRequestDetails({...requestDetails, details: e.target.value})}
+                          required
+                          className="min-h-[100px]"
+                        />
+                      </div>
+                      <div className="flex gap-3 pt-4">
+                        <Button type="submit" className="flex-1 bg-green-600 hover:bg-green-700">
+                          <Bell className="h-4 w-4 mr-2" />
+                          Send Request
+                        </Button>
+                        <Button type="button" variant="outline" onClick={() => setIsAuthorityRequestDialogOpen(false)}>
+                          Cancel
+                        </Button>
+                      </div>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+              </div>
 
+              {/* Display Existing Requests */}
+              <div className="mt-6 space-y-4">
+                <h3 className="text-lg font-bold">My Requests</h3>
+                {authorityRequests.length > 0 ? (
+                  authorityRequests.map((req, index) => (
+                    <Card key={index} className="p-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <h4 className="font-semibold text-md">{req.requestedLevel} - {req.requestedBy}</h4>
+                        <Badge className={`bg-${req.status === 'Pending' ? 'orange-500' : req.status === 'Approved' ? 'green-500' : 'red-500'}`}>
+                          {req.status}
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-2">{req.details}</p>
+                      <p className="text-xs text-muted-foreground">Requested on: {new Date(req.requestDate).toLocaleDateString()}</p>
+                    </Card>
+                  ))
+                ) : (
+                  <p className="text-muted-foreground">You have not made any authority requests yet.</p>
+                )}
+              </div>
+            </Card>
+          </TabsContent>
 
           <TabsContent value="overview" className="space-y-6">
             <div className="grid gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -1035,7 +1171,8 @@ const StudentDashboard = () => {
                       status: "Active",
                       duration: "4 years",
                       disbursed: "₹96,000",
-                      nextDue: "Apr 2024"
+                      nextDue: "Apr 2024",
+                      description: "Scholarship for meritorious students." // Added description
                     },
                     {
                       name: "PMKVY 4.0",
@@ -1044,7 +1181,8 @@ const StudentDashboard = () => {
                       status: "Completed",
                       duration: "6 months",
                       disbursed: "Certificate",
-                      nextDue: "N/A"
+                      nextDue: "N/A",
+                      description: "Skill development program for youth." // Added description
                     },
                     {
                       name: "SWAYAM NPTEL",
@@ -1053,37 +1191,17 @@ const StudentDashboard = () => {
                       status: "Ongoing",
                       duration: "12 weeks",
                       disbursed: "4 Courses",
-                      nextDue: "May 2024"
+                      nextDue: "May 2024",
+                      description: "Online courses for academic enhancement." // Added description
                     }
                   ].map((scheme, index) => (
-                    <div key={index} className="p-4 border rounded-lg">
-                      <div className="flex justify-between items-start mb-3">
-                        <div>
-                          <h4 className="font-semibold">{scheme.name}</h4>
-                          <p className="text-sm text-muted-foreground">{scheme.type}</p>
-                        </div>
-                        <Badge variant={scheme.status === "Active" ? "default" : scheme.status === "Completed" ? "secondary" : "outline"}>
-                          {scheme.status}
-                        </Badge>
+                    <div key={index} className="p-3 border rounded">
+                      <div className="flex justify-between items-start mb-2">
+                        <h5 className="font-medium">{scheme.name}</h5>
+                        <Badge variant="outline">{scheme.status}</Badge>
                       </div>
-                      <div className="grid grid-cols-2 gap-4 text-sm">
-                        <div>
-                          <span className="text-muted-foreground">Amount:</span>
-                          <span className="ml-2 font-medium">{scheme.amount}</span>
-                        </div>
-                        <div>
-                          <span className="text-muted-foreground">Duration:</span>
-                          <span className="ml-2 font-medium">{scheme.duration}</span>
-                        </div>
-                        <div>
-                          <span className="text-muted-foreground">Total Received:</span>
-                          <span className="ml-2 font-medium">{scheme.disbursed}</span>
-                        </div>
-                        <div>
-                          <span className="text-muted-foreground">Next Due:</span>
-                          <span className="ml-2 font-medium">{scheme.nextDue}</span>
-                        </div>
-                      </div>
+                      <div className="text-xs text-muted-foreground">{scheme.description}</div>
+                      <Button size="sm" className="mt-2 w-full">Apply Now</Button>
                     </div>
                   ))}
                 </div>

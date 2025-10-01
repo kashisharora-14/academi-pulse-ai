@@ -34,7 +34,9 @@ import {
   Phone,
   Mail,
   MapPin,
-  BookOpen as Book
+  BookOpen as Book,
+  Shield,
+  Trophy
 } from "lucide-react";
 import {
   LineChart,
@@ -279,6 +281,10 @@ const TeacherDashboard = () => {
                 Ratings
               </TabsTrigger>
               <TabsTrigger value="analytics" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Analytics</TabsTrigger>
+              <TabsTrigger value="authority-requests" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                <Shield className="h-4 w-4 mr-1" />
+                Authority
+              </TabsTrigger>
             </TabsList>
           </div>
 
@@ -306,6 +312,9 @@ const TeacherDashboard = () => {
                   <Star className="h-4 w-4" />
                 </TabsTrigger>
                 <TabsTrigger value="analytics" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Analytics</TabsTrigger>
+                <TabsTrigger value="authority-requests" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                  <Shield className="h-4 w-4" />
+                </TabsTrigger>
               </TabsList>
             </div>
           </div>
@@ -499,8 +508,8 @@ const TeacherDashboard = () => {
             {/* Department Recognition & Comparisons */}
             <div className="grid gap-6 lg:grid-cols-2 mb-6">
               <Card className="p-6">
-                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <Trophy className="h-6 w-6 text-amber-500" />
+                <h3 className="text-xl font-bold mb-4">
+                  <Trophy className="h-6 w-6 text-amber-500 inline-block mr-2" />
                   Department Rankings
                 </h3>
                 <div className="space-y-4">
@@ -948,7 +957,7 @@ const TeacherDashboard = () => {
                 <Card key={student.id} className="p-0 hover:shadow-xl transition-all duration-300 border-2 hover:border-blue-300 bg-gradient-to-br from-blue-50 via-white to-green-50">
                   {/* Government Header Strip */}
                   <div className="h-2 bg-gradient-to-r from-orange-500 via-white to-green-500"></div>
-                  
+
                   <div className="p-5">
                     {/* Government Emblem and Title */}
                     <div className="flex items-center justify-between mb-4">
@@ -1007,7 +1016,7 @@ const TeacherDashboard = () => {
                         </div>
                       </div>
                     </div>
-                  
+
                   <div className="mt-4 pt-4 border-t border-dashed border-blue-200">
                     {/* CGPA with Government Grade Scale */}
                     <div className="flex items-center justify-between mb-2">
@@ -1032,7 +1041,7 @@ const TeacherDashboard = () => {
                       value={(student.cgpa / 10) * 100} 
                       className="h-2 mb-3"
                     />
-                    
+
                     {/* Attendance Tracking */}
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-medium text-blue-700">Attendance</span>
@@ -1047,7 +1056,7 @@ const TeacherDashboard = () => {
                       </div>
                     </div>
                     <Progress value={94} className="h-2 mb-3" />
-                    
+
                     {/* Government Compliance Badges */}
                     <div className="flex flex-wrap gap-1 mb-3">
                       <Badge variant="outline" className="text-xs bg-green-50 text-green-700 border-green-200">
@@ -1060,12 +1069,12 @@ const TeacherDashboard = () => {
                         🎓 Active
                       </Badge>
                     </div>
-                    
+
                     <div className="text-xs text-muted-foreground mb-3">
                       <p><span className="font-medium">Last Login:</span> {student.lastLogin}</p>
                       <p><span className="font-medium">Scholarship:</span> <span className="text-green-600 font-medium">₹48,000/year</span></p>
                     </div>
-                    
+
                     <div className="flex gap-2 mt-4">
                       <Dialog>
                         <DialogTrigger asChild>
@@ -1077,7 +1086,7 @@ const TeacherDashboard = () => {
                           <DialogHeader>
                             <DialogTitle>Student Profile - {student.name}</DialogTitle>
                           </DialogHeader>
-                          
+
                           <div className="space-y-6">
                             {/* Profile Header */}
                             <div className="flex items-start gap-6 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
@@ -1163,7 +1172,7 @@ const TeacherDashboard = () => {
                                   <div className="text-sm text-orange-700">Subjects</div>
                                 </div>
                               </div>
-                              
+
                               {/* Subject-wise Performance */}
                               <div className="space-y-3">
                                 <h5 className="font-medium">Current Semester Subjects</h5>
@@ -1245,7 +1254,7 @@ const TeacherDashboard = () => {
                       </Button>
                     </div>
                   </div>
-                  
+
                     {/* Bottom Government Strip */}
                     <div className="h-1 bg-gradient-to-r from-orange-500 via-white to-green-500"></div>
                   </div>
@@ -1533,14 +1542,14 @@ const TeacherDashboard = () => {
                 <div className="text-sm text-blue-700">Overall Rating</div>
                 <div className="text-xs text-blue-600 mt-1">368 Student Reviews</div>
               </Card>
-              
+
               <Card className="p-6 text-center bg-gradient-to-br from-green-50 to-green-100 border-green-200">
                 <div className="text-4xl font-bold text-green-600 mb-2">96%</div>
                 <div className="text-sm text-green-700">Student Pass Rate</div>
                 <div className="text-xs text-green-600 mt-1">vs Dept Avg: 89%</div>
                 <Badge className="mt-2 bg-green-600 text-white">Top 5%</Badge>
               </Card>
-              
+
               <Card className="p-6 text-center bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
                 <div className="text-4xl font-bold text-purple-600 mb-2">18</div>
                 <div className="text-sm text-purple-700">Projects Guided</div>
@@ -1684,7 +1693,7 @@ const TeacherDashboard = () => {
                     <li>• High placement success rate</li>
                   </ul>
                 </div>
-                
+
                 <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
                   <div className="flex items-center gap-2 mb-2">
                     <TrendingUp className="h-5 w-5 text-blue-600" />
@@ -1697,7 +1706,7 @@ const TeacherDashboard = () => {
                     <li>• Student innovation projects</li>
                   </ul>
                 </div>
-                
+
                 <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
                   <div className="flex items-center gap-2 mb-2">
                     <Award className="h-5 w-5 text-purple-600" />
@@ -1715,26 +1724,122 @@ const TeacherDashboard = () => {
           </TabsContent>
 
           <TabsContent value="analytics" className="space-y-6">
-            <div className="grid gap-6 lg:grid-cols-2">
-              <Chatbot />
-              <Card className="p-6">
-                <h3 className="text-xl font-bold mb-4">AI-Generated Insights</h3>
-                <div className="space-y-4">
-                  <div className="p-4 bg-green-50 rounded-lg">
-                    <h4 className="font-semibold text-green-800">Strength</h4>
-                    <p className="text-sm text-green-700">Your student ratings consistently exceed department average by 0.3 points.</p>
+            <Card className="p-6">
+              <h3 className="text-xl font-bold mb-4">Teaching Analytics Deep Dive</h3>
+              <p className="text-muted-foreground">Comprehensive analytics and insights will be available here.</p>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="authority-requests" className="space-y-6">
+            <Card className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-2xl font-bold flex items-center gap-2">
+                    <Shield className="h-6 w-6 text-red-600" />
+                    Authority Request Notifications
+                  </h2>
+                  <p className="text-muted-foreground text-sm mt-1">
+                    Your institution may request your data for higher authority compliance. All requests are secure and official.
+                  </p>
+                </div>
+                <Badge className="bg-blue-100 text-blue-800">1 Active</Badge>
+              </div>
+
+              {/* Active Request */}
+              <div className="space-y-4">
+                <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded-r-lg">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-bold text-lg text-blue-800">Institution Request: Faculty Performance Data</h4>
+                        <Badge className="bg-blue-500">Action Required</Badge>
+                      </div>
+                      <p className="text-sm text-blue-700">From: XYZ Institute Administration • Due: March 18, 2024</p>
+                    </div>
                   </div>
-                  <div className="p-4 bg-blue-50 rounded-lg">
-                    <h4 className="font-semibold text-blue-800">Opportunity</h4>
-                    <p className="text-sm text-blue-700">Consider collaborating on interdisciplinary research to increase citation impact.</p>
+
+                  <div className="bg-white p-3 rounded mb-3">
+                    <h5 className="font-semibold mb-2">Data Requested:</h5>
+                    <ul className="text-sm space-y-1">
+                      <li>• APAR self-assessment scores</li>
+                      <li>• Course completion rates and student feedback</li>
+                      <li>• Research publications and citations</li>
+                      <li>• Professional development certifications</li>
+                    </ul>
                   </div>
-                  <div className="p-4 bg-yellow-50 rounded-lg">
-                    <h4 className="font-semibold text-yellow-800">Recognition</h4>
-                    <p className="text-sm text-yellow-700">You're in the top 10% for research output in your department this year.</p>
+
+                  <div className="bg-blue-100 p-3 rounded mb-3">
+                    <div className="text-sm text-blue-800">
+                      <span className="font-medium">Purpose:</span> Ministry of Education compliance audit. 
+                      Your data will be aggregated with other faculty data for institutional reporting.
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <Button className="bg-green-600 hover:bg-green-700">
+                      <CheckCircle className="h-4 w-4 mr-1" />
+                      Approve & Share Data
+                    </Button>
+                    <Button variant="outline">
+                      <FileText className="h-4 w-4 mr-1" />
+                      Review Request Details
+                    </Button>
                   </div>
                 </div>
+
+                {/* Completed Request */}
+                <div className="border rounded-lg p-4 bg-green-50/50">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-bold text-lg">UGC Faculty Survey Response</h4>
+                        <Badge className="bg-green-500">Completed</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground">Submitted: March 5, 2024</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-green-100 p-3 rounded flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span className="text-sm text-green-800">Your data was successfully shared with the institution for UGC compliance.</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Data Privacy Information */}
+              <Card className="p-6 mt-6 bg-gray-50 border-gray-200">
+                <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                  <Shield className="h-5 w-5 text-gray-600" />
+                  Data Privacy & Security
+                </h3>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div>
+                    <h4 className="font-semibold mb-2 text-gray-800">🔒 What's Protected</h4>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• Personal identification details</li>
+                      <li>• Bank account and financial information</li>
+                      <li>• Private communications and messages</li>
+                      <li>• Health and medical records</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2 text-gray-800">📊 What May Be Shared</h4>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• Academic performance metrics</li>
+                      <li>• Research output and publications</li>
+                      <li>• Teaching effectiveness scores</li>
+                      <li>• Professional qualifications</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="mt-4 p-3 bg-blue-50 rounded border border-blue-200">
+                  <p className="text-sm text-blue-800">
+                    <span className="font-medium">Legal Framework:</span> All data sharing follows the Digital Personal Data Protection Act 2023 
+                    and Government of India data governance policies. You have the right to know who accesses your data and for what purpose.
+                  </p>
+                </div>
               </Card>
-            </div>
+            </Card>
           </TabsContent>
         </Tabs>
       </main>
