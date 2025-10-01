@@ -36,7 +36,7 @@ const GovernmentDashboard = () => {
   ];
 
   const collegePerformanceData = [
-    // Chandigarh Colleges
+    // Chandigarh - Top Performers
     { 
       id: "1", 
       name: "Punjab Engineering College", 
@@ -67,19 +67,20 @@ const GovernmentDashboard = () => {
     },
     { 
       id: "3", 
-      name: "Chandigarh College of Engineering", 
-      position: [30.7506, 76.7647] as [number, number], 
-      nirfRank: 156, 
-      dropout: 8.7, 
-      placement: 65, 
-      research: 45, 
-      performance: 'average',
-      data: "NIRF: 156 | Placement: 65% | Research: 45 | Status: Needs Improvement",
-      students: 2100,
+      name: "Government Medical College", 
+      position: [30.7465, 76.7850] as [number, number], 
+      nirfRank: 145, 
+      dropout: 2.1, 
+      placement: 94, 
+      research: 68, 
+      performance: 'good',
+      data: "NIRF: 145 | Placement: 94% | Research: 68 | Status: Good",
+      students: 2800,
       city: "Chandigarh",
-      type: "Engineering"
+      type: "Medical"
     },
-    // Punjab Colleges
+    
+    // Punjab - Excellent Institutions
     { 
       id: "4", 
       name: "IIT Ropar", 
@@ -96,7 +97,7 @@ const GovernmentDashboard = () => {
     },
     { 
       id: "5", 
-      name: "Thapar Institute", 
+      name: "Thapar Institute of Engineering", 
       position: [30.3548, 76.3621] as [number, number], 
       nirfRank: 42, 
       dropout: 2.5, 
@@ -108,25 +109,86 @@ const GovernmentDashboard = () => {
       city: "Patiala",
       type: "Engineering"
     },
-    // Poor Performance Examples
     { 
       id: "6", 
-      name: "Rural College XYZ", 
-      position: [30.2048, 76.9348] as [number, number], 
-      nirfRank: 285, 
-      dropout: 18.5, 
-      placement: 35, 
-      research: 25, 
-      performance: 'critical',
-      data: "NIRF: 285 | Placement: 35% | Research: 25 | Status: Critical - Needs Intervention",
-      students: 850,
-      city: "Rural Punjab",
-      type: "General"
+      name: "NIT Jalandhar", 
+      position: [31.3260, 75.5762] as [number, number], 
+      nirfRank: 52, 
+      dropout: 3.8, 
+      placement: 87, 
+      research: 74, 
+      performance: 'excellent',
+      data: "NIRF: 52 | Placement: 87% | Research: 74 | Status: Excellent",
+      students: 3600,
+      city: "Jalandhar",
+      type: "NIT"
     },
+    
+    // Punjab - Good Performers
     { 
       id: "7", 
-      name: "ABC Technical College", 
-      position: [30.1234, 76.8765] as [number, number], 
+      name: "Punjab Agricultural University", 
+      position: [30.9010, 75.8573] as [number, number], 
+      nirfRank: 89, 
+      dropout: 5.2, 
+      placement: 79, 
+      research: 81, 
+      performance: 'good',
+      data: "NIRF: 89 | Placement: 79% | Research: 81 | Status: Good",
+      students: 5200,
+      city: "Ludhiana",
+      type: "Agricultural"
+    },
+    { 
+      id: "8", 
+      name: "Guru Nanak Dev University", 
+      position: [31.6340, 74.8723] as [number, number], 
+      nirfRank: 112, 
+      dropout: 6.8, 
+      placement: 71, 
+      research: 65, 
+      performance: 'good',
+      data: "NIRF: 112 | Placement: 71% | Research: 65 | Status: Good",
+      students: 8500,
+      city: "Amritsar",
+      type: "University"
+    },
+    
+    // Average Performers - Need Monitoring
+    { 
+      id: "9", 
+      name: "Chandigarh College of Engineering", 
+      position: [30.7506, 76.7647] as [number, number], 
+      nirfRank: 156, 
+      dropout: 8.7, 
+      placement: 65, 
+      research: 45, 
+      performance: 'average',
+      data: "NIRF: 156 | Placement: 65% | Research: 45 | Status: Average",
+      students: 2100,
+      city: "Chandigarh",
+      type: "Engineering"
+    },
+    { 
+      id: "10", 
+      name: "Punjab Technical University", 
+      position: [31.2560, 75.7047] as [number, number], 
+      nirfRank: 167, 
+      dropout: 9.5, 
+      placement: 62, 
+      research: 42, 
+      performance: 'average',
+      data: "NIRF: 167 | Placement: 62% | Research: 42 | Status: Average",
+      students: 6800,
+      city: "Kapurthala",
+      type: "Technical"
+    },
+    
+    // Needs Attention - Government Focus Required
+    { 
+      id: "11", 
+      name: "Government Polytechnic Ludhiana", 
+      position: [30.9000, 75.8500] as [number, number], 
       nirfRank: 198, 
       dropout: 12.3, 
       placement: 52, 
@@ -135,7 +197,65 @@ const GovernmentDashboard = () => {
       data: "NIRF: 198 | Placement: 52% | Research: 38 | Status: Needs Attention",
       students: 1200,
       city: "Ludhiana",
+      type: "Polytechnic"
+    },
+    { 
+      id: "12", 
+      name: "Regional College Jalandhar", 
+      position: [31.3200, 75.5800] as [number, number], 
+      nirfRank: 215, 
+      dropout: 14.1, 
+      placement: 48, 
+      research: 35, 
+      performance: 'needs-attention',
+      data: "NIRF: 215 | Placement: 48% | Research: 35 | Status: Needs Attention",
+      students: 1850,
+      city: "Jalandhar",
+      type: "General"
+    },
+    
+    // Critical - Immediate Intervention Required
+    { 
+      id: "13", 
+      name: "Rural Technical Institute", 
+      position: [30.2048, 76.9348] as [number, number], 
+      nirfRank: 285, 
+      dropout: 18.5, 
+      placement: 35, 
+      research: 25, 
+      performance: 'critical',
+      data: "NIRF: 285 | Placement: 35% | Research: 25 | Status: Critical",
+      students: 850,
+      city: "Moga",
       type: "Technical"
+    },
+    { 
+      id: "14", 
+      name: "District College Bathinda", 
+      position: [30.2100, 74.9455] as [number, number], 
+      nirfRank: 312, 
+      dropout: 21.8, 
+      placement: 28, 
+      research: 22, 
+      performance: 'critical',
+      data: "NIRF: 312 | Placement: 28% | Research: 22 | Status: Critical",
+      students: 1100,
+      city: "Bathinda",
+      type: "General"
+    },
+    { 
+      id: "15", 
+      name: "Sangrur Polytechnic", 
+      position: [30.2458, 75.8421] as [number, number], 
+      nirfRank: 298, 
+      dropout: 19.2, 
+      placement: 31, 
+      research: 18, 
+      performance: 'critical',
+      data: "NIRF: 298 | Placement: 31% | Research: 18 | Status: Critical",
+      students: 920,
+      city: "Sangrur",
+      type: "Polytechnic"
     }
   ];
 

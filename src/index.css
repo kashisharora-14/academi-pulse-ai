@@ -4,6 +4,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Enhanced Map Marker Styles */
+.custom-performance-marker {
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+  transition: all 0.3s ease;
+}
+
+.custom-performance-marker:hover {
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+  transform: scale(1.1);
+}
+
+/* Custom Popup Styles */
+.leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  padding: 0;
+  overflow: hidden;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  padding: 0;
+}
+
+/* Map Zoom Controls */
+.leaflet-control-zoom {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Performance Marker Pulse Effect for Critical */
+@keyframes pulse-red {
+  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+.marker-critical {
+  animation: pulse-red 2s infinite;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
