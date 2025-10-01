@@ -46,7 +46,7 @@ const GovernmentDashboard = () => {
       research: 72,
       performance: 'excellent',
       data: "NIRF: 78 | Placement: 89% | Research: 72 | Status: Excellent",
-      students: 3500,
+      students: 8500,
       city: "Chandigarh",
       type: "Engineering"
     },
@@ -60,7 +60,7 @@ const GovernmentDashboard = () => {
       research: 85,
       performance: 'good',
       data: "NIRF: 95 | Placement: 76% | Research: 85 | Status: Good",
-      students: 12000,
+      students: 28500,
       city: "Chandigarh",
       type: "Central University"
     },
@@ -74,7 +74,7 @@ const GovernmentDashboard = () => {
       research: 68,
       performance: 'good',
       data: "NIRF: 145 | Placement: 94% | Research: 68 | Status: Good",
-      students: 2800,
+      students: 4200,
       city: "Chandigarh",
       type: "Medical"
     },
@@ -90,7 +90,7 @@ const GovernmentDashboard = () => {
       research: 92,
       performance: 'excellent',
       data: "NIRF: 31 | Placement: 95% | Research: 92 | Status: Top Tier",
-      students: 1800,
+      students: 6800,
       city: "Rupnagar",
       type: "IIT"
     },
@@ -104,7 +104,7 @@ const GovernmentDashboard = () => {
       research: 78,
       performance: 'excellent',
       data: "NIRF: 42 | Placement: 91% | Research: 78 | Status: Excellent",
-      students: 4200,
+      students: 12400,
       city: "Patiala",
       type: "Engineering"
     },
@@ -118,7 +118,7 @@ const GovernmentDashboard = () => {
       research: 74,
       performance: 'excellent',
       data: "NIRF: 52 | Placement: 87% | Research: 74 | Status: Excellent",
-      students: 3600,
+      students: 9600,
       city: "Jalandhar",
       type: "NIT"
     },
@@ -134,7 +134,7 @@ const GovernmentDashboard = () => {
       research: 81,
       performance: 'good',
       data: "NIRF: 89 | Placement: 79% | Research: 81 | Status: Good",
-      students: 5200,
+      students: 15200,
       city: "Ludhiana",
       type: "Agricultural"
     },
@@ -148,7 +148,7 @@ const GovernmentDashboard = () => {
       research: 65,
       performance: 'good',
       data: "NIRF: 112 | Placement: 71% | Research: 65 | Status: Good",
-      students: 8500,
+      students: 22500,
       city: "Amritsar",
       type: "University"
     },
@@ -164,7 +164,7 @@ const GovernmentDashboard = () => {
       research: 45,
       performance: 'average',
       data: "NIRF: 156 | Placement: 65% | Research: 45 | Status: Average",
-      students: 2100,
+      students: 5100,
       city: "Chandigarh",
       type: "Engineering"
     },
@@ -178,7 +178,7 @@ const GovernmentDashboard = () => {
       research: 42,
       performance: 'average',
       data: "NIRF: 167 | Placement: 62% | Research: 42 | Status: Average",
-      students: 6800,
+      students: 18800,
       city: "Kapurthala",
       type: "Technical"
     },
@@ -194,7 +194,7 @@ const GovernmentDashboard = () => {
       research: 38,
       performance: 'needs-attention',
       data: "NIRF: 198 | Placement: 52% | Research: 38 | Status: Needs Attention",
-      students: 1200,
+      students: 3200,
       city: "Ludhiana",
       type: "Polytechnic"
     },
@@ -208,7 +208,7 @@ const GovernmentDashboard = () => {
       research: 35,
       performance: 'needs-attention',
       data: "NIRF: 215 | Placement: 48% | Research: 35 | Status: Needs Attention",
-      students: 1850,
+      students: 4850,
       city: "Jalandhar",
       type: "General"
     },
@@ -224,7 +224,7 @@ const GovernmentDashboard = () => {
       research: 25,
       performance: 'critical',
       data: "NIRF: 285 | Placement: 35% | Research: 25 | Status: Critical",
-      students: 850,
+      students: 2850,
       city: "Moga",
       type: "Technical"
     },
@@ -238,7 +238,7 @@ const GovernmentDashboard = () => {
       research: 22,
       performance: 'critical',
       data: "NIRF: 312 | Placement: 28% | Research: 22 | Status: Critical",
-      students: 1100,
+      students: 3100,
       city: "Bathinda",
       type: "General"
     },
@@ -252,7 +252,7 @@ const GovernmentDashboard = () => {
       research: 18,
       performance: 'critical',
       data: "NIRF: 298 | Placement: 31% | Research: 18 | Status: Critical",
-      students: 920,
+      students: 2920,
       city: "Sangrur",
       type: "Polytechnic"
     }
