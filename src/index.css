@@ -74,6 +74,22 @@
   100% { box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(220, 38, 38, 0.4), 0 0 0 0 rgba(220, 38, 38, 0) !important; }
 }
 
+/* Urgent pulse animation for critical government attention */
+@keyframes pulse-urgent {
+  0% { 
+    transform: scale(1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 3px 12px rgba(185, 28, 28, 0.6), 0 0 0 0 rgba(185, 28, 28, 0.8) !important;
+  }
+  50% { 
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 4px 15px rgba(185, 28, 28, 0.7), 0 0 0 8px rgba(185, 28, 28, 0.3) !important;
+  }
+  100% { 
+    transform: scale(1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 3px 12px rgba(185, 28, 28, 0.6), 0 0 0 0 rgba(185, 28, 28, 0) !important;
+  }
+}
+
 /* Ensure marker colors override any default styles */
 .leaflet-marker-icon.custom-performance-marker {
   background: transparent !important;

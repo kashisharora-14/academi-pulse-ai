@@ -37,11 +37,11 @@ interface MapViewProps {
 const createCustomIcon = (location: Location) => {
   const getPerformanceColor = () => {
     switch (location.performance) {
-      case 'excellent': return '#16A34A'; // Bright Green
-      case 'good': return '#2563EB'; // Blue
-      case 'average': return '#EAB308'; // Yellow
-      case 'needs-attention': return '#EA580C'; // Orange
-      case 'critical': return '#DC2626'; // Red
+      case 'excellent': return '#15803D'; // Dark Green
+      case 'good': return '#1D4ED8'; // Dark Blue
+      case 'average': return '#CA8A04'; // Dark Yellow
+      case 'needs-attention': return '#C2410C'; // Dark Orange
+      case 'critical': return '#B91C1C'; // Dark Red
       default: return '#6B7280'; // Gray
     }
   };
@@ -73,37 +73,54 @@ const createCustomIcon = (location: Location) => {
   const textColor = getTextColor();
   const rankDisplay = getRankDisplay();
 
+  const getPriorityLevel = () => {
+    if (location.performance === 'critical') return 'HIGH PRIORITY';
+    if (location.performance === 'needs-attention') return 'MONITOR';
+    if (location.performance === 'excellent') return 'SHOWCASE';
+    return 'STABLE';
+  };
+
+  const getGovernmentAlert = () => {
+    if (location.performance === 'critical') return '🚨';
+    if (location.performance === 'needs-attention') return '⚠️';
+    if (location.performance === 'excellent') return '🏆';
+    return '';
+  };
+
   return L.divIcon({
     html: `
       <div class="performance-marker-container" style="
-        background: ${performanceColor};
-        background: linear-gradient(135deg, ${performanceColor} 0%, ${performanceColor}cc 100%);
-        color: ${textColor};
-        border-radius: 50%;
-        width: 42px;
-        height: 42px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 3px solid #FFFFFF;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px ${performanceColor}40;
-        font-size: 18px;
-        font-weight: 900;
-        position: relative;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        z-index: 1000;
+        background: ${performanceColor} !important;
+        background: linear-gradient(135deg, ${performanceColor} 0%, ${performanceColor}dd 100%) !important;
+        color: ${textColor} !important;
+        border-radius: 50% !important;
+        width: 48px !important;
+        height: 48px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border: 4px solid #FFFFFF !important;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 3px 12px ${performanceColor}60 !important;
+        font-size: 16px !important;
+        font-weight: 900 !important;
+        position: relative !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        z-index: 1000 !important;
+        ${location.performance === 'critical' ? 'animation: pulse-urgent 1.5s infinite !important;' : ''}
       ">
         <div style="text-align: center; line-height: 1; position: relative;">
-          <span style="display: block;">${symbol}</span>
-          ${rankDisplay ? `<div style="font-size: 10px; position: absolute; top: -8px; right: -12px; background: white; border-radius: 50%; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center;">${rankDisplay}</div>` : ''}
+          <div style="font-size: 20px; display: block;">${symbol}</div>
+          <div style="font-size: 8px; font-weight: 600; margin-top: 1px; color: ${textColor};">${location.nirfRank ? `#${location.nirfRank}` : ''}</div>
+          ${rankDisplay ? `<div style="font-size: 12px; position: absolute; top: -10px; right: -14px; background: white; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; border: 2px solid ${performanceColor};">${rankDisplay}</div>` : ''}
+          ${getGovernmentAlert() ? `<div style="font-size: 10px; position: absolute; top: -8px; left: -14px; background: white; border-radius: 50%; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; border: 2px solid #333;">${getGovernmentAlert()}</div>` : ''}
         </div>
       </div>
     `,
     className: `custom-performance-marker marker-${location.performance}`,
-    iconSize: [42, 42],
-    iconAnchor: [21, 21],
-    popupAnchor: [0, -21]
+    iconSize: [48, 48],
+    iconAnchor: [24, 24],
+    popupAnchor: [0, -24]
   });
 };
 
@@ -126,16 +143,41 @@ export const MapView = ({ locations, center = [30.7677, 76.7794], zoom = 8 }: Ma
             position={location.position}
             icon={createCustomIcon(location)}
           >
-            <Popup maxWidth={450} className="custom-popup">
+            <Popup maxWidth={500} className="custom-popup">
               <div className="p-1">
-                {/* Header */}
-                <div className="flex items-start justify-between mb-3 bg-gradient-to-r from-blue-50 to-indigo-50 p-3 rounded-t-lg border-b">
+                {/* Government Priority Header */}
+                <div className="bg-gradient-to-r from-orange-100 via-white to-green-100 p-2 rounded-t-lg border-b-2 border-blue-600 mb-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 bg-blue-800 rounded-full flex items-center justify-center">
+                        <div className="w-6 h-6 border-2 border-white rounded-full"></div>
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-blue-800">GOVERNMENT MONITORING</div>
+                        <div className="text-xs text-gray-600">Ministry of Education • Real-time Status</div>
+                      </div>
+                    </div>
+                    <div className={`px-3 py-1 rounded-full text-xs font-bold ${
+                      location.performance === 'critical' ? 'bg-red-600 text-white' :
+                      location.performance === 'needs-attention' ? 'bg-orange-500 text-white' :
+                      location.performance === 'excellent' ? 'bg-green-600 text-white' :
+                      'bg-blue-600 text-white'
+                    }`}>
+                      {location.performance === 'critical' ? 'HIGH PRIORITY' :
+                       location.performance === 'needs-attention' ? 'MONITOR' :
+                       location.performance === 'excellent' ? 'SHOWCASE' : 'STABLE'}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Institution Header */}
+                <div className="flex items-start justify-between mb-3 bg-gradient-to-r from-blue-50 to-indigo-50 p-3 rounded-lg border">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       <Building2 className="h-5 w-5 text-blue-600" />
                       <h3 className="font-bold text-lg text-gray-900">{location.name}</h3>
                     </div>
-                    <div className="flex items-center gap-4 text-sm text-gray-600 mb-2">
+                    <div className="grid grid-cols-2 gap-2 text-sm text-gray-600 mb-2">
                       <span className="flex items-center gap-1">
                         <MapPin className="h-4 w-4" />
                         {location.city}
@@ -148,6 +190,9 @@ export const MapView = ({ locations, center = [30.7677, 76.7794], zoom = 8 }: Ma
                         <Users className="h-4 w-4" />
                         {location.students?.toLocaleString()} students
                       </span>
+                      <span className="flex items-center gap-1 text-blue-600 font-semibold">
+                        📊 ID: {location.id}
+                      </span>
                     </div>
                   </div>
                   <div className="ml-3 flex flex-col items-center">
@@ -156,6 +201,29 @@ export const MapView = ({ locations, center = [30.7677, 76.7794], zoom = 8 }: Ma
                     {location.performance === 'needs-attention' && <Clock className="h-7 w-7 text-orange-500" />}
                     {location.performance === 'good' && <CheckCircle className="h-7 w-7 text-blue-500" />}
                     {location.performance === 'average' && <Clock className="h-7 w-7 text-yellow-500" />}
+                  </div>
+                </div>
+
+                {/* Quick Government Metrics */}
+                <div className="bg-gray-50 p-3 rounded-lg mb-3 border">
+                  <h4 className="font-bold text-sm text-gray-800 mb-2 flex items-center gap-1">
+                    🏛️ GOVERNMENT METRICS (Real-time)
+                  </h4>
+                  <div className="grid grid-cols-3 gap-2 text-xs">
+                    <div className="text-center">
+                      <div className="font-bold text-blue-700">₹{Math.round((location.students || 0) * 0.45)}L</div>
+                      <div className="text-gray-600">Est. Annual Budget</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-green-700">{Math.round((location.placement || 0) * (location.students || 0) / 100)}</div>
+                      <div className="text-gray-600">Placed Students</div>
+                    </div>
+                    <div className="text-center">
+                      <div className={`font-bold ${location.dropout && location.dropout > 10 ? 'text-red-700' : 'text-green-700'}`}>
+                        {Math.round((location.dropout || 0) * (location.students || 0) / 100)}
+                      </div>
+                      <div className="text-gray-600">At-Risk Students</div>
+                    </div>
                   </div>
                 </div>
 
@@ -243,13 +311,20 @@ export const MapView = ({ locations, center = [30.7677, 76.7794], zoom = 8 }: Ma
                       <div className="text-sm text-red-800 mb-2">
                         <strong>Issues:</strong> High dropout ({location.dropout}%), Poor placement ({location.placement}%), Low NIRF rank (#{location.nirfRank})
                       </div>
-                      <div className="text-xs text-red-700 bg-red-100 p-2 rounded">
-                        <strong>📋 Action Plan:</strong><br/>
-                        🔍 Schedule immediate inspection (within 30 days)<br/>
-                        🎯 Deploy placement enhancement team<br/>
-                        👥 Faculty development program mandatory<br/>
-                        💰 Review funding allocation<br/>
-                        📊 Monthly progress monitoring
+                      <div className="text-xs text-red-700 bg-red-100 p-2 rounded mb-2">
+                        <strong>📋 Immediate Action Plan (Next 30 Days):</strong><br/>
+                        🔍 Schedule UGC inspection team deployment<br/>
+                        🎯 Emergency placement cell setup<br/>
+                        👥 Faculty training program (mandatory)<br/>
+                        💰 Special funding review: ₹{Math.round((location.students || 0) * 0.15)}L emergency grant<br/>
+                        📊 Weekly progress monitoring with Ministry
+                      </div>
+                      <div className="text-xs text-red-700 bg-white p-2 rounded border border-red-300">
+                        <strong>🏛️ Government Response:</strong><br/>
+                        • Contact: Regional Education Officer<br/>
+                        • Next Review: {new Date(Date.now() + 7*24*60*60*1000).toLocaleDateString()}<br/>
+                        • Budget Impact: High Priority Queue<br/>
+                        • Media Attention: Possible
                       </div>
                     </div>
                   )}
@@ -275,11 +350,74 @@ export const MapView = ({ locations, center = [30.7677, 76.7794], zoom = 8 }: Ma
                         <Star className="h-5 w-5 text-green-600 mr-2" />
                         <h4 className="font-bold text-green-900">🌟 EXEMPLARY PERFORMANCE</h4>
                       </div>
-                      <div className="text-sm text-green-800">
-                        Outstanding across all metrics. Consider as best practice model.
+                      <div className="text-sm text-green-800 mb-2">
+                        Outstanding across all metrics. Prime candidate for best practice showcase.
                       </div>
-                      <div className="text-xs text-green-700 bg-green-100 p-2 rounded mt-2">
-                        🏆 <strong>Recognition:</strong> Share practices with peer institutions
+                      <div className="text-xs text-green-700 bg-green-100 p-2 rounded mb-2">
+                        🏆 <strong>Government Recognition Program:</strong><br/>
+                        • Featured in national education excellence report<br/>
+                        • Best practices documentation for replication<br/>
+                        • Additional funding: ₹{Math.round((location.students || 0) * 0.1)}L excellence bonus<br/>
+                        • Mentorship role for struggling institutions
+                      </div>
+                      <div className="text-xs text-green-700 bg-white p-2 rounded border border-green-300">
+                        <strong>🏛️ Ministry Action:</strong><br/>
+                        • Status: National Showcase Institution<br/>
+                        • Media Coverage: Positive highlighting<br/>
+                        • Next Visit: Annual Excellence Review<br/>
+                        • Special Grants: Available
+                      </div>
+                    </div>
+                  )}
+
+                  {location.performance === 'good' && (
+                    <div className="p-3 bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-500 rounded-lg mb-2">
+                      <div className="flex items-center mb-2">
+                        <CheckCircle className="h-5 w-5 text-blue-600 mr-2" />
+                        <h4 className="font-bold text-blue-900">✅ GOOD PERFORMANCE - STABLE INSTITUTION</h4>
+                      </div>
+                      <div className="text-sm text-blue-800 mb-2">
+                        Solid performance across key metrics. Maintain current trajectory.
+                      </div>
+                      <div className="text-xs text-blue-700 bg-blue-100 p-2 rounded mb-2">
+                        📈 <strong>Improvement Opportunities:</strong><br/>
+                        • Target NIRF rank improvement to &lt;50<br/>
+                        • Increase research output by 15%<br/>
+                        • Industry partnership expansion<br/>
+                        • Digital infrastructure upgrade
+                      </div>
+                      <div className="text-xs text-blue-700 bg-white p-2 rounded border border-blue-300">
+                        <strong>🏛️ Government Support:</strong><br/>
+                        • Funding: Regular allocation maintained<br/>
+                        • Review Cycle: Bi-annual assessment<br/>
+                        • Growth Support: Available on request<br/>
+                        • Monitoring: Standard protocols
+                      </div>
+                    </div>
+                  )}
+
+                  {location.performance === 'average' && (
+                    <div className="p-3 bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-500 rounded-lg mb-2">
+                      <div className="flex items-center mb-2">
+                        <Clock className="h-5 w-5 text-yellow-600 mr-2" />
+                        <h4 className="font-bold text-yellow-900">⚡ AVERAGE PERFORMANCE - IMPROVEMENT NEEDED</h4>
+                      </div>
+                      <div className="text-sm text-yellow-800 mb-2">
+                        Performance below expectations. Targeted interventions required.
+                      </div>
+                      <div className="text-xs text-yellow-700 bg-yellow-100 p-2 rounded mb-2">
+                        🎯 <strong>Focus Areas (Next 6 Months):</strong><br/>
+                        • Placement rate improvement program<br/>
+                        • Faculty skill development initiative<br/>
+                        • Student support services enhancement<br/>
+                        • Infrastructure gap analysis and upgrade
+                      </div>
+                      <div className="text-xs text-yellow-700 bg-white p-2 rounded border border-yellow-300">
+                        <strong>🏛️ Government Intervention:</strong><br/>
+                        • Status: Performance Improvement Plan<br/>
+                        • Funding: Conditional on milestones<br/>
+                        • Support: Technical assistance team<br/>
+                        • Timeline: 6-month improvement target
                       </div>
                     </div>
                   )}
