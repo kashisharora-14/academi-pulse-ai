@@ -292,7 +292,6 @@ export const MapView = ({ locations, center = [30.7677, 76.7794], zoom = 8 }: Ma
                     <div className="text-yellow-700">Performance improvement plan in progress.</div>
                   </div>
                 )}
-                </div>
               </div>
             </Popup>
           </Marker>
