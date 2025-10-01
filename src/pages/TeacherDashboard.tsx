@@ -256,66 +256,113 @@ const TeacherDashboard = () => {
         <Tabs defaultValue="overview" className="space-y-6">
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
-            <TabsList className="grid w-full grid-cols-11 text-xs bg-gradient-to-r from-blue-50 to-green-50">
-              <TabsTrigger value="overview" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Overview</TabsTrigger>
-              <TabsTrigger value="teaching" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Teaching</TabsTrigger>
-              <TabsTrigger value="research" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Research</TabsTrigger>
-              <TabsTrigger value="apar" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">APAR</TabsTrigger>
-              <TabsTrigger value="students" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Students</TabsTrigger>
-              <TabsTrigger value="student-management" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                <Users className="h-4 w-4 mr-1" />
+            <TabsList className="gov-tabs-list grid w-full grid-cols-13">
+              <TabsTrigger value="overview" className="gov-tab-trigger">
+                <UserCircle className="h-4 w-4 enhanced-tab-icon" />
+                Overview
+              </TabsTrigger>
+              <TabsTrigger value="teaching" className="gov-tab-trigger">
+                <BookOpen className="h-4 w-4 enhanced-tab-icon" />
+                Teaching
+              </TabsTrigger>
+              <TabsTrigger value="research" className="gov-tab-trigger">
+                <FileText className="h-4 w-4 enhanced-tab-icon" />
+                Research
+              </TabsTrigger>
+              <TabsTrigger value="apar" className="gov-tab-trigger">
+                <Award className="h-4 w-4 enhanced-tab-icon" />
+                APAR
+              </TabsTrigger>
+              <TabsTrigger value="students" className="gov-tab-trigger">
+                <GraduationCap className="h-4 w-4 enhanced-tab-icon" />
+                Students
+              </TabsTrigger>
+              <TabsTrigger value="student-management" className="gov-tab-trigger">
+                <Users className="h-4 w-4 enhanced-tab-icon" />
                 Student Mgmt
               </TabsTrigger>
-              <TabsTrigger value="development" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Development</TabsTrigger>
-              <TabsTrigger value="schedule" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Schedule</TabsTrigger>
-              <TabsTrigger value="qr" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                <QrCode className="h-4 w-4 mr-1" />
+              <TabsTrigger value="development" className="gov-tab-trigger">
+                <TrendingUp className="h-4 w-4 enhanced-tab-icon" />
+                Development
+              </TabsTrigger>
+              <TabsTrigger value="schedule" className="gov-tab-trigger">
+                <Calendar className="h-4 w-4 enhanced-tab-icon" />
+                Schedule
+              </TabsTrigger>
+              <TabsTrigger value="qr" className="gov-tab-trigger">
+                <QrCode className="h-4 w-4 enhanced-tab-icon" />
                 QR Code
               </TabsTrigger>
-              <TabsTrigger value="export" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                <Download className="h-4 w-4 mr-1" />
+              <TabsTrigger value="export" className="gov-tab-trigger">
+                <Download className="h-4 w-4 enhanced-tab-icon" />
                 Export
               </TabsTrigger>
-              <TabsTrigger value="ratings" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                <Star className="h-4 w-4 mr-1" />
+              <TabsTrigger value="ratings" className="gov-tab-trigger">
+                <Star className="h-4 w-4 enhanced-tab-icon" />
                 Ratings
               </TabsTrigger>
-              <TabsTrigger value="analytics" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Analytics</TabsTrigger>
-              <TabsTrigger value="authority-requests" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                <Shield className="h-4 w-4 mr-1" />
+              <TabsTrigger value="analytics" className="gov-tab-trigger">
+                <BarChart3 className="h-4 w-4 enhanced-tab-icon" />
+                Analytics
+              </TabsTrigger>
+              <TabsTrigger value="authority-requests" className="gov-tab-trigger">
+                <Shield className="h-4 w-4 enhanced-tab-icon" />
                 Authority
               </TabsTrigger>
             </TabsList>
           </div>
 
-          {/* Mobile Tabs - Improved styling */}
+          {/* Mobile Tabs - Enhanced Grid */}
           <div className="block lg:hidden">
-            <div className="overflow-x-auto">
-              <TabsList className="flex gap-2 w-max p-2 bg-gradient-to-r from-blue-50 to-green-50">
-                <TabsTrigger value="overview" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Overview</TabsTrigger>
-                <TabsTrigger value="teaching" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Teaching</TabsTrigger>
-                <TabsTrigger value="research" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Research</TabsTrigger>
-                <TabsTrigger value="apar" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">APAR</TabsTrigger>
-                <TabsTrigger value="students" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Students</TabsTrigger>
-                <TabsTrigger value="student-management" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                  <Users className="h-4 w-4" />
-                </TabsTrigger>
-                <TabsTrigger value="development" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Dev</TabsTrigger>
-                <TabsTrigger value="schedule" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Schedule</TabsTrigger>
-                <TabsTrigger value="qr" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                  <QrCode className="h-4 w-4" />
-                </TabsTrigger>
-                <TabsTrigger value="export" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                  <Download className="h-4 w-4" />
-                </TabsTrigger>
-                <TabsTrigger value="ratings" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                  <Star className="h-4 w-4" />
-                </TabsTrigger>
-                <TabsTrigger value="analytics" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Analytics</TabsTrigger>
-                <TabsTrigger value="authority-requests" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                  <Shield className="h-4 w-4" />
-                </TabsTrigger>
-              </TabsList>
+            <div className="enhanced-mobile-tabs">
+              <TabsTrigger value="overview" className="enhanced-mobile-tab">
+                <UserCircle className="enhanced-mobile-tab-icon" />
+                <span>Overview</span>
+              </TabsTrigger>
+              <TabsTrigger value="teaching" className="enhanced-mobile-tab">
+                <BookOpen className="enhanced-mobile-tab-icon" />
+                <span>Teaching</span>
+              </TabsTrigger>
+              <TabsTrigger value="research" className="enhanced-mobile-tab">
+                <FileText className="enhanced-mobile-tab-icon" />
+                <span>Research</span>
+              </TabsTrigger>
+              <TabsTrigger value="apar" className="enhanced-mobile-tab">
+                <Award className="enhanced-mobile-tab-icon" />
+                <span>APAR</span>
+              </TabsTrigger>
+              <TabsTrigger value="students" className="enhanced-mobile-tab">
+                <GraduationCap className="enhanced-mobile-tab-icon" />
+                <span>Students</span>
+              </TabsTrigger>
+              <TabsTrigger value="student-management" className="enhanced-mobile-tab">
+                <Users className="enhanced-mobile-tab-icon" />
+                <span>Student Mgmt</span>
+              </TabsTrigger>
+              <TabsTrigger value="development" className="enhanced-mobile-tab">
+                <TrendingUp className="enhanced-mobile-tab-icon" />
+                <span>Development</span>
+              </TabsTrigger>
+              <TabsTrigger value="schedule" className="enhanced-mobile-tab">
+                <Calendar className="enhanced-mobile-tab-icon" />
+                <span>Schedule</span>
+              </TabsTrigger>
+              <TabsTrigger value="qr" className="enhanced-mobile-tab">
+                <QrCode className="enhanced-mobile-tab-icon" />
+                <span>QR</span>
+              </TabsTrigger>
+              <TabsTrigger value="export" className="enhanced-mobile-tab">
+                <Download className="enhanced-mobile-tab-icon" />
+                <span>Export</span>
+              </TabsTrigger>
+              <TabsTrigger value="ratings" className="enhanced-mobile-tab">
+                <Star className="enhanced-mobile-tab-icon" />
+                <span>Ratings</span>
+              </TabsTrigger>
+              <TabsTrigger value="analytics" className="enhanced-mobile-tab">
+                <BarChart3 className="enhanced-mobile-tab-icon" />
+                <span>Analytics</span>
+              </TabsTrigger>
             </div>
           </div>
 

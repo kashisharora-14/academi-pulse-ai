@@ -304,52 +304,102 @@ const InstitutionDashboard = () => {
         <Tabs defaultValue="overview" className="space-y-6">
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
-            <TabsList className="grid w-full grid-cols-11 text-xs">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="analytics" className="bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 font-semibold">
-                <Award className="h-4 w-4 mr-1" />
+            <TabsList className="enhanced-tabs-list grid w-full grid-cols-11">
+              <TabsTrigger value="overview" className="enhanced-tab-trigger">
+                <Building2 className="h-4 w-4 enhanced-tab-icon" />
+                Overview
+              </TabsTrigger>
+              <TabsTrigger value="analytics" className="enhanced-tab-trigger bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-300 font-semibold">
+                <Award className="h-4 w-4 enhanced-tab-icon" />
                 NIRF Analytics
               </TabsTrigger>
-              <TabsTrigger value="academics">Academics</TabsTrigger>
-              <TabsTrigger value="placements">Placements</TabsTrigger>
-              <TabsTrigger value="research">Research</TabsTrigger>
-              <TabsTrigger value="compliance">Compliance</TabsTrigger>
-              <TabsTrigger value="schemes">Schemes</TabsTrigger>
-              <TabsTrigger value="faculty">Faculty</TabsTrigger>
-              <TabsTrigger value="campus">Campus</TabsTrigger>
-              <TabsTrigger value="qr">
-                <QrCode className="h-4 w-4 mr-1" />
+              <TabsTrigger value="academics" className="enhanced-tab-trigger">
+                <BookOpen className="h-4 w-4 enhanced-tab-icon" />
+                Academics
+              </TabsTrigger>
+              <TabsTrigger value="placements" className="enhanced-tab-trigger">
+                <Users className="h-4 w-4 enhanced-tab-icon" />
+                Placements
+              </TabsTrigger>
+              <TabsTrigger value="research" className="enhanced-tab-trigger">
+                <FileText className="h-4 w-4 enhanced-tab-icon" />
+                Research
+              </TabsTrigger>
+              <TabsTrigger value="compliance" className="enhanced-tab-trigger">
+                <CheckCircle className="h-4 w-4 enhanced-tab-icon" />
+                Compliance
+              </TabsTrigger>
+              <TabsTrigger value="schemes" className="enhanced-tab-trigger">
+                <DollarSign className="h-4 w-4 enhanced-tab-icon" />
+                Schemes
+              </TabsTrigger>
+              <TabsTrigger value="faculty" className="enhanced-tab-trigger">
+                <GraduationCap className="h-4 w-4 enhanced-tab-icon" />
+                Faculty
+              </TabsTrigger>
+              <TabsTrigger value="campus" className="enhanced-tab-trigger">
+                <Building2 className="h-4 w-4 enhanced-tab-icon" />
+                Campus
+              </TabsTrigger>
+              <TabsTrigger value="qr" className="enhanced-tab-trigger">
+                <QrCode className="h-4 w-4 enhanced-tab-icon" />
                 QR Code
               </TabsTrigger>
-              <TabsTrigger value="export">
-                <Download className="h-4 w-4 mr-1" />
+              <TabsTrigger value="export" className="enhanced-tab-trigger">
+                <Download className="h-4 w-4 enhanced-tab-icon" />
                 Export
               </TabsTrigger>
             </TabsList>
           </div>
 
-          {/* Mobile Tabs - Scrollable */}
+          {/* Mobile Tabs - Enhanced Grid */}
           <div className="block lg:hidden">
-            <TabsList className="flex overflow-x-auto pb-2 space-x-1 mobile-tabs-scroll h-auto">
-              <TabsTrigger value="overview" className="whitespace-nowrap text-xs">Overview</TabsTrigger>
-              <TabsTrigger value="analytics" className="whitespace-nowrap text-xs bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 font-semibold">
-                <Award className="h-4 w-4 mr-1" />
-                NIRF
+            <div className="enhanced-mobile-tabs">
+              <TabsTrigger value="overview" className="enhanced-mobile-tab">
+                <Building2 className="enhanced-mobile-tab-icon" />
+                <span>Overview</span>
               </TabsTrigger>
-              <TabsTrigger value="academics" className="whitespace-nowrap text-xs">Academics</TabsTrigger>
-              <TabsTrigger value="placements" className="whitespace-nowrap text-xs">Placements</TabsTrigger>
-              <TabsTrigger value="research" className="whitespace-nowrap text-xs">Research</TabsTrigger>
-              <TabsTrigger value="compliance" className="whitespace-nowrap text-xs">Compliance</TabsTrigger>
-              <TabsTrigger value="schemes" className="whitespace-nowrap text-xs">Schemes</TabsTrigger>
-              <TabsTrigger value="faculty" className="whitespace-nowrap text-xs">Faculty</TabsTrigger>
-              <TabsTrigger value="campus" className="whitespace-nowrap text-xs">Campus</TabsTrigger>
-              <TabsTrigger value="qr" className="whitespace-nowrap text-xs">
-                <QrCode className="h-4 w-4" />
+              <TabsTrigger value="analytics" className="enhanced-mobile-tab bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-300">
+                <Award className="enhanced-mobile-tab-icon" />
+                <span>NIRF</span>
               </TabsTrigger>
-              <TabsTrigger value="export" className="whitespace-nowrap text-xs">
-                <Download className="h-4 w-4" />
+              <TabsTrigger value="academics" className="enhanced-mobile-tab">
+                <BookOpen className="enhanced-mobile-tab-icon" />
+                <span>Academics</span>
               </TabsTrigger>
-            </TabsList>
+              <TabsTrigger value="placements" className="enhanced-mobile-tab">
+                <Users className="enhanced-mobile-tab-icon" />
+                <span>Placements</span>
+              </TabsTrigger>
+              <TabsTrigger value="research" className="enhanced-mobile-tab">
+                <FileText className="enhanced-mobile-tab-icon" />
+                <span>Research</span>
+              </TabsTrigger>
+              <TabsTrigger value="compliance" className="enhanced-mobile-tab">
+                <CheckCircle className="enhanced-mobile-tab-icon" />
+                <span>Compliance</span>
+              </TabsTrigger>
+              <TabsTrigger value="schemes" className="enhanced-mobile-tab">
+                <DollarSign className="enhanced-mobile-tab-icon" />
+                <span>Schemes</span>
+              </TabsTrigger>
+              <TabsTrigger value="faculty" className="enhanced-mobile-tab">
+                <GraduationCap className="enhanced-mobile-tab-icon" />
+                <span>Faculty</span>
+              </TabsTrigger>
+              <TabsTrigger value="campus" className="enhanced-mobile-tab">
+                <Building2 className="enhanced-mobile-tab-icon" />
+                <span>Campus</span>
+              </TabsTrigger>
+              <TabsTrigger value="qr" className="enhanced-mobile-tab">
+                <QrCode className="enhanced-mobile-tab-icon" />
+                <span>QR</span>
+              </TabsTrigger>
+              <TabsTrigger value="export" className="enhanced-mobile-tab">
+                <Download className="enhanced-mobile-tab-icon" />
+                <span>Export</span>
+              </TabsTrigger>
+            </div>
           </div>
 
           <TabsContent value="overview" className="space-y-6">

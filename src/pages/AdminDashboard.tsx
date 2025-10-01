@@ -438,52 +438,114 @@ const AdminDashboard = () => {
         <Tabs defaultValue="overview" className="space-y-6">
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
-            <TabsList className="grid w-full grid-cols-13 text-xs">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="institutions">Institutions</TabsTrigger>
-              <TabsTrigger value="schemes">Schemes</TabsTrigger>
-              <TabsTrigger value="analytics">Analytics</TabsTrigger>
-              <TabsTrigger value="compliance">Compliance</TabsTrigger>
-              <TabsTrigger value="interop">Interoperability</TabsTrigger>
-              <TabsTrigger value="policy">Policy Support</TabsTrigger>
-              <TabsTrigger value="security">Security</TabsTrigger>
-              <TabsTrigger value="authority-requests">
-                <Shield className="h-4 w-4 mr-1" />
-                Authority Requests
+            <TabsList className="gov-tabs-list grid w-full grid-cols-13">
+              <TabsTrigger value="overview" className="gov-tab-trigger">
+                <Building2 className="h-4 w-4 enhanced-tab-icon" />
+                Overview
               </TabsTrigger>
-              <TabsTrigger value="map">Geo-Analytics</TabsTrigger>
-              <TabsTrigger value="qr">
-                <QrCode className="h-4 w-4 mr-1" />
+              <TabsTrigger value="institutions" className="gov-tab-trigger">
+                <Users className="h-4 w-4 enhanced-tab-icon" />
+                Institutions
+              </TabsTrigger>
+              <TabsTrigger value="schemes" className="gov-tab-trigger">
+                <Award className="h-4 w-4 enhanced-tab-icon" />
+                Schemes
+              </TabsTrigger>
+              <TabsTrigger value="analytics" className="gov-tab-trigger">
+                <BarChart3 className="h-4 w-4 enhanced-tab-icon" />
+                Analytics
+              </TabsTrigger>
+              <TabsTrigger value="compliance" className="gov-tab-trigger">
+                <CheckCircle className="h-4 w-4 enhanced-tab-icon" />
+                Compliance
+              </TabsTrigger>
+              <TabsTrigger value="interop" className="gov-tab-trigger">
+                <Database className="h-4 w-4 enhanced-tab-icon" />
+                Interop
+              </TabsTrigger>
+              <TabsTrigger value="policy" className="gov-tab-trigger">
+                <FileText className="h-4 w-4 enhanced-tab-icon" />
+                Policy
+              </TabsTrigger>
+              <TabsTrigger value="security" className="gov-tab-trigger">
+                <Shield className="h-4 w-4 enhanced-tab-icon" />
+                Security
+              </TabsTrigger>
+              <TabsTrigger value="authority-requests" className="gov-tab-trigger">
+                <Users className="h-4 w-4 enhanced-tab-icon" />
+                Authority
+              </TabsTrigger>
+              <TabsTrigger value="map" className="gov-tab-trigger">
+                <MapPin className="h-4 w-4 enhanced-tab-icon" />
+                Geo-Analytics
+              </TabsTrigger>
+              <TabsTrigger value="qr" className="gov-tab-trigger">
+                <QrCode className="h-4 w-4 enhanced-tab-icon" />
                 QR Codes
               </TabsTrigger>
-              <TabsTrigger value="export">
-                <Download className="h-4 w-4 mr-1" />
+              <TabsTrigger value="export" className="gov-tab-trigger">
+                <Download className="h-4 w-4 enhanced-tab-icon" />
                 Export
               </TabsTrigger>
-              <TabsTrigger value="ai">AI Insights</TabsTrigger>
+              <TabsTrigger value="ai" className="gov-tab-trigger">
+                <Bot className="h-4 w-4 enhanced-tab-icon" />
+                AI Insights
+              </TabsTrigger>
             </TabsList>
           </div>
 
-          {/* Mobile Tabs - Scrollable */}
+          {/* Mobile Tabs - Enhanced Grid */}
           <div className="block lg:hidden">
-            <TabsList className="flex overflow-x-auto pb-2 space-x-1 mobile-tabs-scroll h-auto">
-              <TabsTrigger value="overview" className="whitespace-nowrap text-xs">Overview</TabsTrigger>
-              <TabsTrigger value="institutions" className="whitespace-nowrap text-xs">Institutions</TabsTrigger>
-              <TabsTrigger value="schemes" className="whitespace-nowrap text-xs">Schemes</TabsTrigger>
-              <TabsTrigger value="analytics" className="whitespace-nowrap text-xs">Analytics</TabsTrigger>
-              <TabsTrigger value="compliance" className="whitespace-nowrap text-xs">Compliance</TabsTrigger>
-              <TabsTrigger value="interop" className="whitespace-nowrap text-xs">Interop</TabsTrigger>
-              <TabsTrigger value="policy" className="whitespace-nowrap text-xs">Policy</TabsTrigger>
-              <TabsTrigger value="security" className="whitespace-nowrap text-xs">Security</TabsTrigger>
-              <TabsTrigger value="map" className="whitespace-nowrap text-xs">Map</TabsTrigger>
-              <TabsTrigger value="qr" className="whitespace-nowrap text-xs">
-                <QrCode className="h-4 w-4" />
+            <div className="enhanced-mobile-tabs">
+              <TabsTrigger value="overview" className="enhanced-mobile-tab">
+                <Building2 className="enhanced-mobile-tab-icon" />
+                <span>Overview</span>
               </TabsTrigger>
-              <TabsTrigger value="export" className="whitespace-nowrap text-xs">
-                <Download className="h-4 w-4" />
+              <TabsTrigger value="institutions" className="enhanced-mobile-tab">
+                <Users className="enhanced-mobile-tab-icon" />
+                <span>Institutions</span>
               </TabsTrigger>
-              <TabsTrigger value="ai" className="whitespace-nowrap text-xs">AI</TabsTrigger>
-            </TabsList>
+              <TabsTrigger value="schemes" className="enhanced-mobile-tab">
+                <Award className="enhanced-mobile-tab-icon" />
+                <span>Schemes</span>
+              </TabsTrigger>
+              <TabsTrigger value="analytics" className="enhanced-mobile-tab">
+                <BarChart3 className="enhanced-mobile-tab-icon" />
+                <span>Analytics</span>
+              </TabsTrigger>
+              <TabsTrigger value="compliance" className="enhanced-mobile-tab">
+                <CheckCircle className="enhanced-mobile-tab-icon" />
+                <span>Compliance</span>
+              </TabsTrigger>
+              <TabsTrigger value="interop" className="enhanced-mobile-tab">
+                <Database className="enhanced-mobile-tab-icon" />
+                <span>Interop</span>
+              </TabsTrigger>
+              <TabsTrigger value="policy" className="enhanced-mobile-tab">
+                <FileText className="enhanced-mobile-tab-icon" />
+                <span>Policy</span>
+              </TabsTrigger>
+              <TabsTrigger value="security" className="enhanced-mobile-tab">
+                <Shield className="enhanced-mobile-tab-icon" />
+                <span>Security</span>
+              </TabsTrigger>
+              <TabsTrigger value="map" className="enhanced-mobile-tab">
+                <MapPin className="enhanced-mobile-tab-icon" />
+                <span>Map</span>
+              </TabsTrigger>
+              <TabsTrigger value="qr" className="enhanced-mobile-tab">
+                <QrCode className="enhanced-mobile-tab-icon" />
+                <span>QR</span>
+              </TabsTrigger>
+              <TabsTrigger value="export" className="enhanced-mobile-tab">
+                <Download className="enhanced-mobile-tab-icon" />
+                <span>Export</span>
+              </TabsTrigger>
+              <TabsTrigger value="ai" className="enhanced-mobile-tab">
+                <Bot className="enhanced-mobile-tab-icon" />
+                <span>AI</span>
+              </TabsTrigger>
+            </div>
           </div>
 
           <TabsContent value="overview" className="space-y-6">

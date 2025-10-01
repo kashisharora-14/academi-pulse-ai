@@ -213,83 +213,101 @@ const StudentDashboard = () => {
         <Tabs defaultValue="overview" className="space-y-6">
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
-            <TabsList className="grid w-full grid-cols-11 text-xs">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="lifecycle">Life Cycle</TabsTrigger>
-              <TabsTrigger value="journey">
-                <Route className="h-4 w-4 mr-1" />
+            <TabsList className="enhanced-tabs-list grid w-full grid-cols-11">
+              <TabsTrigger value="overview" className="enhanced-tab-trigger">
+                <GraduationCap className="h-4 w-4 enhanced-tab-icon" />
+                Overview
+              </TabsTrigger>
+              <TabsTrigger value="lifecycle" className="enhanced-tab-trigger">
+                <Target className="h-4 w-4 enhanced-tab-icon" />
+                Life Cycle
+              </TabsTrigger>
+              <TabsTrigger value="journey" className="enhanced-tab-trigger">
+                <Route className="h-4 w-4 enhanced-tab-icon" />
                 Journey
               </TabsTrigger>
-              <TabsTrigger value="gamification">
-                <Trophy className="h-4 w-4 mr-1" />
+              <TabsTrigger value="gamification" className="enhanced-tab-trigger">
+                <Trophy className="h-4 w-4 enhanced-tab-icon" />
                 Achievements
               </TabsTrigger>
-              <TabsTrigger value="digilocker">
-                <FolderLock className="h-4 w-4 mr-1" />
+              <TabsTrigger value="digilocker" className="enhanced-tab-trigger">
+                <FolderLock className="h-4 w-4 enhanced-tab-icon" />
                 DigiLocker
               </TabsTrigger>
-
-              <TabsTrigger value="qr">
-                <QrCode className="h-4 w-4 mr-1" />
-                QR
+              <TabsTrigger value="qr" className="enhanced-tab-trigger">
+                <QrCode className="h-4 w-4 enhanced-tab-icon" />
+                QR Code
               </TabsTrigger>
-              <TabsTrigger value="export">
-                <Download className="h-4 w-4 mr-1" />
+              <TabsTrigger value="export" className="enhanced-tab-trigger">
+                <Download className="h-4 w-4 enhanced-tab-icon" />
                 Export
               </TabsTrigger>
-              <TabsTrigger value="ai">
-                <Sparkles className="h-4 w-4 mr-1" />
-                AI
+              <TabsTrigger value="ai" className="enhanced-tab-trigger">
+                <Sparkles className="h-4 w-4 enhanced-tab-icon" />
+                AI Assistant
               </TabsTrigger>
-              <TabsTrigger value="academics">Academics</TabsTrigger>
-              <TabsTrigger value="schemes">Schemes</TabsTrigger>
-              <TabsTrigger value="chat">EduBot</TabsTrigger>
-              <TabsTrigger value="authority-requests">
-                <Users className="h-4 w-4 mr-1" /> {/* Icon for Authority Requests */}
-                Authority Requests
+              <TabsTrigger value="academics" className="enhanced-tab-trigger">
+                <BookOpen className="h-4 w-4 enhanced-tab-icon" />
+                Academics
+              </TabsTrigger>
+              <TabsTrigger value="schemes" className="enhanced-tab-trigger">
+                <Award className="h-4 w-4 enhanced-tab-icon" />
+                Schemes
+              </TabsTrigger>
+              <TabsTrigger value="chat" className="enhanced-tab-trigger">
+                <Users className="h-4 w-4 enhanced-tab-icon" />
+                EduBot
               </TabsTrigger>
             </TabsList>
           </div>
 
-          {/* Mobile Tabs - Grid Layout */}
+          {/* Mobile Tabs - Enhanced Grid */}
           <div className="block lg:hidden">
-            <div className="overflow-x-auto scrollbar-hide">
-              <TabsList className="grid grid-cols-3 gap-2 p-2 bg-muted/50 h-auto min-w-full">
-                <TabsTrigger value="overview" className="text-xs px-2 py-2 h-auto">Overview</TabsTrigger>
-                <TabsTrigger value="lifecycle" className="text-xs px-2 py-2 h-auto">Life Cycle</TabsTrigger>
-                <TabsTrigger value="journey" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
-                  <Route className="h-3 w-3" />
-                  <span>Journey</span>
-                </TabsTrigger>
-                <TabsTrigger value="gamification" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
-                  <Trophy className="h-3 w-3" />
-                  <span>Awards</span>
-                </TabsTrigger>
-                <TabsTrigger value="digilocker" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
-                  <FolderLock className="h-3 w-3" />
-                  <span>DigiLocker</span>
-                </TabsTrigger>
-
-                <TabsTrigger value="qr" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
-                  <QrCode className="h-3 w-3" />
-                  <span>QR Code</span>
-                </TabsTrigger>
-                <TabsTrigger value="export" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
-                  <Download className="h-3 w-3" />
-                  <span>Export</span>
-                </TabsTrigger>
-                <TabsTrigger value="ai" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
-                  <Sparkles className="h-3 w-3" />
-                  <span>AI</span>
-                </TabsTrigger>
-                <TabsTrigger value="academics" className="text-xs px-2 py-2 h-auto">Academics</TabsTrigger>
-                <TabsTrigger value="schemes" className="text-xs px-2 py-2 h-auto">Schemes</TabsTrigger>
-                <TabsTrigger value="chat" className="text-xs px-2 py-2 h-auto">EduBot</TabsTrigger>
-                <TabsTrigger value="authority-requests" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
-                  <Users className="h-3 w-3" />
-                  <span>Auth Requests</span>
-                </TabsTrigger>
-              </TabsList>
+            <div className="enhanced-mobile-tabs">
+              <TabsTrigger value="overview" className="enhanced-mobile-tab">
+                <GraduationCap className="enhanced-mobile-tab-icon" />
+                <span>Overview</span>
+              </TabsTrigger>
+              <TabsTrigger value="lifecycle" className="enhanced-mobile-tab">
+                <Target className="enhanced-mobile-tab-icon" />
+                <span>Life Cycle</span>
+              </TabsTrigger>
+              <TabsTrigger value="journey" className="enhanced-mobile-tab">
+                <Route className="enhanced-mobile-tab-icon" />
+                <span>Journey</span>
+              </TabsTrigger>
+              <TabsTrigger value="gamification" className="enhanced-mobile-tab">
+                <Trophy className="enhanced-mobile-tab-icon" />
+                <span>Awards</span>
+              </TabsTrigger>
+              <TabsTrigger value="digilocker" className="enhanced-mobile-tab">
+                <FolderLock className="enhanced-mobile-tab-icon" />
+                <span>DigiLocker</span>
+              </TabsTrigger>
+              <TabsTrigger value="qr" className="enhanced-mobile-tab">
+                <QrCode className="enhanced-mobile-tab-icon" />
+                <span>QR Code</span>
+              </TabsTrigger>
+              <TabsTrigger value="export" className="enhanced-mobile-tab">
+                <Download className="enhanced-mobile-tab-icon" />
+                <span>Export</span>
+              </TabsTrigger>
+              <TabsTrigger value="ai" className="enhanced-mobile-tab">
+                <Sparkles className="enhanced-mobile-tab-icon" />
+                <span>AI</span>
+              </TabsTrigger>
+              <TabsTrigger value="academics" className="enhanced-mobile-tab">
+                <BookOpen className="enhanced-mobile-tab-icon" />
+                <span>Academics</span>
+              </TabsTrigger>
+              <TabsTrigger value="schemes" className="enhanced-mobile-tab">
+                <Award className="enhanced-mobile-tab-icon" />
+                <span>Schemes</span>
+              </TabsTrigger>
+              <TabsTrigger value="chat" className="enhanced-mobile-tab">
+                <Users className="enhanced-mobile-tab-icon" />
+                <span>EduBot</span>
+              </TabsTrigger>
             </div>
           </div>
 
@@ -1203,7 +1221,7 @@ const StudentDashboard = () => {
                       <div className="text-xs text-muted-foreground">{scheme.description}</div>
                       <Button size="sm" className="mt-2 w-full">Apply Now</Button>
                     </div>
-                  ))}
+                  ))
                 </div>
               </Card>
             </div>
