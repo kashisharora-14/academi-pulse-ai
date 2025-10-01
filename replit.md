@@ -116,6 +116,17 @@ The project is configured for autoscale deployment:
     - Match percentage based on CGPA, category, family income, and other criteria
     - Displays scholarship amount, deadlines, and eligibility requirements
     - Personalized recommendations (Central Sector, INSPIRE, Dr. Ambedkar Post Matric, PM Scholarship, etc.)
+  - **Functional Application Form**: Complete scholarship application workflow
+    - Modal dialog opens when clicking "Apply for Scholarship" or "Apply Now"
+    - Pre-filled student information (name, ID, email)
+    - Required fields: Phone, Father's Name, Mother's Name
+    - Financial details: Annual Income, Category (General/OBC/SC/ST/EWS)
+    - Bank details: Account Number, IFSC Code
+    - Identity: Aadhar Number, Residential Address
+    - Document checklist displayed (Income Certificate, Caste Certificate, Aadhar, Bank Passbook, Mark sheets)
+    - Form validation ensures all fields are filled
+    - Submission sends request to Financial Aid Department
+    - Success confirmation with Application ID
   - **Application Tracking System**: Complete workflow visibility from submission to disbursement
     - Real-time progress tracking with 5-stage workflow:
       1. Application Submitted ✓
@@ -136,8 +147,8 @@ The project is configured for autoscale deployment:
   - **Document Upload Workflow**: Students can upload required documents directly
   - **Active Schemes Display**: Shows ongoing scholarships and benefits with disbursement tracking
 - Accessible via Student Dashboard → Schemes tab
-- Helps students discover scholarships they're eligible for and track application progress transparently
-- Department can update status, students see real-time progress updates
+- Complete flow: Student fills form → Submits to department → Tracks progress → Gets approval → Receives disbursement
+- Department receives application with all student details for verification and approval
 
 ### October 1, 2025 - Affiliated Colleges Map Feature for Institution Dashboard
 - ✅ **Implemented Affiliated Colleges Network Visualization**

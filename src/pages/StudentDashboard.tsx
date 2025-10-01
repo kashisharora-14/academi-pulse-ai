@@ -6,6 +6,10 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
   BookOpen, 
   Award, 
@@ -63,6 +67,23 @@ const nearbyInstitutions = [
 const StudentDashboard = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<any>(null);
+  const [isApplicationDialogOpen, setIsApplicationDialogOpen] = useState(false);
+  const [selectedScholarship, setSelectedScholarship] = useState<any>(null);
+  const [applicationSubmitted, setApplicationSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    studentName: "Arjun Patel",
+    studentId: "STU-2024-001",
+    email: "arjun.patel@student.edu",
+    phone: "",
+    fatherName: "",
+    motherName: "",
+    annualIncome: "",
+    category: "",
+    bankAccount: "",
+    ifscCode: "",
+    aadharNumber: "",
+    address: ""
+  });
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -77,6 +98,35 @@ const StudentDashboard = () => {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     navigate("/auth");
+  };
+
+  const handleApplyClick = (scholarship: any) => {
+    setSelectedScholarship(scholarship);
+    setIsApplicationDialogOpen(true);
+    setApplicationSubmitted(false);
+  };
+
+  const handleApplicationSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Simulate submission to department
+    setApplicationSubmitted(true);
+    setTimeout(() => {
+      setIsApplicationDialogOpen(false);
+      setApplicationSubmitted(false);
+      // Reset form
+      setFormData({
+        ...formData,
+        phone: "",
+        fatherName: "",
+        motherName: "",
+        annualIncome: "",
+        category: "",
+        bankAccount: "",
+        ifscCode: "",
+        aadharNumber: "",
+        address: ""
+      });
+    }, 3000);
   };
 
   return (
@@ -538,10 +588,198 @@ const StudentDashboard = () => {
                       Track your scholarship applications from submission to approval
                     </p>
                   </div>
-                  <Button className="bg-primary">
-                    <Award className="h-4 w-4 mr-2" />
-                    Apply for Scholarship
-                  </Button>
+                  <Dialog open={isApplicationDialogOpen} onOpenChange={setIsApplicationDialogOpen}>
+                    <DialogTrigger asChild>
+                      <Button className="bg-primary" onClick={() => handleApplyClick(null)}>
+                        <Award className="h-4 w-4 mr-2" />
+                        Apply for Scholarship
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle className="text-2xl">
+                          {selectedScholarship ? `Apply for ${selectedScholarship.name}` : 'Scholarship Application Form'}
+                        </DialogTitle>
+                        <DialogDescription>
+                          Fill in your details below. Your application will be sent to the Financial Aid Department for review.
+                        </DialogDescription>
+                      </DialogHeader>
+
+                      {!applicationSubmitted ? (
+                        <form onSubmit={handleApplicationSubmit} className="space-y-4 mt-4">
+                          {/* Pre-filled Student Information */}
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <Label htmlFor="studentName">Student Name *</Label>
+                              <Input id="studentName" value={formData.studentName} readOnly className="bg-gray-50" />
+                            </div>
+                            <div>
+                              <Label htmlFor="studentId">Student ID *</Label>
+                              <Input id="studentId" value={formData.studentId} readOnly className="bg-gray-50" />
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <Label htmlFor="email">Email *</Label>
+                              <Input id="email" type="email" value={formData.email} readOnly className="bg-gray-50" />
+                            </div>
+                            <div>
+                              <Label htmlFor="phone">Phone Number *</Label>
+                              <Input 
+                                id="phone" 
+                                type="tel" 
+                                placeholder="Enter 10-digit mobile number"
+                                value={formData.phone}
+                                onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                                required 
+                              />
+                            </div>
+                          </div>
+
+                          {/* Parent Information */}
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <Label htmlFor="fatherName">Father's Name *</Label>
+                              <Input 
+                                id="fatherName" 
+                                placeholder="Enter father's full name"
+                                value={formData.fatherName}
+                                onChange={(e) => setFormData({...formData, fatherName: e.target.value})}
+                                required 
+                              />
+                            </div>
+                            <div>
+                              <Label htmlFor="motherName">Mother's Name *</Label>
+                              <Input 
+                                id="motherName" 
+                                placeholder="Enter mother's full name"
+                                value={formData.motherName}
+                                onChange={(e) => setFormData({...formData, motherName: e.target.value})}
+                                required 
+                              />
+                            </div>
+                          </div>
+
+                          {/* Financial & Category Information */}
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <Label htmlFor="annualIncome">Annual Family Income (₹) *</Label>
+                              <Input 
+                                id="annualIncome" 
+                                type="number" 
+                                placeholder="Enter annual income"
+                                value={formData.annualIncome}
+                                onChange={(e) => setFormData({...formData, annualIncome: e.target.value})}
+                                required 
+                              />
+                            </div>
+                            <div>
+                              <Label htmlFor="category">Category *</Label>
+                              <Select value={formData.category} onValueChange={(value) => setFormData({...formData, category: value})} required>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Select category" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="general">General</SelectItem>
+                                  <SelectItem value="obc">OBC</SelectItem>
+                                  <SelectItem value="sc">SC</SelectItem>
+                                  <SelectItem value="st">ST</SelectItem>
+                                  <SelectItem value="ews">EWS</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                          </div>
+
+                          {/* Bank Details */}
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <Label htmlFor="bankAccount">Bank Account Number *</Label>
+                              <Input 
+                                id="bankAccount" 
+                                placeholder="Enter account number"
+                                value={formData.bankAccount}
+                                onChange={(e) => setFormData({...formData, bankAccount: e.target.value})}
+                                required 
+                              />
+                            </div>
+                            <div>
+                              <Label htmlFor="ifscCode">IFSC Code *</Label>
+                              <Input 
+                                id="ifscCode" 
+                                placeholder="Enter IFSC code"
+                                value={formData.ifscCode}
+                                onChange={(e) => setFormData({...formData, ifscCode: e.target.value})}
+                                required 
+                              />
+                            </div>
+                          </div>
+
+                          {/* Aadhar & Address */}
+                          <div>
+                            <Label htmlFor="aadharNumber">Aadhar Number *</Label>
+                            <Input 
+                              id="aadharNumber" 
+                              placeholder="Enter 12-digit Aadhar number"
+                              maxLength={12}
+                              value={formData.aadharNumber}
+                              onChange={(e) => setFormData({...formData, aadharNumber: e.target.value})}
+                              required 
+                            />
+                          </div>
+
+                          <div>
+                            <Label htmlFor="address">Residential Address *</Label>
+                            <Input 
+                              id="address" 
+                              placeholder="Enter complete address"
+                              value={formData.address}
+                              onChange={(e) => setFormData({...formData, address: e.target.value})}
+                              required 
+                            />
+                          </div>
+
+                          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                            <h4 className="font-semibold text-blue-800 mb-2">📋 Required Documents (Upload after submission)</h4>
+                            <ul className="text-sm text-blue-700 space-y-1">
+                              <li>• Income Certificate (issued by competent authority)</li>
+                              <li>• Caste Certificate (if applicable)</li>
+                              <li>• Aadhar Card copy</li>
+                              <li>• Bank Passbook first page</li>
+                              <li>• Previous semester mark sheets</li>
+                            </ul>
+                          </div>
+
+                          <div className="flex gap-3 pt-4">
+                            <Button type="submit" className="flex-1 bg-green-600 hover:bg-green-700">
+                              <CheckCircle className="h-4 w-4 mr-2" />
+                              Submit Application to Department
+                            </Button>
+                            <Button type="button" variant="outline" onClick={() => setIsApplicationDialogOpen(false)}>
+                              Cancel
+                            </Button>
+                          </div>
+                        </form>
+                      ) : (
+                        <div className="py-8 text-center">
+                          <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <CheckCircle className="h-8 w-8 text-green-600" />
+                          </div>
+                          <h3 className="text-xl font-bold text-green-800 mb-2">Application Submitted Successfully!</h3>
+                          <p className="text-muted-foreground mb-4">
+                            Your scholarship application has been sent to the Financial Aid Department for review.
+                          </p>
+                          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                            <p className="text-sm text-blue-800">
+                              <strong>Application ID:</strong> APP-{Date.now().toString().slice(-6)}<br/>
+                              <strong>Status:</strong> Under Department Review<br/>
+                              <strong>Next Step:</strong> Upload required documents in the tracking section
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </DialogContent>
+                  </Dialog>
                 </div>
 
                 {/* Application Status Cards */}
@@ -772,7 +1010,7 @@ const StudentDashboard = () => {
                           <span className="font-medium text-red-600">{scholarship.deadline}</span>
                         </div>
                       </div>
-                      <Button className="w-full mt-3" size="sm">
+                      <Button className="w-full mt-3" size="sm" onClick={() => handleApplyClick(scholarship)}>
                         Apply Now
                       </Button>
                     </div>
