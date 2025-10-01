@@ -6,11 +6,13 @@ import path from "path";
 // Configured for Replit environment:
 // - host 0.0.0.0 allows connections from Replit's proxy
 // - port 5000 is the only non-firewalled port
+// - allowedHosts: ['.replit.dev'] allows all Replit proxy domains
 export default defineConfig(() => ({
   server: {
     host: "0.0.0.0",
     port: 5000,
     strictPort: false,
+    allowedHosts: ['.replit.dev'],
     hmr: {
       overlay: false,
     },
@@ -19,6 +21,7 @@ export default defineConfig(() => ({
     host: "0.0.0.0",
     port: 5000,
     strictPort: false,
+    allowedHosts: ['.replit.dev'],
   },
   plugins: [react()],
   resolve: {
