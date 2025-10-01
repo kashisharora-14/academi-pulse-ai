@@ -193,296 +193,105 @@ export const MapView = ({ locations, center = [30.7677, 76.7794], zoom = 8 }: Ma
             position={location.position}
             icon={createCustomIcon(location)}
           >
-            <Popup maxWidth={500} className="custom-popup">
-              <div className="p-1">
-                {/* Government Priority Header */}
-                <div className="bg-gradient-to-r from-orange-100 via-white to-green-100 p-2 rounded-t-lg border-b-2 border-blue-600 mb-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 bg-blue-800 rounded-full flex items-center justify-center">
-                        <div className="w-6 h-6 border-2 border-white rounded-full"></div>
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-blue-800">GOVERNMENT MONITORING</div>
-                        <div className="text-xs text-gray-600">Ministry of Education • Real-time Status</div>
-                      </div>
-                    </div>
-                    <div className={`px-3 py-1 rounded-full text-xs font-bold ${
-                      location.performance === 'critical' ? 'bg-red-600 text-white' :
-                      location.performance === 'needs-attention' ? 'bg-orange-500 text-white' :
-                      location.performance === 'excellent' ? 'bg-green-600 text-white' :
-                      'bg-blue-600 text-white'
-                    }`}>
-                      {location.performance === 'critical' ? 'HIGH PRIORITY' :
-                       location.performance === 'needs-attention' ? 'MONITOR' :
-                       location.performance === 'excellent' ? 'SHOWCASE' : 'STABLE'}
-                    </div>
-                  </div>
-                </div>
-
+            <Popup maxWidth={320} className="custom-popup">
+              <div className="p-2">
                 {/* Institution Header */}
-                <div className="flex items-start justify-between mb-3 bg-gradient-to-r from-blue-50 to-indigo-50 p-3 rounded-lg border">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Building2 className="h-5 w-5 text-blue-600" />
-                      <h3 className="font-bold text-lg text-gray-900">{location.name}</h3>
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 text-sm text-gray-600 mb-2">
-                      <span className="flex items-center gap-1">
-                        <MapPin className="h-4 w-4" />
-                        {location.city}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Star className="h-4 w-4" />
-                        {location.type}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Users className="h-4 w-4" />
-                        {location.students?.toLocaleString()} students
-                      </span>
-                      <span className="flex items-center gap-1 text-blue-600 font-semibold">
-                        📊 ID: {location.id}
-                      </span>
-                    </div>
+                <div className="mb-2">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Building2 className="h-4 w-4 text-blue-600" />
+                    <h3 className="font-bold text-sm text-gray-900">{location.name}</h3>
                   </div>
-                  <div className="ml-3 flex flex-col items-center">
-                    {location.performance === 'excellent' && <CheckCircle className="h-7 w-7 text-green-500" />}
-                    {location.performance === 'critical' && <AlertTriangle className="h-7 w-7 text-red-500" />}
-                    {location.performance === 'needs-attention' && <Clock className="h-7 w-7 text-orange-500" />}
-                    {location.performance === 'good' && <CheckCircle className="h-7 w-7 text-blue-500" />}
-                    {location.performance === 'average' && <Clock className="h-7 w-7 text-yellow-500" />}
+                  <div className="text-xs text-gray-600 mb-2">
+                    📍 {location.city} • {location.type} • {location.students?.toLocaleString()} students
                   </div>
-                </div>
-
-                {/* Quick Government Metrics */}
-                <div className="bg-gray-50 p-3 rounded-lg mb-3 border">
-                  <h4 className="font-bold text-sm text-gray-800 mb-2 flex items-center gap-1">
-                    🏛️ GOVERNMENT METRICS (Real-time)
-                  </h4>
-                  <div className="grid grid-cols-3 gap-2 text-xs">
-                    <div className="text-center">
-                      <div className="font-bold text-blue-700">₹{Math.round((location.students || 0) * 0.45)}L</div>
-                      <div className="text-gray-600">Est. Annual Budget</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="font-bold text-green-700">{Math.round((location.placement || 0) * (location.students || 0) / 100)}</div>
-                      <div className="text-gray-600">Placed Students</div>
-                    </div>
-                    <div className="text-center">
-                      <div className={`font-bold ${location.dropout && location.dropout > 10 ? 'text-red-700' : 'text-green-700'}`}>
-                        {Math.round((location.dropout || 0) * (location.students || 0) / 100)}
-                      </div>
-                      <div className="text-gray-600">At-Risk Students</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Performance Status Badge */}
-                <div className="px-3 mb-3">
-                  <div className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-bold shadow-md ${
-                    location.performance === 'excellent' ? 'bg-gradient-to-r from-green-500 to-green-600 text-white' :
-                    location.performance === 'good' ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white' :
-                    location.performance === 'average' ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-black' :
-                    location.performance === 'needs-attention' ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white' :
-                    location.performance === 'critical' ? 'bg-gradient-to-r from-red-500 to-red-600 text-white' :
-                    'bg-gradient-to-r from-gray-500 to-gray-600 text-white'
+                  <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-bold ${
+                    location.performance === 'critical' ? 'bg-red-600 text-white' :
+                    location.performance === 'needs-attention' ? 'bg-orange-500 text-white' :
+                    location.performance === 'excellent' ? 'bg-green-600 text-white' :
+                    'bg-blue-600 text-white'
                   }`}>
-                    <span className={`w-3 h-3 rounded-full mr-2 ${
-                      location.performance === 'excellent' ? 'bg-green-300' :
-                      location.performance === 'good' ? 'bg-blue-300' :
-                      location.performance === 'average' ? 'bg-yellow-200' :
-                      location.performance === 'needs-attention' ? 'bg-orange-300' :
-                      location.performance === 'critical' ? 'bg-red-300' :
-                      'bg-gray-300'
-                    }`}></span>
-                    {location.performance === 'needs-attention' ? 'NEEDS ATTENTION' : 
-                     location.performance?.toUpperCase()}
+                    {location.performance === 'critical' ? 'CRITICAL' :
+                     location.performance === 'needs-attention' ? 'NEEDS ATTENTION' :
+                     location.performance === 'excellent' ? 'EXCELLENT' : 
+                     location.performance === 'good' ? 'GOOD' : 'AVERAGE'}
                   </div>
                 </div>
 
-                {/* Metrics Grid */}
-                <div className="px-3">
+                {/* Compact Metrics Grid */}
+                <div className="grid grid-cols-2 gap-1 mb-2 text-xs">
                   {location.nirfRank && (
-                    <div className="grid grid-cols-2 gap-2 mb-3">
-                      <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-3 rounded-lg text-center border">
-                        <div className="flex items-center justify-center gap-1 mb-1">
-                          <Star className="h-4 w-4 text-blue-600" />
-                          <div className="text-xl font-black text-blue-700">#{location.nirfRank}</div>
-                        </div>
-                        <div className="text-xs text-blue-600 font-semibold">NIRF RANK</div>
-                        {location.nirfRank <= 50 && <div className="text-xs text-green-600 font-bold mt-1">TOP 50 🏆</div>}
-                        {location.nirfRank > 200 && <div className="text-xs text-red-600 font-bold mt-1">NEEDS FOCUS</div>}
-                      </div>
-                      <div className={`p-3 rounded-lg text-center border ${
-                        location.placement && location.placement >= 80 ? 'bg-gradient-to-br from-green-50 to-green-100' :
-                        location.placement && location.placement >= 60 ? 'bg-gradient-to-br from-yellow-50 to-yellow-100' :
-                        'bg-gradient-to-br from-red-50 to-red-100'
-                      }`}>
-                        <div className="flex items-center justify-center gap-1 mb-1">
-                          {location.placement && location.placement > 80 && <TrendingUp className="h-4 w-4 text-green-600" />}
-                          {location.placement && location.placement < 50 && <TrendingDown className="h-4 w-4 text-red-600" />}
-                          <div className={`text-xl font-black ${
-                            location.placement && location.placement >= 80 ? 'text-green-700' :
-                            location.placement && location.placement >= 60 ? 'text-yellow-700' : 'text-red-700'
-                          }`}>{location.placement}%</div>
-                        </div>
-                        <div className={`text-xs font-semibold ${
-                          location.placement && location.placement >= 80 ? 'text-green-600' :
-                          location.placement && location.placement >= 60 ? 'text-yellow-600' : 'text-red-600'
-                        }`}>PLACEMENT</div>
-                      </div>
-                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-3 rounded-lg text-center border">
-                        <div className="text-xl font-black text-purple-700">{location.research}</div>
-                        <div className="text-xs text-purple-600 font-semibold">RESEARCH</div>
-                      </div>
-                      <div className={`p-3 rounded-lg text-center border ${
-                        location.dropout && location.dropout > 15 ? 'bg-gradient-to-br from-red-50 to-red-100' : 
-                        location.dropout && location.dropout > 8 ? 'bg-gradient-to-br from-orange-50 to-orange-100' : 'bg-gradient-to-br from-green-50 to-green-100'
-                      }`}>
-                        <div className={`text-xl font-black ${
-                          location.dropout && location.dropout > 15 ? 'text-red-700' : 
-                          location.dropout && location.dropout > 8 ? 'text-orange-700' : 'text-green-700'
-                        }`}>{location.dropout}%</div>
-                        <div className={`text-xs font-semibold ${
-                          location.dropout && location.dropout > 15 ? 'text-red-600' : 
-                          location.dropout && location.dropout > 8 ? 'text-orange-600' : 'text-green-600'
-                        }`}>DROPOUT</div>
-                      </div>
+                    <div className="bg-blue-50 p-2 rounded border text-center">
+                      <div className="font-bold text-blue-700">#{location.nirfRank}</div>
+                      <div className="text-blue-600">NIRF Rank</div>
                     </div>
                   )}
+                  <div className={`p-2 rounded border text-center ${
+                    location.placement && location.placement >= 80 ? 'bg-green-50' :
+                    location.placement && location.placement >= 60 ? 'bg-yellow-50' : 'bg-red-50'
+                  }`}>
+                    <div className={`font-bold ${
+                      location.placement && location.placement >= 80 ? 'text-green-700' :
+                      location.placement && location.placement >= 60 ? 'text-yellow-700' : 'text-red-700'
+                    }`}>{location.placement}%</div>
+                    <div className={`${
+                      location.placement && location.placement >= 80 ? 'text-green-600' :
+                      location.placement && location.placement >= 60 ? 'text-yellow-600' : 'text-red-600'
+                    }`}>Placement</div>
+                  </div>
+                  <div className="bg-purple-50 p-2 rounded border text-center">
+                    <div className="font-bold text-purple-700">{location.research}</div>
+                    <div className="text-purple-600">Research</div>
+                  </div>
+                  <div className={`p-2 rounded border text-center ${
+                    location.dropout && location.dropout > 15 ? 'bg-red-50' : 
+                    location.dropout && location.dropout > 8 ? 'bg-orange-50' : 'bg-green-50'
+                  }`}>
+                    <div className={`font-bold ${
+                      location.dropout && location.dropout > 15 ? 'text-red-700' : 
+                      location.dropout && location.dropout > 8 ? 'text-orange-700' : 'text-green-700'
+                    }`}>{location.dropout}%</div>
+                    <div className={`${
+                      location.dropout && location.dropout > 15 ? 'text-red-600' : 
+                      location.dropout && location.dropout > 8 ? 'text-orange-600' : 'text-green-600'
+                    }`}>Dropout</div>
+                  </div>
+                </div>
 
-                  {/* Government Action Alerts */}
-                  {location.performance === 'critical' && (
-                    <div className="p-3 bg-gradient-to-r from-red-50 to-red-100 border-l-4 border-red-500 rounded-lg mb-2">
-                      <div className="flex items-center mb-2">
-                        <AlertTriangle className="h-5 w-5 text-red-600 mr-2" />
-                        <h4 className="font-bold text-red-900">🚨 CRITICAL - IMMEDIATE INTERVENTION REQUIRED</h4>
-                      </div>
-                      <div className="text-sm text-red-800 mb-2">
-                        <strong>Issues:</strong> High dropout ({location.dropout}%), Poor placement ({location.placement}%), Low NIRF rank (#{location.nirfRank})
-                      </div>
-                      <div className="text-xs text-red-700 bg-red-100 p-2 rounded mb-2">
-                        <strong>📋 Immediate Action Plan (Next 30 Days):</strong><br/>
-                        🔍 Schedule UGC inspection team deployment<br/>
-                        🎯 Emergency placement cell setup<br/>
-                        👥 Faculty training program (mandatory)<br/>
-                        💰 Special funding review: ₹{Math.round((location.students || 0) * 0.15)}L emergency grant<br/>
-                        📊 Weekly progress monitoring with Ministry
-                      </div>
-                      <div className="text-xs text-red-700 bg-white p-2 rounded border border-red-300">
-                        <strong>🏛️ Government Response:</strong><br/>
-                        • Contact: Regional Education Officer<br/>
-                        • Next Review: {new Date(Date.now() + 7*24*60*60*1000).toLocaleDateString()}<br/>
-                        • Budget Impact: High Priority Queue<br/>
-                        • Media Attention: Possible
-                      </div>
-                    </div>
-                  )}
+                  {/* Compact Status Summary */}
+                {location.performance === 'critical' && (
+                  <div className="p-2 bg-red-50 border-l-2 border-red-500 rounded text-xs">
+                    <div className="font-bold text-red-900 mb-1">🚨 CRITICAL STATUS</div>
+                    <div className="text-red-700">Immediate government intervention required. Emergency funding allocated.</div>
+                  </div>
+                )}
 
-                  {location.performance === 'needs-attention' && (
-                    <div className="p-3 bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange-500 rounded-lg mb-2">
-                      <div className="flex items-center mb-2">
-                        <Clock className="h-5 w-5 text-orange-600 mr-2" />
-                        <h4 className="font-bold text-orange-900">⚠️ NEEDS IMPROVEMENT</h4>
-                      </div>
-                      <div className="text-sm text-orange-800 mb-1">
-                        Focus: Placement rates and research output enhancement
-                      </div>
-                      <div className="text-xs text-orange-700">
-                        📈 Industry partnership program recommended
-                      </div>
-                    </div>
-                  )}
+                {location.performance === 'needs-attention' && (
+                  <div className="p-2 bg-orange-50 border-l-2 border-orange-500 rounded text-xs">
+                    <div className="font-bold text-orange-900 mb-1">⚠️ NEEDS IMPROVEMENT</div>
+                    <div className="text-orange-700">Focus on placement rates and research output enhancement.</div>
+                  </div>
+                )}
 
-                  {location.performance === 'excellent' && (
-                    <div className="p-3 bg-gradient-to-r from-green-50 to-green-100 border-l-4 border-green-500 rounded-lg mb-2">
-                      <div className="flex items-center mb-2">
-                        <Star className="h-5 w-5 text-green-600 mr-2" />
-                        <h4 className="font-bold text-green-900">🌟 EXEMPLARY PERFORMANCE</h4>
-                      </div>
-                      <div className="text-sm text-green-800 mb-2">
-                        Outstanding across all metrics. Prime candidate for best practice showcase.
-                      </div>
-                      <div className="text-xs text-green-700 bg-green-100 p-2 rounded mb-2">
-                        🏆 <strong>Government Recognition Program:</strong><br/>
-                        • Featured in national education excellence report<br/>
-                        • Best practices documentation for replication<br/>
-                        • Additional funding: ₹{Math.round((location.students || 0) * 0.1)}L excellence bonus<br/>
-                        • Mentorship role for struggling institutions
-                      </div>
-                      <div className="text-xs text-green-700 bg-white p-2 rounded border border-green-300">
-                        <strong>🏛️ Ministry Action:</strong><br/>
-                        • Status: National Showcase Institution<br/>
-                        • Media Coverage: Positive highlighting<br/>
-                        • Next Visit: Annual Excellence Review<br/>
-                        • Special Grants: Available
-                      </div>
-                    </div>
-                  )}
+                {location.performance === 'excellent' && (
+                  <div className="p-2 bg-green-50 border-l-2 border-green-500 rounded text-xs">
+                    <div className="font-bold text-green-900 mb-1">🌟 EXEMPLARY</div>
+                    <div className="text-green-700">Outstanding performance. National showcase institution.</div>
+                  </div>
+                )}
 
-                  {location.performance === 'good' && (
-                    <div className="p-3 bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-500 rounded-lg mb-2">
-                      <div className="flex items-center mb-2">
-                        <CheckCircle className="h-5 w-5 text-blue-600 mr-2" />
-                        <h4 className="font-bold text-blue-900">✅ GOOD PERFORMANCE - STABLE INSTITUTION</h4>
-                      </div>
-                      <div className="text-sm text-blue-800 mb-2">
-                        Solid performance across key metrics. Maintain current trajectory.
-                      </div>
-                      <div className="text-xs text-blue-700 bg-blue-100 p-2 rounded mb-2">
-                        📈 <strong>Improvement Opportunities:</strong><br/>
-                        • Target NIRF rank improvement to &lt;50<br/>
-                        • Increase research output by 15%<br/>
-                        • Industry partnership expansion<br/>
-                        • Digital infrastructure upgrade
-                      </div>
-                      <div className="text-xs text-blue-700 bg-white p-2 rounded border border-blue-300">
-                        <strong>🏛️ Government Support:</strong><br/>
-                        • Funding: Regular allocation maintained<br/>
-                        • Review Cycle: Bi-annual assessment<br/>
-                        • Growth Support: Available on request<br/>
-                        • Monitoring: Standard protocols
-                      </div>
-                    </div>
-                  )}
+                {location.performance === 'good' && (
+                  <div className="p-2 bg-blue-50 border-l-2 border-blue-500 rounded text-xs">
+                    <div className="font-bold text-blue-900 mb-1">✅ GOOD PERFORMANCE</div>
+                    <div className="text-blue-700">Stable institution with solid metrics across all areas.</div>
+                  </div>
+                )}
 
-                  {location.performance === 'average' && (
-                    <div className="p-3 bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-500 rounded-lg mb-2">
-                      <div className="flex items-center mb-2">
-                        <Clock className="h-5 w-5 text-yellow-600 mr-2" />
-                        <h4 className="font-bold text-yellow-900">⚡ AVERAGE PERFORMANCE - IMPROVEMENT NEEDED</h4>
-                      </div>
-                      <div className="text-sm text-yellow-800 mb-2">
-                        Performance below expectations. Targeted interventions required.
-                      </div>
-                      <div className="text-xs text-yellow-700 bg-yellow-100 p-2 rounded mb-2">
-                        🎯 <strong>Focus Areas (Next 6 Months):</strong><br/>
-                        • Placement rate improvement program<br/>
-                        • Faculty skill development initiative<br/>
-                        • Student support services enhancement<br/>
-                        • Infrastructure gap analysis and upgrade
-                      </div>
-                      <div className="text-xs text-yellow-700 bg-white p-2 rounded border border-yellow-300">
-                        <strong>🏛️ Government Intervention:</strong><br/>
-                        • Status: Performance Improvement Plan<br/>
-                        • Funding: Conditional on milestones<br/>
-                        • Support: Technical assistance team<br/>
-                        • Timeline: 6-month improvement target
-                      </div>
-                    </div>
-                  )}
-
-                  {location.performance === 'good' && (
-                    <div className="p-3 bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-500 rounded-lg mb-2">
-                      <div className="flex items-center mb-2">
-                        <CheckCircle className="h-5 w-5 text-blue-600 mr-2" />
-                        <h4 className="font-bold text-blue-900">✅ GOOD PERFORMANCE</h4>
-                      </div>
-                      <div className="text-sm text-blue-800">
-                        Solid performance across key metrics. Continue monitoring.
-                      </div>
-                    </div>
-                  )}
+                {location.performance === 'average' && (
+                  <div className="p-2 bg-yellow-50 border-l-2 border-yellow-500 rounded text-xs">
+                    <div className="font-bold text-yellow-900 mb-1">⚡ AVERAGE</div>
+                    <div className="text-yellow-700">Performance improvement plan in progress.</div>
+                  </div>
+                )}
                 </div>
               </div>
             </Popup>
