@@ -12,7 +12,40 @@
 
 .custom-performance-marker:hover {
   filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+  transform: scale(1.15);
+}
+
+.performance-marker-container:hover {
   transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important;
+}
+
+/* Performance-specific marker styles */
+.marker-excellent .performance-marker-container {
+  background: #16A34A !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(22, 163, 74, 0.4) !important;
+}
+
+.marker-good .performance-marker-container {
+  background: #2563EB !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(37, 99, 235, 0.4) !important;
+}
+
+.marker-average .performance-marker-container {
+  background: #EAB308 !important;
+  color: #000000 !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(234, 179, 8, 0.4) !important;
+}
+
+.marker-needs-attention .performance-marker-container {
+  background: #EA580C !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(234, 88, 12, 0.4) !important;
+}
+
+.marker-critical .performance-marker-container {
+  background: #DC2626 !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(220, 38, 38, 0.4) !important;
+  animation: pulse-red 2s infinite;
 }
 
 /* Custom Popup Styles */
@@ -36,13 +69,15 @@
 
 /* Performance Marker Pulse Effect for Critical */
 @keyframes pulse-red {
-  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
-  70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+  0% { box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(220, 38, 38, 0.4), 0 0 0 0 rgba(220, 38, 38, 0.7) !important; }
+  70% { box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(220, 38, 38, 0.4), 0 0 0 10px rgba(220, 38, 38, 0) !important; }
+  100% { box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(220, 38, 38, 0.4), 0 0 0 0 rgba(220, 38, 38, 0) !important; }
 }
 
-.marker-critical {
-  animation: pulse-red 2s infinite;
+/* Ensure marker colors override any default styles */
+.leaflet-marker-icon.custom-performance-marker {
+  background: transparent !important;
+  border: none !important;
 }
 
 @layer base {

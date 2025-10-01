@@ -68,37 +68,42 @@ const createCustomIcon = (location: Location) => {
     return '';
   };
 
+  const performanceColor = getPerformanceColor();
+  const symbol = getPerformanceSymbol();
+  const textColor = getTextColor();
+  const rankDisplay = getRankDisplay();
+
   return L.divIcon({
     html: `
-      <div style="
-        background: linear-gradient(135deg, ${getPerformanceColor()} 0%, ${getPerformanceColor()}dd 100%);
-        color: ${getTextColor()};
+      <div class="performance-marker-container" style="
+        background: ${performanceColor};
+        background: linear-gradient(135deg, ${performanceColor} 0%, ${performanceColor}cc 100%);
+        color: ${textColor};
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        width: 42px;
+        height: 42px;
         display: flex;
         align-items: center;
         justify-content: center;
         border: 3px solid #FFFFFF;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 2px ${getPerformanceColor()};
-        font-size: 16px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px ${performanceColor}40;
+        font-size: 18px;
         font-weight: 900;
         position: relative;
         cursor: pointer;
         transition: all 0.3s ease;
-      " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-        <div style="text-align: center; line-height: 1;">
-          ${getPerformanceSymbol()}
-          <div style="font-size: 8px; position: absolute; top: -2px; right: -2px;">
-            ${getRankDisplay()}
-          </div>
+        z-index: 1000;
+      ">
+        <div style="text-align: center; line-height: 1; position: relative;">
+          <span style="display: block;">${symbol}</span>
+          ${rankDisplay ? `<div style="font-size: 10px; position: absolute; top: -8px; right: -12px; background: white; border-radius: 50%; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center;">${rankDisplay}</div>` : ''}
         </div>
       </div>
     `,
-    className: 'custom-performance-marker',
-    iconSize: [40, 40],
-    iconAnchor: [20, 20],
-    popupAnchor: [0, -20]
+    className: `custom-performance-marker marker-${location.performance}`,
+    iconSize: [42, 42],
+    iconAnchor: [21, 21],
+    popupAnchor: [0, -21]
   });
 };
 
