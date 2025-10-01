@@ -443,7 +443,11 @@ const GovernmentDashboard = () => {
                     </div>
                   </div>
                 </div>
-                <MapView locations={collegePerformanceData} />
+                <MapView 
+                  locations={collegePerformanceData} 
+                  center={[30.7677, 76.7794]} 
+                  zoom={8}
+                />
               </CardContent>
             </Card>
 
