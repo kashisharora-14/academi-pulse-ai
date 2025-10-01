@@ -25,7 +25,7 @@ import {
   Sparkles,
   Route,
   FolderLock,
-  Crown
+  
 } from "lucide-react";
 import { Chatbot } from "@/components/Chatbot";
 import { MapView } from "@/components/MapView";
@@ -36,7 +36,7 @@ import { ExportTools } from "@/components/ExportTools";
 import { AIRecommendations } from "@/components/AIRecommendations";
 import { JourneyMapper } from "@/components/JourneyMapper";
 import { DigiLocker } from "@/components/DigiLocker";
-import { PremiumSubscription } from "@/components/PremiumSubscription";
+
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 const skillData = [
@@ -123,7 +123,7 @@ const StudentDashboard = () => {
         <Tabs defaultValue="overview" className="space-y-6">
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
-            <TabsList className="grid w-full grid-cols-12 text-xs">
+            <TabsList className="grid w-full grid-cols-11 text-xs">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="lifecycle">Life Cycle</TabsTrigger>
               <TabsTrigger value="journey">
@@ -138,10 +138,7 @@ const StudentDashboard = () => {
                 <FolderLock className="h-4 w-4 mr-1" />
                 DigiLocker
               </TabsTrigger>
-              <TabsTrigger value="premium">
-                <Crown className="h-4 w-4 mr-1" />
-                Premium
-              </TabsTrigger>
+              
               <TabsTrigger value="qr">
                 <QrCode className="h-4 w-4 mr-1" />
                 QR
@@ -178,10 +175,7 @@ const StudentDashboard = () => {
                   <FolderLock className="h-3 w-3" />
                   <span>DigiLocker</span>
                 </TabsTrigger>
-                <TabsTrigger value="premium" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
-                  <Crown className="h-3 w-3" />
-                  <span>Premium</span>
-                </TabsTrigger>
+                
                 <TabsTrigger value="qr" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
                   <QrCode className="h-3 w-3" />
                   <span>QR Code</span>
@@ -342,13 +336,7 @@ const StudentDashboard = () => {
             />
           </TabsContent>
 
-          <TabsContent value="premium" className="space-y-6">
-            <PremiumSubscription 
-              currentPlan="free"
-              userEmail={user?.email || 'student@university.edu'}
-              userType="student"
-            />
-          </TabsContent>
+          
 
           <TabsContent value="overview" className="space-y-6">
             <div className="grid gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">

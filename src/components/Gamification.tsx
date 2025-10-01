@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -36,7 +35,6 @@ const achievements = [
     title: "Perfect Attendance",
     description: "100% attendance for a complete semester",
     icon: Calendar,
-    points: 300,
     progress: 100,
     unlocked: true,
     category: "Discipline",
@@ -47,7 +45,6 @@ const achievements = [
     title: "Certification Master",
     description: "Complete 5 professional certifications",
     icon: Medal,
-    points: 400,
     progress: 100,
     unlocked: true,
     category: "Skills",
@@ -58,7 +55,6 @@ const achievements = [
     title: "Research Pioneer",
     description: "Publish a research paper",
     icon: BookOpen,
-    points: 800,
     progress: 60,
     unlocked: false,
     category: "Research",
@@ -69,7 +65,6 @@ const achievements = [
     title: "Community Helper",
     description: "Participate in 10 community service activities",
     icon: Users,
-    points: 350,
     progress: 70,
     unlocked: false,
     category: "Social",
@@ -80,7 +75,6 @@ const achievements = [
     title: "Innovation Champion",
     description: "Win a hackathon or innovation contest",
     icon: Zap,
-    points: 600,
     progress: 0,
     unlocked: false,
     category: "Innovation",
@@ -168,7 +162,7 @@ export const Gamification = () => {
             <div className="text-white/80">Total Points</div>
           </div>
         </div>
-        
+
         <div className="mb-2">
           <div className="flex justify-between text-sm">
             <span>XP Progress</span>
@@ -176,7 +170,7 @@ export const Gamification = () => {
           </div>
           <Progress value={xpProgress} className="h-2 bg-white/20" />
         </div>
-        
+
         <div className="grid grid-cols-4 gap-4 mt-4">
           <div className="text-center">
             <div className="text-xl font-bold">{playerStats.rank}</div>
@@ -197,9 +191,135 @@ export const Gamification = () => {
         </div>
       </Card>
 
-      <div className="grid gap-6 lg:grid-cols-2">
-        {/* Achievements */}
+      {/* Recognition & Achievements */}
+      <div className="grid gap-6 lg:grid-cols-2 mb-6">
         <Card className="p-6">
+          <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+            <Star className="h-6 w-6 text-yellow-500" />
+            Academic Recognition
+          </h3>
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="text-center p-4 bg-yellow-50 rounded-lg">
+              <div className="text-2xl font-bold text-yellow-600">8.9</div>
+              <div className="text-sm text-yellow-700">Current CGPA</div>
+            </div>
+            <div className="text-center p-4 bg-blue-50 rounded-lg">
+              <div className="text-2xl font-bold text-blue-600">#23</div>
+              <div className="text-sm text-blue-700">College Rank</div>
+            </div>
+            <div className="text-center p-4 bg-green-50 rounded-lg">
+              <div className="text-2xl font-bold text-green-600">92%</div>
+              <div className="text-sm text-green-700">Attendance</div>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <h4 className="font-semibold">Recent Achievements</h4>
+            {[
+              { action: "Completed Data Structures Course", grade: "A+", time: "2 hours ago" },
+              { action: "Perfect Attendance (Week 12)", status: "Recognized", time: "1 day ago" },
+              { action: "Peer Teaching Session", status: "Completed", time: "3 days ago" },
+              { action: "Research Paper Submission", grade: "A", time: "1 week ago" }
+            ].map((activity, index) => (
+              <div key={index} className="flex justify-between items-center p-3 bg-gray-50 rounded">
+                <div>
+                  <p className="font-medium text-sm">{activity.action}</p>
+                  <p className="text-xs text-muted-foreground">{activity.time}</p>
+                </div>
+                <Badge className="bg-success">{activity.grade || activity.status}</Badge>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <Card className="p-6">
+          <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+            <Trophy className="h-6 w-6 text-amber-500" />
+            Class Performance
+          </h3>
+          <div className="space-y-3">
+            {[
+              { name: "Priya Sharma", cgpa: 9.5, rank: 1 },
+              { name: "Rahul Gupta", cgpa: 9.2, rank: 2 },
+              { name: "Anita Patel", cgpa: 9.1, rank: 3 },
+              { name: "Arjun Patel (You)", cgpa: 8.9, rank: 23 },
+            ].map((student, index) => (
+              <div key={index} className={`flex items-center justify-between p-3 rounded ${student.name.includes('(You)') ? 'bg-blue-50 border border-blue-200' : 'bg-gray-50'}`}>
+                <div className="flex items-center gap-3">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+                    index === 0 ? 'bg-yellow-500 text-white' :
+                    index === 1 ? 'bg-gray-400 text-white' :
+                    index === 2 ? 'bg-amber-600 text-white' : 'bg-blue-500 text-white'
+                  }`}>
+                    {student.rank}
+                  </div>
+                  <div>
+                    <p className="font-medium">{student.name}</p>
+                    <p className="text-sm text-muted-foreground">CGPA: {student.cgpa}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </div>
+
+      {/* Active Challenges */}
+      <Card className="p-6">
+        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+          <Target className="h-6 w-6 text-orange-500" />
+          Active Challenges
+        </h3>
+        <div className="grid gap-4 lg:grid-cols-3">
+          {challenges.map((challenge) => (
+            <div key={challenge.id} className="p-4 border rounded-lg">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
+                  <challenge.icon className="h-5 w-5 text-orange-600" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-semibold">{challenge.title}</h4>
+                  <p className="text-sm text-muted-foreground">
+                    {challenge.description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm">Progress</span>
+                  <span className="text-sm font-medium">
+                    {challenge.progress}/{challenge.target}
+                  </span>
+                </div>
+                <Progress value={(challenge.progress / challenge.target) * 100} />
+
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className="text-xs">
+                      {challenge.difficulty}
+                    </Badge>
+                    <span className="text-sm text-muted-foreground">
+                      Expires in {challenge.expires}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 text-sm font-medium">
+                    <Gift className="h-4 w-4 text-green-500" />
+                    {challenge.reward}
+                  </div>
+                </div>
+
+                <Button size="sm" className="w-full">
+                  Continue Challenge
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      {/* Achievements */}
+      <Card className="p-6">
           <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
             <Trophy className="h-6 w-6 text-yellow-500" />
             Achievements
@@ -281,7 +401,7 @@ export const Gamification = () => {
                     {player.avatar}
                   </div>
                 </div>
-                
+
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
                     <span className={`font-medium ${player.isCurrentUser ? 'text-blue-600' : ''}`}>
@@ -300,91 +420,6 @@ export const Gamification = () => {
           </div>
         </Card>
       </div>
-
-      {/* Active Challenges */}
-      <Card className="p-6">
-        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-          <Target className="h-6 w-6 text-orange-500" />
-          Active Challenges
-        </h3>
-        <div className="grid gap-4 lg:grid-cols-3">
-          {challenges.map((challenge) => (
-            <div key={challenge.id} className="p-4 border rounded-lg">
-              <div className="flex items-start gap-3 mb-3">
-                <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
-                  <challenge.icon className="h-5 w-5 text-orange-600" />
-                </div>
-                <div className="flex-1">
-                  <h4 className="font-semibold">{challenge.title}</h4>
-                  <p className="text-sm text-muted-foreground">
-                    {challenge.description}
-                  </p>
-                </div>
-              </div>
-              
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">Progress</span>
-                  <span className="text-sm font-medium">
-                    {challenge.progress}/{challenge.target}
-                  </span>
-                </div>
-                <Progress value={(challenge.progress / challenge.target) * 100} />
-                
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="text-xs">
-                      {challenge.difficulty}
-                    </Badge>
-                    <span className="text-sm text-muted-foreground">
-                      Expires in {challenge.expires}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1 text-sm font-medium">
-                    <Gift className="h-4 w-4 text-green-500" />
-                    {challenge.reward}
-                  </div>
-                </div>
-                
-                <Button size="sm" className="w-full">
-                  Continue Challenge
-                </Button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Card>
-
-      {/* Rewards Store */}
-      <Card className="p-6">
-        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-          <Gift className="h-6 w-6 text-green-500" />
-          Rewards Store
-        </h3>
-        <div className="grid gap-4 lg:grid-cols-4">
-          {[
-            { name: "Library Extension Pass", cost: 200, description: "Extended library hours access", icon: BookOpen },
-            { name: "Cafeteria Voucher", cost: 150, description: "₹100 food credit", icon: Gift },
-            { name: "Lab Priority Access", cost: 300, description: "Skip queue in computer labs", icon: Zap },
-            { name: "Certificate Frame", cost: 100, description: "Premium certificate frame", icon: Award }
-          ].map((reward, index) => (
-            <div key={index} className="p-4 border rounded-lg text-center">
-              <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-3">
-                <reward.icon className="h-6 w-6 text-green-600" />
-              </div>
-              <h4 className="font-semibold mb-1">{reward.name}</h4>
-              <p className="text-sm text-muted-foreground mb-3">{reward.description}</p>
-              <div className="flex items-center justify-center gap-1 mb-3">
-                <Star className="h-4 w-4 text-yellow-500" />
-                <span className="font-bold">{reward.cost}</span>
-              </div>
-              <Button size="sm" variant="outline" className="w-full">
-                Redeem
-              </Button>
-            </div>
-          ))}
-        </div>
-      </Card>
     </div>
   );
 };
