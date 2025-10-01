@@ -103,19 +103,25 @@ const StudentDashboard = () => {
   const handleApplyClick = (scholarship: any) => {
     setSelectedScholarship(scholarship);
     setIsApplicationDialogOpen(true);
-    setApplicationSubmitted(false);
+    setApplicationSubmitted(false); // Reset submission status when opening dialog
   };
 
   const handleApplicationSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Simulate submission to department
     setApplicationSubmitted(true);
+    // In a real application, you would send formData to your backend here
+    console.log("Submitting application data:", formData);
+    
+    // Use a timeout to mimic a successful submission and then close the dialog
     setTimeout(() => {
       setIsApplicationDialogOpen(false);
-      setApplicationSubmitted(false);
-      // Reset form
+      setApplicationSubmitted(false); // Reset submission status after closing
+      // Reset form fields
       setFormData({
-        ...formData,
+        studentName: "Arjun Patel", // Keep pre-filled fields if desired, or reset them too
+        studentId: "STU-2024-001",
+        email: "arjun.patel@student.edu",
         phone: "",
         fatherName: "",
         motherName: "",
@@ -126,7 +132,7 @@ const StudentDashboard = () => {
         aadharNumber: "",
         address: ""
       });
-    }, 3000);
+    }, 3000); // Close dialog and reset form after 3 seconds
   };
 
   return (
@@ -189,7 +195,7 @@ const StudentDashboard = () => {
                 <FolderLock className="h-4 w-4 mr-1" />
                 DigiLocker
               </TabsTrigger>
-              
+
               <TabsTrigger value="qr">
                 <QrCode className="h-4 w-4 mr-1" />
                 QR
@@ -226,7 +232,7 @@ const StudentDashboard = () => {
                   <FolderLock className="h-3 w-3" />
                   <span>DigiLocker</span>
                 </TabsTrigger>
-                
+
                 <TabsTrigger value="qr" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
                   <QrCode className="h-3 w-3" />
                   <span>QR Code</span>
@@ -387,7 +393,7 @@ const StudentDashboard = () => {
             />
           </TabsContent>
 
-          
+
 
           <TabsContent value="overview" className="space-y-6">
             <div className="grid gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -512,7 +518,7 @@ const StudentDashboard = () => {
                       <div className="text-sm text-purple-700">Attendance</div>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-3">
                     <h4 className="font-semibold">Current Semester Courses</h4>
                     {[
@@ -551,7 +557,7 @@ const StudentDashboard = () => {
                       <div className="text-sm">Awards</div>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-3">
                     {[
                       { name: "AWS Cloud Practitioner", issuer: "Amazon", date: "Dec 2023", status: "Active" },
@@ -785,7 +791,7 @@ const StudentDashboard = () => {
                 {/* Application Status Cards */}
                 <div className="space-y-4 mb-6">
                   <h3 className="text-lg font-bold">My Applications</h3>
-                  
+
                   {/* Application 1 - Under Review */}
                   <div className="border rounded-lg p-4 bg-blue-50/50">
                     <div className="flex items-start justify-between mb-4">
@@ -1128,7 +1134,7 @@ const StudentDashboard = () => {
                     </div>
                     <p className="text-sm text-green-700">All documents are securely synced with your DigiLocker account</p>
                   </div>
-                  
+
                   <div className="space-y-3">
                     <h4 className="font-semibold">Available Documents</h4>
                     {[
