@@ -26,7 +26,7 @@ The project has been configured to run in the Replit environment:
 - Development server runs on port 5000 (0.0.0.0)
 - Uses npm with legacy-peer-deps enabled (due to react-leaflet compatibility)
 - Vite configured with HMR on port 5000
-- **Important**: Vite is configured to allow all hosts via `allowedHosts: true` to support Replit's dynamic proxy domains
+- **Important**: Vite is configured with `allowedHosts: ['.replit.dev']` to support Replit's dynamic proxy domains (wildcard pattern allows all *.replit.dev subdomains)
 - Supabase connection via environment variables
 
 ## Key Features
