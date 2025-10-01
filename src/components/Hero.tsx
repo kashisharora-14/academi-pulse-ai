@@ -19,7 +19,23 @@ export const Hero = () => {
   const navigate = useNavigate();
 
   const handleDemoLogin = (role: string) => {
-    navigate(`/auth?role=${role}&demo=true`);
+    // Direct navigation to dashboard instead of auth page for demo
+    switch(role) {
+      case 'student':
+        navigate('/student');
+        break;
+      case 'teacher':
+        navigate('/teacher');
+        break;
+      case 'institution':
+        navigate('/institution');
+        break;
+      case 'admin':
+        navigate('/admin');
+        break;
+      default:
+        navigate('/auth');
+    }
   };
 
   return (
