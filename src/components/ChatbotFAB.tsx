@@ -62,8 +62,14 @@ const ChatbotFAB = () => {
                       key={index}
                       className="p-2 border rounded-lg cursor-pointer hover:bg-gray-50 transition-colors"
                       onClick={() => {
-                        // Here you would navigate to the full chatbot with the selected action
-                        window.location.href = '/chatbot';
+                        // Navigate to appropriate dashboard with chat functionality
+                        if (action.title === 'Find Scholarships') {
+                          window.location.href = '/student#chat';
+                        } else if (action.title === 'Dropout Statistics' || action.title === 'Institution Info') {
+                          window.location.href = '/admin#analytics';
+                        } else {
+                          window.location.href = '/student';
+                        }
                       }}
                     >
                       <div className="font-medium text-sm">{action.title}</div>

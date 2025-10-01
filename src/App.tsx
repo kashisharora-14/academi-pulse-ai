@@ -12,6 +12,7 @@ import TeacherDashboard from "./pages/TeacherDashboard";
 import VerifyProfile from "./pages/VerifyProfile";
 import NotFound from "./pages/NotFound";
 import ChatbotFAB from './components/ChatbotFAB';
+import { Chatbot } from './components/Chatbot';
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,13 @@ const App = () => (
           <Route path="/institution" element={<InstitutionDashboard />} />
           <Route path="/student" element={<StudentDashboard />} />
           <Route path="/teacher" element={<TeacherDashboard />} />
+          <Route path="/chatbot" element={
+            <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+              <div className="w-full max-w-2xl">
+                <Chatbot />
+              </div>
+            </div>
+          } />
           <Route path="/verify/:code" element={<VerifyProfile />} />
           <Route path="/shared/:code" element={<VerifyProfile />} />
           <Route path="*" element={<NotFound />} />
