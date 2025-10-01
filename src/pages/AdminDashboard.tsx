@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
@@ -11,13 +11,13 @@ import { MapView } from "@/components/MapView";
 import { QRCodeGenerator } from "@/components/QRCodeGenerator";
 import { ExportTools } from "@/components/ExportTools";
 import PolicyReport from "@/components/PolicyReport";
-import { 
-  LogOut, 
-  Users, 
-  Building2, 
-  TrendingUp, 
-  Award, 
-  BookOpen, 
+import {
+  LogOut,
+  Users,
+  Building2,
+  TrendingUp,
+  Award,
+  BookOpen,
   DollarSign,
   Target,
   AlertTriangle,
@@ -30,24 +30,30 @@ import {
   QrCode,
   Download,
   Plus,
-  Edit
+  Edit,
+  MapPin,
+  Database,
+  FileText,
+  Settings,
+  Bell,
+  Shield
 } from "lucide-react";
-import { 
-  LineChart, 
-  Line, 
-  BarChart, 
-  Bar, 
-  PieChart, 
-  Pie, 
-  Cell, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  Legend, 
+import {
+  LineChart,
+  Line,
+  BarChart,
+  Bar,
+  PieChart,
+  Pie,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
   ResponsiveContainer,
   AreaChart,
-  Area 
+  Area
 } from "recharts";
 
 const enrollmentData = [
@@ -821,31 +827,31 @@ const AdminDashboard = () => {
                   <h4 className="font-semibold">Identity & Access Management</h4>
                   <div className="space-y-3">
                     {[
-                      { 
-                        type: "Aadhaar Integration", 
-                        coverage: 96.8, 
-                        secure: 99.9, 
+                      {
+                        type: "Aadhaar Integration",
+                        coverage: 96.8,
+                        secure: 99.9,
                         status: "Operational",
                         users: "Students & Faculty"
                       },
-                      { 
-                        type: "APAR ID Linking", 
-                        coverage: 88.4, 
-                        secure: 99.7, 
+                      {
+                        type: "APAR ID Linking",
+                        coverage: 88.4,
+                        secure: 99.7,
                         status: "Operational",
                         users: "Faculty Records"
                       },
-                      { 
-                        type: "AISHE Code Mapping", 
-                        coverage: 99.2, 
-                        secure: 99.8, 
+                      {
+                        type: "AISHE Code Mapping",
+                        coverage: 99.2,
+                        secure: 99.8,
                         status: "Operational",
                         users: "Institutions"
                       },
-                      { 
-                        type: "eKYC Verification", 
-                        coverage: 94.5, 
-                        secure: 99.6, 
+                      {
+                        type: "eKYC Verification",
+                        coverage: 94.5,
+                        secure: 99.6,
                         status: "Active",
                         users: "All Stakeholders"
                       }
@@ -972,8 +978,8 @@ const AdminDashboard = () => {
 
           <TabsContent value="qr" className="space-y-6">
             <div className="grid gap-6 lg:grid-cols-2">
-              <QRCodeGenerator 
-                data={{ 
+              <QRCodeGenerator
+                data={{
                   id: "NEDP-ADMIN-001",
                   name: "National Education Data Platform",
                   type: "admin",
@@ -985,7 +991,7 @@ const AdminDashboard = () => {
                   complianceRate: 94.5,
                   dataQuality: 99.9,
                   systemUptime: 99.9
-                }} 
+                }}
                 type="institution"
                 title="NEDP Admin Dashboard QR"
               />
@@ -1045,7 +1051,7 @@ const AdminDashboard = () => {
 
           <TabsContent value="export" className="space-y-6">
             <div className="grid gap-6 lg:grid-cols-2">
-              <ExportTools 
+              <ExportTools
                 data={{
                   name: "National Education Data Platform",
                   id: "NEDP-ADMIN-001",
@@ -1151,6 +1157,221 @@ const AdminDashboard = () => {
                 </div>
               </Card>
             </div>
+          </TabsContent>
+
+          {/* New Government Tabs */}
+          <TabsContent value="government" className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Users className="h-5 w-5" />
+                  Government Dashboard
+                </CardTitle>
+                <CardDescription>
+                  Policy analytics, state performance, and AI-powered insights
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-medium text-gray-600">National Literacy</p>
+                          <p className="text-2xl font-bold">74.2%</p>
+                        </div>
+                        <BookOpen className="h-8 w-8 text-blue-500" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-medium text-gray-600">Dropout Rate</p>
+                          <p className="text-2xl font-bold">12.8%</p>
+                        </div>
+                        <TrendingUp className="h-8 w-8 text-red-500" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-medium text-gray-600">Scheme Adoption</p>
+                          <p className="text-2xl font-bold">67.3%</p>
+                        </div>
+                        <Award className="h-8 w-8 text-green-500" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-medium text-gray-600">Active Policies</p>
+                          <p className="text-2xl font-bold">47</p>
+                        </div>
+                        <FileText className="h-8 w-8 text-purple-500" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                <p className="text-gray-600">Access comprehensive government-level analytics and policy insights.</p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="nirf" className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Award className="h-5 w-5" />
+                  NIRF Analytics
+                </CardTitle>
+                <CardDescription>
+                  Institution ranking analytics and peer comparison
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="text-center">
+                        <p className="text-sm font-medium text-gray-600">Current Rank</p>
+                        <p className="text-2xl font-bold">#42</p>
+                        <p className="text-sm text-green-600">+6 from last year</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="text-center">
+                        <p className="text-sm font-medium text-gray-600">Teaching</p>
+                        <p className="text-2xl font-bold">72.5</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="text-center">
+                        <p className="text-sm font-medium text-gray-600">Research</p>
+                        <p className="text-2xl font-bold">64.2</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="text-center">
+                        <p className="text-sm font-medium text-gray-600">Placements</p>
+                        <p className="text-2xl font-bold">75.8</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="text-center">
+                        <p className="text-sm font-medium text-gray-600">Perception</p>
+                        <p className="text-2xl font-bold">69.1</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                <p className="text-gray-600">Live NIRF-style ranking dashboard with detailed analytics.</p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="heatmap" className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <MapPin className="h-5 w-5" />
+                  Performance Heatmap
+                </CardTitle>
+                <CardDescription>
+                  Interactive visualization of education metrics
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                  <div className="p-4 bg-green-500 text-white rounded-lg">
+                    <h3 className="font-medium">Kerala</h3>
+                    <p className="text-sm opacity-90">Excellent Performance</p>
+                    <p className="text-lg font-bold">3.2% Dropout</p>
+                  </div>
+                  <div className="p-4 bg-blue-500 text-white rounded-lg">
+                    <h3 className="font-medium">Maharashtra</h3>
+                    <p className="text-sm opacity-90">Good Performance</p>
+                    <p className="text-lg font-bold">8.1% Dropout</p>
+                  </div>
+                  <div className="p-4 bg-yellow-500 text-white rounded-lg">
+                    <h3 className="font-medium">Punjab</h3>
+                    <p className="text-sm opacity-90">Average Performance</p>
+                    <p className="text-lg font-bold">11.2% Dropout</p>
+                  </div>
+                  <div className="p-4 bg-red-500 text-white rounded-lg">
+                    <h3 className="font-medium">Bihar</h3>
+                    <p className="text-sm opacity-90">Needs Attention</p>
+                    <p className="text-lg font-bold">18.9% Dropout</p>
+                  </div>
+                </div>
+                <p className="text-gray-600">Real-time heatmap visualization with red/green indicators for performance metrics.</p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="blockchain" className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Shield className="h-5 w-5" />
+                  Blockchain Verification
+                </CardTitle>
+                <CardDescription>
+                  High-authority verification for credentials and documents
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-medium text-gray-600">Verified Credentials</p>
+                          <p className="text-2xl font-bold">12,847</p>
+                        </div>
+                        <Database className="h-8 w-8 text-green-500" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-medium text-gray-600">Institutions Verified</p>
+                          <p className="text-2xl font-bold">156</p>
+                        </div>
+                        <Users className="h-8 w-8 text-blue-500" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-medium text-gray-600">Fake Documents Detected</p>
+                          <p className="text-2xl font-bold">89</p>
+                        </div>
+                        <Shield className="h-8 w-8 text-red-500" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                <p className="text-gray-600">Blockchain-powered verification system for degrees, credentials, and institutional records.</p>
+              </CardContent>
+            </Card>
           </TabsContent>
         </Tabs>
       </main>

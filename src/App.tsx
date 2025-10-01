@@ -11,6 +11,7 @@ import StudentDashboard from "./pages/StudentDashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import VerifyProfile from "./pages/VerifyProfile";
 import NotFound from "./pages/NotFound";
+import ChatbotFAB from './components/ChatbotFAB';
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/shared/:code" element={<VerifyProfile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ChatbotFAB />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
