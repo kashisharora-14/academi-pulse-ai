@@ -131,6 +131,10 @@ const InstitutionDashboard = () => {
           <div className="hidden lg:block">
             <TabsList className="grid w-full grid-cols-11 text-xs">
               <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="analytics" className="bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 font-semibold">
+                <Award className="h-4 w-4 mr-1" />
+                NIRF Analytics
+              </TabsTrigger>
               <TabsTrigger value="academics">Academics</TabsTrigger>
               <TabsTrigger value="placements">Placements</TabsTrigger>
               <TabsTrigger value="research">Research</TabsTrigger>
@@ -146,7 +150,6 @@ const InstitutionDashboard = () => {
                 <Download className="h-4 w-4 mr-1" />
                 Export
               </TabsTrigger>
-              <TabsTrigger value="analytics">Analytics</TabsTrigger>
             </TabsList>
           </div>
 
@@ -154,6 +157,10 @@ const InstitutionDashboard = () => {
           <div className="block lg:hidden">
             <TabsList className="flex overflow-x-auto pb-2 space-x-1 mobile-tabs-scroll h-auto">
               <TabsTrigger value="overview" className="whitespace-nowrap text-xs">Overview</TabsTrigger>
+              <TabsTrigger value="analytics" className="whitespace-nowrap text-xs bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 font-semibold">
+                <Award className="h-4 w-4 mr-1" />
+                NIRF
+              </TabsTrigger>
               <TabsTrigger value="academics" className="whitespace-nowrap text-xs">Academics</TabsTrigger>
               <TabsTrigger value="placements" className="whitespace-nowrap text-xs">Placements</TabsTrigger>
               <TabsTrigger value="research" className="whitespace-nowrap text-xs">Research</TabsTrigger>
@@ -167,7 +174,6 @@ const InstitutionDashboard = () => {
               <TabsTrigger value="export" className="whitespace-nowrap text-xs">
                 <Download className="h-4 w-4" />
               </TabsTrigger>
-              <TabsTrigger value="analytics" className="whitespace-nowrap text-xs">Analytics</TabsTrigger>
             </TabsList>
           </div>
 
@@ -1619,6 +1625,272 @@ const InstitutionDashboard = () => {
           </TabsContent>
 
           <TabsContent value="analytics" className="space-y-6">
+            {/* NIRF Analytics Dashboard */}
+            <div className="grid gap-6 mb-8">
+              <Card className="p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold flex items-center gap-2">
+                      <Award className="h-6 w-6 text-yellow-500" />
+                      NIRF Analytics Dashboard
+                    </h2>
+                    <p className="text-gray-600 mt-1">Live NIRF-style ranking and performance analytics</p>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-3xl font-bold text-primary">#85</div>
+                    <div className="text-sm text-gray-600">NIRF Rank 2024</div>
+                    <Badge className="bg-green-100 text-green-800 mt-1">+5 from 2023</Badge>
+                  </div>
+                </div>
+
+                {/* NIRF Parameter Scores */}
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+                  <Card className="p-4 bg-gradient-to-br from-blue-50 to-blue-100">
+                    <div className="text-center">
+                      <Users className="h-6 w-6 text-blue-600 mx-auto mb-2" />
+                      <div className="text-2xl font-bold text-blue-800">72.5</div>
+                      <div className="text-sm text-blue-600">Teaching & Learning</div>
+                      <Progress value={72.5} className="mt-2 h-2" />
+                    </div>
+                  </Card>
+                  
+                  <Card className="p-4 bg-gradient-to-br from-green-50 to-green-100">
+                    <div className="text-center">
+                      <BookOpen className="h-6 w-6 text-green-600 mx-auto mb-2" />
+                      <div className="text-2xl font-bold text-green-800">64.2</div>
+                      <div className="text-sm text-green-600">Research & Innovation</div>
+                      <Progress value={64.2} className="mt-2 h-2" />
+                    </div>
+                  </Card>
+                  
+                  <Card className="p-4 bg-gradient-to-br from-purple-50 to-purple-100">
+                    <div className="text-center">
+                      <GraduationCap className="h-6 w-6 text-purple-600 mx-auto mb-2" />
+                      <div className="text-2xl font-bold text-purple-800">75.8</div>
+                      <div className="text-sm text-purple-600">Graduation Outcomes</div>
+                      <Progress value={75.8} className="mt-2 h-2" />
+                    </div>
+                  </Card>
+                  
+                  <Card className="p-4 bg-gradient-to-br from-orange-50 to-orange-100">
+                    <div className="text-center">
+                      <Building2 className="h-6 w-6 text-orange-600 mx-auto mb-2" />
+                      <div className="text-2xl font-bold text-orange-800">58.3</div>
+                      <div className="text-sm text-orange-600">Outreach & Inclusivity</div>
+                      <Progress value={58.3} className="mt-2 h-2" />
+                    </div>
+                  </Card>
+                  
+                  <Card className="p-4 bg-gradient-to-br from-pink-50 to-pink-100">
+                    <div className="text-center">
+                      <Target className="h-6 w-6 text-pink-600 mx-auto mb-2" />
+                      <div className="text-2xl font-bold text-pink-800">69.1</div>
+                      <div className="text-sm text-pink-600">Perception</div>
+                      <Progress value={69.1} className="mt-2 h-2" />
+                    </div>
+                  </Card>
+                </div>
+              </Card>
+            </div>
+
+            {/* Peer Comparison Section */}
+            <div className="grid gap-6 lg:grid-cols-2 mb-6">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <BarChart3 className="h-5 w-5 text-blue-500" />
+                  Peer Comparison Analysis
+                </h3>
+                <div className="space-y-4">
+                  <div className="p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
+                    <h4 className="font-semibold text-red-800 mb-2">⚠️ Research Output Gap</h4>
+                    <p className="text-sm text-red-700 mb-2">
+                      You are <span className="font-bold">8.3 points</span> behind <span className="font-bold">IIT Ropar</span> in Research & Innovation
+                    </p>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="bg-white p-2 rounded">Your Score: <span className="font-bold">64.2</span></div>
+                      <div className="bg-white p-2 rounded">IIT Ropar: <span className="font-bold">72.5</span></div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-orange-50 rounded-lg border-l-4 border-orange-500">
+                    <h4 className="font-semibold text-orange-800 mb-2">📊 Below State Average</h4>
+                    <p className="text-sm text-orange-700 mb-2">
+                      Outreach & Inclusivity is <span className="font-bold">11.7 points</span> below Punjab state average
+                    </p>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="bg-white p-2 rounded">Your Score: <span className="font-bold">58.3</span></div>
+                      <div className="bg-white p-2 rounded">Punjab Avg: <span className="font-bold">70.0</span></div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+                    <h4 className="font-semibold text-green-800 mb-2">🏆 Strength Area</h4>
+                    <p className="text-sm text-green-700 mb-2">
+                      Graduation Outcomes <span className="font-bold">5.5 points</span> above national average
+                    </p>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="bg-white p-2 rounded">Your Score: <span className="font-bold">75.8</span></div>
+                      <div className="bg-white p-2 rounded">National Avg: <span className="font-bold">70.3</span></div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Detailed Performance Breakdown</h3>
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart data={[
+                    { parameter: 'Teaching', your: 72.5, peer: 78.2, state: 69.8, national: 65.4 },
+                    { parameter: 'Research', your: 64.2, peer: 72.5, state: 67.1, national: 58.7 },
+                    { parameter: 'Placements', your: 75.8, peer: 73.4, state: 71.2, national: 70.3 },
+                    { parameter: 'Outreach', your: 58.3, peer: 65.7, state: 70.0, national: 52.1 },
+                    { parameter: 'Perception', your: 69.1, peer: 74.8, state: 67.3, national: 61.9 }
+                  ]}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="parameter" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="your" fill="#8884d8" name="Your Institution" />
+                    <Bar dataKey="peer" fill="#82ca9d" name="Top Peer (IIT Ropar)" />
+                    <Bar dataKey="state" fill="#ffc658" name="State Average" />
+                    <Bar dataKey="national" fill="#ff7300" name="National Average" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </Card>
+            </div>
+
+            {/* Actionable Insights */}
+            <div className="grid gap-6 lg:grid-cols-3 mb-6">
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4 text-red-800">🎯 Priority Actions</h3>
+                <div className="space-y-3">
+                  <div className="p-3 bg-red-50 rounded border-l-4 border-red-400">
+                    <h4 className="font-semibold text-sm">Research Publications</h4>
+                    <p className="text-xs text-gray-600">Target: +25 publications in top-tier journals</p>
+                    <p className="text-xs text-red-600 mt-1">Expected NIRF boost: +3.2 points</p>
+                  </div>
+                  <div className="p-3 bg-red-50 rounded border-l-4 border-red-400">
+                    <h4 className="font-semibold text-sm">Patent Filing</h4>
+                    <p className="text-xs text-gray-600">Current: 12 patents | Target: 20 patents</p>
+                    <p className="text-xs text-red-600 mt-1">Expected NIRF boost: +2.8 points</p>
+                  </div>
+                  <div className="p-3 bg-red-50 rounded border-l-4 border-red-400">
+                    <h4 className="font-semibant text-sm">Industry Collaboration</h4>
+                    <p className="text-xs text-gray-600">Increase funded projects from industry</p>
+                    <p className="text-xs text-red-600 mt-1">Expected NIRF boost: +2.1 points</p>
+                  </div>
+                </div>
+                <Button className="w-full mt-4 bg-red-600 hover:bg-red-700">
+                  <Target className="h-4 w-4 mr-2" />
+                  Create Action Plan
+                </Button>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4 text-blue-800">📈 Growth Opportunities</h3>
+                <div className="space-y-3">
+                  <div className="p-3 bg-blue-50 rounded border-l-4 border-blue-400">
+                    <h4 className="font-semibold text-sm">International Faculty</h4>
+                    <p className="text-xs text-gray-600">Current: 8% | Peer average: 15%</p>
+                    <p className="text-xs text-blue-600 mt-1">Gap to close: 7 percentage points</p>
+                  </div>
+                  <div className="p-3 bg-blue-50 rounded border-l-4 border-blue-400">
+                    <h4 className="font-semibold text-sm">Ph.D Enrollment</h4>
+                    <p className="text-xs text-gray-600">Current: 85 students | Target: 120</p>
+                    <p className="text-xs text-blue-600 mt-1">Increase research capacity</p>
+                  </div>
+                  <div className="p-3 bg-blue-50 rounded border-l-4 border-blue-400">
+                    <h4 className="font-semibold text-sm">Consultancy Projects</h4>
+                    <p className="text-xs text-gray-600">Current revenue: ₹2.5Cr | Target: ₹5Cr</p>
+                    <p className="text-xs text-blue-600 mt-1">Double industry engagement</p>
+                  </div>
+                </div>
+                <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700">
+                  <TrendingUp className="h-4 w-4 mr-2" />
+                  View Roadmap
+                </Button>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-4 text-green-800">✅ Maintain Strengths</h3>
+                <div className="space-y-3">
+                  <div className="p-3 bg-green-50 rounded border-l-4 border-green-400">
+                    <h4 className="font-semibold text-sm">Placement Rate</h4>
+                    <p className="text-xs text-gray-600">Current: 94% | National avg: 70%</p>
+                    <p className="text-xs text-green-600 mt-1">Continue excellence</p>
+                  </div>
+                  <div className="p-3 bg-green-50 rounded border-l-4 border-green-400">
+                    <h4 className="font-semibold text-sm">Faculty-Student Ratio</h4>
+                    <p className="text-xs text-gray-600">Current: 1:16 | Benchmark: 1:20</p>
+                    <p className="text-xs text-green-600 mt-1">Better than average</p>
+                  </div>
+                  <div className="p-3 bg-green-50 rounded border-l-4 border-green-400">
+                    <h4 className="font-semibold text-sm">Alumni Network</h4>
+                    <p className="text-xs text-gray-600">Strong industry connections</p>
+                    <p className="text-xs text-green-600 mt-1">Leverage for placements</p>
+                  </div>
+                </div>
+                <Button className="w-full mt-4 bg-green-600 hover:bg-green-700">
+                  <CheckCircle className="h-4 w-4 mr-2" />
+                  Success Strategies
+                </Button>
+              </Card>
+            </div>
+
+            {/* Ranking Prediction */}
+            <Card className="p-6 mb-6">
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <Target className="h-5 w-5 text-purple-500" />
+                NIRF Ranking Prediction & Scenarios
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 bg-gradient-to-br from-red-50 to-red-100 rounded-lg border-l-4 border-red-500">
+                  <h4 className="font-semibold text-red-800 mb-2">📉 Current Trajectory</h4>
+                  <div className="text-2xl font-bold text-red-900">#92-98</div>
+                  <p className="text-sm text-red-700 mt-1">If no action taken</p>
+                  <p className="text-xs text-red-600 mt-2">Risk: Research output decline</p>
+                </div>
+                
+                <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border-l-4 border-blue-500">
+                  <h4 className="font-semibold text-blue-800 mb-2">⚡ With Improvements</h4>
+                  <div className="text-2xl font-bold text-blue-900">#75-80</div>
+                  <p className="text-sm text-blue-700 mt-1">Moderate improvements</p>
+                  <p className="text-xs text-blue-600 mt-2">Timeline: 12-18 months</p>
+                </div>
+                
+                <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border-l-4 border-green-500">
+                  <h4 className="font-semibold text-green-800 mb-2">🚀 Ambitious Target</h4>
+                  <div className="text-2xl font-bold text-green-900">#65-70</div>
+                  <p className="text-sm text-green-700 mt-1">Aggressive improvements</p>
+                  <p className="text-xs text-green-600 mt-2">Timeline: 24-30 months</p>
+                </div>
+              </div>
+              
+              <div className="mt-4 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                <h4 className="font-semibold text-yellow-800 mb-2">🎯 Key Focus Areas for Next NIRF Cycle</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <p className="font-medium text-yellow-900">Research & Innovation (Priority #1)</p>
+                    <ul className="text-yellow-700 text-xs mt-1 space-y-1">
+                      <li>• Target 30+ high-impact publications</li>
+                      <li>• File 8+ patents annually</li>
+                      <li>• Secure ₹5Cr+ research funding</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-yellow-900">Outreach & Inclusivity (Priority #2)</p>
+                    <ul className="text-yellow-700 text-xs mt-1 space-y-1">
+                      <li>• Increase rural student enrollment</li>
+                      <li>• Launch 5+ community programs</li>
+                      <li>• Enhance accessibility infrastructure</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            {/* AI-Generated Insights */}
             <div className="grid gap-6 lg:grid-cols-2">
               <Chatbot />
               <Card className="p-6">
