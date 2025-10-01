@@ -60,9 +60,37 @@ const GovernmentDashboard = () => {
       research: 85,
       performance: 'good',
       data: "NIRF: 95 | Placement: 76% | Research: 85 | Status: Good",
-      students: 28500,
+      students: 45000,
       city: "Chandigarh",
       type: "Central University"
+    },
+    {
+      id: "16",
+      name: "Chandigarh University",
+      position: [30.8045, 76.8454] as [number, number],
+      nirfRank: 125,
+      dropout: 6.2,
+      placement: 82,
+      research: 58,
+      performance: 'good',
+      data: "NIRF: 125 | Placement: 82% | Research: 58 | Status: Good",
+      students: 32000,
+      city: "Chandigarh",
+      type: "Private University"
+    },
+    {
+      id: "17",
+      name: "DAV University",
+      position: [30.7234, 76.7842] as [number, number],
+      nirfRank: 187,
+      dropout: 8.4,
+      placement: 68,
+      research: 45,
+      performance: 'average',
+      data: "NIRF: 187 | Placement: 68% | Research: 45 | Status: Average",
+      students: 18500,
+      city: "Chandigarh",
+      type: "Private University"
     },
     {
       id: "3",
