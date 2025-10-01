@@ -87,6 +87,179 @@ const campusLocations = [
   { id: "3", name: "Hostel Complex", position: [28.5429, 77.1905] as [number, number], data: "Capacity: 3000 students" },
 ];
 
+const affiliatedColleges = [
+  { 
+    id: "aff1", 
+    name: "Government College, Sector 42", 
+    position: [30.7333, 76.7794] as [number, number], 
+    data: "Arts, Science & Commerce",
+    city: "Chandigarh",
+    type: "Government College",
+    students: 3500,
+    nirfRank: 120,
+    placement: 78,
+    research: 6.5,
+    dropout: 8.2,
+    performance: 'good' as const,
+    programs: ["BA", "BSc", "BCom", "MA", "MSc"],
+    established: 1965,
+    accreditation: "NAAC A"
+  },
+  { 
+    id: "aff2", 
+    name: "DAV College", 
+    position: [30.7194, 76.7310] as [number, number], 
+    data: "Engineering & Technology",
+    city: "Chandigarh",
+    type: "Private College",
+    students: 2800,
+    nirfRank: 145,
+    placement: 82,
+    research: 5.8,
+    dropout: 6.5,
+    performance: 'good' as const,
+    programs: ["B.Tech", "M.Tech", "BCA", "MCA"],
+    established: 1978,
+    accreditation: "NAAC A+"
+  },
+  { 
+    id: "aff3", 
+    name: "Government College", 
+    position: [31.3260, 75.5762] as [number, number], 
+    data: "Arts & Humanities",
+    city: "Jalandhar",
+    type: "Government College",
+    students: 4200,
+    nirfRank: 185,
+    placement: 72,
+    research: 5.2,
+    dropout: 11.5,
+    performance: 'average' as const,
+    programs: ["BA", "MA", "BEd", "MEd"],
+    established: 1968,
+    accreditation: "NAAC B++"
+  },
+  { 
+    id: "aff4", 
+    name: "Lyallpur Khalsa College", 
+    position: [31.3260, 75.5862] as [number, number], 
+    data: "Science & Technology",
+    city: "Jalandhar",
+    type: "Private College",
+    students: 3100,
+    nirfRank: 165,
+    placement: 75,
+    research: 6.0,
+    dropout: 9.8,
+    performance: 'average' as const,
+    programs: ["BSc", "MSc", "B.Tech", "Polytechnic"],
+    established: 1969,
+    accreditation: "NAAC A"
+  },
+  { 
+    id: "aff5", 
+    name: "Government Rajindra College", 
+    position: [30.3398, 76.3869] as [number, number], 
+    data: "Multi-disciplinary",
+    city: "Bathinda",
+    type: "Government College",
+    students: 2950,
+    nirfRank: 210,
+    placement: 68,
+    research: 4.5,
+    dropout: 13.2,
+    performance: 'needs-attention' as const,
+    programs: ["BA", "BSc", "BCom", "BBA"],
+    established: 1954,
+    accreditation: "NAAC B+"
+  },
+  { 
+    id: "aff6", 
+    name: "Khalsa College", 
+    position: [31.6340, 74.8723] as [number, number], 
+    data: "Arts, Science & Commerce",
+    city: "Amritsar",
+    type: "Private College",
+    students: 5100,
+    nirfRank: 142,
+    placement: 80,
+    research: 7.2,
+    dropout: 7.5,
+    performance: 'good' as const,
+    programs: ["BA", "BSc", "BCom", "MA", "MSc", "MCom"],
+    established: 1892,
+    accreditation: "NAAC A+"
+  },
+  { 
+    id: "aff7", 
+    name: "Government College for Women", 
+    position: [30.9010, 75.8573] as [number, number], 
+    data: "Women's Education",
+    city: "Ludhiana",
+    type: "Government College",
+    students: 2400,
+    nirfRank: 195,
+    placement: 70,
+    research: 5.5,
+    dropout: 10.2,
+    performance: 'average' as const,
+    programs: ["BA", "BSc", "BCom", "BEd"],
+    established: 1963,
+    accreditation: "NAAC A"
+  },
+  { 
+    id: "aff8", 
+    name: "S.C.D. Government College", 
+    position: [30.2010, 74.9455] as [number, number], 
+    data: "Science & Arts",
+    city: "Ludhiana",
+    type: "Government College",
+    students: 3600,
+    nirfRank: 178,
+    placement: 74,
+    research: 5.9,
+    dropout: 9.5,
+    performance: 'average' as const,
+    programs: ["BSc", "BA", "MSc", "MA"],
+    established: 1949,
+    accreditation: "NAAC A"
+  },
+  { 
+    id: "aff9", 
+    name: "Government College", 
+    position: [30.7046, 76.5161] as [number, number], 
+    data: "Multi-disciplinary",
+    city: "Mohali",
+    type: "Government College",
+    students: 2700,
+    nirfRank: 205,
+    placement: 71,
+    research: 5.0,
+    dropout: 12.8,
+    performance: 'needs-attention' as const,
+    programs: ["BA", "BSc", "BCA", "BBA"],
+    established: 2005,
+    accreditation: "NAAC B++"
+  },
+  { 
+    id: "aff10", 
+    name: "Mehr Chand Mahajan DAV College", 
+    position: [30.7446, 76.7294] as [number, number], 
+    data: "Women's College",
+    city: "Chandigarh",
+    type: "Private College",
+    students: 3200,
+    nirfRank: 155,
+    placement: 76,
+    research: 6.8,
+    dropout: 8.5,
+    performance: 'good' as const,
+    programs: ["BA", "BSc", "BCom", "MA"],
+    established: 1965,
+    accreditation: "NAAC A"
+  }
+];
+
 const InstitutionDashboard = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<any>(null);
@@ -1263,9 +1436,174 @@ const InstitutionDashboard = () => {
           </TabsContent>
 
           <TabsContent value="campus" className="space-y-6">
+            {/* Affiliated Colleges Section */}
+            <div className="mb-6">
+              <Card className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h2 className="text-2xl font-bold flex items-center gap-2">
+                      <Building2 className="h-6 w-6 text-primary" />
+                      Affiliated Colleges Network
+                    </h2>
+                    <p className="text-muted-foreground text-sm mt-1">
+                      View and monitor all colleges affiliated with Panjab University across Punjab
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-3xl font-bold text-primary">{affiliatedColleges.length}</div>
+                    <div className="text-sm text-muted-foreground">Total Colleges</div>
+                  </div>
+                </div>
+
+                {/* Summary Statistics */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                  <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
+                    <div className="text-2xl font-bold text-blue-600">
+                      {affiliatedColleges.reduce((sum, college) => sum + college.students, 0).toLocaleString()}
+                    </div>
+                    <div className="text-sm text-blue-700">Total Students</div>
+                  </div>
+                  <div className="text-center p-4 bg-green-50 rounded-lg border border-green-200">
+                    <div className="text-2xl font-bold text-green-600">
+                      {Math.round(affiliatedColleges.reduce((sum, college) => sum + college.placement, 0) / affiliatedColleges.length)}%
+                    </div>
+                    <div className="text-sm text-green-700">Avg Placement</div>
+                  </div>
+                  <div className="text-center p-4 bg-purple-50 rounded-lg border border-purple-200">
+                    <div className="text-2xl font-bold text-purple-600">
+                      {affiliatedColleges.filter(c => c.performance === 'good').length}
+                    </div>
+                    <div className="text-sm text-purple-700">High Performers</div>
+                  </div>
+                  <div className="text-center p-4 bg-orange-50 rounded-lg border border-orange-200">
+                    <div className="text-2xl font-bold text-orange-600">
+                      {affiliatedColleges.filter(c => c.performance === 'needs-attention').length}
+                    </div>
+                    <div className="text-sm text-orange-700">Need Attention</div>
+                  </div>
+                </div>
+
+                {/* Map of Affiliated Colleges */}
+                <div className="mb-4">
+                  <h3 className="text-lg font-bold mb-3">Geographic Distribution</h3>
+                  <MapView 
+                    locations={affiliatedColleges} 
+                    center={[30.7333, 76.7794]} 
+                    zoom={8} 
+                  />
+                </div>
+
+                {/* Performance Legend */}
+                <div className="flex flex-wrap gap-4 justify-center p-4 bg-gray-50 rounded-lg">
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-blue-500"></div>
+                    <span className="text-sm">Good Performance</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-yellow-500"></div>
+                    <span className="text-sm">Average</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-orange-500"></div>
+                    <span className="text-sm">Needs Attention</span>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            {/* Colleges by City */}
+            <div className="mb-6">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Colleges by City</h3>
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {Array.from(new Set(affiliatedColleges.map(c => c.city))).map((city) => {
+                    const cityColleges = affiliatedColleges.filter(c => c.city === city);
+                    return (
+                      <div key={city} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                        <div className="flex items-center justify-between mb-3">
+                          <h4 className="font-bold text-lg">{city}</h4>
+                          <Badge variant="outline">{cityColleges.length} colleges</Badge>
+                        </div>
+                        <div className="space-y-2">
+                          {cityColleges.map((college) => (
+                            <div key={college.id} className="p-2 bg-gray-50 rounded text-sm">
+                              <div className="font-medium">{college.name}</div>
+                              <div className="text-xs text-muted-foreground mt-1">
+                                👥 {college.students.toLocaleString()} students • 📊 {college.placement}% placement
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                {college.type} • Est. {college.established}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Card>
+            </div>
+
+            {/* Detailed College Information Table */}
+            <div className="mb-6">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Detailed College Information</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead className="bg-gray-50 border-b">
+                      <tr>
+                        <th className="text-left p-3 font-semibold">College Name</th>
+                        <th className="text-left p-3 font-semibold">City</th>
+                        <th className="text-center p-3 font-semibold">Students</th>
+                        <th className="text-center p-3 font-semibold">NIRF Rank</th>
+                        <th className="text-center p-3 font-semibold">Placement %</th>
+                        <th className="text-center p-3 font-semibold">Accreditation</th>
+                        <th className="text-center p-3 font-semibold">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {affiliatedColleges.map((college) => (
+                        <tr key={college.id} className="border-b hover:bg-gray-50">
+                          <td className="p-3">
+                            <div className="font-medium">{college.name}</div>
+                            <div className="text-xs text-muted-foreground">{college.data}</div>
+                          </td>
+                          <td className="p-3">{college.city}</td>
+                          <td className="p-3 text-center">{college.students.toLocaleString()}</td>
+                          <td className="p-3 text-center">#{college.nirfRank}</td>
+                          <td className="p-3 text-center">
+                            <span className={`font-medium ${
+                              college.placement >= 80 ? 'text-green-600' :
+                              college.placement >= 70 ? 'text-yellow-600' : 'text-orange-600'
+                            }`}>
+                              {college.placement}%
+                            </span>
+                          </td>
+                          <td className="p-3 text-center">
+                            <Badge variant="outline">{college.accreditation}</Badge>
+                          </td>
+                          <td className="p-3 text-center">
+                            <Badge className={
+                              college.performance === 'good' ? 'bg-blue-100 text-blue-800' :
+                              college.performance === 'average' ? 'bg-yellow-100 text-yellow-800' :
+                              'bg-orange-100 text-orange-800'
+                            }>
+                              {college.performance === 'good' ? 'Good' :
+                               college.performance === 'average' ? 'Average' : 'Needs Attention'}
+                            </Badge>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Card>
+            </div>
+
+            {/* Original Campus Infrastructure Section */}
             <div className="grid gap-6 lg:grid-cols-2 mb-6">
               <Card className="p-6">
-                <h3 className="text-xl font-bold mb-4">Campus Infrastructure Map</h3>
+                <h3 className="text-xl font-bold mb-4">Main Campus Infrastructure Map</h3>
                 <MapView locations={campusLocations} center={[28.5449, 77.1925]} zoom={15} />
               </Card>
 

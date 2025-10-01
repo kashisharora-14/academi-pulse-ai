@@ -108,6 +108,25 @@ The project is configured for autoscale deployment:
 
 ## Recent Changes
 
+### October 1, 2025 - Affiliated Colleges Map Feature for Institution Dashboard
+- ✅ **Implemented Affiliated Colleges Network Visualization**
+- Added comprehensive map view showing university's affiliated colleges across different cities
+- Example implementation for Panjab University with 10 affiliated colleges across Punjab
+- Features included:
+  - **Interactive Map**: Geographic distribution of all affiliated colleges on OpenStreetMap
+  - **Performance Tracking**: Color-coded markers (Blue=Good, Yellow=Average, Orange=Needs Attention)
+  - **Summary Statistics**: Total students, average placement, high performers, colleges needing attention
+  - **City-wise Organization**: Colleges grouped by city (Chandigarh, Jalandhar, Amritsar, Ludhiana, Bathinda, Mohali)
+  - **Detailed Information Table**: Complete college data including NIRF rank, placement %, accreditation, programs offered
+  - **College Details**: Each college shows:
+    - Name, location, city, and type (Government/Private)
+    - Student count, NIRF ranking, placement rate
+    - Research score, dropout rate, performance status
+    - Programs offered, establishment year, NAAC accreditation
+- Accessible via Institution Dashboard → Campus tab
+- Helps universities monitor and manage their affiliated college network
+- Enables identification of high-performing and struggling colleges for targeted support
+
 ### October 1, 2025 - Enhanced Map with Performance Color-Coding
 - ✅ **Implemented Multi-Color Performance Markers on Map**
 - Added comprehensive performance metrics to 20 institutions nationwide
