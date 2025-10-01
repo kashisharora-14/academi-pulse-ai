@@ -18,13 +18,29 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Government Info */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                <Shield className="w-8 h-8 text-white" />
+            <div className="flex items-start space-x-4 mb-6">
+              <div className="flex flex-col items-center space-y-2">
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                  <Shield className="w-8 h-8 text-white" />
+                </div>
+                {/* 75th Independence Logo */}
+                <div className="w-10 h-10 bg-gradient-to-br from-orange-500 via-white to-green-500 rounded-full flex items-center justify-center border-2 border-yellow-400">
+                  <div className="w-6 h-6 bg-blue-800 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">75</span>
+                  </div>
+                </div>
               </div>
               <div>
                 <h3 className="text-xl font-bold">National Education Data Platform</h3>
                 <p className="text-slate-300 text-sm">Ministry of Education, Government of India</p>
+                <div className="flex items-center gap-2 mt-2">
+                  <span className="text-xs bg-gradient-to-r from-orange-500 to-green-500 text-white px-2 py-1 rounded">
+                    🇮🇳 Digital India
+                  </span>
+                  <span className="text-xs bg-blue-700 text-white px-2 py-1 rounded">
+                    आज़ादी का अमृत महोत्सव
+                  </span>
+                </div>
               </div>
             </div>
             
@@ -153,8 +169,18 @@ export const Footer = () => {
             </div>
           </div>
           
-          {/* Government Color Bar */}
-          <div className="mt-4 h-1 bg-gradient-to-r from-orange-500 via-white to-green-500 rounded"></div>
+          {/* Government Tricolor Bar with 75th Independence */}
+          <div className="mt-4 space-y-2">
+            <div className="h-2 bg-gradient-to-r from-orange-500 via-white to-green-500 rounded"></div>
+            <div className="flex justify-center">
+              <div className="bg-blue-800 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                <span>🇮🇳</span>
+                <span>सत्यमेव जयते</span>
+                <span>•</span>
+                <span>Truth Alone Triumphs</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

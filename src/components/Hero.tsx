@@ -29,11 +29,26 @@ export const Hero = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
           {/* Government Badge */}
-          <div className="flex justify-center mb-4 md:mb-6">
-            <Badge className="bg-blue-800 text-white px-4 md:px-6 py-1.5 md:py-2 text-xs md:text-sm font-semibold">
-              <Shield className="w-3 h-3 md:w-4 md:h-4 mr-1.5 md:mr-2" />
-              Government of India Initiative
-            </Badge>
+          <div className="flex flex-col items-center mb-4 md:mb-6">
+            <div className="flex flex-wrap justify-center gap-2 mb-3">
+              <Badge className="bg-blue-800 text-white px-4 md:px-6 py-1.5 md:py-2 text-xs md:text-sm font-semibold">
+                <Shield className="w-3 h-3 md:w-4 md:h-4 mr-1.5 md:mr-2" />
+                Government of India Initiative
+              </Badge>
+              <Badge className="bg-gradient-to-r from-orange-500 via-white to-green-500 text-blue-800 border-2 border-blue-800 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-bold">
+                🇮🇳 आज़ादी का अमृत महोत्सव
+              </Badge>
+            </div>
+            
+            {/* 75th Independence Celebration Banner */}
+            <div className="bg-gradient-to-r from-orange-100 via-white to-green-100 border border-blue-200 rounded-lg px-4 py-2 text-center">
+              <div className="flex items-center justify-center gap-2 text-sm md:text-base font-semibold text-blue-800">
+                <div className="w-6 h-6 bg-gradient-to-br from-orange-500 via-white to-green-500 rounded-full flex items-center justify-center border border-blue-800">
+                  <span className="text-blue-800 font-bold text-xs">75</span>
+                </div>
+                <span>Celebrating 75 Years of Independence | स्वतंत्रता के 75 वर्ष</span>
+              </div>
+            </div>
           </div>
           
           <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-slate-800 mb-4 md:mb-6 leading-tight px-2">

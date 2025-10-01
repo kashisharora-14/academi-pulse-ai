@@ -164,6 +164,46 @@
   background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
 }
 
+/* 75th Independence Day Colors */
+.saffron {
+  background-color: #FF9933;
+}
+
+.bg-saffron {
+  background-color: #FF9933;
+}
+
+.text-saffron {
+  color: #FF9933;
+}
+
+.bg-independence-green {
+  background-color: #138808;
+}
+
+.text-independence-green {
+  color: #138808;
+}
+
+.border-gold {
+  border-color: #FFD700;
+}
+
+/* Government National Colors */
+.tricolor-gradient {
+  background: linear-gradient(to right, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+}
+
+/* Enhanced Government Elements */
+.ashoka-chakra {
+  background: radial-gradient(circle, #000080 30%, transparent 31%);
+}
+
+.government-seal {
+  background: linear-gradient(135deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+  border: 2px solid #000080;
+}
+
 .gov-card {
   @apply bg-white border-2 border-slate-200 shadow-sm hover:shadow-md transition-shadow;
 }
