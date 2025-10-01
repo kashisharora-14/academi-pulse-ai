@@ -193,105 +193,110 @@ export const MapView = ({ locations, center = [30.7677, 76.7794], zoom = 8 }: Ma
             position={location.position}
             icon={createCustomIcon(location)}
           >
-            <Popup maxWidth={320} className="custom-popup">
-              <div className="p-2">
-                {/* Institution Header */}
-                <div className="mb-2">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Building2 className="h-4 w-4 text-blue-600" />
-                    <h3 className="font-bold text-sm text-gray-900">{location.name}</h3>
+            <Popup maxWidth={400} className="custom-popup">
+              <div className="p-3 bg-white rounded-lg">
+                {/* Horizontal Card Layout */}
+                <div className="flex gap-3">
+                  {/* Left Section - Institution Info */}
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Building2 className="h-4 w-4 text-blue-600" />
+                      <h3 className="font-bold text-sm text-gray-900">{location.name}</h3>
+                    </div>
+                    <div className="text-xs text-gray-600 mb-2">
+                      📍 {location.city} • {location.type}
+                    </div>
+                    <div className="text-xs text-gray-600 mb-2">
+                      👥 {location.students?.toLocaleString()} students
+                    </div>
+                    <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-bold ${
+                      location.performance === 'critical' ? 'bg-red-600 text-white' :
+                      location.performance === 'needs-attention' ? 'bg-orange-500 text-white' :
+                      location.performance === 'excellent' ? 'bg-green-600 text-white' :
+                      'bg-blue-600 text-white'
+                    }`}>
+                      {location.performance === 'critical' ? 'CRITICAL' :
+                       location.performance === 'needs-attention' ? 'NEEDS ATTENTION' :
+                       location.performance === 'excellent' ? 'EXCELLENT' : 
+                       location.performance === 'good' ? 'GOOD' : 'AVERAGE'}
+                    </div>
                   </div>
-                  <div className="text-xs text-gray-600 mb-2">
-                    📍 {location.city} • {location.type} • {location.students?.toLocaleString()} students
-                  </div>
-                  <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-bold ${
-                    location.performance === 'critical' ? 'bg-red-600 text-white' :
-                    location.performance === 'needs-attention' ? 'bg-orange-500 text-white' :
-                    location.performance === 'excellent' ? 'bg-green-600 text-white' :
-                    'bg-blue-600 text-white'
-                  }`}>
-                    {location.performance === 'critical' ? 'CRITICAL' :
-                     location.performance === 'needs-attention' ? 'NEEDS ATTENTION' :
-                     location.performance === 'excellent' ? 'EXCELLENT' : 
-                     location.performance === 'good' ? 'GOOD' : 'AVERAGE'}
+
+                  {/* Right Section - Metrics */}
+                  <div className="flex-1">
+                    <div className="grid grid-cols-2 gap-1 text-xs">
+                      {location.nirfRank && (
+                        <div className="bg-blue-50 p-1.5 rounded border text-center">
+                          <div className="font-bold text-blue-700 text-xs">#{location.nirfRank}</div>
+                          <div className="text-blue-600 text-[10px]">NIRF</div>
+                        </div>
+                      )}
+                      <div className={`p-1.5 rounded border text-center ${
+                        location.placement && location.placement >= 80 ? 'bg-green-50' :
+                        location.placement && location.placement >= 60 ? 'bg-yellow-50' : 'bg-red-50'
+                      }`}>
+                        <div className={`font-bold text-xs ${
+                          location.placement && location.placement >= 80 ? 'text-green-700' :
+                          location.placement && location.placement >= 60 ? 'text-yellow-700' : 'text-red-700'
+                        }`}>{location.placement}%</div>
+                        <div className={`text-[10px] ${
+                          location.placement && location.placement >= 80 ? 'text-green-600' :
+                          location.placement && location.placement >= 60 ? 'text-yellow-600' : 'text-red-600'
+                        }`}>Placement</div>
+                      </div>
+                      <div className="bg-purple-50 p-1.5 rounded border text-center">
+                        <div className="font-bold text-purple-700 text-xs">{location.research}</div>
+                        <div className="text-purple-600 text-[10px]">Research</div>
+                      </div>
+                      <div className={`p-1.5 rounded border text-center ${
+                        location.dropout && location.dropout > 15 ? 'bg-red-50' : 
+                        location.dropout && location.dropout > 8 ? 'bg-orange-50' : 'bg-green-50'
+                      }`}>
+                        <div className={`font-bold text-xs ${
+                          location.dropout && location.dropout > 15 ? 'text-red-700' : 
+                          location.dropout && location.dropout > 8 ? 'text-orange-700' : 'text-green-700'
+                        }`}>{location.dropout}%</div>
+                        <div className={`text-[10px] ${
+                          location.dropout && location.dropout > 15 ? 'text-red-600' : 
+                          location.dropout && location.dropout > 8 ? 'text-orange-600' : 'text-green-600'
+                        }`}>Dropout</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Compact Metrics Grid */}
-                <div className="grid grid-cols-2 gap-1 mb-2 text-xs">
-                  {location.nirfRank && (
-                    <div className="bg-blue-50 p-2 rounded border text-center">
-                      <div className="font-bold text-blue-700">#{location.nirfRank}</div>
-                      <div className="text-blue-600">NIRF Rank</div>
+                {/* Bottom Status Bar */}
+                <div className="mt-3 pt-2 border-t border-gray-100">
+                  {location.performance === 'critical' && (
+                    <div className="text-xs text-red-700 bg-red-50 px-2 py-1 rounded">
+                      🚨 <span className="font-bold">CRITICAL:</span> Emergency intervention required
                     </div>
                   )}
-                  <div className={`p-2 rounded border text-center ${
-                    location.placement && location.placement >= 80 ? 'bg-green-50' :
-                    location.placement && location.placement >= 60 ? 'bg-yellow-50' : 'bg-red-50'
-                  }`}>
-                    <div className={`font-bold ${
-                      location.placement && location.placement >= 80 ? 'text-green-700' :
-                      location.placement && location.placement >= 60 ? 'text-yellow-700' : 'text-red-700'
-                    }`}>{location.placement}%</div>
-                    <div className={`${
-                      location.placement && location.placement >= 80 ? 'text-green-600' :
-                      location.placement && location.placement >= 60 ? 'text-yellow-600' : 'text-red-600'
-                    }`}>Placement</div>
-                  </div>
-                  <div className="bg-purple-50 p-2 rounded border text-center">
-                    <div className="font-bold text-purple-700">{location.research}</div>
-                    <div className="text-purple-600">Research</div>
-                  </div>
-                  <div className={`p-2 rounded border text-center ${
-                    location.dropout && location.dropout > 15 ? 'bg-red-50' : 
-                    location.dropout && location.dropout > 8 ? 'bg-orange-50' : 'bg-green-50'
-                  }`}>
-                    <div className={`font-bold ${
-                      location.dropout && location.dropout > 15 ? 'text-red-700' : 
-                      location.dropout && location.dropout > 8 ? 'text-orange-700' : 'text-green-700'
-                    }`}>{location.dropout}%</div>
-                    <div className={`${
-                      location.dropout && location.dropout > 15 ? 'text-red-600' : 
-                      location.dropout && location.dropout > 8 ? 'text-orange-600' : 'text-green-600'
-                    }`}>Dropout</div>
-                  </div>
+
+                  {location.performance === 'needs-attention' && (
+                    <div className="text-xs text-orange-700 bg-orange-50 px-2 py-1 rounded">
+                      ⚠️ <span className="font-bold">NEEDS IMPROVEMENT:</span> Focus on placement & research
+                    </div>
+                  )}
+
+                  {location.performance === 'excellent' && (
+                    <div className="text-xs text-green-700 bg-green-50 px-2 py-1 rounded">
+                      🌟 <span className="font-bold">EXEMPLARY:</span> National showcase institution
+                    </div>
+                  )}
+
+                  {location.performance === 'good' && (
+                    <div className="text-xs text-blue-700 bg-blue-50 px-2 py-1 rounded">
+                      ✅ <span className="font-bold">GOOD:</span> Stable performance across all areas
+                    </div>
+                  )}
+
+                  {location.performance === 'average' && (
+                    <div className="text-xs text-yellow-700 bg-yellow-50 px-2 py-1 rounded">
+                      ⚡ <span className="font-bold">AVERAGE:</span> Improvement plan in progress
+                    </div>
+                  )}
                 </div>
-
-                  {/* Compact Status Summary */}
-                {location.performance === 'critical' && (
-                  <div className="p-2 bg-red-50 border-l-2 border-red-500 rounded text-xs">
-                    <div className="font-bold text-red-900 mb-1">🚨 CRITICAL STATUS</div>
-                    <div className="text-red-700">Immediate government intervention required. Emergency funding allocated.</div>
-                  </div>
-                )}
-
-                {location.performance === 'needs-attention' && (
-                  <div className="p-2 bg-orange-50 border-l-2 border-orange-500 rounded text-xs">
-                    <div className="font-bold text-orange-900 mb-1">⚠️ NEEDS IMPROVEMENT</div>
-                    <div className="text-orange-700">Focus on placement rates and research output enhancement.</div>
-                  </div>
-                )}
-
-                {location.performance === 'excellent' && (
-                  <div className="p-2 bg-green-50 border-l-2 border-green-500 rounded text-xs">
-                    <div className="font-bold text-green-900 mb-1">🌟 EXEMPLARY</div>
-                    <div className="text-green-700">Outstanding performance. National showcase institution.</div>
-                  </div>
-                )}
-
-                {location.performance === 'good' && (
-                  <div className="p-2 bg-blue-50 border-l-2 border-blue-500 rounded text-xs">
-                    <div className="font-bold text-blue-900 mb-1">✅ GOOD PERFORMANCE</div>
-                    <div className="text-blue-700">Stable institution with solid metrics across all areas.</div>
-                  </div>
-                )}
-
-                {location.performance === 'average' && (
-                  <div className="p-2 bg-yellow-50 border-l-2 border-yellow-500 rounded text-xs">
-                    <div className="font-bold text-yellow-900 mb-1">⚡ AVERAGE</div>
-                    <div className="text-yellow-700">Performance improvement plan in progress.</div>
-                  </div>
-                )}
               </div>
             </Popup>
           </Marker>
