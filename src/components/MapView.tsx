@@ -37,11 +37,11 @@ interface MapViewProps {
 const createCustomIcon = (location: Location) => {
   const getPerformanceColor = () => {
     switch (location.performance) {
-      case 'excellent': return '#15803D'; // Dark Green
-      case 'good': return '#1D4ED8'; // Dark Blue
-      case 'average': return '#CA8A04'; // Dark Yellow
-      case 'needs-attention': return '#C2410C'; // Dark Orange
-      case 'critical': return '#B91C1C'; // Dark Red
+      case 'excellent': return '#16A34A'; // Bright Green
+      case 'good': return '#2563EB'; // Bright Blue
+      case 'average': return '#EAB308'; // Bright Yellow
+      case 'needs-attention': return '#EA580C'; // Bright Orange
+      case 'critical': return '#DC2626'; // Bright Red
       default: return '#6B7280'; // Gray
     }
   };
@@ -73,11 +73,18 @@ const createCustomIcon = (location: Location) => {
   const textColor = getTextColor();
   const rankDisplay = getRankDisplay();
 
-  const getPriorityLevel = () => {
-    if (location.performance === 'critical') return 'HIGH PRIORITY';
-    if (location.performance === 'needs-attention') return 'MONITOR';
-    if (location.performance === 'excellent') return 'SHOWCASE';
-    return 'STABLE';
+  const getPulseAnimation = () => {
+    if (location.performance === 'critical') {
+      return `
+        animation: pulse-critical 2s infinite;
+        @keyframes pulse-critical {
+          0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+          70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+        }
+      `;
+    }
+    return '';
   };
 
   const getGovernmentAlert = () => {
@@ -89,38 +96,82 @@ const createCustomIcon = (location: Location) => {
 
   return L.divIcon({
     html: `
-      <div class="performance-marker-container" style="
-        background: ${performanceColor} !important;
-        background: linear-gradient(135deg, ${performanceColor} 0%, ${performanceColor}dd 100%) !important;
-        color: ${textColor} !important;
-        border-radius: 50% !important;
-        width: 48px !important;
-        height: 48px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border: 4px solid #FFFFFF !important;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 3px 12px ${performanceColor}60 !important;
-        font-size: 16px !important;
-        font-weight: 900 !important;
-        position: relative !important;
-        cursor: pointer !important;
-        transition: all 0.3s ease !important;
-        z-index: 1000 !important;
-        ${location.performance === 'critical' ? 'animation: pulse-urgent 1.5s infinite !important;' : ''}
+      <style>
+        @keyframes pulse-critical {
+          0% { 
+            transform: scale(1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 0 0 0 rgba(220, 38, 38, 0.7);
+          }
+          50% { 
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 0 0 8px rgba(220, 38, 38, 0.3);
+          }
+          100% { 
+            transform: scale(1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 0 0 0 rgba(220, 38, 38, 0);
+          }
+        }
+      </style>
+      <div style="
+        background-color: ${performanceColor};
+        background-image: linear-gradient(135deg, ${performanceColor} 0%, ${performanceColor}dd 100%);
+        color: ${textColor};
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 4px solid #FFFFFF;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px ${performanceColor}60;
+        font-size: 16px;
+        font-weight: 900;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        ${location.performance === 'critical' ? 'animation: pulse-critical 2s infinite;' : ''}
       ">
-        <div style="text-align: center; line-height: 1; position: relative;">
-          <div style="font-size: 20px; display: block;">${symbol}</div>
-          <div style="font-size: 8px; font-weight: 600; margin-top: 1px; color: ${textColor};">${location.nirfRank ? `#${location.nirfRank}` : ''}</div>
-          ${rankDisplay ? `<div style="font-size: 12px; position: absolute; top: -10px; right: -14px; background: white; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; border: 2px solid ${performanceColor};">${rankDisplay}</div>` : ''}
-          ${getGovernmentAlert() ? `<div style="font-size: 10px; position: absolute; top: -8px; left: -14px; background: white; border-radius: 50%; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; border: 2px solid #333;">${getGovernmentAlert()}</div>` : ''}
+        <div style="text-align: center; line-height: 1; position: relative; z-index: 2;">
+          <div style="font-size: 18px; display: block; margin-bottom: 2px;">${symbol}</div>
+          ${location.nirfRank ? `<div style="font-size: 7px; font-weight: 600; color: ${textColor};">#${location.nirfRank}</div>` : ''}
         </div>
+        ${rankDisplay ? `<div style="
+          font-size: 10px; 
+          position: absolute; 
+          top: -8px; 
+          right: -8px; 
+          background: white; 
+          border-radius: 50%; 
+          width: 16px; 
+          height: 16px; 
+          display: flex; 
+          align-items: center; 
+          justify-content: center; 
+          border: 2px solid ${performanceColor};
+          z-index: 3;
+        ">${rankDisplay}</div>` : ''}
+        ${getGovernmentAlert() ? `<div style="
+          font-size: 8px; 
+          position: absolute; 
+          top: -6px; 
+          left: -6px; 
+          background: white; 
+          border-radius: 50%; 
+          width: 14px; 
+          height: 14px; 
+          display: flex; 
+          align-items: center; 
+          justify-content: center; 
+          border: 2px solid #333;
+          z-index: 3;
+        ">${getGovernmentAlert()}</div>` : ''}
       </div>
     `,
-    className: `custom-performance-marker marker-${location.performance}`,
-    iconSize: [48, 48],
-    iconAnchor: [24, 24],
-    popupAnchor: [0, -24]
+    className: `custom-performance-marker marker-${location.performance} performance-${location.performance}`,
+    iconSize: [50, 50],
+    iconAnchor: [25, 25],
+    popupAnchor: [0, -25]
   });
 };
 

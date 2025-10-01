@@ -6,46 +6,48 @@
 
 /* Enhanced Map Marker Styles */
 .custom-performance-marker {
+  background: transparent !important;
+  border: none !important;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
   transition: all 0.3s ease;
 }
 
 .custom-performance-marker:hover {
   filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
-  transform: scale(1.15);
-}
-
-.performance-marker-container:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important;
 }
 
-/* Performance-specific marker styles */
-.marker-excellent .performance-marker-container {
-  background: #16A34A !important;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(22, 163, 74, 0.4) !important;
+/* Ensure leaflet doesn't override our custom styles */
+.leaflet-marker-icon.custom-performance-marker {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
 }
 
-.marker-good .performance-marker-container {
-  background: #2563EB !important;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(37, 99, 235, 0.4) !important;
+/* Performance marker hover effects */
+.performance-excellent:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 3px 12px rgba(22, 163, 74, 0.6) !important;
 }
 
-.marker-average .performance-marker-container {
-  background: #EAB308 !important;
-  color: #000000 !important;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(234, 179, 8, 0.4) !important;
+.performance-good:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 3px 12px rgba(37, 99, 235, 0.6) !important;
 }
 
-.marker-needs-attention .performance-marker-container {
-  background: #EA580C !important;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(234, 88, 12, 0.4) !important;
+.performance-average:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 3px 12px rgba(234, 179, 8, 0.6) !important;
 }
 
-.marker-critical .performance-marker-container {
-  background: #DC2626 !important;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(220, 38, 38, 0.4) !important;
-  animation: pulse-red 2s infinite;
+.performance-needs-attention:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 3px 12px rgba(234, 88, 12, 0.6) !important;
+}
+
+.performance-critical:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 3px 12px rgba(220, 38, 38, 0.6) !important;
 }
 
 /* Custom Popup Styles */
