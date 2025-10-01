@@ -160,36 +160,43 @@ const StudentDashboard = () => {
             </TabsList>
           </div>
 
-          {/* Mobile Tabs - Horizontal Scrollable */}
+          {/* Mobile Tabs - Grid Layout */}
           <div className="block lg:hidden">
-            <div className="overflow-x-auto">
-              <TabsList className="flex w-max min-w-full gap-1 p-1 bg-muted">
-                <TabsTrigger value="overview" className="flex-shrink-0 text-xs px-3">Overview</TabsTrigger>
-                <TabsTrigger value="lifecycle" className="flex-shrink-0 text-xs px-3">Life Cycle</TabsTrigger>
-                <TabsTrigger value="journey" className="flex-shrink-0 text-xs px-3">
+            <div className="overflow-x-auto scrollbar-hide">
+              <TabsList className="grid grid-cols-3 gap-2 p-2 bg-muted/50 h-auto min-w-full">
+                <TabsTrigger value="overview" className="text-xs px-2 py-2 h-auto">Overview</TabsTrigger>
+                <TabsTrigger value="lifecycle" className="text-xs px-2 py-2 h-auto">Life Cycle</TabsTrigger>
+                <TabsTrigger value="journey" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
                   <Route className="h-3 w-3" />
+                  <span>Journey</span>
                 </TabsTrigger>
-                <TabsTrigger value="gamification" className="flex-shrink-0 text-xs px-3">
+                <TabsTrigger value="gamification" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
                   <Trophy className="h-3 w-3" />
+                  <span>Awards</span>
                 </TabsTrigger>
-                <TabsTrigger value="digilocker" className="flex-shrink-0 text-xs px-3">
+                <TabsTrigger value="digilocker" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
                   <FolderLock className="h-3 w-3" />
+                  <span>DigiLocker</span>
                 </TabsTrigger>
-                <TabsTrigger value="premium" className="flex-shrink-0 text-xs px-3">
+                <TabsTrigger value="premium" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
                   <Crown className="h-3 w-3" />
+                  <span>Premium</span>
                 </TabsTrigger>
-                <TabsTrigger value="qr" className="flex-shrink-0 text-xs px-3">
+                <TabsTrigger value="qr" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
                   <QrCode className="h-3 w-3" />
+                  <span>QR Code</span>
                 </TabsTrigger>
-                <TabsTrigger value="export" className="flex-shrink-0 text-xs px-3">
+                <TabsTrigger value="export" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
                   <Download className="h-3 w-3" />
+                  <span>Export</span>
                 </TabsTrigger>
-                <TabsTrigger value="ai" className="flex-shrink-0 text-xs px-3">
+                <TabsTrigger value="ai" className="text-xs px-1 py-2 h-auto flex flex-col items-center gap-1">
                   <Sparkles className="h-3 w-3" />
+                  <span>AI</span>
                 </TabsTrigger>
-                <TabsTrigger value="academics" className="flex-shrink-0 text-xs px-3">Academics</TabsTrigger>
-                <TabsTrigger value="schemes" className="flex-shrink-0 text-xs px-3">Schemes</TabsTrigger>
-                <TabsTrigger value="chat" className="flex-shrink-0 text-xs px-3">EduBot</TabsTrigger>
+                <TabsTrigger value="academics" className="text-xs px-2 py-2 h-auto">Academics</TabsTrigger>
+                <TabsTrigger value="schemes" className="text-xs px-2 py-2 h-auto">Schemes</TabsTrigger>
+                <TabsTrigger value="chat" className="text-xs px-2 py-2 h-auto">EduBot</TabsTrigger>
               </TabsList>
             </div>
           </div>
