@@ -212,54 +212,95 @@ const TeacherDashboard = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8">
+        {/* Government Header with Emblem */}
+        <div className="mb-6 p-4 bg-gradient-to-r from-orange-100 via-white to-green-100 border border-orange-200 rounded-lg">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              {/* Indian Government Emblem */}
+              <div className="w-16 h-16 bg-blue-800 rounded-full flex items-center justify-center relative">
+                <div className="w-12 h-12 relative">
+                  {/* Ashoka Chakra */}
+                  <div className="w-12 h-12 border-3 border-white rounded-full relative flex items-center justify-center">
+                    <div className="absolute w-2 h-2 bg-white rounded-full"></div>
+                    {/* 24 Spokes */}
+                    {Array.from({length: 24}).map((_, i) => (
+                      <div 
+                        key={i}
+                        className="absolute w-0.5 h-4 bg-white origin-bottom"
+                        style={{
+                          transform: `rotate(${i * 15}deg) translateY(-8px)`,
+                          transformOrigin: 'center 16px'
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h2 className="text-lg font-bold text-slate-800">भारत सरकार • Government of India</h2>
+                <p className="text-sm text-slate-600">शिक्षा मंत्रालय • Ministry of Education</p>
+                <div className="flex items-center gap-2 mt-1">
+                  <Badge className="bg-green-100 text-green-800 text-xs">Verified Faculty</Badge>
+                  <Badge className="bg-blue-100 text-blue-800 text-xs">APAR Compliant</Badge>
+                </div>
+              </div>
+            </div>
+            <div className="text-right">
+              <div className="w-2 h-8 bg-gradient-to-b from-orange-500 via-white to-green-500 rounded"></div>
+            </div>
+          </div>
+        </div>
+
         <Tabs defaultValue="overview" className="space-y-6">
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
-            <TabsList className="grid w-full grid-cols-11 text-xs">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="teaching">Teaching</TabsTrigger>
-              <TabsTrigger value="research">Research</TabsTrigger>
-              <TabsTrigger value="apar">APAR</TabsTrigger>
-              <TabsTrigger value="students">Students</TabsTrigger>
-              <TabsTrigger value="student-management">
+            <TabsList className="grid w-full grid-cols-11 text-xs bg-gradient-to-r from-blue-50 to-green-50">
+              <TabsTrigger value="overview" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Overview</TabsTrigger>
+              <TabsTrigger value="teaching" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Teaching</TabsTrigger>
+              <TabsTrigger value="research" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Research</TabsTrigger>
+              <TabsTrigger value="apar" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">APAR</TabsTrigger>
+              <TabsTrigger value="students" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Students</TabsTrigger>
+              <TabsTrigger value="student-management" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
                 <Users className="h-4 w-4 mr-1" />
                 Student Mgmt
               </TabsTrigger>
-              <TabsTrigger value="development">Development</TabsTrigger>
-              <TabsTrigger value="schedule">Schedule</TabsTrigger>
-              <TabsTrigger value="qr">
+              <TabsTrigger value="development" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Development</TabsTrigger>
+              <TabsTrigger value="schedule" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Schedule</TabsTrigger>
+              <TabsTrigger value="qr" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
                 <QrCode className="h-4 w-4 mr-1" />
                 QR Code
               </TabsTrigger>
-              <TabsTrigger value="export">
+              <TabsTrigger value="export" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
                 <Download className="h-4 w-4 mr-1" />
                 Export
               </TabsTrigger>
-              <TabsTrigger value="analytics">Analytics</TabsTrigger>
+              <TabsTrigger value="analytics" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Analytics</TabsTrigger>
             </TabsList>
           </div>
 
-          {/* Mobile Tabs - Scrollable */}
+          {/* Mobile Tabs - Improved styling */}
           <div className="block lg:hidden">
-            <TabsList className="flex flex-wrap gap-2 overflow-x-auto pb-2 h-auto bg-transparent">
-              <TabsTrigger value="overview" className="whitespace-nowrap text-xs">Overview</TabsTrigger>
-              <TabsTrigger value="teaching" className="whitespace-nowrap text-xs">Teaching</TabsTrigger>
-              <TabsTrigger value="research" className="whitespace-nowrap text-xs">Research</TabsTrigger>
-              <TabsTrigger value="apar" className="whitespace-nowrap text-xs">APAR</TabsTrigger>
-              <TabsTrigger value="students" className="whitespace-nowrap text-xs">Students</TabsTrigger>
-              <TabsTrigger value="student-management" className="whitespace-nowrap text-xs">
-                <Users className="h-4 w-4" />
-              </TabsTrigger>
-              <TabsTrigger value="development" className="whitespace-nowrap text-xs">Development</TabsTrigger>
-              <TabsTrigger value="schedule" className="whitespace-nowrap text-xs">Schedule</TabsTrigger>
-              <TabsTrigger value="qr" className="whitespace-nowrap text-xs">
-                <QrCode className="h-4 w-4" />
-              </TabsTrigger>
-              <TabsTrigger value="export" className="whitespace-nowrap text-xs">
-                <Download className="h-4 w-4" />
-              </TabsTrigger>
-              <TabsTrigger value="analytics" className="whitespace-nowrap text-xs">Analytics</TabsTrigger>
-            </TabsList>
+            <div className="overflow-x-auto">
+              <TabsList className="flex gap-2 w-max p-2 bg-gradient-to-r from-blue-50 to-green-50">
+                <TabsTrigger value="overview" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Overview</TabsTrigger>
+                <TabsTrigger value="teaching" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Teaching</TabsTrigger>
+                <TabsTrigger value="research" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Research</TabsTrigger>
+                <TabsTrigger value="apar" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">APAR</TabsTrigger>
+                <TabsTrigger value="students" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Students</TabsTrigger>
+                <TabsTrigger value="student-management" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                  <Users className="h-4 w-4" />
+                </TabsTrigger>
+                <TabsTrigger value="development" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Dev</TabsTrigger>
+                <TabsTrigger value="schedule" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Schedule</TabsTrigger>
+                <TabsTrigger value="qr" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                  <QrCode className="h-4 w-4" />
+                </TabsTrigger>
+                <TabsTrigger value="export" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                  <Download className="h-4 w-4" />
+                </TabsTrigger>
+                <TabsTrigger value="analytics" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Analytics</TabsTrigger>
+              </TabsList>
+            </div>
           </div>
 
           <TabsContent value="overview" className="space-y-6">
@@ -622,95 +663,190 @@ const TeacherDashboard = () => {
               </div>
             </div>
 
-            {/* Stats Cards */}
+            {/* Stats Cards - Government Style */}
             <div className="grid gap-4 md:grid-cols-4 mb-6">
-              <Card className="p-4">
+              <Card className="p-4 border-2 border-green-200 bg-gradient-to-br from-green-50 to-white">
                 <div className="text-center">
+                  <div className="flex items-center justify-center mb-2">
+                    <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    </div>
+                  </div>
                   <div className="text-2xl font-bold text-green-600">
                     {loggedInStudents.filter(s => s.status === 'online').length}
                   </div>
-                  <div className="text-sm text-muted-foreground">Currently Online</div>
+                  <div className="text-sm text-green-700 font-medium">Currently Online</div>
+                  <Badge className="mt-1 bg-green-100 text-green-800 text-xs">🟢 Live Status</Badge>
                 </div>
               </Card>
-              <Card className="p-4">
+              <Card className="p-4 border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white">
                 <div className="text-center">
+                  <div className="flex items-center justify-center mb-2">
+                    <Award className="h-8 w-8 text-blue-500" />
+                  </div>
                   <div className="text-2xl font-bold text-blue-600">
                     {loggedInStudents.filter(s => s.cgpa >= 9.0).length}
                   </div>
-                  <div className="text-sm text-muted-foreground">CGPA ≥ 9.0</div>
+                  <div className="text-sm text-blue-700 font-medium">CGPA ≥ 9.0</div>
+                  <Badge className="mt-1 bg-blue-100 text-blue-800 text-xs">🏆 Top Performers</Badge>
                 </div>
               </Card>
-              <Card className="p-4">
+              <Card className="p-4 border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-white">
                 <div className="text-center">
+                  <div className="flex items-center justify-center mb-2">
+                    <GraduationCap className="h-8 w-8 text-purple-500" />
+                  </div>
                   <div className="text-2xl font-bold text-purple-600">
                     {loggedInStudents.filter(s => s.semester === '6th').length}
                   </div>
-                  <div className="text-sm text-muted-foreground">Final Year</div>
+                  <div className="text-sm text-purple-700 font-medium">Final Year</div>
+                  <Badge className="mt-1 bg-purple-100 text-purple-800 text-xs">🎓 Graduating</Badge>
                 </div>
               </Card>
-              <Card className="p-4">
+              <Card className="p-4 border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-white">
                 <div className="text-center">
+                  <div className="flex items-center justify-center mb-2">
+                    <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                      <span className="text-sm font-bold text-orange-600">75+</span>
+                    </div>
+                  </div>
                   <div className="text-2xl font-bold text-orange-600">
                     {(loggedInStudents.reduce((sum, s) => sum + s.cgpa, 0) / loggedInStudents.length).toFixed(1)}
                   </div>
-                  <div className="text-sm text-muted-foreground">Avg CGPA</div>
+                  <div className="text-sm text-orange-700 font-medium">Avg CGPA</div>
+                  <Badge className="mt-1 bg-orange-100 text-orange-800 text-xs">📊 Class Average</Badge>
                 </div>
               </Card>
             </div>
 
-            {/* Student Grid */}
+            {/* Student Grid - Aadhaar Card Style */}
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {loggedInStudents.map((student) => (
-                <Card key={student.id} className="p-6 hover:shadow-lg transition-shadow">
-                  <div className="flex items-start gap-4">
-                    <div className="relative">
-                      <Avatar className="h-16 w-16">
-                        <AvatarImage src={student.photo} alt={student.name} />
-                        <AvatarFallback>{student.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                      </Avatar>
-                      <div className={`absolute -bottom-1 -right-1 h-5 w-5 rounded-full border-2 border-white ${
-                        student.status === 'online' ? 'bg-green-500' : 'bg-gray-400'
-                      }`} />
+                <Card key={student.id} className="p-0 hover:shadow-xl transition-all duration-300 border-2 hover:border-blue-300 bg-gradient-to-br from-blue-50 via-white to-green-50">
+                  {/* Government Header Strip */}
+                  <div className="h-2 bg-gradient-to-r from-orange-500 via-white to-green-500"></div>
+                  
+                  <div className="p-5">
+                    {/* Government Emblem and Title */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 bg-blue-800 rounded-full flex items-center justify-center">
+                          <div className="w-5 h-5 border border-white rounded-full relative flex items-center justify-center">
+                            <div className="absolute w-1 h-1 bg-white rounded-full"></div>
+                            {/* Mini Ashoka Chakra */}
+                            {Array.from({length: 12}).map((_, i) => (
+                              <div 
+                                key={i}
+                                className="absolute w-0.5 h-1.5 bg-white origin-bottom"
+                                style={{
+                                  transform: `rotate(${i * 30}deg) translateY(-2px)`,
+                                  transformOrigin: 'center 6px'
+                                }}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                        <div className="text-xs text-blue-800 font-medium">GoI Student ID</div>
+                      </div>
+                      <Badge variant={student.status === 'online' ? 'default' : 'secondary'} className="text-xs">
+                        {student.status === 'online' ? '🟢 Live' : '🔴 Offline'}
+                      </Badge>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="font-semibold text-lg truncate">{student.name}</h3>
-                        <Badge variant={student.status === 'online' ? 'default' : 'secondary'}>
-                          {student.status}
+
+                    <div className="flex items-start gap-4">
+                      <div className="relative">
+                        <Avatar className="h-16 w-16 border-2 border-blue-200">
+                          <AvatarImage src={student.photo} alt={student.name} />
+                          <AvatarFallback className="bg-blue-100 text-blue-800 font-bold">
+                            {student.name.split(' ').map(n => n[0]).join('')}
+                          </AvatarFallback>
+                        </Avatar>
+                        {/* Attendance Badge */}
+                        <div className="absolute -bottom-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg">
+                          75D+
+                        </div>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-bold text-lg text-slate-800 truncate mb-1">{student.name}</h3>
+                        <div className="space-y-1 text-xs">
+                          <div className="flex items-center gap-2">
+                            <span className="font-medium text-blue-700">ID:</span> 
+                            <span className="text-slate-600 font-mono">{student.id}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-medium text-blue-700">Course:</span> 
+                            <span className="text-slate-600">{student.course}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-medium text-blue-700">Semester:</span> 
+                            <span className="text-slate-600">{student.semester}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  
+                  <div className="mt-4 pt-4 border-t border-dashed border-blue-200">
+                    {/* CGPA with Government Grade Scale */}
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-medium text-blue-700">CGPA</span>
+                      <div className="flex items-center gap-2">
+                        <span className={`text-sm font-bold ${
+                          student.cgpa >= 9.0 ? 'text-green-600' : 
+                          student.cgpa >= 8.0 ? 'text-blue-600' : 'text-orange-600'
+                        }`}>
+                          {student.cgpa}/10
+                        </span>
+                        <Badge variant="outline" className={`text-xs px-2 py-0 ${
+                          student.cgpa >= 9.0 ? 'bg-green-100 text-green-800 border-green-300' : 
+                          student.cgpa >= 8.0 ? 'bg-blue-100 text-blue-800 border-blue-300' : 
+                          'bg-orange-100 text-orange-800 border-orange-300'
+                        }`}>
+                          {student.cgpa >= 9.0 ? 'A+' : student.cgpa >= 8.0 ? 'A' : 'B+'}
                         </Badge>
                       </div>
-                      <div className="space-y-1 text-sm text-muted-foreground">
-                        <p><span className="font-medium">ID:</span> {student.id}</p>
-                        <p><span className="font-medium">Email:</span> {student.email}</p>
-                        <p><span className="font-medium">Course:</span> {student.course}</p>
-                        <p><span className="font-medium">Semester:</span> {student.semester}</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-4 pt-4 border-t">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium">CGPA</span>
-                      <span className={`text-sm font-bold ${
-                        student.cgpa >= 9.0 ? 'text-green-600' : 
-                        student.cgpa >= 8.0 ? 'text-blue-600' : 'text-orange-600'
-                      }`}>
-                        {student.cgpa}/10
-                      </span>
                     </div>
                     <Progress 
                       value={(student.cgpa / 10) * 100} 
                       className="h-2 mb-3"
                     />
                     
-                    <div className="text-xs text-muted-foreground">
+                    {/* Attendance Tracking */}
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-medium text-blue-700">Attendance</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-bold text-green-600">94%</span>
+                        <div className="flex items-center gap-1">
+                          <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+                            <span className="text-xs font-bold text-green-700">75</span>
+                          </div>
+                          <span className="text-xs text-green-600">Days+</span>
+                        </div>
+                      </div>
+                    </div>
+                    <Progress value={94} className="h-2 mb-3" />
+                    
+                    {/* Government Compliance Badges */}
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      <Badge variant="outline" className="text-xs bg-green-50 text-green-700 border-green-200">
+                        📋 Verified
+                      </Badge>
+                      <Badge variant="outline" className="text-xs bg-blue-50 text-blue-700 border-blue-200">
+                        🏛️ Compliant
+                      </Badge>
+                      <Badge variant="outline" className="text-xs bg-orange-50 text-orange-700 border-orange-200">
+                        🎓 Active
+                      </Badge>
+                    </div>
+                    
+                    <div className="text-xs text-muted-foreground mb-3">
                       <p><span className="font-medium">Last Login:</span> {student.lastLogin}</p>
+                      <p><span className="font-medium">Scholarship:</span> <span className="text-green-600 font-medium">₹48,000/year</span></p>
                     </div>
                     
                     <div className="flex gap-2 mt-4">
                       <Dialog>
                         <DialogTrigger asChild>
-                          <Button size="sm" variant="outline" className="flex-1" onClick={() => setSelectedStudent(student)}>
+                          <Button size="sm" variant="outline" className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-700 border-blue-200" onClick={() => setSelectedStudent(student)}>
                             View Profile
                           </Button>
                         </DialogTrigger>
@@ -880,12 +1016,15 @@ const TeacherDashboard = () => {
                           </div>
                         </DialogContent>
                       </Dialog>
-                      <Button size="sm" className="flex-1">
+                      <Button size="sm" className="flex-1 bg-green-600 hover:bg-green-700">
                         <Mail className="mr-1 h-3 w-3" />
                         Contact
                       </Button>
                     </div>
                   </div>
+                  
+                  {/* Bottom Government Strip */}
+                  <div className="h-1 bg-gradient-to-r from-orange-500 via-white to-green-500"></div>
                 </Card>
               ))}
             </div>
