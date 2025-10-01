@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Chatbot } from "@/components/Chatbot";
 import { MapView } from "@/components/MapView";
 import { QRCodeGenerator } from "@/components/QRCodeGenerator";
@@ -29,7 +30,11 @@ import {
   QrCode,
   Download,
   Plus,
-  Edit
+  Edit,
+  Phone,
+  Mail,
+  MapPin,
+  BookOpen as Book
 } from "lucide-react";
 import {
   LineChart,
@@ -170,6 +175,7 @@ const departmentLocations = [
 const TeacherDashboard = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<any>(null);
+  const [selectedStudent, setSelectedStudent] = useState<any>(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -702,10 +708,180 @@ const TeacherDashboard = () => {
                     </div>
                     
                     <div className="flex gap-2 mt-4">
-                      <Button size="sm" variant="outline" className="flex-1">
-                        View Profile
-                      </Button>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button size="sm" variant="outline" className="flex-1" onClick={() => setSelectedStudent(student)}>
+                            View Profile
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                          <DialogHeader>
+                            <DialogTitle>Student Profile - {student.name}</DialogTitle>
+                          </DialogHeader>
+                          
+                          <div className="space-y-6">
+                            {/* Profile Header */}
+                            <div className="flex items-start gap-6 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
+                              <Avatar className="h-20 w-20">
+                                <AvatarImage src={student.photo} alt={student.name} />
+                                <AvatarFallback className="text-lg">{student.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                              </Avatar>
+                              <div className="flex-1">
+                                <div className="flex items-center justify-between mb-2">
+                                  <h3 className="text-2xl font-bold">{student.name}</h3>
+                                  <Badge variant={student.status === 'online' ? 'default' : 'secondary'} className="text-sm">
+                                    {student.status === 'online' ? '🟢 Online' : '🔴 Offline'}
+                                  </Badge>
+                                </div>
+                                <div className="grid grid-cols-2 gap-4 text-sm">
+                                  <div><span className="font-medium">Student ID:</span> {student.id}</div>
+                                  <div><span className="font-medium">Course:</span> {student.course}</div>
+                                  <div><span className="font-medium">Semester:</span> {student.semester}</div>
+                                  <div><span className="font-medium">CGPA:</span> <span className="font-bold text-blue-600">{student.cgpa}/10</span></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Contact Information */}
+                            <Card className="p-6">
+                              <h4 className="font-semibold mb-4 flex items-center gap-2">
+                                <Mail className="h-5 w-5" />
+                                Contact Information
+                              </h4>
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded">
+                                  <Mail className="h-4 w-4 text-blue-600" />
+                                  <div>
+                                    <p className="text-sm font-medium">Email</p>
+                                    <p className="text-sm text-muted-foreground">{student.email}</p>
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded">
+                                  <Phone className="h-4 w-4 text-green-600" />
+                                  <div>
+                                    <p className="text-sm font-medium">Phone</p>
+                                    <p className="text-sm text-muted-foreground">+91 98765 43210</p>
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded">
+                                  <MapPin className="h-4 w-4 text-red-600" />
+                                  <div>
+                                    <p className="text-sm font-medium">Address</p>
+                                    <p className="text-sm text-muted-foreground">New Delhi, India</p>
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded">
+                                  <Clock className="h-4 w-4 text-purple-600" />
+                                  <div>
+                                    <p className="text-sm font-medium">Last Login</p>
+                                    <p className="text-sm text-muted-foreground">{student.lastLogin}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </Card>
+
+                            {/* Academic Performance */}
+                            <Card className="p-6">
+                              <h4 className="font-semibold mb-4 flex items-center gap-2">
+                                <Book className="h-5 w-5" />
+                                Academic Performance
+                              </h4>
+                              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                                <div className="text-center p-4 bg-blue-50 rounded-lg">
+                                  <div className="text-2xl font-bold text-blue-600">{student.cgpa}</div>
+                                  <div className="text-sm text-blue-700">Current CGPA</div>
+                                </div>
+                                <div className="text-center p-4 bg-green-50 rounded-lg">
+                                  <div className="text-2xl font-bold text-green-600">142</div>
+                                  <div className="text-sm text-green-700">Credits Earned</div>
+                                </div>
+                                <div className="text-center p-4 bg-purple-50 rounded-lg">
+                                  <div className="text-2xl font-bold text-purple-600">94%</div>
+                                  <div className="text-sm text-purple-700">Attendance</div>
+                                </div>
+                                <div className="text-center p-4 bg-orange-50 rounded-lg">
+                                  <div className="text-2xl font-bold text-orange-600">18</div>
+                                  <div className="text-sm text-orange-700">Subjects</div>
+                                </div>
+                              </div>
+                              
+                              {/* Subject-wise Performance */}
+                              <div className="space-y-3">
+                                <h5 className="font-medium">Current Semester Subjects</h5>
+                                {[
+                                  { subject: "Data Structures & Algorithms", grade: "A+", marks: 95 },
+                                  { subject: "Database Management Systems", grade: "A", marks: 88 },
+                                  { subject: "Operating Systems", grade: "A+", marks: 92 },
+                                  { subject: "Computer Networks", grade: "A", marks: 85 }
+                                ].map((sub, idx) => (
+                                  <div key={idx} className="flex items-center justify-between p-3 border rounded">
+                                    <div>
+                                      <p className="font-medium text-sm">{sub.subject}</p>
+                                      <p className="text-xs text-muted-foreground">Grade: {sub.grade}</p>
+                                    </div>
+                                    <div className="text-right">
+                                      <div className="font-bold">{sub.marks}%</div>
+                                      <Progress value={sub.marks} className="w-20 h-2 mt-1" />
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </Card>
+
+                            {/* Achievements & Certifications */}
+                            <Card className="p-6">
+                              <h4 className="font-semibold mb-4 flex items-center gap-2">
+                                <Award className="h-5 w-5" />
+                                Achievements & Certifications
+                              </h4>
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                  <h5 className="font-medium mb-3">Certifications</h5>
+                                  <div className="space-y-2">
+                                    {["AWS Cloud Practitioner", "Google Analytics", "Python Programming", "ML Basics"].map((cert, idx) => (
+                                      <div key={idx} className="flex items-center gap-2 p-2 bg-green-50 border border-green-200 rounded">
+                                        <CheckCircle className="h-4 w-4 text-green-600" />
+                                        <span className="text-sm">{cert}</span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                                <div>
+                                  <h5 className="font-medium mb-3">Scholarships</h5>
+                                  <div className="space-y-2">
+                                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+                                      <p className="font-medium text-sm">National Scholarship Portal</p>
+                                      <p className="text-xs text-muted-foreground">₹48,000/year • Active</p>
+                                    </div>
+                                    <div className="p-3 bg-purple-50 border border-purple-200 rounded">
+                                      <p className="font-medium text-sm">PMKVY 4.0</p>
+                                      <p className="text-xs text-muted-foreground">Skill Development • Completed</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </Card>
+
+                            {/* Action Buttons */}
+                            <div className="flex gap-3 pt-4 border-t">
+                              <Button className="flex-1">
+                                <Mail className="mr-2 h-4 w-4" />
+                                Send Message
+                              </Button>
+                              <Button variant="outline" className="flex-1">
+                                <Calendar className="mr-2 h-4 w-4" />
+                                Schedule Meeting
+                              </Button>
+                              <Button variant="outline" className="flex-1">
+                                <FileText className="mr-2 h-4 w-4" />
+                                Generate Report
+                              </Button>
+                            </div>
+                          </div>
+                        </DialogContent>
+                      </Dialog>
                       <Button size="sm" className="flex-1">
+                        <Mail className="mr-1 h-3 w-3" />
                         Contact
                       </Button>
                     </div>
