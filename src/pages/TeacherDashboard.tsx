@@ -274,6 +274,10 @@ const TeacherDashboard = () => {
                 <Download className="h-4 w-4 mr-1" />
                 Export
               </TabsTrigger>
+              <TabsTrigger value="ratings" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                <Star className="h-4 w-4 mr-1" />
+                Ratings
+              </TabsTrigger>
               <TabsTrigger value="analytics" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">Analytics</TabsTrigger>
             </TabsList>
           </div>
@@ -298,51 +302,270 @@ const TeacherDashboard = () => {
                 <TabsTrigger value="export" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">
                   <Download className="h-4 w-4" />
                 </TabsTrigger>
+                <TabsTrigger value="ratings" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                  <Star className="h-4 w-4" />
+                </TabsTrigger>
                 <TabsTrigger value="analytics" className="whitespace-nowrap text-xs px-3 py-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white">Analytics</TabsTrigger>
               </TabsList>
             </div>
           </div>
 
           <TabsContent value="overview" className="space-y-6">
+            {/* Teacher Performance KPI Cards */}
             <div className="grid gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
-              <Card className="p-6">
+              <Card className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
                 <div className="flex items-center justify-between mb-4">
-                  <Users className="h-8 w-8 text-primary" />
-                  <Badge className="bg-success">Active</Badge>
+                  <Users className="h-8 w-8 text-blue-600" />
+                  <Badge className="bg-blue-600 text-white">Active</Badge>
                 </div>
-                <div className="text-2xl font-bold">303</div>
-                <div className="text-sm text-muted-foreground">Total Students</div>
-                <Progress value={85} className="mt-2" />
+                <div className="text-2xl font-bold text-blue-800">303</div>
+                <div className="text-sm text-blue-700">Total Students</div>
+                <div className="mt-2 flex items-center justify-between text-xs">
+                  <span>Pass Rate: 96%</span>
+                  <span className="text-green-600 font-bold">↗ +3%</span>
+                </div>
+                <Progress value={96} className="mt-2 h-2" />
+              </Card>
+
+              <Card className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-green-200">
+                <div className="flex items-center justify-between mb-4">
+                  <Award className="h-8 w-8 text-green-600" />
+                  <Badge className="bg-green-600 text-white">Excellent</Badge>
+                </div>
+                <div className="text-2xl font-bold text-green-800">4.8/5</div>
+                <div className="text-sm text-green-700">Student Rating</div>
+                <div className="mt-2 flex items-center justify-between text-xs">
+                  <span>368 Reviews</span>
+                  <span className="text-green-600 font-bold">↗ +0.2</span>
+                </div>
+                <Progress value={96} className="mt-2 h-2" />
+              </Card>
+
+              <Card className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
+                <div className="flex items-center justify-between mb-4">
+                  <BookOpen className="h-8 w-8 text-purple-600" />
+                  <Badge className="bg-purple-600 text-white">Active</Badge>
+                </div>
+                <div className="text-2xl font-bold text-purple-800">12</div>
+                <div className="text-sm text-purple-700">Research Papers</div>
+                <div className="mt-2 flex items-center justify-between text-xs">
+                  <span>Citations: 145</span>
+                  <span className="text-green-600 font-bold">↗ +28</span>
+                </div>
+                <Progress value={85} className="mt-2 h-2" />
+              </Card>
+
+              <Card className="p-6 bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200">
+                <div className="flex items-center justify-between mb-4">
+                  <GraduationCap className="h-8 w-8 text-orange-600" />
+                  <Badge className="bg-orange-600 text-white">Mentoring</Badge>
+                </div>
+                <div className="text-2xl font-bold text-orange-800">18</div>
+                <div className="text-sm text-orange-700">Projects Guided</div>
+                <div className="mt-2 flex items-center justify-between text-xs">
+                  <span>Success Rate: 94%</span>
+                  <span className="text-green-600 font-bold">↗ +6%</span>
+                </div>
+                <Progress value={94} className="mt-2 h-2" />
+              </Card>
+            </div>
+
+            {/* Public Performance Dashboard */}
+            <Card className="p-6 mb-6 border-2 border-blue-200 bg-gradient-to-r from-blue-50 via-white to-purple-50">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                    <Star className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold">Public Performance Dashboard</h3>
+                    <p className="text-sm text-muted-foreground">Transparent metrics visible to department and students</p>
+                  </div>
+                </div>
+                <Badge className="bg-green-100 text-green-800 px-3 py-1">🌟 Top Rated Faculty</Badge>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-3">
+                {/* Student Feedback & Ratings */}
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-blue-800 mb-3">Student Feedback</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between p-3 bg-white rounded-lg border">
+                      <span className="text-sm font-medium">Teaching Quality</span>
+                      <div className="flex items-center gap-2">
+                        <div className="flex text-yellow-500">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="h-4 w-4 fill-current" />
+                          ))}
+                        </div>
+                        <span className="text-sm font-bold">4.9/5</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between p-3 bg-white rounded-lg border">
+                      <span className="text-sm font-medium">Course Clarity</span>
+                      <div className="flex items-center gap-2">
+                        <div className="flex text-yellow-500">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className={`h-4 w-4 ${i < 4 ? 'fill-current' : ''}`} />
+                          ))}
+                        </div>
+                        <span className="text-sm font-bold">4.7/5</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between p-3 bg-white rounded-lg border">
+                      <span className="text-sm font-medium">Responsiveness</span>
+                      <div className="flex items-center gap-2">
+                        <div className="flex text-yellow-500">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="h-4 w-4 fill-current" />
+                          ))}
+                        </div>
+                        <span className="text-sm font-bold">4.8/5</span>
+                      </div>
+                    </div>
+                    <div className="p-3 bg-green-50 rounded-lg border border-green-200">
+                      <p className="text-sm text-green-800 font-medium">Latest Review:</p>
+                      <p className="text-xs text-green-700 mt-1">"Excellent teaching method and very supportive!"</p>
+                      <p className="text-xs text-green-600 mt-1">- Anonymous Student, CSE 6th Sem</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Academic Performance */}
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-purple-800 mb-3">Academic Outcomes</h4>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-white rounded-lg border">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm font-medium">Pass Rate</span>
+                        <span className="text-lg font-bold text-green-600">96%</span>
+                      </div>
+                      <Progress value={96} className="h-2" />
+                      <p className="text-xs text-muted-foreground mt-1">vs Dept Avg: 89%</p>
+                    </div>
+                    <div className="p-3 bg-white rounded-lg border">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm font-medium">Average Grade</span>
+                        <span className="text-lg font-bold text-blue-600">8.4/10</span>
+                      </div>
+                      <Progress value={84} className="h-2" />
+                      <p className="text-xs text-muted-foreground mt-1">vs Dept Avg: 7.8</p>
+                    </div>
+                    <div className="p-3 bg-white rounded-lg border">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm font-medium">Placement Rate</span>
+                        <span className="text-lg font-bold text-purple-600">94%</span>
+                      </div>
+                      <Progress value={94} className="h-2" />
+                      <p className="text-xs text-muted-foreground mt-1">Students placed in top companies</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Research & Innovation */}
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-orange-800 mb-3">Research Impact</h4>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-white rounded-lg border">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-medium">H-Index</span>
+                        <span className="text-lg font-bold text-orange-600">15</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-1">Top 10% in department</p>
+                    </div>
+                    <div className="p-3 bg-white rounded-lg border">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-medium">Publications (2024)</span>
+                        <span className="text-lg font-bold text-purple-600">5</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-1">3 in Q1 journals</p>
+                    </div>
+                    <div className="p-3 bg-white rounded-lg border">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-medium">Patents Filed</span>
+                        <span className="text-lg font-bold text-green-600">2</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-1">Innovation in AI/ML</p>
+                    </div>
+                    <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                      <p className="text-sm text-blue-800 font-medium">Recent Achievement:</p>
+                      <p className="text-xs text-blue-700 mt-1">Best Paper Award at IEEE Conference 2024</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            {/* Department Recognition & Comparisons */}
+            <div className="grid gap-6 lg:grid-cols-2 mb-6">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <Trophy className="h-6 w-6 text-amber-500" />
+                  Department Rankings
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-3 bg-amber-50 rounded-lg border border-amber-200">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                      <span className="font-medium">Student Satisfaction</span>
+                    </div>
+                    <Badge className="bg-amber-100 text-amber-800">Top Rank</Badge>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                      <span className="font-medium">Research Output</span>
+                    </div>
+                    <Badge className="bg-blue-100 text-blue-800">2nd Place</Badge>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-200">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                      <span className="font-medium">Student Outcomes</span>
+                    </div>
+                    <Badge className="bg-green-100 text-green-800">Top Rank</Badge>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg border border-purple-200">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold">3</div>
+                      <span className="font-medium">Innovation Index</span>
+                    </div>
+                    <Badge className="bg-purple-100 text-purple-800">3rd Place</Badge>
+                  </div>
+                </div>
               </Card>
 
               <Card className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <BookOpen className="h-8 w-8 text-accent" />
-                  <Badge>Ongoing</Badge>
+                <h3 className="text-xl font-bold mb-4">Student Testimonials</h3>
+                <div className="space-y-4">
+                  <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                    <div className="flex text-yellow-500 mb-2">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-current" />
+                      ))}
+                    </div>
+                    <p className="text-sm text-blue-800 mb-2">"Dr. Sharma explains complex algorithms so clearly. Best CS professor!"</p>
+                    <p className="text-xs text-blue-600">- Arjun Patel, B.Tech CSE</p>
+                  </div>
+                  <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+                    <div className="flex text-yellow-500 mb-2">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-current" />
+                      ))}
+                    </div>
+                    <p className="text-sm text-green-800 mb-2">"Very supportive during my research project. Helped me publish my first paper!"</p>
+                    <p className="text-xs text-green-600">- Priya Singh, M.Tech AI</p>
+                  </div>
+                  <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-500">
+                    <div className="flex text-yellow-500 mb-2">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className={`h-4 w-4 ${i < 4 ? 'fill-current' : ''}`} />
+                      ))}
+                    </div>
+                    <p className="text-sm text-purple-800 mb-2">"Great mentor for placements. Got placed in Google thanks to her guidance!"</p>
+                    <p className="text-xs text-purple-600">- Rohit Kumar, B.Tech CSE</p>
+                  </div>
                 </div>
-                <div className="text-2xl font-bold">4</div>
-                <div className="text-sm text-muted-foreground">Courses Teaching</div>
-                <Progress value={100} className="mt-2" />
-              </Card>
-
-              <Card className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <Award className="h-8 w-8 text-secondary" />
-                  <Badge className="bg-success">Excellent</Badge>
-                </div>
-                <div className="text-2xl font-bold">4.8</div>
-                <div className="text-sm text-muted-foreground">Avg Rating</div>
-                <Progress value={96} className="mt-2" />
-              </Card>
-
-              <Card className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <TrendingUp className="h-8 w-8 text-success" />
-                  <Badge className="bg-success">+15%</Badge>
-                </div>
-                <div className="text-2xl font-bold">12</div>
-                <div className="text-sm text-muted-foreground">Research Papers</div>
-                <Progress value={80} className="mt-2" />
               </Card>
             </div>
 
@@ -1295,6 +1518,200 @@ const TeacherDashboard = () => {
                 </div>
               </Card>
             </div>
+          </TabsContent>
+
+          <TabsContent value="ratings" className="space-y-6">
+            {/* Performance Rating Overview */}
+            <div className="grid gap-6 md:grid-cols-3 mb-6">
+              <Card className="p-6 text-center bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
+                <div className="text-4xl font-bold text-blue-600 mb-2">4.8</div>
+                <div className="flex justify-center mb-2">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-500 fill-current" />
+                  ))}
+                </div>
+                <div className="text-sm text-blue-700">Overall Rating</div>
+                <div className="text-xs text-blue-600 mt-1">368 Student Reviews</div>
+              </Card>
+              
+              <Card className="p-6 text-center bg-gradient-to-br from-green-50 to-green-100 border-green-200">
+                <div className="text-4xl font-bold text-green-600 mb-2">96%</div>
+                <div className="text-sm text-green-700">Student Pass Rate</div>
+                <div className="text-xs text-green-600 mt-1">vs Dept Avg: 89%</div>
+                <Badge className="mt-2 bg-green-600 text-white">Top 5%</Badge>
+              </Card>
+              
+              <Card className="p-6 text-center bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
+                <div className="text-4xl font-bold text-purple-600 mb-2">18</div>
+                <div className="text-sm text-purple-700">Projects Guided</div>
+                <div className="text-xs text-purple-600 mt-1">Success Rate: 94%</div>
+                <Badge className="mt-2 bg-purple-600 text-white">Mentor</Badge>
+              </Card>
+            </div>
+
+            {/* Detailed Rating Analysis */}
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                  <BarChart3 className="h-6 w-6 text-blue-600" />
+                  Rating Breakdown
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    { category: "Teaching Quality", rating: 4.9, reviews: 368, color: "bg-blue-500" },
+                    { category: "Course Content", rating: 4.8, reviews: 368, color: "bg-green-500" },
+                    { category: "Accessibility", rating: 4.7, reviews: 268, color: "bg-purple-500" },
+                    { category: "Assignment Quality", rating: 4.8, reviews: 345, color: "bg-orange-500" },
+                    { category: "Feedback Quality", rating: 4.9, reviews: 298, color: "bg-pink-500" }
+                  ].map((item, index) => (
+                    <div key={index} className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="font-medium text-sm">{item.category}</span>
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold">{item.rating}/5</span>
+                          <span className="text-xs text-muted-foreground">({item.reviews})</span>
+                        </div>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div 
+                          className={`h-2 rounded-full ${item.color}`}
+                          style={{ width: `${(item.rating / 5) * 100}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-6">Recent Student Feedback</h3>
+                <div className="space-y-4 max-h-96 overflow-y-auto">
+                  {[
+                    {
+                      rating: 5,
+                      comment: "Excellent teaching methodology! Dr. Sharma makes complex algorithms easy to understand.",
+                      student: "Anonymous - B.Tech CSE 6th Sem",
+                      date: "2 days ago",
+                      course: "Data Structures & Algorithms"
+                    },
+                    {
+                      rating: 5,
+                      comment: "Very supportive during project work. Always available for doubts and guidance.",
+                      student: "Anonymous - B.Tech CSE 6th Sem", 
+                      date: "5 days ago",
+                      course: "Database Management Systems"
+                    },
+                    {
+                      rating: 4,
+                      comment: "Good teacher but assignments could be more practical oriented.",
+                      student: "Anonymous - B.Tech CSE 4th Sem",
+                      date: "1 week ago",
+                      course: "Operating Systems"
+                    },
+                    {
+                      rating: 5,
+                      comment: "Best CS professor! Helped me get placed in Google. Thank you!",
+                      student: "Anonymous - B.Tech CSE 8th Sem",
+                      date: "2 weeks ago",
+                      course: "Computer Networks"
+                    },
+                    {
+                      rating: 5,
+                      comment: "Research guidance is exceptional. Published my first paper under her supervision.",
+                      student: "Anonymous - M.Tech AI 2nd Year",
+                      date: "3 weeks ago",
+                      course: "Machine Learning"
+                    }
+                  ].map((feedback, index) => (
+                    <div key={index} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="flex text-yellow-500">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className={`h-4 w-4 ${i < feedback.rating ? 'fill-current' : ''}`} />
+                          ))}
+                        </div>
+                        <span className="text-xs text-muted-foreground">{feedback.date}</span>
+                      </div>
+                      <p className="text-sm mb-2">{feedback.comment}</p>
+                      <div className="flex justify-between items-center text-xs text-muted-foreground">
+                        <span>{feedback.student}</span>
+                        <Badge variant="outline" className="text-xs">{feedback.course}</Badge>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+
+            {/* Performance Comparison */}
+            <Card className="p-6">
+              <h3 className="text-xl font-bold mb-6">Department Performance Comparison</h3>
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={[
+                  { faculty: "Dr. A. Kumar", rating: 4.2, passRate: 88, projects: 12 },
+                  { faculty: "Dr. B. Singh", rating: 4.1, passRate: 85, projects: 15 },
+                  { faculty: "Dr. P. Sharma (You)", rating: 4.8, passRate: 96, projects: 18 },
+                  { faculty: "Dr. R. Gupta", rating: 4.4, passRate: 91, projects: 14 },
+                  { faculty: "Dr. S. Patel", rating: 4.3, passRate: 89, projects: 16 }
+                ]}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="faculty" angle={-45} textAnchor="end" height={100} />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="rating" fill="hsl(var(--primary))" name="Student Rating (x20)" />
+                  <Bar dataKey="passRate" fill="hsl(var(--secondary))" name="Pass Rate %" />
+                </BarChart>
+              </ResponsiveContainer>
+            </Card>
+
+            {/* Improvement Suggestions */}
+            <Card className="p-6">
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <Target className="h-6 w-6 text-green-600" />
+                Performance Insights & Suggestions
+              </h3>
+              <div className="grid gap-4 md:grid-cols-3">
+                <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="flex items-center gap-2 mb-2">
+                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <h4 className="font-semibold text-green-800">Strengths</h4>
+                  </div>
+                  <ul className="text-sm text-green-700 space-y-1">
+                    <li>• Consistently high student ratings</li>
+                    <li>• Excellent project guidance</li>
+                    <li>• Strong research output</li>
+                    <li>• High placement success rate</li>
+                  </ul>
+                </div>
+                
+                <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <div className="flex items-center gap-2 mb-2">
+                    <TrendingUp className="h-5 w-5 text-blue-600" />
+                    <h4 className="font-semibold text-blue-800">Opportunities</h4>
+                  </div>
+                  <ul className="text-sm text-blue-700 space-y-1">
+                    <li>• Increase industry collaborations</li>
+                    <li>• More practical assignments</li>
+                    <li>• Guest lecture sessions</li>
+                    <li>• Student innovation projects</li>
+                  </ul>
+                </div>
+                
+                <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Award className="h-5 w-5 text-purple-600" />
+                    <h4 className="font-semibold text-purple-800">Recognition</h4>
+                  </div>
+                  <ul className="text-sm text-purple-700 space-y-1">
+                    <li>• Top 5% in department</li>
+                    <li>• Student choice award eligible</li>
+                    <li>• Research excellence recognition</li>
+                    <li>• Mentorship award candidate</li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
           </TabsContent>
 
           <TabsContent value="analytics" className="space-y-6">

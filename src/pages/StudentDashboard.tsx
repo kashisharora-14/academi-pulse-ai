@@ -10,12 +10,12 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { 
-  BookOpen, 
-  Award, 
-  TrendingUp, 
-  Calendar, 
-  Users, 
+import {
+  BookOpen,
+  Award,
+  TrendingUp,
+  Calendar,
+  Users,
   FileText,
   Bell,
   Settings,
@@ -112,7 +112,7 @@ const StudentDashboard = () => {
     setApplicationSubmitted(true);
     // In a real application, you would send formData to your backend here
     console.log("Submitting application data:", formData);
-    
+
     // Use a timeout to mimic a successful submission and then close the dialog
     setTimeout(() => {
       setIsApplicationDialogOpen(false);
@@ -261,17 +261,17 @@ const StudentDashboard = () => {
           </TabsContent>
 
           <TabsContent value="journey" className="space-y-6">
-            <JourneyMapper studentData={{ 
-              name: "Arjun Patel", 
+            <JourneyMapper studentData={{
+              name: "Arjun Patel",
               id: "STU-2024-001",
-              email: user?.email 
+              email: user?.email
             }} />
           </TabsContent>
 
           <TabsContent value="qr" className="space-y-6">
             <div className="grid gap-6 lg:grid-cols-2">
-              <QRCodeGenerator 
-                data={{ 
+              <QRCodeGenerator
+                data={{
                   id: "STU-2024-001",
                   name: "Arjun Patel",
                   email: user?.email,
@@ -280,7 +280,7 @@ const StudentDashboard = () => {
                   attendance: 92,
                   scholarships: ["NSP", "PMKVY"],
                   certifications: ["AWS", "Google Analytics", "ML Basics", "Python", "Data Structures"]
-                }} 
+                }}
                 type="student"
                 title="Student ID Card QR"
               />
@@ -318,7 +318,7 @@ const StudentDashboard = () => {
 
           <TabsContent value="export" className="space-y-6">
             <div className="grid gap-6 lg:grid-cols-2">
-              <ExportTools 
+              <ExportTools
                 data={{
                   name: "Arjun Patel",
                   id: "STU-2024-001",
@@ -374,8 +374,8 @@ const StudentDashboard = () => {
           </TabsContent>
 
           <TabsContent value="ai" className="space-y-6">
-            <AIRecommendations 
-              userType="student" 
+            <AIRecommendations
+              userType="student"
               userData={{
                 cgpa: 8.9,
                 branch: "Computer Science",
@@ -387,7 +387,7 @@ const StudentDashboard = () => {
           </TabsContent>
 
           <TabsContent value="digilocker" className="space-y-6">
-            <DigiLocker 
+            <DigiLocker
               userEmail={user?.email || 'student@university.edu'}
               planType="free"
             />
@@ -632,13 +632,13 @@ const StudentDashboard = () => {
                             </div>
                             <div>
                               <Label htmlFor="phone">Phone Number *</Label>
-                              <Input 
-                                id="phone" 
-                                type="tel" 
+                              <Input
+                                id="phone"
+                                type="tel"
                                 placeholder="Enter 10-digit mobile number"
                                 value={formData.phone}
                                 onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                                required 
+                                required
                               />
                             </div>
                           </div>
@@ -647,22 +647,22 @@ const StudentDashboard = () => {
                           <div className="grid grid-cols-2 gap-4">
                             <div>
                               <Label htmlFor="fatherName">Father's Name *</Label>
-                              <Input 
-                                id="fatherName" 
+                              <Input
+                                id="fatherName"
                                 placeholder="Enter father's full name"
                                 value={formData.fatherName}
                                 onChange={(e) => setFormData({...formData, fatherName: e.target.value})}
-                                required 
+                                required
                               />
                             </div>
                             <div>
                               <Label htmlFor="motherName">Mother's Name *</Label>
-                              <Input 
-                                id="motherName" 
+                              <Input
+                                id="motherName"
                                 placeholder="Enter mother's full name"
                                 value={formData.motherName}
                                 onChange={(e) => setFormData({...formData, motherName: e.target.value})}
-                                required 
+                                required
                               />
                             </div>
                           </div>
@@ -671,13 +671,13 @@ const StudentDashboard = () => {
                           <div className="grid grid-cols-2 gap-4">
                             <div>
                               <Label htmlFor="annualIncome">Annual Family Income (₹) *</Label>
-                              <Input 
-                                id="annualIncome" 
-                                type="number" 
+                              <Input
+                                id="annualIncome"
+                                type="number"
                                 placeholder="Enter annual income"
                                 value={formData.annualIncome}
                                 onChange={(e) => setFormData({...formData, annualIncome: e.target.value})}
-                                required 
+                                required
                               />
                             </div>
                             <div>
@@ -701,22 +701,22 @@ const StudentDashboard = () => {
                           <div className="grid grid-cols-2 gap-4">
                             <div>
                               <Label htmlFor="bankAccount">Bank Account Number *</Label>
-                              <Input 
-                                id="bankAccount" 
+                              <Input
+                                id="bankAccount"
                                 placeholder="Enter account number"
                                 value={formData.bankAccount}
                                 onChange={(e) => setFormData({...formData, bankAccount: e.target.value})}
-                                required 
+                                required
                               />
                             </div>
                             <div>
                               <Label htmlFor="ifscCode">IFSC Code *</Label>
-                              <Input 
-                                id="ifscCode" 
+                              <Input
+                                id="ifscCode"
                                 placeholder="Enter IFSC code"
                                 value={formData.ifscCode}
                                 onChange={(e) => setFormData({...formData, ifscCode: e.target.value})}
-                                required 
+                                required
                               />
                             </div>
                           </div>
@@ -724,24 +724,24 @@ const StudentDashboard = () => {
                           {/* Aadhar & Address */}
                           <div>
                             <Label htmlFor="aadharNumber">Aadhar Number *</Label>
-                            <Input 
-                              id="aadharNumber" 
+                            <Input
+                              id="aadharNumber"
                               placeholder="Enter 12-digit Aadhar number"
                               maxLength={12}
                               value={formData.aadharNumber}
                               onChange={(e) => setFormData({...formData, aadharNumber: e.target.value})}
-                              required 
+                              required
                             />
                           </div>
 
                           <div>
                             <Label htmlFor="address">Residential Address *</Label>
-                            <Input 
-                              id="address" 
+                            <Input
+                              id="address"
                               placeholder="Enter complete address"
                               value={formData.address}
                               onChange={(e) => setFormData({...formData, address: e.target.value})}
-                              required 
+                              required
                             />
                           </div>
 
@@ -953,36 +953,36 @@ const StudentDashboard = () => {
                 <p className="text-sm text-muted-foreground mb-4">Based on your CGPA (8.9), Category (General), and Income level, you qualify for these scholarships:</p>
                 <div className="space-y-4">
                   {[
-                    { 
-                      name: "Central Sector Scholarship", 
-                      type: "Merit-Based", 
+                    {
+                      name: "Central Sector Scholarship",
+                      type: "Merit-Based",
                       amount: "₹10,000/year",
                       eligibility: "98% Match",
                       criteria: "CGPA > 8.5, Family Income < 6 LPA",
                       deadline: "April 30, 2024",
                       color: "green"
                     },
-                    { 
-                      name: "INSPIRE Scholarship", 
-                      type: "Science & Technology", 
+                    {
+                      name: "INSPIRE Scholarship",
+                      type: "Science & Technology",
                       amount: "₹80,000/year",
                       eligibility: "92% Match",
                       criteria: "Top 1% in 12th, Science Stream",
                       deadline: "May 15, 2024",
                       color: "blue"
                     },
-                    { 
-                      name: "Dr. Ambedkar Post Matric", 
-                      type: "OBC Category", 
+                    {
+                      name: "Dr. Ambedkar Post Matric",
+                      type: "OBC Category",
                       amount: "₹1,200/month",
                       eligibility: "85% Match",
                       criteria: "OBC Category, Income < 8 LPA",
                       deadline: "March 31, 2024",
                       color: "purple"
                     },
-                    { 
-                      name: "Prime Minister's Scholarship", 
-                      type: "Defense Personnel Ward", 
+                    {
+                      name: "Prime Minister's Scholarship",
+                      type: "Defense Personnel Ward",
                       amount: "₹25,000/year",
                       eligibility: "90% Match",
                       criteria: "Defense background, CGPA > 8.0",
@@ -1028,29 +1028,29 @@ const StudentDashboard = () => {
                 <h3 className="text-xl font-bold mb-4">Active Schemes & Benefits</h3>
                 <div className="space-y-4">
                   {[
-                    { 
-                      name: "National Scholarship Portal (NSP)", 
-                      type: "Merit Scholarship", 
-                      amount: "₹48,000/year", 
-                      status: "Active", 
+                    {
+                      name: "National Scholarship Portal (NSP)",
+                      type: "Merit Scholarship",
+                      amount: "₹48,000/year",
+                      status: "Active",
                       duration: "4 years",
                       disbursed: "₹96,000",
                       nextDue: "Apr 2024"
                     },
-                    { 
-                      name: "PMKVY 4.0", 
-                      type: "Skill Development", 
-                      amount: "Free Training", 
-                      status: "Completed", 
+                    {
+                      name: "PMKVY 4.0",
+                      type: "Skill Development",
+                      amount: "Free Training",
+                      status: "Completed",
                       duration: "6 months",
                       disbursed: "Certificate",
                       nextDue: "N/A"
                     },
-                    { 
-                      name: "SWAYAM NPTEL", 
-                      type: "Online Courses", 
-                      amount: "Free", 
-                      status: "Ongoing", 
+                    {
+                      name: "SWAYAM NPTEL",
+                      type: "Online Courses",
+                      amount: "Free",
+                      status: "Ongoing",
                       duration: "12 weeks",
                       disbursed: "4 Courses",
                       nextDue: "May 2024"
