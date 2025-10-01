@@ -23,7 +23,9 @@ import {
   QrCode,
   Download,
   Sparkles,
-  Route
+  Route,
+  FolderLock,
+  Crown
 } from "lucide-react";
 import { Chatbot } from "@/components/Chatbot";
 import { MapView } from "@/components/MapView";
@@ -33,6 +35,8 @@ import { QRCodeGenerator } from "@/components/QRCodeGenerator";
 import { ExportTools } from "@/components/ExportTools";
 import { AIRecommendations } from "@/components/AIRecommendations";
 import { JourneyMapper } from "@/components/JourneyMapper";
+import { DigiLocker } from "@/components/DigiLocker";
+import { PremiumSubscription } from "@/components/PremiumSubscription";
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 const skillData = [
@@ -130,9 +134,17 @@ const StudentDashboard = () => {
                 <Trophy className="h-4 w-4 mr-1" />
                 Achievements
               </TabsTrigger>
+              <TabsTrigger value="digilocker">
+                <FolderLock className="h-4 w-4 mr-1" />
+                DigiLocker
+              </TabsTrigger>
+              <TabsTrigger value="premium">
+                <Crown className="h-4 w-4 mr-1" />
+                Premium
+              </TabsTrigger>
               <TabsTrigger value="qr">
                 <QrCode className="h-4 w-4 mr-1" />
-                QR Code
+                QR
               </TabsTrigger>
               <TabsTrigger value="export">
                 <Download className="h-4 w-4 mr-1" />
@@ -144,9 +156,7 @@ const StudentDashboard = () => {
               </TabsTrigger>
               <TabsTrigger value="academics">Academics</TabsTrigger>
               <TabsTrigger value="schemes">Schemes</TabsTrigger>
-              <TabsTrigger value="documents">Documents</TabsTrigger>
               <TabsTrigger value="chat">EduBot</TabsTrigger>
-              <TabsTrigger value="map">Campus</TabsTrigger>
             </TabsList>
           </div>
 
@@ -162,6 +172,12 @@ const StudentDashboard = () => {
                 <TabsTrigger value="gamification" className="flex-shrink-0 text-xs px-3">
                   <Trophy className="h-3 w-3" />
                 </TabsTrigger>
+                <TabsTrigger value="digilocker" className="flex-shrink-0 text-xs px-3">
+                  <FolderLock className="h-3 w-3" />
+                </TabsTrigger>
+                <TabsTrigger value="premium" className="flex-shrink-0 text-xs px-3">
+                  <Crown className="h-3 w-3" />
+                </TabsTrigger>
                 <TabsTrigger value="qr" className="flex-shrink-0 text-xs px-3">
                   <QrCode className="h-3 w-3" />
                 </TabsTrigger>
@@ -173,9 +189,7 @@ const StudentDashboard = () => {
                 </TabsTrigger>
                 <TabsTrigger value="academics" className="flex-shrink-0 text-xs px-3">Academics</TabsTrigger>
                 <TabsTrigger value="schemes" className="flex-shrink-0 text-xs px-3">Schemes</TabsTrigger>
-                <TabsTrigger value="documents" className="flex-shrink-0 text-xs px-3">Docs</TabsTrigger>
                 <TabsTrigger value="chat" className="flex-shrink-0 text-xs px-3">EduBot</TabsTrigger>
-                <TabsTrigger value="map" className="flex-shrink-0 text-xs px-3">Campus</TabsTrigger>
               </TabsList>
             </div>
           </div>
@@ -311,6 +325,21 @@ const StudentDashboard = () => {
                 skills: ["React", "Python", "ML"],
                 interests: ["AI", "Machine Learning", "Cloud Computing"]
               }}
+            />
+          </TabsContent>
+
+          <TabsContent value="digilocker" className="space-y-6">
+            <DigiLocker 
+              userEmail={user?.email || 'student@university.edu'}
+              planType="free"
+            />
+          </TabsContent>
+
+          <TabsContent value="premium" className="space-y-6">
+            <PremiumSubscription 
+              currentPlan="free"
+              userEmail={user?.email || 'student@university.edu'}
+              userType="student"
             />
           </TabsContent>
 
