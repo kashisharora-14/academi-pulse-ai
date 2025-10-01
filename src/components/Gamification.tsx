@@ -419,7 +419,6 @@ export const Gamification = () => {
             ))}
           </div>
         </Card>
-      </div>
     </div>
   );
 };
