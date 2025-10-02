@@ -41,38 +41,19 @@ export const Header = () => {
       {/* Main Header */}
       <div className="container mx-auto px-4 py-3 md:py-4">
         <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center space-x-2 md:space-x-4 flex-1 min-w-0">
-            {/* Government Emblem - Ashoka Chakra */}
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-800 rounded-full flex items-center justify-center relative flex-shrink-0">
-              <div className="w-6 h-6 md:w-8 md:h-8 relative">
-                {/* Ashoka Chakra - 24 spokes wheel */}
-                <div className="w-6 h-6 md:w-8 md:h-8 border-2 border-white rounded-full relative flex items-center justify-center">
-                  <div className="absolute w-1 h-1 bg-white rounded-full"></div>
-                  {/* Spokes */}
-                  {Array.from({length: 24}).map((_, i) => (
-                    <div 
-                      key={i}
-                      className="absolute w-0.5 h-2 md:h-3 bg-white origin-bottom"
-                      style={{
-                        transform: `rotate(${i * 15}deg) translateY(-${i % 2 === 0 ? '5' : '4'}px)`,
-                        transformOrigin: 'center 10px'
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* 75th Independence Day Logo */}
-            <div className="flex-shrink-0 mx-2 md:mx-4">
+          <div className="flex items-center space-x-3 md:space-x-4 flex-1 min-w-0">
+            {/* 75th Independence Day Logo - Simplified */}
+            <div className="flex-shrink-0">
               <div className="relative">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-orange-500 via-white to-green-500 rounded-full flex items-center justify-center border-2 border-gold">
-                  <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-800 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-xs md:text-sm">75</span>
+                <div className="w-14 h-14 md:w-16 md:h-16 border-2 border-orange-500 rounded-lg p-1 bg-white">
+                  <div className="w-full h-full flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-500 to-green-600 bg-clip-text text-transparent">75</span>
+                    <div className="flex items-center gap-1">
+                      <div className="w-3 h-2 bg-orange-500 rounded-sm"></div>
+                      <div className="w-3 h-2 bg-white border border-gray-300 rounded-sm"></div>
+                      <div className="w-3 h-2 bg-green-600 rounded-sm"></div>
+                    </div>
                   </div>
-                </div>
-                <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white px-1 rounded text-xs font-bold">
-                  स्वतंत्रता
                 </div>
               </div>
             </div>
@@ -95,29 +76,7 @@ export const Header = () => {
             </div>
           </div>
 
-          <div className="flex items-center space-x-2 md:space-x-4">
-            {/* National Emblem Badge */}
-            <Badge className="bg-blue-800 text-white px-2 md:px-3 py-1 text-xs hidden md:flex items-center">
-              <Shield className="w-3 h-3 mr-1" />
-              सत्यमेव जयते
-            </Badge>
-
-            {/* 75th Independence Special Badge */}
-            <Badge className="bg-gradient-to-r from-saffron via-white to-green-600 text-blue-800 px-2 md:px-3 py-1 text-xs font-bold border border-blue-800 hidden sm:flex">
-              आज़ादी का अमृत महोत्सव
-            </Badge>
-
-            {/* Quick Access Menu */}
-            <Button variant="outline" size="sm" className="hidden lg:flex">
-              <Menu className="w-4 h-4 mr-1" />
-              Quick Access
-            </Button>
-
-            {/* Mobile Menu */}
-            <Button variant="outline" size="sm" className="lg:hidden">
-              <Menu className="w-4 h-4" />
-            </Button>
-
+          <div className="flex items-center space-x-2 md:space-x-3">
             <Button 
               onClick={() => navigate("/auth")}
               className="bg-blue-800 hover:bg-blue-900 text-white font-medium px-3 md:px-4 lg:px-6 text-xs md:text-sm"
@@ -133,30 +92,23 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Government Initiatives Slideshow - Below Main Header */}
+      {/* Government Initiative Banner - Below Main Header */}
       <div className="bg-gradient-to-r from-orange-50 via-white to-green-50 border-t border-gray-200">
-        <div className="container mx-auto px-4 py-3">
+        <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between gap-4">
-            {/* Left: Azadi Ka Amrit Mahotsav Badge */}
+            {/* Left: PM Photo */}
             <div className="flex items-center gap-3 flex-shrink-0">
-              <div className="relative">
-                <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-orange-500 rounded-lg p-1 bg-white">
-                  <div className="w-full h-full flex flex-col items-center justify-center text-center">
-                    <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-500 to-green-600 bg-clip-text text-transparent">75</span>
-                    <div className="flex items-center gap-1">
-                      <div className="w-3 h-2 bg-orange-500 rounded-sm"></div>
-                      <div className="w-3 h-2 bg-white border border-gray-300 rounded-sm"></div>
-                      <div className="w-3 h-2 bg-green-600 rounded-sm"></div>
-                    </div>
-                  </div>
-                </div>
-                <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white text-[10px] px-2 py-0 whitespace-nowrap">
-                  Azadi Ka Amrit Mahotsav
-                </Badge>
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-blue-800 overflow-hidden bg-gray-100">
+                {/* Placeholder for Modi Ji's photo - replace src with actual image */}
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Narendra_Modi_portrait_2022.jpg/220px-Narendra_Modi_portrait_2022.jpg" 
+                  alt="Hon'ble Prime Minister" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="hidden md:block">
-                <p className="text-xs font-semibold text-blue-800">🇮🇳 आजादी का अमृत महोत्सव</p>
-                <p className="text-[10px] text-gray-600">Celebrating 75 Years of Independence</p>
+                <p className="text-sm font-bold text-blue-800">Hon'ble Prime Minister</p>
+                <p className="text-xs text-gray-600">Shri Narendra Modi</p>
               </div>
             </div>
 
@@ -173,9 +125,6 @@ export const Header = () => {
               <Button variant="outline" size="sm" className="text-xs border-blue-600 text-blue-800 hover:bg-blue-50">
                 <Globe className="w-3 h-3 mr-1" />
                 Digital India
-              </Button>
-              <Button variant="outline" size="sm" className="text-xs border-green-600 text-green-800 hover:bg-green-50">
-                National Portal
               </Button>
             </div>
           </div>
