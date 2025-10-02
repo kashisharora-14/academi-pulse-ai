@@ -686,8 +686,8 @@ const TeacherDashboard = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="rating" stroke="hsl(var(--success))" strokeWidth={2} name="Student Rating" />
-                    <Line type="monotone" dataKey="research" stroke="hsl(var(--primary))" strokeWidth={2} name="Research Output" />
+                    <Line type="monotone" dataKey="rating" stroke="#22c55e" strokeWidth={2} name="Student Rating" />
+                    <Line type="monotone" dataKey="research" stroke="#3b82f6" strokeWidth={2} name="Research Output" />
                   </LineChart>
                 </ResponsiveContainer>
               </Card>
@@ -701,8 +701,8 @@ const TeacherDashboard = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="completion" fill="hsl(var(--primary))" name="Completion %" />
-                    <Bar dataKey="satisfaction" fill="hsl(var(--secondary))" name="Satisfaction (x20)" />
+                    <Bar dataKey="completion" fill="#3b82f6" name="Completion %" />
+                    <Bar dataKey="satisfaction" fill="#8b5cf6" name="Satisfaction (x20)" />
                   </BarChart>
                 </ResponsiveContainer>
               </Card>
@@ -1766,8 +1766,8 @@ const TeacherDashboard = () => {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="rating" fill="hsl(var(--primary))" name="Student Rating (x20)" />
-                  <Bar dataKey="passRate" fill="hsl(var(--secondary))" name="Pass Rate %" />
+                  <Bar dataKey="rating" fill="#3b82f6" name="Student Rating (x20)" />
+                  <Bar dataKey="passRate" fill="#8b5cf6" name="Pass Rate %" />
                 </BarChart>
               </ResponsiveContainer>
             </Card>

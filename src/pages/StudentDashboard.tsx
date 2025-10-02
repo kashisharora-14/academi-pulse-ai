@@ -661,7 +661,7 @@ const StudentDashboard = () => {
                     <PolarGrid />
                     <PolarAngleAxis dataKey="subject" />
                     <PolarRadiusAxis angle={90} domain={[0, 100]} />
-                    <Radar name="Skills" dataKey="score" stroke="hsl(var(--primary))" fill="hsl(var(--primary))" fillOpacity={0.6} />
+                    <Radar name="Skills" dataKey="score" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.6} />
                   </RadarChart>
                 </ResponsiveContainer>
               </Card>
@@ -675,7 +675,7 @@ const StudentDashboard = () => {
                     <YAxis domain={[0, 10]} />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="gpa" fill="hsl(var(--secondary))" />
+                    <Bar dataKey="gpa" fill="#8b5cf6" name="GPA" />
                   </BarChart>
                 </ResponsiveContainer>
               </Card>
