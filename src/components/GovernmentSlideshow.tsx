@@ -121,40 +121,59 @@ export const GovernmentSlideshow = () => {
 
   return (
     <div className="relative w-full max-w-6xl mx-auto mb-8">
-      {/* Government Header Bar */}
-      <div className="h-2 bg-gradient-to-r from-orange-500 via-white to-green-500 rounded-t-lg"></div>
+      {/* Aadhaar-style Government Header Bar */}
+      <div className="h-3 bg-gradient-to-r from-orange-500 via-white to-green-500 rounded-t-lg"></div>
 
-      <Card className={`relative overflow-hidden bg-gradient-to-br ${current.bgGradient} border-2 border-slate-200 shadow-lg min-h-[300px]`}>
-        {/* Azadi Ka Amrit Mahotsav Logo - Top Right */}
-        {/* Auto-playing badge */}
-        <div className="absolute top-3 md:top-4 right-3 md:right-4 z-10">
-          <Badge className="bg-blue-600 text-white text-xs px-2 py-1 shadow-md">
-            Auto-playing
-          </Badge>
-        </div>
-
-        {/* Government Seal Background */}
-        <div className="absolute top-4 left-4 w-24 h-24 opacity-10">
-          <div className="w-full h-full bg-blue-800 rounded-full flex items-center justify-center">
-            <div className="w-16 h-16 border-2 border-white rounded-full relative flex items-center justify-center">
-              <div className="absolute w-2 h-2 bg-white rounded-full"></div>
-              {/* Ashoka Chakra spokes */}
-              {Array.from({length: 24}).map((_, i) => (
-                <div 
-                  key={i}
-                  className="absolute w-0.5 h-6 bg-white origin-bottom"
-                  style={{
-                    transform: `rotate(${i * 15}deg) translateY(-12px)`,
-                    transformOrigin: 'center 24px'
-                  }}
-                />
-              ))}
+      <Card className={`relative overflow-hidden bg-gradient-to-br ${current.bgGradient} border-4 border-blue-800 shadow-2xl min-h-[300px]`}>
+        {/* Aadhaar-style Header with Government Emblem */}
+        <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 py-3 px-6 flex items-center justify-between z-20">
+          {/* Government Emblem */}
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 relative">
+                {/* Ashoka Chakra */}
+                <div className="w-10 h-10 border-2 border-blue-800 rounded-full relative flex items-center justify-center">
+                  <div className="absolute w-1.5 h-1.5 bg-blue-800 rounded-full"></div>
+                  {/* 24 Spokes */}
+                  {Array.from({length: 24}).map((_, i) => (
+                    <div 
+                      key={i}
+                      className="absolute w-0.5 h-3.5 bg-blue-800 origin-bottom"
+                      style={{
+                        transform: `rotate(${i * 15}deg) translateY(-7px)`,
+                        transformOrigin: 'center 14px'
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
+            <div className="text-white">
+              <div className="text-xs font-semibold">भारत सरकार • Government of India</div>
+              <div className="text-[10px] opacity-90">Ministry of Education • शिक्षा मंत्रालय</div>
+            </div>
+          </div>
+          
+          {/* Verification Badge - Aadhaar Style */}
+          <div className="flex items-center gap-2">
+            <Badge className="bg-green-500 text-white text-xs px-3 py-1 shadow-md">
+              ✓ Verified
+            </Badge>
+            <Badge className="bg-orange-500 text-white text-xs px-2 py-1 shadow-md">
+              Auto-playing
+            </Badge>
           </div>
         </div>
 
-        {/* Main Content */}
-      <div className={`relative bg-gradient-to-br ${current.bgGradient} rounded-b-lg p-6 md:p-8 lg:p-12 min-h-[280px] md:min-h-[300px] flex items-center justify-center`}>
+        {/* Aadhaar-style Decorative Pattern - Background */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <div className="w-full h-full" style={{
+            backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, #000 10px, #000 20px)`,
+          }}></div>
+        </div>
+
+        {/* Main Content - Aadhaar Card Style */}
+      <div className={`relative bg-gradient-to-br ${current.bgGradient} rounded-b-lg pt-20 p-6 md:p-8 lg:p-12 min-h-[280px] md:min-h-[350px] flex items-center justify-center`}>
           {/* Show image banner if available, otherwise show text content */}
           {current.imageUrl ? (
             <div className="flex items-center justify-center">
@@ -244,8 +263,19 @@ export const GovernmentSlideshow = () => {
 
       </Card>
 
-      {/* Government Footer Bar */}
-      <div className="h-2 bg-gradient-to-r from-green-500 via-white to-orange-500 rounded-b-lg"></div>
+      {/* Aadhaar-style Security Footer Bar with Hologram Effect */}
+      <div className="relative h-4 bg-gradient-to-r from-green-500 via-white to-orange-500 rounded-b-lg overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-blue-800"></div>
+      </div>
+      
+      {/* Aadhaar-style Document Number */}
+      <div className="mt-2 text-center">
+        <p className="text-xs text-slate-500 font-mono">
+          DOC ID: GOI-EDU-{String(currentSlide + 1).padStart(4, '0')}-{new Date().getFullYear()} | 
+          <span className="ml-2 text-blue-600">🔒 Digitally Secured</span>
+        </p>
+      </div>
 
       {/* Quick Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
