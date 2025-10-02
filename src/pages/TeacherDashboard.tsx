@@ -472,59 +472,7 @@ const TeacherDashboard = () => {
             </TabsList>
           </div>
 
-          {/* Enhanced Navigation Sidebar - Admin Style */}
-          <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border-2 border-blue-200">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
-              <TabsTrigger value="overview" className="flex flex-col items-center gap-2 p-4 bg-white hover:bg-blue-50 data-[state=active]:bg-blue-600 data-[state=active]:text-white rounded-lg border-2 border-transparent data-[state=active]:border-blue-700 transition-all">
-                <BarChart3 className="h-6 w-6" />
-                <span className="text-xs font-medium">OVERVIEW</span>
-              </TabsTrigger>
-              <TabsTrigger value="teaching" className="flex flex-col items-center gap-2 p-4 bg-white hover:bg-purple-50 data-[state=active]:bg-purple-600 data-[state=active]:text-white rounded-lg border-2 border-transparent data-[state=active]:border-purple-700 transition-all">
-                <BookOpen className="h-6 w-6" />
-                <span className="text-xs font-medium">TEACHING</span>
-              </TabsTrigger>
-              <TabsTrigger value="research" className="flex flex-col items-center gap-2 p-4 bg-white hover:bg-green-50 data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-lg border-2 border-transparent data-[state=active]:border-green-700 transition-all">
-                <FileText className="h-6 w-6" />
-                <span className="text-xs font-medium">RESEARCH</span>
-              </TabsTrigger>
-              <TabsTrigger value="apar" className="flex flex-col items-center gap-2 p-4 bg-white hover:bg-orange-50 data-[state=active]:bg-orange-600 data-[state=active]:text-white rounded-lg border-2 border-transparent data-[state=active]:border-orange-700 transition-all">
-                <Award className="h-6 w-6" />
-                <span className="text-xs font-medium">APAR</span>
-              </TabsTrigger>
-              <TabsTrigger value="students" className="flex flex-col items-center gap-2 p-4 bg-white hover:bg-indigo-50 data-[state=active]:bg-indigo-600 data-[state=active]:text-white rounded-lg border-2 border-transparent data-[state=active]:border-indigo-700 transition-all">
-                <GraduationCap className="h-6 w-6" />
-                <span className="text-xs font-medium">STUDENTS</span>
-              </TabsTrigger>
-              <TabsTrigger value="student-management" className="flex flex-col items-center gap-2 p-4 bg-white hover:bg-pink-50 data-[state=active]:bg-pink-600 data-[state=active]:text-white rounded-lg border-2 border-transparent data-[state=active]:border-pink-700 transition-all">
-                <Users className="h-6 w-6" />
-                <span className="text-xs font-medium">MANAGEMENT</span>
-              </TabsTrigger>
-              <TabsTrigger value="development" className="flex flex-col items-center gap-2 p-4 bg-white hover:bg-teal-50 data-[state=active]:bg-teal-600 data-[state=active]:text-white rounded-lg border-2 border-transparent data-[state=active]:border-teal-700 transition-all">
-                <TrendingUp className="h-6 w-6" />
-                <span className="text-xs font-medium">DEVELOPMENT</span>
-              </TabsTrigger>
-              <TabsTrigger value="schedule" className="flex flex-col items-center gap-2 p-4 bg-white hover:bg-yellow-50 data-[state=active]:bg-yellow-600 data-[state=active]:text-white rounded-lg border-2 border-transparent data-[state=active]:border-yellow-700 transition-all">
-                <Calendar className="h-6 w-6" />
-                <span className="text-xs font-medium">SCHEDULE</span>
-              </TabsTrigger>
-              <TabsTrigger value="qr" className="flex flex-col items-center gap-2 p-4 bg-white hover:bg-cyan-50 data-[state=active]:bg-cyan-600 data-[state=active]:text-white rounded-lg border-2 border-transparent data-[state=active]:border-cyan-700 transition-all">
-                <QrCode className="h-6 w-6" />
-                <span className="text-xs font-medium">QR CODE</span>
-              </TabsTrigger>
-              <TabsTrigger value="export" className="flex flex-col items-center gap-2 p-4 bg-white hover:bg-gray-50 data-[state=active]:bg-gray-600 data-[state=active]:text-white rounded-lg border-2 border-transparent data-[state=active]:border-gray-700 transition-all">
-                <Download className="h-6 w-6" />
-                <span className="text-xs font-medium">EXPORT</span>
-              </TabsTrigger>
-              <TabsTrigger value="ratings" className="flex flex-col items-center gap-2 p-4 bg-white hover:bg-amber-50 data-[state=active]:bg-amber-600 data-[state=active]:text-white rounded-lg border-2 border-transparent data-[state=active]:border-amber-700 transition-all">
-                <Star className="h-6 w-6" />
-                <span className="text-xs font-medium">RATINGS</span>
-              </TabsTrigger>
-              <TabsTrigger value="analytics" className="flex flex-col items-center gap-2 p-4 bg-white hover:bg-violet-50 data-[state=active]:bg-violet-600 data-[state=active]:text-white rounded-lg border-2 border-transparent data-[state=active]:border-violet-700 transition-all">
-                <BarChart3 className="h-6 w-6" />
-                <span className="text-xs font-medium">ANALYTICS</span>
-              </TabsTrigger>
-            </div>
-          </div>
+          
 
           <TabsContent value="overview" className="space-y-6">
             {/* Teacher Performance KPI Cards */}
