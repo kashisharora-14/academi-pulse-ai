@@ -28,9 +28,10 @@ import {
   Download,
   Plus,
   Edit,
-  Shield, // Added for Authority Request Inbox
-  Bell,   // Added for Authority Request Inbox
-  Send    // Added for Authority Request Inbox
+  Shield,
+  Bell,
+  Send,
+  Star
 } from "lucide-react";
 import { 
   BarChart, 
@@ -304,7 +305,7 @@ const InstitutionDashboard = () => {
         <Tabs defaultValue="overview" className="space-y-6">
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
-            <TabsList className="enhanced-tabs-list grid w-full grid-cols-11">
+            <TabsList className="enhanced-tabs-list grid w-full grid-cols-13">
               <TabsTrigger value="overview" className="enhanced-tab-trigger">
                 <Building2 className="h-4 w-4 enhanced-tab-icon" />
                 Overview
@@ -336,6 +337,14 @@ const InstitutionDashboard = () => {
               <TabsTrigger value="faculty" className="enhanced-tab-trigger">
                 <GraduationCap className="h-4 w-4 enhanced-tab-icon" />
                 Faculty
+              </TabsTrigger>
+              <TabsTrigger value="authority-requests" className="enhanced-tab-trigger">
+                <Shield className="h-4 w-4 enhanced-tab-icon" />
+                Authority
+              </TabsTrigger>
+              <TabsTrigger value="ratings" className="enhanced-tab-trigger">
+                <Star className="h-4 w-4 enhanced-tab-icon" />
+                Ratings
               </TabsTrigger>
               <TabsTrigger value="campus" className="enhanced-tab-trigger">
                 <Building2 className="h-4 w-4 enhanced-tab-icon" />
@@ -386,6 +395,14 @@ const InstitutionDashboard = () => {
               <TabsTrigger value="faculty" className="enhanced-mobile-tab">
                 <GraduationCap className="enhanced-mobile-tab-icon" />
                 <span>Faculty</span>
+              </TabsTrigger>
+              <TabsTrigger value="authority-requests" className="enhanced-mobile-tab">
+                <Shield className="enhanced-mobile-tab-icon" />
+                <span>Authority</span>
+              </TabsTrigger>
+              <TabsTrigger value="ratings" className="enhanced-mobile-tab">
+                <Star className="enhanced-mobile-tab-icon" />
+                <span>Ratings</span>
               </TabsTrigger>
               <TabsTrigger value="campus" className="enhanced-mobile-tab">
                 <Building2 className="enhanced-mobile-tab-icon" />
