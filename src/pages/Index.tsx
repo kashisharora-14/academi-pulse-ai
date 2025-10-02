@@ -4,6 +4,7 @@ import { Features } from "@/components/Features";
 import { AIFeatures } from "@/components/AIFeatures";
 import { RoleDashboards } from "@/components/RoleDashboards";
 import { DashboardPreview } from "@/components/DashboardPreview";
+import { GovernmentInitiatives } from "@/components/GovernmentInitiatives";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
@@ -12,6 +13,7 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        <GovernmentInitiatives />
         <Features />
         <AIFeatures />
         <RoleDashboards />
