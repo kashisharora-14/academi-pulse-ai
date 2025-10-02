@@ -132,6 +132,55 @@ export const Header = () => {
           </div>
         </div>
       </div>
+
+      {/* Government Initiatives Slideshow - Below Main Header */}
+      <div className="bg-gradient-to-r from-orange-50 via-white to-green-50 border-t border-gray-200">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between gap-4">
+            {/* Left: Azadi Ka Amrit Mahotsav Badge */}
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <div className="relative">
+                <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-orange-500 rounded-lg p-1 bg-white">
+                  <div className="w-full h-full flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-500 to-green-600 bg-clip-text text-transparent">75</span>
+                    <div className="flex items-center gap-1">
+                      <div className="w-3 h-2 bg-orange-500 rounded-sm"></div>
+                      <div className="w-3 h-2 bg-white border border-gray-300 rounded-sm"></div>
+                      <div className="w-3 h-2 bg-green-600 rounded-sm"></div>
+                    </div>
+                  </div>
+                </div>
+                <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white text-[10px] px-2 py-0 whitespace-nowrap">
+                  Azadi Ka Amrit Mahotsav
+                </Badge>
+              </div>
+              <div className="hidden md:block">
+                <p className="text-xs font-semibold text-blue-800">🇮🇳 आजादी का अमृत महोत्सव</p>
+                <p className="text-[10px] text-gray-600">Celebrating 75 Years of Independence</p>
+              </div>
+            </div>
+
+            {/* Center: Government Initiative Badge */}
+            <div className="flex-1 flex justify-center">
+              <Badge className="bg-blue-800 text-white px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 shadow-md">
+                <Shield className="w-4 h-4" />
+                <span className="hidden sm:inline">Government of India Initiative | </span>भारत सरकार की पहल
+              </Badge>
+            </div>
+
+            {/* Right: Quick Links */}
+            <div className="hidden lg:flex items-center gap-2 flex-shrink-0">
+              <Button variant="outline" size="sm" className="text-xs border-blue-600 text-blue-800 hover:bg-blue-50">
+                <Globe className="w-3 h-3 mr-1" />
+                Digital India
+              </Button>
+              <Button variant="outline" size="sm" className="text-xs border-green-600 text-green-800 hover:bg-green-50">
+                National Portal
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
   );
 };
