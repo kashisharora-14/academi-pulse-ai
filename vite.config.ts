@@ -6,7 +6,7 @@ import path from "path";
 // Configured for Replit environment:
 // - host 0.0.0.0 allows connections from Replit's proxy
 // - port 5000 is the only non-firewalled port
-// - allowedHosts allows all Replit proxy domains (.replit.dev, .repl.co, .replit.app)
+// - allowedHosts with leading dot (e.g., '.replit.dev') allows all subdomains
 export default defineConfig(() => ({
   server: {
     host: "0.0.0.0",
