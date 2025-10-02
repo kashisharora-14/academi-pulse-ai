@@ -385,7 +385,7 @@ const TeacherDashboard = () => {
               </TabsTrigger>
               <TabsTrigger value="student-management" className="gov-tab-trigger">
                 <Users className="h-4 w-4 enhanced-tab-icon" />
-                Student Mgmt
+                Student Management
               </TabsTrigger>
               <TabsTrigger value="development" className="gov-tab-trigger">
                 <TrendingUp className="h-4 w-4 enhanced-tab-icon" />
@@ -443,7 +443,7 @@ const TeacherDashboard = () => {
               </TabsTrigger>
               <TabsTrigger value="student-management" className="enhanced-mobile-tab">
                 <Users className="enhanced-mobile-tab-icon" />
-                <span>Student Mgmt</span>
+                <span>Student Management</span>
               </TabsTrigger>
               <TabsTrigger value="development" className="enhanced-mobile-tab">
                 <TrendingUp className="enhanced-mobile-tab-icon" />
