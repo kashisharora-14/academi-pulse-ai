@@ -103,31 +103,25 @@ const slides = [
 
 export const GovernmentSlideshow = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlay, setIsAutoPlay] = useState(true);
 
   useEffect(() => {
-    if (!isAutoPlay) return;
-
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000); // Change slide every 6 seconds
+    }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, [isAutoPlay]);
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
-    setIsAutoPlay(false);
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-    setIsAutoPlay(false);
   };
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
-    setIsAutoPlay(false);
   };
 
   const current = slides[currentSlide];
@@ -139,14 +133,12 @@ export const GovernmentSlideshow = () => {
 
       <Card className={`relative overflow-hidden bg-gradient-to-br ${current.bgGradient} border-2 border-slate-200 shadow-lg min-h-[300px]`}>
         {/* Azadi Ka Amrit Mahotsav Logo - Top Right */}
-        {/* Auto-playing badge only */}
-        {isAutoPlay && (
-          <div className="absolute top-3 md:top-4 right-3 md:right-4 z-10">
-            <Badge className="bg-blue-600 text-white text-xs px-2 py-1 shadow-md">
-              Auto-playing
-            </Badge>
-          </div>
-        )}
+        {/* Auto-playing badge */}
+        <div className="absolute top-3 md:top-4 right-3 md:right-4 z-10">
+          <Badge className="bg-blue-600 text-white text-xs px-2 py-1 shadow-md">
+            Auto-playing
+          </Badge>
+        </div>
 
         {/* Government Seal Background */}
         <div className="absolute top-4 left-4 w-24 h-24 opacity-10">
