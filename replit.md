@@ -26,7 +26,7 @@ The project has been configured to run in the Replit environment:
 - Development server runs on port 5000 (0.0.0.0)
 - Uses npm with legacy-peer-deps enabled (due to react-leaflet compatibility)
 - Vite configured with HMR on port 5000
-- **Important**: Vite is configured with `allowedHosts: ['.replit.dev']` to support Replit's dynamic proxy domains (wildcard pattern allows all *.replit.dev subdomains)
+- **Important**: Vite is configured with `allowedHosts: ['.replit.dev', '.repl.co', '.replit.app']` to support all Replit proxy domains (wildcard pattern with leading dot matches base domain + all subdomains)
 - Supabase connection via environment variables
 
 ## Key Features
@@ -107,6 +107,21 @@ The project is configured for autoscale deployment:
 - Deployment target: autoscale (suitable for static frontend with external backend)
 
 ## Recent Changes
+
+### October 2, 2025 - Fresh GitHub Clone Import Setup
+- ✅ **Successfully imported and configured fresh GitHub clone in Replit environment**
+- Installed all npm dependencies with `--legacy-peer-deps` flag (480 packages)
+- Fixed Vite configuration for Replit proxy support:
+  - Added `allowedHosts: ['.replit.dev', '.repl.co', '.replit.app']` to allow all Replit proxy domains
+  - Configured server on host 0.0.0.0, port 5000 for proper Replit networking
+  - Resolved "Blocked request" error by properly configuring host allowlist
+- Verified Supabase environment variables are properly configured
+- Confirmed development server runs correctly with HMR working
+- Application tested and verified working without errors
+- Configured autoscale deployment:
+  - Build: `npm run build`
+  - Run: `npx vite preview --host 0.0.0.0 --port 5000`
+- All features rendering properly, no LSP errors detected
 
 ### October 1, 2025 - Scholarship Eligibility & Application Tracking System
 - ✅ **Implemented Comprehensive Scholarship Management for Students**

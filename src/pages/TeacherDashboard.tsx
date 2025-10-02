@@ -314,7 +314,7 @@ const TeacherDashboard = () => {
 
           {/* Mobile Tabs - Enhanced Grid */}
           <div className="block lg:hidden">
-            <div className="enhanced-mobile-tabs">
+            <TabsList className="enhanced-mobile-tabs">
               <TabsTrigger value="overview" className="enhanced-mobile-tab">
                 <UserCircle className="enhanced-mobile-tab-icon" />
                 <span>Overview</span>
@@ -363,7 +363,7 @@ const TeacherDashboard = () => {
                 <BarChart3 className="enhanced-mobile-tab-icon" />
                 <span>Analytics</span>
               </TabsTrigger>
-            </div>
+            </TabsList>
           </div>
 
           <TabsContent value="overview" className="space-y-6">

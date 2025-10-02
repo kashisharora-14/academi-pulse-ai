@@ -354,7 +354,7 @@ const InstitutionDashboard = () => {
 
           {/* Mobile Tabs - Enhanced Grid */}
           <div className="block lg:hidden">
-            <div className="enhanced-mobile-tabs">
+            <TabsList className="enhanced-mobile-tabs">
               <TabsTrigger value="overview" className="enhanced-mobile-tab">
                 <Building2 className="enhanced-mobile-tab-icon" />
                 <span>Overview</span>
@@ -399,7 +399,7 @@ const InstitutionDashboard = () => {
                 <Download className="enhanced-mobile-tab-icon" />
                 <span>Export</span>
               </TabsTrigger>
-            </div>
+            </TabsList>
           </div>
 
           <TabsContent value="overview" className="space-y-6">

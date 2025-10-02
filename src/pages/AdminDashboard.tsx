@@ -496,7 +496,7 @@ const AdminDashboard = () => {
 
           {/* Mobile Tabs - Enhanced Grid */}
           <div className="block lg:hidden">
-            <div className="enhanced-mobile-tabs">
+            <TabsList className="enhanced-mobile-tabs">
               <TabsTrigger value="overview" className="enhanced-mobile-tab">
                 <Building2 className="enhanced-mobile-tab-icon" />
                 <span>Overview</span>
@@ -545,7 +545,7 @@ const AdminDashboard = () => {
                 <Bot className="enhanced-mobile-tab-icon" />
                 <span>AI</span>
               </TabsTrigger>
-            </div>
+            </TabsList>
           </div>
 
           <TabsContent value="overview" className="space-y-6">

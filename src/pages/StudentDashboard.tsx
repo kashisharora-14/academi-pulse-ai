@@ -263,7 +263,7 @@ const StudentDashboard = () => {
 
           {/* Mobile Tabs - Enhanced Grid */}
           <div className="block lg:hidden">
-            <div className="enhanced-mobile-tabs">
+            <TabsList className="enhanced-mobile-tabs">
               <TabsTrigger value="overview" className="enhanced-mobile-tab">
                 <GraduationCap className="enhanced-mobile-tab-icon" />
                 <span>Overview</span>
@@ -308,7 +308,7 @@ const StudentDashboard = () => {
                 <Users className="enhanced-mobile-tab-icon" />
                 <span>EduBot</span>
               </TabsTrigger>
-            </div>
+            </TabsList>
           </div>
 
           <TabsContent value="lifecycle" className="space-y-6">
