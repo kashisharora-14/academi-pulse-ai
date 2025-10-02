@@ -681,14 +681,12 @@ const StudentDashboard = () => {
               </Card>
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-2 mb-6">
-              <Card className="p-6">
-                <h3 className="text-xl font-bold mb-4">Campus Facilities</h3>
-                <MapView locations={nearbyInstitutions} center={[30.7677, 76.7794]} zoom={15} />
-              </Card>
+            <Card className="p-6 mb-6">
+              <h3 className="text-xl font-bold mb-4">Campus Facilities</h3>
+              <MapView locations={nearbyInstitutions} center={[30.7677, 76.7794]} zoom={15} />
+            </Card>
 
-              <Chatbot />
-            </div>
+            <Chatbot />
           </TabsContent>
 
           <TabsContent value="academics" className="space-y-6">
