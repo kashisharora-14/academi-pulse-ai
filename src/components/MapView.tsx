@@ -13,6 +13,19 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
+interface Session {
+  title: string;
+  time: string;
+  room: string;
+  instructor: string;
+}
+
+interface Event {
+  title: string;
+  date: string;
+  description: string;
+}
+
 interface Location {
   id: string;
   name: string;
@@ -26,6 +39,10 @@ interface Location {
   placement?: number;
   research?: number;
   dropout?: number;
+  contact?: string;
+  sessions?: Session[];
+  events?: Event[];
+  facilities?: string[];
 }
 
 interface MapViewProps {
@@ -193,99 +210,122 @@ export const MapView = ({ locations, center = [30.7677, 76.7794], zoom = 8 }: Ma
             position={location.position}
             icon={createCustomIcon(location)}
           >
-            <Popup maxWidth={400} className="custom-popup">
-              <div className="p-3 bg-white rounded-lg">
-                {/* Horizontal Card Layout */}
-                <div className="flex gap-3">
-                  {/* Left Section - Institution Info */}
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Building2 className="h-4 w-4 text-blue-600" />
-                      <h3 className="font-bold text-sm text-gray-900">{location.name}</h3>
+            <Popup maxWidth={500} className="custom-popup">
+              <div className="p-3 bg-white rounded-lg max-h-96 overflow-y-auto">
+                {/* Header */}
+                <div className="mb-3">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Building2 className="h-4 w-4 text-blue-600" />
+                    <h3 className="font-bold text-sm text-gray-900">{location.name}</h3>
+                  </div>
+                  <div className="text-xs text-gray-600">
+                    📍 {location.data}
+                  </div>
+                  {location.type && (
+                    <div className="text-xs text-blue-600 mt-1">
+                      🏛️ {location.type}
                     </div>
-                    <div className="text-xs text-gray-600 mb-2">
-                      📍 {location.city} • {location.type}
+                  )}
+                  {location.contact && (
+                    <div className="text-xs text-gray-600 mt-1">
+                      📞 {location.contact}
                     </div>
-                    <div className="text-xs text-gray-600 mb-2 break-words">
-                      {location.data}
+                  )}
+                </div>
+
+                {/* Today's Sessions */}
+                {location.sessions && location.sessions.length > 0 && (
+                  <div className="mb-3">
+                    <h4 className="font-semibold text-xs text-purple-800 mb-2 flex items-center gap-1">
+                      📅 Today's Sessions
+                    </h4>
+                    <div className="space-y-2">
+                      {location.sessions.map((session, idx) => (
+                        <div key={idx} className="bg-purple-50 p-2 rounded border border-purple-200">
+                          <div className="font-medium text-xs text-purple-900">{session.title}</div>
+                          <div className="text-[10px] text-purple-700 mt-0.5">
+                            🕐 {session.time} • {session.room}
+                          </div>
+                          <div className="text-[10px] text-purple-600">
+                            👨‍🏫 {session.instructor}
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
+                )}
 
-                  {/* Right Section - Metrics */}
-                  <div className="flex-1">
-                    <div className="grid grid-cols-2 gap-1 text-xs">
-                      {location.nirfRank && (
-                        <div className="bg-blue-50 p-1.5 rounded border text-center">
-                          <div className="font-bold text-blue-700 text-xs">#{location.nirfRank}</div>
-                          <div className="text-blue-600 text-[10px]">NIRF</div>
+                {/* Upcoming Events */}
+                {location.events && location.events.length > 0 && (
+                  <div className="mb-3">
+                    <h4 className="font-semibold text-xs text-green-800 mb-2 flex items-center gap-1">
+                      🎯 Upcoming Events
+                    </h4>
+                    <div className="space-y-2">
+                      {location.events.map((event, idx) => (
+                        <div key={idx} className="bg-green-50 p-2 rounded border border-green-200">
+                          <div className="font-medium text-xs text-green-900">{event.title}</div>
+                          <div className="text-[10px] text-green-700 mt-0.5">
+                            📆 {event.date}
+                          </div>
+                          <div className="text-[10px] text-green-600 mt-1">
+                            {event.description}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Facilities */}
+                {location.facilities && location.facilities.length > 0 && (
+                  <div className="mb-2">
+                    <h4 className="font-semibold text-xs text-blue-800 mb-2 flex items-center gap-1">
+                      🏢 Facilities Available
+                    </h4>
+                    <div className="grid grid-cols-1 gap-1">
+                      {location.facilities.map((facility, idx) => (
+                        <div key={idx} className="text-[10px] text-blue-700 bg-blue-50 px-2 py-1 rounded">
+                          ✓ {facility}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Performance Badge (if applicable for institution view) */}
+                {location.nirfRank && (
+                  <div className="mt-3 pt-2 border-t border-gray-100">
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="bg-blue-50 p-2 rounded border text-center">
+                        <div className="font-bold text-blue-700">#{location.nirfRank}</div>
+                        <div className="text-blue-600 text-[10px]">NIRF Rank</div>
+                      </div>
+                      {location.placement && (
+                        <div className="bg-green-50 p-2 rounded border text-center">
+                          <div className="font-bold text-green-700">{location.placement}%</div>
+                          <div className="text-green-600 text-[10px]">Placement</div>
                         </div>
                       )}
-                      <div className={`p-1.5 rounded border text-center ${
-                        location.placement && location.placement >= 80 ? 'bg-green-50' :
-                        location.placement && location.placement >= 60 ? 'bg-yellow-50' : 'bg-red-50'
-                      }`}>
-                        <div className={`font-bold text-xs ${
-                          location.placement && location.placement >= 80 ? 'text-green-700' :
-                          location.placement && location.placement >= 60 ? 'text-yellow-700' : 'text-red-700'
-                        }`}>{location.placement}%</div>
-                        <div className={`text-[10px] ${
-                          location.placement && location.placement >= 80 ? 'text-green-600' :
-                          location.placement && location.placement >= 60 ? 'text-yellow-600' : 'text-red-600'
-                        }`}>Placement</div>
-                      </div>
-                      <div className="bg-purple-50 p-1.5 rounded border text-center">
-                        <div className="font-bold text-purple-700 text-xs">{location.research}</div>
-                        <div className="text-purple-600 text-[10px]">Research</div>
-                      </div>
-                      <div className={`p-1.5 rounded border text-center ${
-                        location.dropout && location.dropout > 15 ? 'bg-red-50' : 
-                        location.dropout && location.dropout > 8 ? 'bg-orange-50' : 'bg-green-50'
-                      }`}>
-                        <div className={`font-bold text-xs ${
-                          location.dropout && location.dropout > 15 ? 'text-red-700' : 
-                          location.dropout && location.dropout > 8 ? 'text-orange-700' : 'text-green-700'
-                        }`}>{location.dropout}%</div>
-                        <div className={`text-[10px] ${
-                          location.dropout && location.dropout > 15 ? 'text-red-600' : 
-                          location.dropout && location.dropout > 8 ? 'text-orange-600' : 'text-green-600'
-                        }`}>Dropout</div>
-                      </div>
                     </div>
                   </div>
-                </div>
+                )}
 
-                {/* Bottom Status Bar */}
-                <div className="mt-3 pt-2 border-t border-gray-100">
-                  {location.performance === 'critical' && (
-                    <div className="text-xs text-red-700 bg-red-50 px-2 py-1 rounded">
-                      🚨 <span className="font-bold">CRITICAL:</span> Emergency intervention required
-                    </div>
-                  )}
-
-                  {location.performance === 'needs-attention' && (
-                    <div className="text-xs text-orange-700 bg-orange-50 px-2 py-1 rounded">
-                      ⚠️ <span className="font-bold">NEEDS IMPROVEMENT:</span> Focus on placement & research
-                    </div>
-                  )}
-
-                  {location.performance === 'excellent' && (
-                    <div className="text-xs text-green-700 bg-green-50 px-2 py-1 rounded">
-                      🌟 <span className="font-bold">EXEMPLARY:</span> National showcase institution
-                    </div>
-                  )}
-
-                  {location.performance === 'good' && (
-                    <div className="text-xs text-blue-700 bg-blue-50 px-2 py-1 rounded">
-                      ✅ <span className="font-bold">GOOD:</span> Stable performance across all areas
-                    </div>
-                  )}
-
-                  {location.performance === 'average' && (
-                    <div className="text-xs text-yellow-700 bg-yellow-50 px-2 py-1 rounded">
-                      ⚡ <span className="font-bold">AVERAGE:</span> Improvement plan in progress
-                    </div>
-                  )}
-                </div>
+                {/* Performance Status */}
+                {location.performance && (
+                  <div className="mt-2">
+                    {location.performance === 'excellent' && (
+                      <div className="text-xs text-green-700 bg-green-50 px-2 py-1 rounded">
+                        🌟 Excellent Performance
+                      </div>
+                    )}
+                    {location.performance === 'good' && (
+                      <div className="text-xs text-blue-700 bg-blue-50 px-2 py-1 rounded">
+                        ✅ Good Performance
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </Popup>
           </Marker>

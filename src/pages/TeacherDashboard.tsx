@@ -169,9 +169,115 @@ const loggedInStudents = [
 ];
 
 const departmentLocations = [
-  { id: "1", name: "Computer Science Dept", position: [28.5449, 77.1925] as [number, number], data: "Building A, Floor 3" },
-  { id: "2", name: "Faculty Lounge", position: [28.5459, 77.1935] as [number, number], data: "Building B, Floor 2" },
-  { id: "3", name: "Research Lab", position: [28.5439, 77.1915] as [number, number], data: "Building C, Floor 1" },
+  { 
+    id: "1", 
+    name: "Computer Science Dept", 
+    position: [28.5449, 77.1925] as [number, number], 
+    data: "Building A, Floor 3",
+    type: "Academic Department",
+    contact: "cse@university.edu | +91-11-12345678",
+    sessions: [
+      { title: "DSA Advanced Session", time: "10:00 AM - 11:30 AM", room: "Room 301", instructor: "Dr. Priya Sharma" },
+      { title: "Machine Learning Workshop", time: "2:00 PM - 4:00 PM", room: "Lab 401", instructor: "Dr. Rajesh Kumar" },
+      { title: "Faculty Meeting", time: "4:30 PM - 5:30 PM", room: "Conference Room A", instructor: "HOD" }
+    ],
+    events: [
+      { title: "Tech Symposium 2024", date: "March 25, 2024", description: "Annual technical event with industry speakers" },
+      { title: "Research Proposal Deadline", date: "April 10, 2024", description: "Submit research proposals for funding" }
+    ],
+    facilities: ["40 Faculty Cabins", "8 Smart Classrooms", "3 Research Labs", "Computer Center with 150 systems"],
+    performance: "excellent" as const
+  },
+  { 
+    id: "2", 
+    name: "Faculty Lounge", 
+    position: [28.5459, 77.1935] as [number, number], 
+    data: "Building B, Floor 2",
+    type: "Common Area",
+    contact: "admin@university.edu | +91-11-12345679",
+    sessions: [
+      { title: "Coffee Break", time: "11:00 AM - 11:30 AM", room: "Lounge", instructor: "Open to All" },
+      { title: "Informal Discussion", time: "3:00 PM - 4:00 PM", room: "Lounge", instructor: "All Faculty" }
+    ],
+    events: [
+      { title: "Faculty Welfare Meeting", date: "March 20, 2024", description: "Quarterly faculty welfare discussion" }
+    ],
+    facilities: ["Coffee Machine", "Reading Area", "WiFi", "Comfortable Seating for 50"],
+    performance: "good" as const
+  },
+  { 
+    id: "3", 
+    name: "Research Lab", 
+    position: [28.5439, 77.1915] as [number, number], 
+    data: "Building C, Floor 1",
+    type: "Research Facility",
+    contact: "research@university.edu | +91-11-12345680",
+    sessions: [
+      { title: "AI/ML Research Group", time: "10:00 AM - 12:00 PM", room: "Research Lab C1", instructor: "Dr. Amit Verma" },
+      { title: "Data Science Project Work", time: "2:00 PM - 5:00 PM", room: "Research Lab C1", instructor: "Multiple Faculty" },
+      { title: "PhD Scholar Presentations", time: "5:00 PM - 6:00 PM", room: "Seminar Hall", instructor: "Research Committee" }
+    ],
+    events: [
+      { title: "Research Paper Writing Workshop", date: "March 28, 2024", description: "Learn effective research paper writing techniques" },
+      { title: "Funding Opportunities Seminar", date: "April 5, 2024", description: "Government and private research funding opportunities" }
+    ],
+    facilities: ["High-Performance Computing Cluster", "20 Research Workstations", "Collaborative Work Areas", "Project Storage"],
+    performance: "excellent" as const
+  },
+  { 
+    id: "4", 
+    name: "Electronics & Communication Dept", 
+    position: [28.5455, 77.1920] as [number, number], 
+    data: "Building D, Floor 2",
+    type: "Academic Department",
+    contact: "ece@university.edu | +91-11-12345681",
+    sessions: [
+      { title: "VLSI Design Lab", time: "9:00 AM - 11:00 AM", room: "VLSI Lab", instructor: "Dr. Sunita Rani" },
+      { title: "Communication Systems", time: "11:30 AM - 1:00 PM", room: "Room 201", instructor: "Dr. Mahesh Gupta" },
+      { title: "Department Seminar", time: "3:00 PM - 4:00 PM", room: "Seminar Hall", instructor: "Guest Speaker" }
+    ],
+    events: [
+      { title: "Industry Visit to Electronics Hub", date: "April 15, 2024", description: "Educational trip to major electronics manufacturing unit" }
+    ],
+    facilities: ["30 Faculty Rooms", "6 Labs", "VLSI Design Center", "Embedded Systems Lab"],
+    performance: "good" as const
+  },
+  { 
+    id: "5", 
+    name: "Mathematics Department", 
+    position: [28.5445, 77.1930] as [number, number], 
+    data: "Building E, Floor 1",
+    type: "Academic Department",
+    contact: "math@university.edu | +91-11-12345682",
+    sessions: [
+      { title: "Advanced Calculus", time: "9:30 AM - 11:00 AM", room: "Room 101", instructor: "Dr. Neha Kapoor" },
+      { title: "Applied Mathematics Tutorial", time: "2:00 PM - 3:30 PM", room: "Tutorial Room", instructor: "All Math Faculty" }
+    ],
+    events: [
+      { title: "National Mathematics Day", date: "December 22, 2024", description: "Celebrating mathematical achievements" },
+      { title: "Quantitative Aptitude Workshop", date: "March 30, 2024", description: "For placement preparation" }
+    ],
+    facilities: ["25 Faculty Cabins", "4 Tutorial Rooms", "Mathematics Library", "Computing Lab"],
+    performance: "good" as const
+  },
+  { 
+    id: "6", 
+    name: "University Administration", 
+    position: [28.5452, 77.1928] as [number, number], 
+    data: "Administrative Block, Floor 3",
+    type: "Administrative Office",
+    contact: "admin@university.edu | +91-11-12345600",
+    sessions: [
+      { title: "Dean's Office Hours", time: "10:00 AM - 12:00 PM", room: "Dean's Office", instructor: "Dean" },
+      { title: "HR Department Consultations", time: "2:00 PM - 4:00 PM", room: "HR Office", instructor: "HR Team" }
+    ],
+    events: [
+      { title: "Annual General Meeting", date: "April 20, 2024", description: "University performance review and planning" },
+      { title: "Policy Updates Workshop", date: "March 27, 2024", description: "New government education policies" }
+    ],
+    facilities: ["Registrar Office", "HR Department", "Finance Department", "IT Support Center"],
+    performance: "excellent" as const
+  }
 ];
 
 const TeacherDashboard = () => {
