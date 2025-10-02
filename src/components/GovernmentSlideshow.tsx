@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -73,7 +72,7 @@ export const GovernmentSlideshow = () => {
 
   useEffect(() => {
     if (!isAutoPlay) return;
-    
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 6000); // Change slide every 6 seconds
@@ -102,51 +101,35 @@ export const GovernmentSlideshow = () => {
     <div className="relative w-full max-w-6xl mx-auto mb-8">
       {/* Government Header Bar */}
       <div className="h-2 bg-gradient-to-r from-orange-500 via-white to-green-500 rounded-t-lg"></div>
-      
+
       <Card className={`relative overflow-hidden bg-gradient-to-br ${current.bgGradient} border-2 border-slate-200 shadow-lg min-h-[300px]`}>
         {/* Azadi Ka Amrit Mahotsav Logo - Top Right */}
-        <div className="azadi-logo-slideshow absolute top-4 right-4 bg-white rounded-lg p-2 shadow-md border border-orange-500 z-10">
-          <div className="flex flex-col items-center">
-            <div className="relative w-20 h-14">
-              <div className="absolute left-0 top-0 flex items-center">
-                <span className="text-2xl font-bold" style={{color: '#B7975A'}}>75</span>
-                <div className="relative ml-0.5">
-                  <div className="w-7 h-7 rounded-full border border-blue-800 flex items-center justify-center bg-white">
-                    <div className="w-6 h-6 relative">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-1.5 h-1.5 bg-blue-800 rounded-full"></div>
-                      </div>
-                      {Array.from({length: 24}).map((_, i) => (
-                        <div 
-                          key={i}
-                          className="absolute w-px h-3 bg-blue-800"
-                          style={{
-                            left: '50%',
-                            top: '50%',
-                            transform: `rotate(${i * 15}deg) translateY(-50%)`,
-                            transformOrigin: 'center'
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="absolute -right-8 top-1/2 transform -translate-y-1/2 w-14 h-6">
-                    <div className="h-full flex flex-col">
-                      <div className="h-1/3 bg-orange-500 rounded-r"></div>
-                      <div className="h-1/3 bg-white"></div>
-                      <div className="h-1/3 bg-green-600 rounded-r"></div>
-                    </div>
-                  </div>
-                </div>
+        {/* Auto-playing badge and 75th Independence Logo */}
+        <div className="absolute top-3 md:top-4 right-3 md:right-4 z-10 flex flex-col items-end gap-2">
+          {isAutoPlay && (
+            <Badge className="bg-blue-600 text-white text-xs px-2 py-1 shadow-md">
+              Auto-playing
+            </Badge>
+          )}
+
+          {/* 75th Independence Compact Logo - Improved */}
+          <div className="bg-white rounded-lg p-2.5 md:p-3 shadow-xl border-2 border-orange-500">
+            <div className="flex flex-col items-center gap-1">
+              <div className="text-3xl md:text-4xl font-bold" style={{color: '#FF9933'}}>
+                75
               </div>
-            </div>
-            <div className="text-center -mt-1">
-              <div className="text-[10px] font-bold leading-tight" style={{color: '#B7975A'}}>Azadi Ka</div>
-              <div className="text-xs font-bold leading-tight" style={{color: '#B7975A'}}>Amrit Mahotsav</div>
+              <div className="flex gap-0.5">
+                <div className="w-5 h-2 bg-orange-500"></div>
+                <div className="w-5 h-2 bg-white border border-gray-400"></div>
+                <div className="w-5 h-2 bg-green-600"></div>
+              </div>
+              <div className="text-[9px] md:text-[10px] font-bold text-center leading-tight mt-0.5" style={{color: '#B7975A'}}>
+                Azadi Ka<br/>Amrit Mahotsav
+              </div>
             </div>
           </div>
         </div>
-        
+
         {/* Government Seal Background */}
         <div className="absolute top-4 left-4 w-24 h-24 opacity-10">
           <div className="w-full h-full bg-blue-800 rounded-full flex items-center justify-center">
@@ -167,7 +150,8 @@ export const GovernmentSlideshow = () => {
           </div>
         </div>
 
-        <div className="relative p-6 md:p-8 lg:p-10">
+        {/* Main Content */}
+      <div className={`relative bg-gradient-to-br ${current.bgGradient} rounded-b-lg p-6 md:p-8 lg:p-12 min-h-[280px] md:min-h-[300px] flex items-center justify-center`}>
           {/* Badge */}
           <div className="flex justify-between items-start mb-4">
             <Badge className="bg-blue-800 text-white px-4 py-2 text-sm font-semibold">
@@ -184,7 +168,7 @@ export const GovernmentSlideshow = () => {
             <h3 className="text-lg md:text-xl text-blue-700 font-semibold">
               {current.subtitle}
             </h3>
-            
+
             <div className="space-y-3">
               <p className="text-base md:text-lg text-slate-700 leading-relaxed font-medium">
                 {current.content}
@@ -217,7 +201,7 @@ export const GovernmentSlideshow = () => {
         >
           <ChevronLeft className="w-5 h-5 text-slate-700" />
         </button>
-        
+
         <button
           onClick={nextSlide}
           className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
@@ -242,19 +226,11 @@ export const GovernmentSlideshow = () => {
           ))}
         </div>
 
-        {/* Auto-play indicator */}
-        {isAutoPlay && (
-          <div className="absolute top-4 left-4">
-            <Badge variant="outline" className="bg-white/80 text-slate-600 text-xs">
-              Auto-playing
-            </Badge>
-          </div>
-        )}
       </Card>
 
       {/* Government Footer Bar */}
       <div className="h-2 bg-gradient-to-r from-green-500 via-white to-orange-500 rounded-b-lg"></div>
-      
+
       {/* Quick Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
         <Card className="p-3 text-center bg-gradient-to-br from-orange-50 to-white border border-orange-200">
