@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, Star, Users, BookOpen, Trophy } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, Users, BookOpen, Trophy, CheckCircle } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+
 
 const slides = [
   {
@@ -105,196 +107,101 @@ export const GovernmentSlideshow = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const nextSlide = () => {
+  const handleNext = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
-  const prevSlide = () => {
+  const handlePrevious = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
   };
 
   const current = slides[currentSlide];
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto mb-8">
-      {/* Aadhaar-style Government Header Bar */}
-      <div className="h-3 bg-gradient-to-r from-orange-500 via-white to-green-500 rounded-t-lg"></div>
+    <div className="w-full mb-8">
+      {/* Simple Slideshow Container */}
+      <div className="relative overflow-hidden rounded-lg shadow-lg">
+        {/* Government Header Stripe */}
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-orange-500 via-white to-green-500 z-10"></div>
 
-      <Card className={`relative overflow-hidden bg-gradient-to-br ${current.bgGradient} border-4 border-blue-800 shadow-2xl min-h-[300px]`}>
-        {/* Aadhaar-style Header with Government Emblem */}
-        <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 py-3 px-6 flex items-center justify-between z-20">
-          {/* Government Emblem */}
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
-              <div className="w-10 h-10 relative">
-                {/* Ashoka Chakra */}
-                <div className="w-10 h-10 border-2 border-blue-800 rounded-full relative flex items-center justify-center">
-                  <div className="absolute w-1.5 h-1.5 bg-blue-800 rounded-full"></div>
-                  {/* 24 Spokes */}
-                  {Array.from({length: 24}).map((_, i) => (
-                    <div 
-                      key={i}
-                      className="absolute w-0.5 h-3.5 bg-blue-800 origin-bottom"
-                      style={{
-                        transform: `rotate(${i * 15}deg) translateY(-7px)`,
-                        transformOrigin: 'center 14px'
-                      }}
-                    />
-                  ))}
-                </div>
+        {/* Navigation Arrows */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={handlePrevious}
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white shadow-lg rounded-full h-10 w-10"
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </Button>
+
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={handleNext}
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white shadow-lg rounded-full h-10 w-10"
+        >
+          <ChevronRight className="h-6 w-6" />
+        </Button>
+
+        {/* Slide Content */}
+        <div className={`relative bg-gradient-to-br ${current.bgGradient} p-8 md:p-12 min-h-[400px] flex items-center transition-all duration-500`}>
+          {/* Main Content */}
+          <div className="w-full mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-8">
+            {/* Image Section */}
+            {current.imageUrl && (
+              <div className="w-full md:w-1/2 flex justify-center">
+                <img
+                  src={current.imageUrl}
+                  alt={current.title}
+                  className="max-w-full h-auto max-h-[300px] object-contain rounded-lg shadow-xl"
+                />
               </div>
-            </div>
-            <div className="text-white">
-              <div className="text-xs font-semibold">भारत सरकार • Government of India</div>
-              <div className="text-[10px] opacity-90">Ministry of Education • शिक्षा मंत्रालय</div>
-            </div>
-          </div>
-          
-          {/* Verification Badge - Aadhaar Style */}
-          <div className="flex items-center gap-2">
-            <Badge className="bg-green-500 text-white text-xs px-3 py-1 shadow-md">
-              ✓ Verified
-            </Badge>
-            <Badge className="bg-orange-500 text-white text-xs px-2 py-1 shadow-md">
-              Auto-playing
-            </Badge>
-          </div>
-        </div>
+            )}
 
-        {/* Aadhaar-style Decorative Pattern - Background */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div className="w-full h-full" style={{
-            backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, #000 10px, #000 20px)`,
-          }}></div>
-        </div>
+            {/* Text Content */}
+            <div className={`space-y-4 ${current.imageUrl ? 'md:w-1/2' : 'max-w-4xl mx-auto text-center'}`}>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800 leading-tight">
+                {current.title}
+              </h2>
+              <h3 className="text-lg md:text-xl text-blue-700 font-semibold">
+                {current.subtitle}
+              </h3>
 
-        {/* Main Content - Aadhaar Card Style */}
-      <div className={`relative bg-gradient-to-br ${current.bgGradient} rounded-b-lg pt-20 p-6 md:p-8 lg:p-12 min-h-[280px] md:min-h-[350px] flex items-center justify-center`}>
-          {/* Show image banner if available, otherwise show text content */}
-          {current.imageUrl ? (
-            <div className="flex items-center justify-center">
-              <img 
-                src={current.imageUrl} 
-                alt={current.title}
-                className="w-full max-w-5xl h-auto object-contain rounded-lg shadow-lg"
-              />
-            </div>
-          ) : (
-            <>
-              {/* Badge */}
-              <div className="flex justify-between items-start mb-4">
-                <Badge className="bg-blue-800 text-white px-4 py-2 text-sm font-semibold">
-                  {current.badge}
-                </Badge>
-                <div className="text-4xl">{current.image}</div>
-              </div>
-
-              {/* Content */}
-              <div className="space-y-4 max-w-4xl">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800 leading-tight">
-                  {current.title}
-                </h2>
-                <h3 className="text-lg md:text-xl text-blue-700 font-semibold">
-                  {current.subtitle}
-                </h3>
-
+              {current.content && (
                 <div className="space-y-3">
                   <p className="text-base md:text-lg text-slate-700 leading-relaxed font-medium">
                     {current.content}
                   </p>
-                  <p className="text-sm md:text-base text-slate-600 leading-relaxed italic">
-                    {current.englishContent}
-                  </p>
+                  {current.englishContent && (
+                    <p className="text-sm md:text-base text-slate-600 leading-relaxed italic">
+                      {current.englishContent}
+                    </p>
+                  )}
                 </div>
+              )}
 
-                {/* Ministry Information */}
-                <div className="flex flex-wrap gap-2 pt-4">
-                  <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200">
-                    🏛️ Ministry of Education
-                  </Badge>
-                  <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
-                    🇮🇳 Government of India
-                  </Badge>
-                  <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
-                    💻 Digital India
-                  </Badge>
-                </div>
-              </div>
-            </>
-          )}
+              {current.image && !current.imageUrl && (
+                <div className="text-6xl md:text-7xl lg:text-8xl animate-bounce">{current.image}</div>
+              )}
+            </div>
+          </div>
         </div>
 
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
-          aria-label="Previous slide"
-        >
-          <ChevronLeft className="w-5 h-5 text-slate-700" />
-        </button>
-
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
-          aria-label="Next slide"
-        >
-          <ChevronRight className="w-5 h-5 text-slate-700" />
-        </button>
-
-        {/* Slide Indicators */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {/* Pagination Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
           {slides.map((_, index) => (
             <button
               key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
+              onClick={() => setCurrentSlide(index)}
+              className={`h-2 rounded-full transition-all duration-300 ${
                 index === currentSlide
-                  ? 'bg-blue-600 scale-125'
-                  : 'bg-white/60 hover:bg-white/80'
+                  ? 'w-8 bg-blue-600'
+                  : 'w-2 bg-gray-400 hover:bg-gray-600'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
-
-      </Card>
-
-      {/* Aadhaar-style Security Footer Bar with Hologram Effect */}
-      <div className="relative h-4 bg-gradient-to-r from-green-500 via-white to-orange-500 rounded-b-lg overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-blue-800"></div>
-      </div>
-      
-      {/* Aadhaar-style Document Number */}
-      <div className="mt-2 text-center">
-        <p className="text-xs text-slate-500 font-mono">
-          DOC ID: GOI-EDU-{String(currentSlide + 1).padStart(4, '0')}-{new Date().getFullYear()} | 
-          <span className="ml-2 text-blue-600">🔒 Digitally Secured</span>
-        </p>
-      </div>
-
-      {/* Quick Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-        <Card className="p-3 text-center bg-gradient-to-br from-orange-50 to-white border border-orange-200">
-          <div className="text-xl font-bold text-orange-600">75+</div>
-          <div className="text-xs text-orange-700">Years Independence</div>
-        </Card>
-        <Card className="p-3 text-center bg-gradient-to-br from-green-50 to-white border border-green-200">
-          <div className="text-xl font-bold text-green-600">130+</div>
-          <div className="text-xs text-green-700">Crore Citizens</div>
-        </Card>
-        <Card className="p-3 text-center bg-gradient-to-br from-blue-50 to-white border border-blue-200">
-          <div className="text-xl font-bold text-blue-600">50,000+</div>
-          <div className="text-xs text-blue-700">Educational Institutions</div>
-        </Card>
-        <Card className="p-3 text-center bg-gradient-to-br from-purple-50 to-white border border-purple-200">
-          <div className="text-xl font-bold text-purple-600">4.5 Cr+</div>
-          <div className="text-xs text-purple-700">Students Enrolled</div>
-        </Card>
       </div>
     </div>
   );
