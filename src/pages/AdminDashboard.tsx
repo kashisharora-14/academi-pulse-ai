@@ -1827,6 +1827,240 @@ const AdminDashboard = () => {
             </Card>
           </TabsContent>
 
+          <TabsContent value="ratings" className="space-y-6">
+            {/* National Education System Rating Overview */}
+            <div className="grid gap-6 md:grid-cols-4 mb-6">
+              <Card className="p-6 text-center bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
+                <div className="text-4xl font-bold text-blue-600 mb-2">7.2</div>
+                <div className="flex justify-center mb-2">
+                  {[...Array(10)].map((_, i) => (
+                    <Star key={i} className={`h-4 w-4 text-yellow-500 ${i < 7 ? 'fill-current' : ''}`} />
+                  ))}
+                </div>
+                <div className="text-sm text-blue-700">National Education Index</div>
+                <div className="text-xs text-blue-600 mt-1">Out of 10.0</div>
+              </Card>
+
+              <Card className="p-6 text-center bg-gradient-to-br from-green-50 to-green-100 border-green-200">
+                <div className="text-4xl font-bold text-green-600 mb-2">82%</div>
+                <div className="text-sm text-green-700">Overall Satisfaction</div>
+                <div className="text-xs text-green-600 mt-1">Students & Parents</div>
+                <Badge className="mt-2 bg-green-600 text-white">Above Target</Badge>
+              </Card>
+
+              <Card className="p-6 text-center bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
+                <div className="text-4xl font-bold text-purple-600 mb-2">68%</div>
+                <div className="text-sm text-purple-700">Institution Compliance</div>
+                <div className="text-xs text-purple-600 mt-1">Quality Standards</div>
+                <Badge className="mt-2 bg-purple-600 text-white">Improving</Badge>
+              </Card>
+
+              <Card className="p-6 text-center bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200">
+                <div className="text-4xl font-bold text-orange-600 mb-2">4.5</div>
+                <div className="text-sm text-orange-700">Policy Effectiveness</div>
+                <div className="text-xs text-orange-600 mt-1">Out of 5.0</div>
+                <Badge className="mt-2 bg-orange-600 text-white">Good</Badge>
+              </Card>
+            </div>
+
+            {/* State-wise Performance Ratings */}
+            <Card className="p-6">
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                <Trophy className="h-6 w-6 text-yellow-600" />
+                Top Performing States
+              </h3>
+              <div className="space-y-4">
+                {[
+                  { state: "Kerala", rating: 8.9, rank: 1, improvement: "+0.3", color: "text-green-600" },
+                  { state: "Tamil Nadu", rating: 8.5, rank: 2, improvement: "+0.2", color: "text-green-600" },
+                  { state: "Maharashtra", rating: 8.2, rank: 3, improvement: "+0.4", color: "text-green-600" },
+                  { state: "Karnataka", rating: 7.9, rank: 4, improvement: "+0.1", color: "text-green-600" },
+                  { state: "Punjab", rating: 7.6, rank: 5, improvement: "-0.1", color: "text-red-600" },
+                  { state: "Gujarat", rating: 7.4, rank: 6, improvement: "+0.5", color: "text-green-600" }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50">
+                    <div className="flex items-center gap-4 flex-1">
+                      <div className={`text-2xl font-bold ${index < 3 ? 'text-yellow-600' : 'text-gray-600'}`}>
+                        #{item.rank}
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-semibold">{item.state}</div>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <span>Rating: {item.rating}/10</span>
+                          <span className={item.color}>({item.improvement})</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="flex text-yellow-500">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className={`h-4 w-4 ${i < Math.floor(item.rating / 2) ? 'fill-current' : ''}`} />
+                        ))}
+                      </div>
+                      <Progress value={item.rating * 10} className="w-24" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            {/* Sector-wise Ratings */}
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                  <BarChart3 className="h-6 w-6 text-blue-600" />
+                  Education Sector Performance
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    { sector: "Higher Education", rating: 7.8, institutions: 1200, color: "bg-blue-500" },
+                    { sector: "Technical Education", rating: 8.2, institutions: 850, color: "bg-green-500" },
+                    { sector: "Vocational Training", rating: 6.9, institutions: 650, color: "bg-purple-500" },
+                    { sector: "Research & Innovation", rating: 7.4, institutions: 420, color: "bg-orange-500" },
+                    { sector: "Skill Development", rating: 7.1, institutions: 980, color: "bg-pink-500" }
+                  ].map((item, index) => (
+                    <div key={index} className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="font-medium">{item.sector}</span>
+                        <span className="text-sm text-muted-foreground">{item.rating}/10 ({item.institutions} institutions)</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Progress value={item.rating * 10} className="flex-1" />
+                        <div className="flex text-yellow-500">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className={`h-3 w-3 ${i < Math.floor(item.rating / 2) ? 'fill-current' : ''}`} />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                  <Award className="h-6 w-6 text-green-600" />
+                  Policy Impact Ratings
+                </h3>
+                <div className="space-y-4 max-h-[400px] overflow-y-auto">
+                  {[
+                    {
+                      policy: "National Education Policy 2020",
+                      rating: 8.5,
+                      impact: "High",
+                      status: "Active",
+                      year: "2020"
+                    },
+                    {
+                      policy: "PM YUVA Scheme",
+                      rating: 7.8,
+                      impact: "Medium",
+                      status: "Active",
+                      year: "2022"
+                    },
+                    {
+                      policy: "Digital Education Initiative",
+                      rating: 8.2,
+                      impact: "High",
+                      status: "Active",
+                      year: "2021"
+                    },
+                    {
+                      policy: "RUSA (Rashtriya Uchchatar Shiksha Abhiyan)",
+                      rating: 7.5,
+                      impact: "Medium",
+                      status: "Active",
+                      year: "2013"
+                    }
+                  ].map((item, index) => (
+                    <div key={index} className="p-4 border rounded-lg">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="flex text-yellow-500">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className={`h-4 w-4 ${i < Math.floor(item.rating / 2) ? 'fill-current' : ''}`} />
+                          ))}
+                        </div>
+                        <Badge variant="outline" className="text-xs">{item.impact} Impact</Badge>
+                      </div>
+                      <div className="font-semibold mb-1">{item.policy}</div>
+                      <div className="flex justify-between text-xs text-muted-foreground">
+                        <span>Launched: {item.year}</span>
+                        <span>Rating: {item.rating}/10</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+
+            {/* National Performance Trends */}
+            <Card className="p-6">
+              <h3 className="text-xl font-bold mb-6">National Education Performance Trends</h3>
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={[
+                  { year: "2019", literacy: 71.5, enrollment: 78.2, quality: 6.8, dropout: 14.5 },
+                  { year: "2020", literacy: 72.1, enrollment: 79.5, quality: 7.0, dropout: 13.8 },
+                  { year: "2021", literacy: 72.8, enrollment: 80.8, quality: 7.1, dropout: 13.2 },
+                  { year: "2022", literacy: 73.5, enrollment: 82.1, quality: 7.3, dropout: 12.5 },
+                  { year: "2023", literacy: 74.2, enrollment: 83.4, quality: 7.5, dropout: 11.8 },
+                  { year: "2024", literacy: 74.9, enrollment: 84.7, quality: 7.8, dropout: 11.2 }
+                ]}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="year" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Line type="monotone" dataKey="literacy" stroke="#3b82f6" strokeWidth={2} name="Literacy Rate (%)" />
+                  <Line type="monotone" dataKey="enrollment" stroke="#10b981" strokeWidth={2} name="Enrollment (%)" />
+                  <Line type="monotone" dataKey="quality" stroke="#8b5cf6" strokeWidth={2} name="Quality Index" />
+                  <Line type="monotone" dataKey="dropout" stroke="#ef4444" strokeWidth={2} name="Dropout Rate (%)" />
+                </LineChart>
+              </ResponsiveContainer>
+            </Card>
+
+            {/* Key Highlights */}
+            <div className="grid gap-6 lg:grid-cols-3">
+              <Card className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-green-200">
+                <h4 className="font-bold text-green-800 mb-3 flex items-center gap-2">
+                  <Trophy className="h-5 w-5" />
+                  Top Achievements
+                </h4>
+                <ul className="space-y-2 text-sm text-green-700">
+                  <li>• 96.8% Aadhaar linkage completed</li>
+                  <li>• 84.7% gross enrollment ratio</li>
+                  <li>• 1200+ institutes in top NIRF rankings</li>
+                  <li>• Digital learning adoption: 78%</li>
+                </ul>
+              </Card>
+
+              <Card className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
+                <h4 className="font-bold text-blue-800 mb-3 flex items-center gap-2">
+                  <Target className="h-5 w-5" />
+                  Areas for Improvement
+                </h4>
+                <ul className="space-y-2 text-sm text-blue-700">
+                  <li>• Reduce dropout rate to under 10%</li>
+                  <li>• Improve rural infrastructure quality</li>
+                  <li>• Enhance faculty-student ratio</li>
+                  <li>• Increase research output by 25%</li>
+                </ul>
+              </Card>
+
+              <Card className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
+                <h4 className="font-bold text-purple-800 mb-3 flex items-center gap-2">
+                  <Award className="h-5 w-5" />
+                  Recent Recognition
+                </h4>
+                <ul className="space-y-2 text-sm text-purple-700">
+                  <li>• UNESCO award for digital education</li>
+                  <li>• World Bank commendation for NEP 2020</li>
+                  <li>• 23 institutes in global top 500</li>
+                  <li>• Excellence in skill development programs</li>
+                </ul>
+              </Card>
+            </div>
+          </TabsContent>
+
           {/* New Government Tabs */}
           <TabsContent value="government" className="space-y-4">
             <Card>
