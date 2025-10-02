@@ -8,34 +8,39 @@ const slides = [
     id: 1,
     title: "स्वच्छोत्सव - स्वच्छता ही सेवा 2025",
     subtitle: "Swachh Hotsav - Swachhata Hi Seva 2025",
-    content: "17 सितंबर से 2 अक्टूबर 2025 तक देशभर में स्वच्छता अभियान। स्कूली छात्र स्वच्छ भारत के लिए एकजुट।",
-    englishContent: "School students across the nation unite for a cleaner India from 17th September to 2nd October 2025.",
     imageUrl: "/swachh-hotsav.png",
-    bgGradient: "from-teal-50 via-white to-green-50",
-    badge: "PM Modi Initiative"
+    bgGradient: "from-teal-50 via-white to-green-50"
   },
   {
     id: 2,
     title: "विकसित भारत बिल्डथॉन 2025",
     subtitle: "Viksit Bharat Buildathon 2025",
-    content: "आत्मनिर्भर भारत, स्वदेशी, स्थानीय के लिए मुखर, समृद्ध भारत। छात्रों को आत्मनिर्भर भारत के लिए समाधान बनाने का अवसर।",
-    englishContent: "A nationwide innovation movement empowering school students to build solutions for a self-reliant India.",
     imageUrl: "/viksit-bharat.png",
-    bgGradient: "from-orange-50 via-white to-blue-50",
-    badge: "Innovation Challenge"
+    bgGradient: "from-orange-50 via-white to-blue-50"
   },
   {
     id: 3,
     title: "परीक्षा पे चर्चा 2025",
     subtitle: "Pariksha Pe Charcha 2025",
-    content: "प्रधानमंत्री श्री नरेंद्र मोदी जी द्वारा छात्रों, शिक्षकों और अभिभावकों को परीक्षा तनाव प्रबंधन पर मार्गदर्शन।",
-    englishContent: "PM Modi to guide students, teachers, and parents on exam stress management.",
     imageUrl: "/pariksha-charcha.png",
-    bgGradient: "from-red-50 via-white to-orange-50",
-    badge: "PM Modi Interaction"
+    bgGradient: "from-red-50 via-white to-orange-50"
   },
   {
     id: 4,
+    title: "स्वच्छ एवं हरित विद्यालय रेटिंग 2025-26",
+    subtitle: "Swachh Evam Harit Vidyalaya Rating (SHVR) 2025-26",
+    imageUrl: "/swachh-evam-harit.png",
+    bgGradient: "from-blue-50 via-white to-gray-50"
+  },
+  {
+    id: 5,
+    title: "विकसित भारत @2047 विजन",
+    subtitle: "Viksit Bharat @2047 - Ideas for the Vision",
+    imageUrl: "/viksit-bharat-2047.png",
+    bgGradient: "from-blue-100 via-white to-blue-50"
+  },
+  {
+    id: 6,
     title: "राष्ट्रीय छात्रवृत्ति पोर्टल (NSP) 2024-25",
     subtitle: "National Scholarship Portal - Applications Open",
     content: "प्री-मैट्रिक और पोस्ट-मैट्रिक छात्रवृत्ति के लिए आवेदन आमंत्रित। SC/ST/OBC/अल्पसंख्यक छात्रों के लिए ₹75,000 तक की सहायता।",
@@ -45,7 +50,7 @@ const slides = [
     badge: "Scholarship Alert"
   },
   {
-    id: 5,
+    id: 7,
     title: "प्रधानमंत्री श्री नरेंद्र मोदी का संदेश",
     subtitle: "Prime Minister Shri Narendra Modi's Message",
     content: "शिक्षा ही वह शक्ति है जो राष्ट्र को आगे बढ़ाती है। डिजिटल इंडिया के तहत हमारा लक्ष्य है कि हर छात्र को गुणवत्तापूर्ण शिक्षा मिले।",
@@ -55,7 +60,7 @@ const slides = [
     badge: "PM's Vision"
   },
   {
-    id: 6,
+    id: 8,
     title: "INSPIRE छात्रवृत्ति - अंतिम तिथि 15 मई",
     subtitle: "INSPIRE Scholarship - Last Date May 15",
     content: "विज्ञान और प्रौद्योगिकी में उत्कृष्टता के लिए ₹80,000 प्रति वर्ष। कक्षा 12 में शीर्ष 1% छात्र पात्र हैं।",
@@ -65,7 +70,7 @@ const slides = [
     badge: "Scholarship News"
   },
   {
-    id: 7,
+    id: 9,
     title: "75वां स्वतंत्रता दिवस - आज़ादी का अमृत महोत्सव",
     subtitle: "75th Independence Day - Azadi Ka Amrit Mahotsav",
     content: "शिक्षा के क्षेत्र में भारत की उपलब्धियों का जश्न। 50,000+ संस्थान, 4.5 करोड़ छात्र - एक डिजिटल प्लेटफॉर्म पर।",
@@ -75,7 +80,7 @@ const slides = [
     badge: "75 Years Special"
   },
   {
-    id: 8,
+    id: 10,
     title: "NEP 2020 - शिक्षा नीति में बदलाव",
     subtitle: "NEP 2020 - Transforming Education Policy",
     content: "5+3+3+4 पाठ्यक्रम संरचना लागू। कौशल विकास, व्यावसायिक शिक्षा और समग्र विकास पर जोर।",
@@ -85,7 +90,7 @@ const slides = [
     badge: "Policy Update"
   },
   {
-    id: 9,
+    id: 11,
     title: "डिजिटल डिग्री - ब्लॉकचेन सत्यापन",
     subtitle: "Digital Degrees - Blockchain Verification",
     content: "अब डिजिटल प्रमाणपत्र DigiLocker में उपलब्ध। तत्काल सत्यापन, जीवन भर वैध - कागज रहित भारत की ओर।",
@@ -134,31 +139,14 @@ export const GovernmentSlideshow = () => {
 
       <Card className={`relative overflow-hidden bg-gradient-to-br ${current.bgGradient} border-2 border-slate-200 shadow-lg min-h-[300px]`}>
         {/* Azadi Ka Amrit Mahotsav Logo - Top Right */}
-        {/* Auto-playing badge and 75th Independence Logo */}
-        <div className="absolute top-3 md:top-4 right-3 md:right-4 z-10 flex flex-col items-end gap-2">
-          {isAutoPlay && (
+        {/* Auto-playing badge only */}
+        {isAutoPlay && (
+          <div className="absolute top-3 md:top-4 right-3 md:right-4 z-10">
             <Badge className="bg-blue-600 text-white text-xs px-2 py-1 shadow-md">
               Auto-playing
             </Badge>
-          )}
-
-          {/* 75th Independence Compact Logo - Improved */}
-          <div className="bg-white rounded-lg p-2.5 md:p-3 shadow-xl border-2 border-orange-500">
-            <div className="flex flex-col items-center gap-1">
-              <div className="text-3xl md:text-4xl font-bold" style={{color: '#FF9933'}}>
-                75
-              </div>
-              <div className="flex gap-0.5">
-                <div className="w-5 h-2 bg-orange-500"></div>
-                <div className="w-5 h-2 bg-white border border-gray-400"></div>
-                <div className="w-5 h-2 bg-green-600"></div>
-              </div>
-              <div className="text-[9px] md:text-[10px] font-bold text-center leading-tight mt-0.5" style={{color: '#B7975A'}}>
-                Azadi Ka<br/>Amrit Mahotsav
-              </div>
-            </div>
           </div>
-        </div>
+        )}
 
         {/* Government Seal Background */}
         <div className="absolute top-4 left-4 w-24 h-24 opacity-10">
