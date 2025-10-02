@@ -206,19 +206,8 @@ export const MapView = ({ locations, center = [30.7677, 76.7794], zoom = 8 }: Ma
                     <div className="text-xs text-gray-600 mb-2">
                       📍 {location.city} • {location.type}
                     </div>
-                    <div className="text-xs text-gray-600 mb-2">
-                      👥 {location.students?.toLocaleString()} students
-                    </div>
-                    <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-bold ${
-                      location.performance === 'critical' ? 'bg-red-600 text-white' :
-                      location.performance === 'needs-attention' ? 'bg-orange-500 text-white' :
-                      location.performance === 'excellent' ? 'bg-green-600 text-white' :
-                      'bg-blue-600 text-white'
-                    }`}>
-                      {location.performance === 'critical' ? 'CRITICAL' :
-                       location.performance === 'needs-attention' ? 'NEEDS ATTENTION' :
-                       location.performance === 'excellent' ? 'EXCELLENT' : 
-                       location.performance === 'good' ? 'GOOD' : 'AVERAGE'}
+                    <div className="text-xs text-gray-600 mb-2 break-words">
+                      {location.data}
                     </div>
                   </div>
 
