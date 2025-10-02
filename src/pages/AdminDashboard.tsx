@@ -711,8 +711,8 @@ const AdminDashboard = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="students" stroke="hsl(var(--primary))" strokeWidth={2} name="Actual" />
-                    <Line type="monotone" dataKey="target" stroke="hsl(var(--secondary))" strokeWidth={2} strokeDasharray="5 5" name="Target" />
+                    <Line type="monotone" dataKey="students" stroke="#3b82f6" strokeWidth={2} name="Actual" />
+                    <Line type="monotone" dataKey="target" stroke="#8b5cf6" strokeWidth={2} strokeDasharray="5 5" name="Target" />
                   </LineChart>
                 </ResponsiveContainer>
               </Card>
@@ -726,8 +726,8 @@ const AdminDashboard = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="budget" fill="hsl(var(--secondary))" name="Budget (Cr)" />
-                    <Bar dataKey="utilized" fill="hsl(var(--primary))" name="Utilized (Cr)" />
+                    <Bar dataKey="budget" fill="#8b5cf6" name="Budget (Cr)" />
+                    <Bar dataKey="utilized" fill="#3b82f6" name="Utilized (Cr)" />
                   </BarChart>
                 </ResponsiveContainer>
               </Card>
@@ -800,7 +800,7 @@ const AdminDashboard = () => {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="score" fill="hsl(var(--primary))" name="Performance Score" />
+                  <Bar dataKey="score" fill="#3b82f6" name="Performance Score" />
                 </BarChart>
               </ResponsiveContainer>
             </Card>

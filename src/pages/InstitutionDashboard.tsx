@@ -473,8 +473,8 @@ const InstitutionDashboard = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="students" fill="hsl(var(--primary))" name="Current Students" />
-                    <Bar dataKey="capacity" fill="hsl(var(--secondary))" name="Capacity" />
+                    <Bar dataKey="students" fill="#3b82f6" name="Current Students" />
+                    <Bar dataKey="capacity" fill="#8b5cf6" name="Capacity" />
                   </BarChart>
                 </ResponsiveContainer>
               </Card>
@@ -488,7 +488,7 @@ const InstitutionDashboard = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="placed" stroke="hsl(var(--primary))" strokeWidth={2} name="Placement %" />
+                    <Line type="monotone" dataKey="placed" stroke="#3b82f6" strokeWidth={2} name="Placement %" />
                   </LineChart>
                 </ResponsiveContainer>
               </Card>
@@ -625,8 +625,8 @@ const InstitutionDashboard = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="packages" fill="hsl(var(--accent))" name="Average Package (₹L)" />
-                    <Bar dataKey="highest" fill="hsl(var(--success))" name="Highest Package (₹L)" />
+                    <Bar dataKey="packages" fill="#10b981" name="Average Package (₹L)" />
+                    <Bar dataKey="highest" fill="#22c55e" name="Highest Package (₹L)" />
                   </BarChart>
                 </ResponsiveContainer>
               </Card>
@@ -789,9 +789,9 @@ const InstitutionDashboard = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="publications" stroke="hsl(var(--primary))" strokeWidth={2} name="Publications" />
-                    <Line type="monotone" dataKey="patents" stroke="hsl(var(--secondary))" strokeWidth={2} name="Patents" />
-                    <Line type="monotone" dataKey="funding" stroke="hsl(var(--success))" strokeWidth={2} name="Funding (₹Cr)" />
+                    <Line type="monotone" dataKey="publications" stroke="#3b82f6" strokeWidth={2} name="Publications" />
+                    <Line type="monotone" dataKey="patents" stroke="#8b5cf6" strokeWidth={2} name="Patents" />
+                    <Line type="monotone" dataKey="funding" stroke="#22c55e" strokeWidth={2} name="Funding (₹Cr)" />
                   </LineChart>
                 </ResponsiveContainer>
               </Card>
@@ -1328,19 +1328,20 @@ const InstitutionDashboard = () => {
                   <PieChart>
                     <Pie
                       data={[
-                        { name: "Professors", value: 45, fill: "hsl(var(--primary))" },
-                        { name: "Associate Prof", value: 120, fill: "hsl(var(--secondary))" },
-                        { name: "Assistant Prof", value: 155, fill: "hsl(var(--accent))" },
+                        { name: "Professors", value: 45, fill: "#3b82f6" },
+                        { name: "Associate Prof", value: 120, fill: "#8b5cf6" },
+                        { name: "Assistant Prof", value: 155, fill: "#10b981" },
                       ]}
                       cx="50%"
                       cy="50%"
                       outerRadius={60}
                       dataKey="value"
+                      label
                     >
                       {[
-                        { name: "Professors", value: 45, fill: "hsl(var(--primary))" },
-                        { name: "Associate Prof", value: 120, fill: "hsl(var(--secondary))" },
-                        { name: "Assistant Prof", value: 155, fill: "hsl(var(--accent))" },
+                        { name: "Professors", value: 45, fill: "#3b82f6" },
+                        { name: "Associate Prof", value: 120, fill: "#8b5cf6" },
+                        { name: "Assistant Prof", value: 155, fill: "#10b981" },
                       ].map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={entry.fill} />
                       ))}
@@ -1401,8 +1402,8 @@ const InstitutionDashboard = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="faculty" fill="hsl(var(--primary))" name="Faculty Count" />
-                    <Bar dataKey="ratio" fill="hsl(var(--secondary))" name="Student-Faculty Ratio" />
+                    <Bar dataKey="faculty" fill="#3b82f6" name="Faculty Count" />
+                    <Bar dataKey="ratio" fill="#8b5cf6" name="Student-Faculty Ratio" />
                   </BarChart>
                 </ResponsiveContainer>
               </Card>
@@ -2281,9 +2282,9 @@ const InstitutionDashboard = () => {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="yourInstitution" fill="hsl(var(--primary))" name="Your Institution" />
-                  <Bar dataKey="stateAvg" fill="hsl(var(--secondary))" name="State Average" />
-                  <Bar dataKey="nationalAvg" fill="hsl(var(--muted))" name="National Average" />
+                  <Bar dataKey="yourInstitution" fill="#3b82f6" name="Your Institution" />
+                  <Bar dataKey="stateAvg" fill="#8b5cf6" name="State Average" />
+                  <Bar dataKey="nationalAvg" fill="#94a3b8" name="National Average" />
                 </BarChart>
               </ResponsiveContainer>
             </Card>
