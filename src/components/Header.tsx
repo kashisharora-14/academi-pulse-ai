@@ -51,6 +51,15 @@ export const Header = () => {
               />
             </div>
 
+            {/* Ministry of Education Logo */}
+            <div className="flex-shrink-0">
+              <img 
+                src="/ministry-education-logo.png" 
+                alt="Ministry of Education" 
+                className="h-14 md:h-16 w-auto object-contain"
+              />
+            </div>
+
             <div className="min-w-0 flex-1">
               <h1 className="text-sm md:text-lg lg:text-xl font-bold text-slate-800 truncate">
                 National Education Data Platform
