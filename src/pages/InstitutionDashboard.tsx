@@ -31,7 +31,8 @@ import {
   Shield,
   Bell,
   Send,
-  Star
+  Star,
+  Trophy
 } from "lucide-react";
 import { 
   BarChart, 
@@ -2146,6 +2147,189 @@ const InstitutionDashboard = () => {
             </Card>
           </TabsContent>
 
+          <TabsContent value="ratings" className="space-y-6">
+            {/* Institution Performance Rating Overview */}
+            <div className="grid gap-6 md:grid-cols-3 mb-6">
+              <Card className="p-6 text-center bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
+                <div className="text-4xl font-bold text-blue-600 mb-2">3.2</div>
+                <div className="flex justify-center mb-2">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className={`h-5 w-5 text-yellow-500 ${i < 3 ? 'fill-current' : ''}`} />
+                  ))}
+                </div>
+                <div className="text-sm text-blue-700">NAAC Grade</div>
+                <div className="text-xs text-blue-600 mt-1">A+ Accreditation</div>
+              </Card>
+
+              <Card className="p-6 text-center bg-gradient-to-br from-green-50 to-green-100 border-green-200">
+                <div className="text-4xl font-bold text-green-600 mb-2">85</div>
+                <div className="text-sm text-green-700">NIRF Rank</div>
+                <div className="text-xs text-green-600 mt-1">Engineering Category</div>
+                <Badge className="mt-2 bg-green-600 text-white">Top 100</Badge>
+              </Card>
+
+              <Card className="p-6 text-center bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
+                <div className="text-4xl font-bold text-purple-600 mb-2">94%</div>
+                <div className="text-sm text-purple-700">Student Satisfaction</div>
+                <div className="text-xs text-purple-600 mt-1">Based on 4,800+ reviews</div>
+                <Badge className="mt-2 bg-purple-600 text-white">Excellent</Badge>
+              </Card>
+            </div>
+
+            {/* Detailed Rating Analysis */}
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                  <BarChart3 className="h-6 w-6 text-blue-600" />
+                  Parameter-wise Performance
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    { category: "Teaching Quality", rating: 4.2, reviews: 4800, color: "bg-blue-500" },
+                    { category: "Infrastructure", rating: 4.5, reviews: 4800, color: "bg-green-500" },
+                    { category: "Placement Support", rating: 4.4, reviews: 3200, color: "bg-purple-500" },
+                    { category: "Research Facilities", rating: 3.8, reviews: 1200, color: "bg-orange-500" },
+                    { category: "Campus Life", rating: 4.3, reviews: 4500, color: "bg-pink-500" }
+                  ].map((item, index) => (
+                    <div key={index} className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="font-medium">{item.category}</span>
+                        <span className="text-sm text-muted-foreground">{item.rating}/5.0 ({item.reviews} reviews)</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Progress value={item.rating * 20} className="flex-1" />
+                        <div className="flex text-yellow-500">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className={`h-3 w-3 ${i < Math.floor(item.rating) ? 'fill-current' : ''}`} />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                  <Users className="h-6 w-6 text-green-600" />
+                  Recent Feedback
+                </h3>
+                <div className="space-y-4 max-h-[400px] overflow-y-auto">
+                  {[
+                    {
+                      rating: 5,
+                      comment: "Excellent infrastructure and experienced faculty. Placement support is outstanding!",
+                      by: "Alumni - Class of 2023",
+                      date: "March 10, 2024",
+                      category: "Overall Experience"
+                    },
+                    {
+                      rating: 4,
+                      comment: "Great research facilities and industry connections. Would benefit from more industry collaborations.",
+                      by: "Current Student - Final Year",
+                      date: "March 8, 2024",
+                      category: "Research & Innovation"
+                    },
+                    {
+                      rating: 5,
+                      comment: "Well-maintained campus with modern amenities. Sports and cultural activities are well-organized.",
+                      by: "Current Student - 2nd Year",
+                      date: "March 5, 2024",
+                      category: "Campus Facilities"
+                    },
+                    {
+                      rating: 4,
+                      comment: "Faculty are knowledgeable and supportive. Library resources could be expanded further.",
+                      by: "Current Student - 3rd Year",
+                      date: "March 3, 2024",
+                      category: "Academic Quality"
+                    }
+                  ].map((feedback, index) => (
+                    <div key={index} className="p-4 border rounded-lg">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="flex text-yellow-500">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className={`h-4 w-4 ${i < feedback.rating ? 'fill-current' : ''}`} />
+                          ))}
+                        </div>
+                        <Badge variant="outline" className="text-xs">{feedback.category}</Badge>
+                      </div>
+                      <p className="text-sm mb-2">{feedback.comment}</p>
+                      <div className="flex justify-between text-xs text-muted-foreground">
+                        <span>{feedback.by}</span>
+                        <span>{feedback.date}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+
+            {/* Comparative Performance */}
+            <Card className="p-6">
+              <h3 className="text-xl font-bold mb-6">Comparative Performance Analysis</h3>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={[
+                  { name: "Teaching", yourInstitution: 72.5, stateAvg: 65.2, nationalAvg: 62.8 },
+                  { name: "Research", yourInstitution: 64.2, stateAvg: 58.5, nationalAvg: 55.3 },
+                  { name: "Placements", yourInstitution: 75.8, stateAvg: 68.3, nationalAvg: 64.5 },
+                  { name: "Infrastructure", yourInstitution: 68.5, stateAvg: 62.1, nationalAvg: 58.9 },
+                  { name: "Perception", yourInstitution: 69.1, stateAvg: 63.7, nationalAvg: 61.2 }
+                ]}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="yourInstitution" fill="hsl(var(--primary))" name="Your Institution" />
+                  <Bar dataKey="stateAvg" fill="hsl(var(--secondary))" name="State Average" />
+                  <Bar dataKey="nationalAvg" fill="hsl(var(--muted))" name="National Average" />
+                </BarChart>
+              </ResponsiveContainer>
+            </Card>
+
+            {/* Improvement Areas */}
+            <div className="grid gap-6 lg:grid-cols-3">
+              <Card className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-green-200">
+                <h4 className="font-bold text-green-800 mb-3 flex items-center gap-2">
+                  <Trophy className="h-5 w-5" />
+                  Strengths
+                </h4>
+                <ul className="space-y-2 text-sm text-green-700">
+                  <li>• Excellent placement record (94%)</li>
+                  <li>• Strong alumni network</li>
+                  <li>• Modern infrastructure & labs</li>
+                  <li>• Industry collaborations</li>
+                </ul>
+              </Card>
+
+              <Card className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
+                <h4 className="font-bold text-blue-800 mb-3 flex items-center gap-2">
+                  <Target className="h-5 w-5" />
+                  Growth Opportunities
+                </h4>
+                <ul className="space-y-2 text-sm text-blue-700">
+                  <li>• Expand research publications</li>
+                  <li>• Increase patent filings</li>
+                  <li>• Enhance international collaborations</li>
+                  <li>• Improve student-faculty ratio</li>
+                </ul>
+              </Card>
+
+              <Card className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
+                <h4 className="font-bold text-purple-800 mb-3 flex items-center gap-2">
+                  <Award className="h-5 w-5" />
+                  Recognition
+                </h4>
+                <ul className="space-y-2 text-sm text-purple-700">
+                  <li>• NAAC A+ Accreditation</li>
+                  <li>• NBA accredited programs</li>
+                  <li>• Top 100 in NIRF rankings</li>
+                  <li>• Excellence in Engineering Education</li>
+                </ul>
+              </Card>
+            </div>
+          </TabsContent>
 
           <TabsContent value="analytics" className="space-y-6">
             {/* NIRF Analytics Dashboard */}
