@@ -6,6 +6,36 @@ import { ChevronLeft, ChevronRight, Star, Users, BookOpen, Trophy } from 'lucide
 const slides = [
   {
     id: 1,
+    title: "स्वच्छोत्सव - स्वच्छता ही सेवा 2025",
+    subtitle: "Swachh Hotsav - Swachhata Hi Seva 2025",
+    content: "17 सितंबर से 2 अक्टूबर 2025 तक देशभर में स्वच्छता अभियान। स्कूली छात्र स्वच्छ भारत के लिए एकजुट।",
+    englishContent: "School students across the nation unite for a cleaner India from 17th September to 2nd October 2025.",
+    imageUrl: "/swachh-hotsav.png",
+    bgGradient: "from-teal-50 via-white to-green-50",
+    badge: "PM Modi Initiative"
+  },
+  {
+    id: 2,
+    title: "विकसित भारत बिल्डथॉन 2025",
+    subtitle: "Viksit Bharat Buildathon 2025",
+    content: "आत्मनिर्भर भारत, स्वदेशी, स्थानीय के लिए मुखर, समृद्ध भारत। छात्रों को आत्मनिर्भर भारत के लिए समाधान बनाने का अवसर।",
+    englishContent: "A nationwide innovation movement empowering school students to build solutions for a self-reliant India.",
+    imageUrl: "/viksit-bharat.png",
+    bgGradient: "from-orange-50 via-white to-blue-50",
+    badge: "Innovation Challenge"
+  },
+  {
+    id: 3,
+    title: "परीक्षा पे चर्चा 2025",
+    subtitle: "Pariksha Pe Charcha 2025",
+    content: "प्रधानमंत्री श्री नरेंद्र मोदी जी द्वारा छात्रों, शिक्षकों और अभिभावकों को परीक्षा तनाव प्रबंधन पर मार्गदर्शन।",
+    englishContent: "PM Modi to guide students, teachers, and parents on exam stress management.",
+    imageUrl: "/pariksha-charcha.png",
+    bgGradient: "from-red-50 via-white to-orange-50",
+    badge: "PM Modi Interaction"
+  },
+  {
+    id: 4,
     title: "राष्ट्रीय छात्रवृत्ति पोर्टल (NSP) 2024-25",
     subtitle: "National Scholarship Portal - Applications Open",
     content: "प्री-मैट्रिक और पोस्ट-मैट्रिक छात्रवृत्ति के लिए आवेदन आमंत्रित। SC/ST/OBC/अल्पसंख्यक छात्रों के लिए ₹75,000 तक की सहायता।",
@@ -15,7 +45,7 @@ const slides = [
     badge: "Scholarship Alert"
   },
   {
-    id: 2,
+    id: 5,
     title: "प्रधानमंत्री श्री नरेंद्र मोदी का संदेश",
     subtitle: "Prime Minister Shri Narendra Modi's Message",
     content: "शिक्षा ही वह शक्ति है जो राष्ट्र को आगे बढ़ाती है। डिजिटल इंडिया के तहत हमारा लक्ष्य है कि हर छात्र को गुणवत्तापूर्ण शिक्षा मिले।",
@@ -25,7 +55,7 @@ const slides = [
     badge: "PM's Vision"
   },
   {
-    id: 3,
+    id: 6,
     title: "INSPIRE छात्रवृत्ति - अंतिम तिथि 15 मई",
     subtitle: "INSPIRE Scholarship - Last Date May 15",
     content: "विज्ञान और प्रौद्योगिकी में उत्कृष्टता के लिए ₹80,000 प्रति वर्ष। कक्षा 12 में शीर्ष 1% छात्र पात्र हैं।",
@@ -35,7 +65,7 @@ const slides = [
     badge: "Scholarship News"
   },
   {
-    id: 4,
+    id: 7,
     title: "75वां स्वतंत्रता दिवस - आज़ादी का अमृत महोत्सव",
     subtitle: "75th Independence Day - Azadi Ka Amrit Mahotsav",
     content: "शिक्षा के क्षेत्र में भारत की उपलब्धियों का जश्न। 50,000+ संस्थान, 4.5 करोड़ छात्र - एक डिजिटल प्लेटफॉर्म पर।",
@@ -45,7 +75,7 @@ const slides = [
     badge: "75 Years Special"
   },
   {
-    id: 5,
+    id: 8,
     title: "NEP 2020 - शिक्षा नीति में बदलाव",
     subtitle: "NEP 2020 - Transforming Education Policy",
     content: "5+3+3+4 पाठ्यक्रम संरचना लागू। कौशल विकास, व्यावसायिक शिक्षा और समग्र विकास पर जोर।",
@@ -55,7 +85,7 @@ const slides = [
     badge: "Policy Update"
   },
   {
-    id: 6,
+    id: 9,
     title: "डिजिटल डिग्री - ब्लॉकचेन सत्यापन",
     subtitle: "Digital Degrees - Blockchain Verification",
     content: "अब डिजिटल प्रमाणपत्र DigiLocker में उपलब्ध। तत्काल सत्यापन, जीवन भर वैध - कागज रहित भारत की ओर।",
@@ -152,45 +182,58 @@ export const GovernmentSlideshow = () => {
 
         {/* Main Content */}
       <div className={`relative bg-gradient-to-br ${current.bgGradient} rounded-b-lg p-6 md:p-8 lg:p-12 min-h-[280px] md:min-h-[300px] flex items-center justify-center`}>
-          {/* Badge */}
-          <div className="flex justify-between items-start mb-4">
-            <Badge className="bg-blue-800 text-white px-4 py-2 text-sm font-semibold">
-              {current.badge}
-            </Badge>
-            <div className="text-4xl">{current.image}</div>
-          </div>
-
-          {/* Content */}
-          <div className="space-y-4 max-w-4xl">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800 leading-tight">
-              {current.title}
-            </h2>
-            <h3 className="text-lg md:text-xl text-blue-700 font-semibold">
-              {current.subtitle}
-            </h3>
-
-            <div className="space-y-3">
-              <p className="text-base md:text-lg text-slate-700 leading-relaxed font-medium">
-                {current.content}
-              </p>
-              <p className="text-sm md:text-base text-slate-600 leading-relaxed italic">
-                {current.englishContent}
-              </p>
+          {/* Show image banner if available, otherwise show text content */}
+          {current.imageUrl ? (
+            <div className="flex items-center justify-center">
+              <img 
+                src={current.imageUrl} 
+                alt={current.title}
+                className="w-full max-w-5xl h-auto object-contain rounded-lg shadow-lg"
+              />
             </div>
+          ) : (
+            <>
+              {/* Badge */}
+              <div className="flex justify-between items-start mb-4">
+                <Badge className="bg-blue-800 text-white px-4 py-2 text-sm font-semibold">
+                  {current.badge}
+                </Badge>
+                <div className="text-4xl">{current.image}</div>
+              </div>
 
-            {/* Ministry Information */}
-            <div className="flex flex-wrap gap-2 pt-4">
-              <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200">
-                🏛️ Ministry of Education
-              </Badge>
-              <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
-                🇮🇳 Government of India
-              </Badge>
-              <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
-                💻 Digital India
-              </Badge>
-            </div>
-          </div>
+              {/* Content */}
+              <div className="space-y-4 max-w-4xl">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800 leading-tight">
+                  {current.title}
+                </h2>
+                <h3 className="text-lg md:text-xl text-blue-700 font-semibold">
+                  {current.subtitle}
+                </h3>
+
+                <div className="space-y-3">
+                  <p className="text-base md:text-lg text-slate-700 leading-relaxed font-medium">
+                    {current.content}
+                  </p>
+                  <p className="text-sm md:text-base text-slate-600 leading-relaxed italic">
+                    {current.englishContent}
+                  </p>
+                </div>
+
+                {/* Ministry Information */}
+                <div className="flex flex-wrap gap-2 pt-4">
+                  <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200">
+                    🏛️ Ministry of Education
+                  </Badge>
+                  <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
+                    🇮🇳 Government of India
+                  </Badge>
+                  <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
+                    💻 Digital India
+                  </Badge>
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         {/* Navigation Arrows */}
