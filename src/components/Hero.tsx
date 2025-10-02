@@ -53,67 +53,13 @@ export const Hero = () => {
       
       <div className="container mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
-          {/* Government Badge with Azadi Ka Amrit Mahotsav Logo */}
+          {/* Government Badge */}
           <div className="flex flex-col items-center mb-4 md:mb-6">
             <div className="flex flex-wrap justify-center items-center gap-3 mb-4">
-              {/* Azadi Ka Amrit Mahotsav Logo */}
-              <div className="azadi-logo-hero bg-white rounded-lg p-3 shadow-md border-2 border-orange-500">
-                <div className="flex flex-col items-center">
-                  <div className="relative w-24 h-16 md:w-32 md:h-20">
-                    {/* 75 with Ashoka Chakra */}
-                    <div className="absolute left-0 top-0 flex items-center">
-                      <span className="text-4xl md:text-5xl font-bold" style={{color: '#B7975A'}}>75</span>
-                      <div className="relative ml-1">
-                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-blue-800 flex items-center justify-center bg-white">
-                          {/* Ashoka Chakra */}
-                          <div className="w-8 h-8 md:w-10 md:h-10 relative">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="w-2 h-2 bg-blue-800 rounded-full"></div>
-                            </div>
-                            {Array.from({length: 24}).map((_, i) => (
-                              <div 
-                                key={i}
-                                className="absolute w-0.5 h-4 md:h-5 bg-blue-800"
-                                style={{
-                                  left: '50%',
-                                  top: '50%',
-                                  transform: `rotate(${i * 15}deg) translateY(-50%)`,
-                                  transformOrigin: 'center'
-                                }}
-                              />
-                            ))}
-                          </div>
-                        </div>
-                        {/* Tricolor flag wave */}
-                        <div className="absolute -right-12 top-1/2 transform -translate-y-1/2 w-20 h-8">
-                          <div className="h-full flex flex-col">
-                            <div className="h-1/3 bg-orange-500 rounded-r"></div>
-                            <div className="h-1/3 bg-white"></div>
-                            <div className="h-1/3 bg-green-600 rounded-r"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-center mt-1">
-                    <div className="text-sm md:text-base font-bold" style={{color: '#B7975A'}}>Azadi Ka</div>
-                    <div className="text-base md:text-lg font-bold" style={{color: '#B7975A'}}>Amrit Mahotsav</div>
-                  </div>
-                </div>
-              </div>
-              
               <Badge className="bg-blue-800 text-white px-4 md:px-6 py-1.5 md:py-2 text-xs md:text-sm font-semibold">
                 <Shield className="w-3 h-3 md:w-4 md:h-4 mr-1.5 md:mr-2" />
                 Government of India Initiative
               </Badge>
-            </div>
-            
-            {/* 75th Independence Celebration Banner */}
-            <div className="bg-gradient-to-r from-orange-100 via-white to-green-100 border-2 border-blue-200 rounded-lg px-6 py-3 text-center shadow-md">
-              <div className="flex items-center justify-center gap-3 text-sm md:text-base font-semibold text-blue-800">
-                <span className="text-2xl">🇮🇳</span>
-                <span>आज़ादी का अमृत महोत्सव | Celebrating 75 Years of Independence</span>
-              </div>
             </div>
           </div>
           

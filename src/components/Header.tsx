@@ -42,20 +42,13 @@ export const Header = () => {
       <div className="container mx-auto px-4 py-3 md:py-4">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center space-x-3 md:space-x-4 flex-1 min-w-0">
-            {/* 75th Independence Day Logo - Simplified */}
+            {/* Azadi Ka Amrit Mahotsav Logo */}
             <div className="flex-shrink-0">
-              <div className="relative">
-                <div className="w-14 h-14 md:w-16 md:h-16 border-2 border-orange-500 rounded-lg p-1 bg-white">
-                  <div className="w-full h-full flex flex-col items-center justify-center text-center">
-                    <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-500 to-green-600 bg-clip-text text-transparent">75</span>
-                    <div className="flex items-center gap-1">
-                      <div className="w-3 h-2 bg-orange-500 rounded-sm"></div>
-                      <div className="w-3 h-2 bg-white border border-gray-300 rounded-sm"></div>
-                      <div className="w-3 h-2 bg-green-600 rounded-sm"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <img 
+                src="/azadi-logo.png" 
+                alt="Azadi Ka Amrit Mahotsav" 
+                className="h-14 md:h-16 w-auto object-contain"
+              />
             </div>
 
             <div className="min-w-0 flex-1">
