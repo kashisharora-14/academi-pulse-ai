@@ -21,8 +21,8 @@ const slides = [
   {
     id: 3,
     title: "परीक्षा पे चर्चा 2025",
-    subtitle: "Pariksha Pe Charcha 2025",
-    imageUrl: "/pariksha-charcha.png",
+    subtitle: "PM Modi To Guide Students, Teachers, And Parents On Exam Stress Management",
+    imageUrl: "/pariksha-charcha-2025.png",
     bgGradient: "from-red-50 via-white to-orange-50"
   },
   {
