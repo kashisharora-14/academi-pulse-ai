@@ -60,8 +60,11 @@ const semesterGrades = [
 ];
 
 const nearbyInstitutions = [
-  { id: "1", name: "Central Library", position: [28.5449, 77.1925] as [number, number], data: "Open 24/7" },
-  { id: "2", name: "Sports Complex", position: [28.5469, 77.1945] as [number, number], data: "Open till 10 PM" },
+  { id: "1", name: "Central Library", position: [30.7677, 76.7794] as [number, number], data: "Open 24/7" },
+  { id: "2", name: "Cafeteria", position: [30.7690, 76.7780] as [number, number], data: "Open till 11 PM" },
+  { id: "3", name: "Sports Complex", position: [30.7700, 76.7810] as [number, number], data: "Open till 10 PM" },
+  { id: "4", name: "Medical Center", position: [30.7660, 76.7770] as [number, number], data: "Open 24/7" },
+  { id: "5", name: "Computer Science Dept.", position: [30.7685, 76.7790] as [number, number], data: "Open till 9 PM" },
 ];
 
 const StudentDashboard = () => {
@@ -646,7 +649,7 @@ const StudentDashboard = () => {
             <div className="grid gap-6 lg:grid-cols-2 mb-6">
               <Card className="p-6">
                 <h3 className="text-xl font-bold mb-4">Campus Facilities</h3>
-                <MapView locations={nearbyInstitutions} center={[28.5449, 77.1925]} zoom={14} />
+                <MapView locations={nearbyInstitutions} center={[30.7677, 76.7794]} zoom={15} />
               </Card>
 
               <Chatbot />
@@ -1338,8 +1341,9 @@ const StudentDashboard = () => {
           <TabsContent value="map" className="space-y-6">
             <div className="grid gap-6 lg:grid-cols-2">
               <Card className="p-6">
-                <h3 className="text-xl font-bold mb-4">Campus Navigation</h3>
-                <MapView locations={nearbyInstitutions} center={[28.5449, 77.1925]} zoom={14} />
+                <h3 className="text-xl font-bold mb-4">Panjab University - Campus Navigation</h3>
+                <p className="text-sm text-muted-foreground mb-4">Explore campus facilities and their real-time availability</p>
+                <MapView locations={nearbyInstitutions} center={[30.7677, 76.7794]} zoom={15} />
               </Card>
               <Card className="p-6">
                 <h3 className="text-xl font-bold mb-4">Campus Services</h3>
