@@ -94,35 +94,23 @@ export const Header = () => {
 
       {/* Government Initiative Banner - Below Main Header */}
       <div className="bg-gradient-to-r from-orange-50 via-white to-green-50 border-t border-gray-200">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between gap-4">
-            {/* Left: PM Photo */}
-            <div className="flex items-center gap-3 flex-shrink-0">
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-blue-800 overflow-hidden bg-gray-100">
-                {/* Placeholder for Modi Ji's photo - replace src with actual image */}
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Narendra_Modi_portrait_2022.jpg/220px-Narendra_Modi_portrait_2022.jpg" 
-                  alt="Hon'ble Prime Minister" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="hidden md:block">
-                <p className="text-sm font-bold text-blue-800">Hon'ble Prime Minister</p>
-                <p className="text-xs text-gray-600">Shri Narendra Modi</p>
-              </div>
-            </div>
-
-            {/* Center: Government Initiative Badge */}
-            <div className="flex-1 flex justify-center">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-center gap-4">
+            {/* 75 Years Independence Celebration */}
+            <div className="flex items-center justify-center gap-3 flex-wrap">
               <Badge className="bg-blue-800 text-white px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 shadow-md">
                 <Shield className="w-4 h-4" />
                 <span className="hidden sm:inline">Government of India Initiative | </span>भारत सरकार की पहल
               </Badge>
-            </div>
-
-            {/* Right: Quick Links */}
-            <div className="hidden lg:flex items-center gap-2 flex-shrink-0">
-              <Button variant="outline" size="sm" className="text-xs border-blue-600 text-blue-800 hover:bg-blue-50">
+              
+              <div className="bg-gradient-to-r from-orange-100 via-white to-green-100 border-2 border-blue-200 rounded-full px-4 py-2 shadow-md">
+                <div className="flex items-center gap-2 text-xs md:text-sm font-semibold text-blue-800">
+                  <span className="text-lg">🇮🇳</span>
+                  <span>आज़ादी का अमृत महोत्सव | Celebrating 75 Years of Independence</span>
+                </div>
+              </div>
+              
+              <Button variant="outline" size="sm" className="hidden lg:flex text-xs border-blue-600 text-blue-800 hover:bg-blue-50">
                 <Globe className="w-3 h-3 mr-1" />
                 Digital India
               </Button>
