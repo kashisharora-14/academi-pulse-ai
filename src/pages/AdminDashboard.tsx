@@ -40,7 +40,9 @@ import {
   GraduationCap,
   Send,
   Globe,
-  UserCheck
+  UserCheck,
+  Star,
+  Trophy
 } from "lucide-react";
 import {
   LineChart,
@@ -440,7 +442,7 @@ const AdminDashboard = () => {
         <Tabs defaultValue="overview" className="space-y-6">
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
-            <TabsList className="gov-tabs-list grid w-full grid-cols-13">
+            <TabsList className="gov-tabs-list grid w-full grid-cols-14">
               <TabsTrigger value="overview" className="gov-tab-trigger">
                 <Building2 className="h-4 w-4 enhanced-tab-icon" />
                 Overview
@@ -474,8 +476,12 @@ const AdminDashboard = () => {
                 Security
               </TabsTrigger>
               <TabsTrigger value="authority-requests" className="gov-tab-trigger">
-                <Users className="h-4 w-4 enhanced-tab-icon" />
+                <Shield className="h-4 w-4 enhanced-tab-icon" />
                 Authority
+              </TabsTrigger>
+              <TabsTrigger value="ratings" className="gov-tab-trigger">
+                <Star className="h-4 w-4 enhanced-tab-icon" />
+                Ratings
               </TabsTrigger>
               <TabsTrigger value="map" className="gov-tab-trigger">
                 <MapPin className="h-4 w-4 enhanced-tab-icon" />
@@ -530,6 +536,14 @@ const AdminDashboard = () => {
               <TabsTrigger value="security" className="enhanced-mobile-tab">
                 <Shield className="enhanced-mobile-tab-icon" />
                 <span>Security</span>
+              </TabsTrigger>
+              <TabsTrigger value="authority-requests" className="enhanced-mobile-tab">
+                <Shield className="enhanced-mobile-tab-icon" />
+                <span>Authority</span>
+              </TabsTrigger>
+              <TabsTrigger value="ratings" className="enhanced-mobile-tab">
+                <Star className="enhanced-mobile-tab-icon" />
+                <span>Ratings</span>
               </TabsTrigger>
               <TabsTrigger value="map" className="enhanced-mobile-tab">
                 <MapPin className="enhanced-mobile-tab-icon" />
