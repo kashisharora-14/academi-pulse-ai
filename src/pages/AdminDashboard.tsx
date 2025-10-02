@@ -38,7 +38,9 @@ import {
   Bell,
   Shield,
   GraduationCap,
-  Send
+  Send,
+  Globe,
+  UserCheck
 } from "lucide-react";
 import {
   LineChart,
@@ -1559,7 +1561,7 @@ const AdminDashboard = () => {
               {/* Active Requests */}
               <div className="space-y-4 mb-6">
                 <h3 className="text-lg font-bold">Active Authority Requests</h3>
-                
+
                 {/* Request 1 - Pending Approval */}
                 <div className="border rounded-lg p-4 bg-yellow-50/50">
                   <div className="flex items-start justify-between mb-4">
