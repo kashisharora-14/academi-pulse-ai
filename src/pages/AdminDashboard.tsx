@@ -86,13 +86,13 @@ const performanceData = [
   { state: "West Bengal", score: 75, institutions: 650 },
 ];
 
-const COLORS = ["hsl(var(--primary))", "hsl(var(--accent))", "hsl(var(--secondary))", "hsl(var(--success))"];
+const COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6'];
 
 const institutionLocations = [
-  { 
-    id: "1", 
-    name: "IIT Delhi", 
-    position: [28.5449, 77.1925] as [number, number], 
+  {
+    id: "1",
+    name: "IIT Delhi",
+    position: [28.5449, 77.1925] as [number, number],
     data: "NIRF Rank: 2, Score: 85.4",
     performance: 'excellent' as const,
     city: "New Delhi",
@@ -103,10 +103,10 @@ const institutionLocations = [
     research: 88.5,
     dropout: 2.1
   },
-  { 
-    id: "2", 
-    name: "IIT Mumbai", 
-    position: [19.1334, 72.9133] as [number, number], 
+  {
+    id: "2",
+    name: "IIT Mumbai",
+    position: [19.1334, 72.9133] as [number, number],
     data: "NIRF Rank: 3, Score: 84.2",
     performance: 'excellent' as const,
     city: "Mumbai",
@@ -117,10 +117,10 @@ const institutionLocations = [
     research: 87.3,
     dropout: 2.5
   },
-  { 
-    id: "3", 
-    name: "IIT Madras", 
-    position: [12.9916, 80.2336] as [number, number], 
+  {
+    id: "3",
+    name: "IIT Madras",
+    position: [12.9916, 80.2336] as [number, number],
     data: "NIRF Rank: 1, Score: 88.7",
     performance: 'excellent' as const,
     city: "Chennai",
@@ -131,10 +131,10 @@ const institutionLocations = [
     research: 92.1,
     dropout: 1.8
   },
-  { 
-    id: "4", 
-    name: "IIT Kanpur", 
-    position: [26.5123, 80.2329] as [number, number], 
+  {
+    id: "4",
+    name: "IIT Kanpur",
+    position: [26.5123, 80.2329] as [number, number],
     data: "NIRF Rank: 4, Score: 83.1",
     performance: 'excellent' as const,
     city: "Kanpur",
@@ -145,10 +145,10 @@ const institutionLocations = [
     research: 85.9,
     dropout: 2.3
   },
-  { 
-    id: "5", 
-    name: "AIIMS Delhi", 
-    position: [28.5672, 77.2100] as [number, number], 
+  {
+    id: "5",
+    name: "AIIMS Delhi",
+    position: [28.5672, 77.2100] as [number, number],
     data: "Medical Rank: 1, Score: 90.2",
     performance: 'excellent' as const,
     city: "New Delhi",
@@ -159,10 +159,10 @@ const institutionLocations = [
     research: 91.2,
     dropout: 1.2
   },
-  { 
-    id: "6", 
-    name: "Delhi University", 
-    position: [28.6863, 77.2059] as [number, number], 
+  {
+    id: "6",
+    name: "Delhi University",
+    position: [28.6863, 77.2059] as [number, number],
     data: "NIRF Rank: 11, Score: 75.3",
     performance: 'good' as const,
     city: "New Delhi",
@@ -173,10 +173,10 @@ const institutionLocations = [
     research: 72.5,
     dropout: 8.5
   },
-  { 
-    id: "7", 
-    name: "Banaras Hindu University", 
-    position: [25.2677, 82.9913] as [number, number], 
+  {
+    id: "7",
+    name: "Banaras Hindu University",
+    position: [25.2677, 82.9913] as [number, number],
     data: "NIRF Rank: 15, Score: 70.8",
     performance: 'good' as const,
     city: "Varanasi",
@@ -187,10 +187,10 @@ const institutionLocations = [
     research: 68.9,
     dropout: 9.2
   },
-  { 
-    id: "8", 
-    name: "Anna University", 
-    position: [13.0115, 80.2337] as [number, number], 
+  {
+    id: "8",
+    name: "Anna University",
+    position: [13.0115, 80.2337] as [number, number],
     data: "NIRF Rank: 18, Score: 68.5",
     performance: 'average' as const,
     city: "Chennai",
@@ -201,10 +201,10 @@ const institutionLocations = [
     research: 65.3,
     dropout: 11.5
   },
-  { 
-    id: "9", 
-    name: "Jadavpur University", 
-    position: [22.4993, 88.3717] as [number, number], 
+  {
+    id: "9",
+    name: "Jadavpur University",
+    position: [22.4993, 88.3717] as [number, number],
     data: "NIRF Rank: 12, Score: 74.2",
     performance: 'good' as const,
     city: "Kolkata",
@@ -215,10 +215,10 @@ const institutionLocations = [
     research: 71.8,
     dropout: 7.8
   },
-  { 
-    id: "10", 
-    name: "Pune Engineering College", 
-    position: [18.5304, 73.8567] as [number, number], 
+  {
+    id: "10",
+    name: "Pune Engineering College",
+    position: [18.5304, 73.8567] as [number, number],
     data: "NIRF Rank: 45, Score: 58.3",
     performance: 'needs-attention' as const,
     city: "Pune",
@@ -229,10 +229,10 @@ const institutionLocations = [
     research: 52.4,
     dropout: 15.3
   },
-  { 
-    id: "11", 
-    name: "Rajasthan Technical University", 
-    position: [26.8470, 75.8060] as [number, number], 
+  {
+    id: "11",
+    name: "Rajasthan Technical University",
+    position: [26.8470, 75.8060] as [number, number],
     data: "NIRF Rank: 78, Score: 48.5",
     performance: 'needs-attention' as const,
     city: "Kota",
@@ -243,10 +243,10 @@ const institutionLocations = [
     research: 48.7,
     dropout: 18.5
   },
-  { 
-    id: "12", 
-    name: "Bihar Engineering College", 
-    position: [25.5941, 85.1376] as [number, number], 
+  {
+    id: "12",
+    name: "Bihar Engineering College",
+    position: [25.5941, 85.1376] as [number, number],
     data: "NIRF Rank: 95, Score: 42.8",
     performance: 'critical' as const,
     city: "Patna",
@@ -257,10 +257,10 @@ const institutionLocations = [
     research: 38.5,
     dropout: 24.7
   },
-  { 
-    id: "13", 
-    name: "Uttar Pradesh State University", 
-    position: [26.8467, 80.9462] as [number, number], 
+  {
+    id: "13",
+    name: "Uttar Pradesh State University",
+    position: [26.8467, 80.9462] as [number, number],
     data: "NIRF Rank: 112, Score: 38.2",
     performance: 'critical' as const,
     city: "Lucknow",
@@ -271,10 +271,10 @@ const institutionLocations = [
     research: 35.1,
     dropout: 28.3
   },
-  { 
-    id: "14", 
-    name: "NIT Trichy", 
-    position: [10.7596, 78.8149] as [number, number], 
+  {
+    id: "14",
+    name: "NIT Trichy",
+    position: [10.7596, 78.8149] as [number, number],
     data: "NIRF Rank: 8, Score: 78.9",
     performance: 'excellent' as const,
     city: "Tiruchirappalli",
@@ -285,10 +285,10 @@ const institutionLocations = [
     research: 82.3,
     dropout: 3.2
   },
-  { 
-    id: "15", 
-    name: "NIT Surathkal", 
-    position: [13.0127, 74.7951] as [number, number], 
+  {
+    id: "15",
+    name: "NIT Surathkal",
+    position: [13.0127, 74.7951] as [number, number],
     data: "NIRF Rank: 13, Score: 72.5",
     performance: 'good' as const,
     city: "Mangalore",
@@ -299,10 +299,10 @@ const institutionLocations = [
     research: 76.4,
     dropout: 4.1
   },
-  { 
-    id: "16", 
-    name: "Hyderabad Central University", 
-    position: [17.4569, 78.3309] as [number, number], 
+  {
+    id: "16",
+    name: "Hyderabad Central University",
+    position: [17.4569, 78.3309] as [number, number],
     data: "NIRF Rank: 21, Score: 66.8",
     performance: 'average' as const,
     city: "Hyderabad",
@@ -313,10 +313,10 @@ const institutionLocations = [
     research: 64.2,
     dropout: 10.8
   },
-  { 
-    id: "17", 
-    name: "Gujarat University", 
-    position: [23.0332, 72.5167] as [number, number], 
+  {
+    id: "17",
+    name: "Gujarat University",
+    position: [23.0332, 72.5167] as [number, number],
     data: "NIRF Rank: 35, Score: 61.2",
     performance: 'average' as const,
     city: "Ahmedabad",
@@ -327,10 +327,10 @@ const institutionLocations = [
     research: 58.9,
     dropout: 13.2
   },
-  { 
-    id: "18", 
-    name: "Chandigarh University", 
-    position: [30.7677, 76.7794] as [number, number], 
+  {
+    id: "18",
+    name: "Chandigarh University",
+    position: [30.7677, 76.7794] as [number, number],
     data: "NIRF Rank: 42, Score: 59.5",
     performance: 'average' as const,
     city: "Chandigarh",
@@ -341,10 +341,10 @@ const institutionLocations = [
     research: 55.3,
     dropout: 12.5
   },
-  { 
-    id: "19", 
-    name: "Odisha Engineering Institute", 
-    position: [20.2961, 85.8245] as [number, number], 
+  {
+    id: "19",
+    name: "Odisha Engineering Institute",
+    position: [20.2961, 85.8245] as [number, number],
     data: "NIRF Rank: 88, Score: 45.3",
     performance: 'critical' as const,
     city: "Bhubaneswar",
@@ -355,10 +355,10 @@ const institutionLocations = [
     research: 41.8,
     dropout: 22.1
   },
-  { 
-    id: "20", 
-    name: "Kerala State University", 
-    position: [8.5241, 76.9366] as [number, number], 
+  {
+    id: "20",
+    name: "Kerala State University",
+    position: [8.5241, 76.9366] as [number, number],
     data: "NIRF Rank: 28, Score: 63.7",
     performance: 'good' as const,
     city: "Thiruvananthapuram",
@@ -817,13 +817,13 @@ const AdminDashboard = () => {
                       cx="50%"
                       cy="50%"
                       labelLine={false}
-                      label={(entry) => `${entry.name} (${entry.value}%)`}
-                      outerRadius={100}
+                      label={({ name, percent }) => `${name} (${(percent * 100).toFixed(0)}%)`}
+                      outerRadius={80}
                       fill="#8884d8"
                       dataKey="value"
                     >
                       {schemeData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        <Cell key={`cell-${index}`} fill={['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6'][index % 5]} />
                       ))}
                     </Pie>
                     <Tooltip />
