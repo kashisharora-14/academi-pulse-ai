@@ -60,11 +60,46 @@ const semesterGrades = [
 ];
 
 const nearbyInstitutions = [
-  { id: "1", name: "Central Library", position: [30.7677, 76.7794] as [number, number], data: "Open 24/7" },
-  { id: "2", name: "Cafeteria", position: [30.7690, 76.7780] as [number, number], data: "Open till 11 PM" },
-  { id: "3", name: "Sports Complex", position: [30.7700, 76.7810] as [number, number], data: "Open till 10 PM" },
-  { id: "4", name: "Medical Center", position: [30.7660, 76.7770] as [number, number], data: "Open 24/7" },
-  { id: "5", name: "Computer Science Dept.", position: [30.7685, 76.7790] as [number, number], data: "Open till 9 PM" },
+  { 
+    id: "1", 
+    name: "Central Library", 
+    position: [30.7677, 76.7794] as [number, number], 
+    data: "📚 Open 24/7 • Study halls, Digital resources, Research section",
+    city: "Chandigarh",
+    type: "Library"
+  },
+  { 
+    id: "2", 
+    name: "Cafeteria", 
+    position: [30.7690, 76.7780] as [number, number], 
+    data: "🍽️ Open: 7 AM - 11 PM • Breakfast, Lunch, Dinner available",
+    city: "Chandigarh",
+    type: "Food Court"
+  },
+  { 
+    id: "3", 
+    name: "Sports Complex", 
+    position: [30.7700, 76.7810] as [number, number], 
+    data: "🏃 Open: 6 AM - 10 PM • Basketball, Cricket, Gym, Swimming pool",
+    city: "Chandigarh",
+    type: "Sports"
+  },
+  { 
+    id: "4", 
+    name: "Medical Center", 
+    position: [30.7660, 76.7770] as [number, number], 
+    data: "🏥 Open 24/7 • Emergency services, General consultation, Pharmacy",
+    city: "Chandigarh",
+    type: "Healthcare"
+  },
+  { 
+    id: "5", 
+    name: "Computer Science Dept.", 
+    position: [30.7685, 76.7790] as [number, number], 
+    data: "💻 Open: 8 AM - 9 PM • Labs, Faculty offices, Project rooms",
+    city: "Chandigarh",
+    type: "Department"
+  },
 ];
 
 const StudentDashboard = () => {
