@@ -370,18 +370,29 @@
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   border: 1px solid #cbd5e1;
   border-radius: 12px;
-  padding: 6px;
+  padding: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(10px);
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  scrollbar-width: thin;
+  scrollbar-color: #94a3b8 #e2e8f0;
+  gap: 3px;
 }
 
 .enhanced-tabs-list::-webkit-scrollbar {
-  display: none;
+  height: 6px;
+}
+
+.enhanced-tabs-list::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+.enhanced-tabs-list::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 10px;
 }
 
 .enhanced-tab-trigger {
@@ -390,17 +401,18 @@
   border-radius: 8px;
   color: #64748b;
   font-weight: 500;
-  padding: 10px 14px;
+  padding: 8px 12px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  min-height: 44px;
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   white-space: nowrap;
   flex-shrink: 0;
+  font-size: 0.875rem;
 }
 
 .enhanced-tab-trigger:hover {
@@ -448,9 +460,27 @@
   background: linear-gradient(135deg, #fef3c7 0%, #f3e8ff 50%, #dcfce7 100%);
   border: 2px solid #d97706;
   border-radius: 16px;
-  padding: 8px;
+  padding: 6px;
   box-shadow: 0 4px 16px rgba(217, 119, 6, 0.15);
   position: relative;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #d97706 transparent;
+}
+
+.gov-tabs-list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.gov-tabs-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.gov-tabs-list::-webkit-scrollbar-thumb {
+  background: #d97706;
+  border-radius: 10px;
 }
 
 .gov-tabs-list::before {
@@ -471,13 +501,19 @@
   border-radius: 10px;
   color: #374151;
   font-weight: 600;
-  padding: 14px 18px;
+  padding: 10px 14px;
   transition: all 0.3s ease;
   position: relative;
   backdrop-filter: blur(8px);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 0.875rem;
+  letter-spacing: 0.3px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 42px;
 }
 
 .gov-tab-trigger:hover {
