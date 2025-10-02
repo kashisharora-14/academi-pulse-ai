@@ -1992,6 +1992,266 @@ const TeacherDashboard = () => {
                   </p>
                 </div>
               </Card>
+
+              {/* Request Information from Higher Authorities */}
+              <Card className="p-6 mt-6 border-2 border-orange-200">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold flex items-center gap-2">
+                      <TrendingUp className="h-6 w-6 text-orange-600" />
+                      Request Information from Higher Authorities
+                    </h2>
+                    <p className="text-muted-foreground text-sm mt-1">
+                      Submit requests for information, clarifications, or support from university administration, government departments, or regulatory bodies
+                    </p>
+                  </div>
+                  <Button className="bg-orange-600 hover:bg-orange-700">
+                    <Plus className="h-4 w-4 mr-1" />
+                    New Request
+                  </Button>
+                </div>
+
+                {/* Request Form */}
+                <div className="bg-orange-50 p-4 rounded-lg border border-orange-200 mb-6">
+                  <h3 className="font-bold text-lg text-orange-900 mb-4">Submit New Request</h3>
+                  <div className="space-y-4">
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <div>
+                        <label className="text-sm font-medium text-gray-700 mb-1 block">Request To</label>
+                        <select className="w-full p-2 border rounded-lg text-sm">
+                          <option>University Administration</option>
+                          <option>Registrar Office</option>
+                          <option>Finance Department</option>
+                          <option>HR Department</option>
+                          <option>Research & Development Cell</option>
+                          <option>UGC (University Grants Commission)</option>
+                          <option>AICTE (All India Council for Technical Education)</option>
+                          <option>Ministry of Education</option>
+                          <option>State Education Department</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-gray-700 mb-1 block">Request Type</label>
+                        <select className="w-full p-2 border rounded-lg text-sm">
+                          <option>Information Request</option>
+                          <option>Clarification on Policy</option>
+                          <option>Document Request</option>
+                          <option>Technical Support</option>
+                          <option>Financial Assistance</option>
+                          <option>Research Funding Query</option>
+                          <option>Promotion/Increment Related</option>
+                          <option>Leave/Sabbatical Approval</option>
+                          <option>Infrastructure Issue</option>
+                          <option>Student-Related Query</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="text-sm font-medium text-gray-700 mb-1 block">Request Subject</label>
+                      <input
+                        type="text"
+                        placeholder="Brief subject of your request"
+                        className="w-full p-2 border rounded-lg text-sm"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-sm font-medium text-gray-700 mb-1 block">Detailed Description</label>
+                      <textarea
+                        placeholder="Provide detailed information about your request..."
+                        rows={4}
+                        className="w-full p-2 border rounded-lg text-sm"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-sm font-medium text-gray-700 mb-1 block">Priority Level</label>
+                      <select className="w-full p-2 border rounded-lg text-sm">
+                        <option>Normal</option>
+                        <option>High</option>
+                        <option>Urgent</option>
+                      </select>
+                    </div>
+
+                    <div className="flex gap-2">
+                      <Button className="bg-orange-600 hover:bg-orange-700">
+                        <CheckCircle className="h-4 w-4 mr-1" />
+                        Submit Request
+                      </Button>
+                      <Button variant="outline">
+                        <FileText className="h-4 w-4 mr-1" />
+                        Attach Documents
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Submitted Requests Tracking */}
+                <div>
+                  <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
+                    <Trophy className="h-5 w-5 text-blue-600" />
+                    My Requests - Tracking Status
+                  </h3>
+
+                  <div className="space-y-4">
+                    {/* Request 1 - In Progress */}
+                    <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded-r-lg">
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="font-bold text-lg text-blue-900">Research Funding Application - Query</h4>
+                            <Badge className="bg-blue-500">In Review</Badge>
+                          </div>
+                          <p className="text-sm text-blue-700">
+                            To: Research & Development Cell • Submitted: March 10, 2024 • Request ID: REQ-2024-001
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="bg-white p-3 rounded mb-3">
+                        <p className="text-sm text-gray-800">
+                          <span className="font-medium">Subject:</span> Clarification on new research funding guidelines for AI/ML projects
+                        </p>
+                        <p className="text-sm text-gray-700 mt-2">
+                          Requesting information about the eligibility criteria and application process for the newly announced 
+                          research funding scheme for artificial intelligence and machine learning projects.
+                        </p>
+                      </div>
+
+                      {/* Request Timeline */}
+                      <div className="space-y-2 mb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs">✓</div>
+                          <div className="flex-1">
+                            <p className="text-sm font-medium text-gray-900">Request Submitted</p>
+                            <p className="text-xs text-gray-600">March 10, 2024 - 10:30 AM</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs">✓</div>
+                          <div className="flex-1">
+                            <p className="text-sm font-medium text-gray-900">Acknowledged by Department</p>
+                            <p className="text-xs text-gray-600">March 10, 2024 - 2:15 PM</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs animate-pulse">●</div>
+                          <div className="flex-1">
+                            <p className="text-sm font-medium text-blue-900">Under Review</p>
+                            <p className="text-xs text-blue-700">Expected response: March 20, 2024</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-500 text-xs">○</div>
+                          <div className="flex-1">
+                            <p className="text-sm font-medium text-gray-500">Response Received</p>
+                            <p className="text-xs text-gray-400">Pending</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <Button size="sm" variant="outline" className="mt-2">
+                        <FileText className="h-3 w-3 mr-1" />
+                        View Full Details
+                      </Button>
+                    </div>
+
+                    {/* Request 2 - Completed */}
+                    <div className="border-l-4 border-green-500 bg-green-50 p-4 rounded-r-lg">
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="font-bold text-lg text-green-900">Sabbatical Leave Approval</h4>
+                            <Badge className="bg-green-600">Approved</Badge>
+                          </div>
+                          <p className="text-sm text-green-700">
+                            To: HR Department • Submitted: February 20, 2024 • Request ID: REQ-2024-002
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="bg-white p-3 rounded mb-2">
+                        <p className="text-sm text-gray-800">
+                          <span className="font-medium">Subject:</span> Application for 6-month sabbatical for advanced research
+                        </p>
+                      </div>
+
+                      <div className="bg-green-100 p-3 rounded flex items-center gap-2">
+                        <CheckCircle className="h-5 w-5 text-green-600" />
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-green-900">Request Approved</p>
+                          <p className="text-xs text-green-700">
+                            Your sabbatical leave has been approved for July-December 2024. Official letter has been sent to your email.
+                          </p>
+                        </div>
+                      </div>
+
+                      <Button size="sm" variant="outline" className="mt-2">
+                        <Download className="h-3 w-3 mr-1" />
+                        Download Approval Letter
+                      </Button>
+                    </div>
+
+                    {/* Request 3 - Pending Response */}
+                    <div className="border-l-4 border-yellow-500 bg-yellow-50 p-4 rounded-r-lg">
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="font-bold text-lg text-yellow-900">Lab Equipment Procurement</h4>
+                            <Badge className="bg-yellow-600">Awaiting Response</Badge>
+                          </div>
+                          <p className="text-sm text-yellow-700">
+                            To: Finance Department • Submitted: March 5, 2024 • Request ID: REQ-2024-003
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="bg-white p-3 rounded mb-2">
+                        <p className="text-sm text-gray-800">
+                          <span className="font-medium">Subject:</span> Budget approval for new GPU servers for ML research lab
+                        </p>
+                      </div>
+
+                      <div className="bg-yellow-100 p-3 rounded flex items-center gap-2">
+                        <Clock className="h-5 w-5 text-yellow-600" />
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-yellow-900">Additional Information Required</p>
+                          <p className="text-xs text-yellow-700">
+                            Finance department has requested detailed quotations from 3 vendors. Please submit by March 18, 2024.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-2 mt-2">
+                        <Button size="sm" className="bg-yellow-600 hover:bg-yellow-700">
+                          <FileText className="h-3 w-3 mr-1" />
+                          Submit Documents
+                        </Button>
+                        <Button size="sm" variant="outline">
+                          View Comments
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Quick Guide */}
+                <Card className="p-4 mt-6 bg-blue-50 border-blue-200">
+                  <h4 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
+                    <Shield className="h-4 w-4" />
+                    Request Submission Guidelines
+                  </h4>
+                  <ul className="text-sm text-blue-800 space-y-1">
+                    <li>• Provide clear and specific information in your request</li>
+                    <li>• Attach relevant documents to support your request</li>
+                    <li>• Most requests receive acknowledgment within 24-48 hours</li>
+                    <li>• You will receive email notifications for status updates</li>
+                    <li>• Average response time: 5-7 working days for normal priority requests</li>
+                    <li>• Track all your requests in real-time through this dashboard</li>
+                  </ul>
+                </Card>
+              </Card>
             </Card>
           </TabsContent>
         </Tabs>
