@@ -20,27 +20,20 @@ const slides = [
   },
   {
     id: 3,
-    title: "परीक्षा पे चर्चा 2025",
-    subtitle: "PM Modi To Guide Students, Teachers, And Parents On Exam Stress Management",
-    imageUrl: "/pariksha-charcha-2025.png",
-    bgGradient: "from-red-50 via-white to-orange-50"
-  },
-  {
-    id: 4,
     title: "स्वच्छ एवं हरित विद्यालय रेटिंग 2025-26",
     subtitle: "Swachh Evam Harit Vidyalaya Rating (SHVR) 2025-26",
     imageUrl: "/swachh-evam-harit.png",
     bgGradient: "from-blue-50 via-white to-gray-50"
   },
   {
-    id: 5,
+    id: 4,
     title: "विकसित भारत @2047 विजन",
     subtitle: "Viksit Bharat @2047 - Ideas for the Vision",
     imageUrl: "/viksit-bharat-2047.png",
     bgGradient: "from-blue-100 via-white to-blue-50"
   },
   {
-    id: 6,
+    id: 5,
     title: "राष्ट्रीय छात्रवृत्ति पोर्टल (NSP) 2024-25",
     subtitle: "National Scholarship Portal - Applications Open",
     content: "प्री-मैट्रिक और पोस्ट-मैट्रिक छात्रवृत्ति के लिए आवेदन आमंत्रित। SC/ST/OBC/अल्पसंख्यक छात्रों के लिए ₹75,000 तक की सहायता।",
@@ -50,7 +43,7 @@ const slides = [
     badge: "Scholarship Alert"
   },
   {
-    id: 7,
+    id: 6,
     title: "प्रधानमंत्री श्री नरेंद्र मोदी का संदेश",
     subtitle: "Prime Minister Shri Narendra Modi's Message",
     content: "शिक्षा ही वह शक्ति है जो राष्ट्र को आगे बढ़ाती है। डिजिटल इंडिया के तहत हमारा लक्ष्य है कि हर छात्र को गुणवत्तापूर्ण शिक्षा मिले।",
@@ -60,7 +53,7 @@ const slides = [
     badge: "PM's Vision"
   },
   {
-    id: 8,
+    id: 7,
     title: "INSPIRE छात्रवृत्ति - अंतिम तिथि 15 मई",
     subtitle: "INSPIRE Scholarship - Last Date May 15",
     content: "विज्ञान और प्रौद्योगिकी में उत्कृष्टता के लिए ₹80,000 प्रति वर्ष। कक्षा 12 में शीर्ष 1% छात्र पात्र हैं।",
@@ -70,7 +63,7 @@ const slides = [
     badge: "Scholarship News"
   },
   {
-    id: 9,
+    id: 8,
     title: "75वां स्वतंत्रता दिवस - आज़ादी का अमृत महोत्सव",
     subtitle: "75th Independence Day - Azadi Ka Amrit Mahotsav",
     content: "शिक्षा के क्षेत्र में भारत की उपलब्धियों का जश्न। 50,000+ संस्थान, 4.5 करोड़ छात्र - एक डिजिटल प्लेटफॉर्म पर।",
@@ -80,7 +73,7 @@ const slides = [
     badge: "75 Years Special"
   },
   {
-    id: 10,
+    id: 9,
     title: "NEP 2020 - शिक्षा नीति में बदलाव",
     subtitle: "NEP 2020 - Transforming Education Policy",
     content: "5+3+3+4 पाठ्यक्रम संरचना लागू। कौशल विकास, व्यावसायिक शिक्षा और समग्र विकास पर जोर।",
@@ -90,7 +83,7 @@ const slides = [
     badge: "Policy Update"
   },
   {
-    id: 11,
+    id: 10,
     title: "डिजिटल डिग्री - ब्लॉकचेन सत्यापन",
     subtitle: "Digital Degrees - Blockchain Verification",
     content: "अब डिजिटल प्रमाणपत्र DigiLocker में उपलब्ध। तत्काल सत्यापन, जीवन भर वैध - कागज रहित भारत की ओर।",
