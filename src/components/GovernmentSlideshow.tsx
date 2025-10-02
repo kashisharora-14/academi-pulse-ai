@@ -7,53 +7,63 @@ import { ChevronLeft, ChevronRight, Star, Users, BookOpen, Trophy } from 'lucide
 const slides = [
   {
     id: 1,
+    title: "राष्ट्रीय छात्रवृत्ति पोर्टल (NSP) 2024-25",
+    subtitle: "National Scholarship Portal - Applications Open",
+    content: "प्री-मैट्रिक और पोस्ट-मैट्रिक छात्रवृत्ति के लिए आवेदन आमंत्रित। SC/ST/OBC/अल्पसंख्यक छात्रों के लिए ₹75,000 तक की सहायता।",
+    englishContent: "Applications invited for Pre-Matric and Post-Matric Scholarships. Financial assistance up to ₹75,000 for SC/ST/OBC/Minority students.",
+    image: "🎓",
+    bgGradient: "from-orange-50 via-white to-green-50",
+    badge: "Scholarship Alert"
+  },
+  {
+    id: 2,
     title: "प्रधानमंत्री श्री नरेंद्र मोदी का संदेश",
     subtitle: "Prime Minister Shri Narendra Modi's Message",
     content: "शिक्षा ही वह शक्ति है जो राष्ट्र को आगे बढ़ाती है। डिजिटल इंडिया के तहत हमारा लक्ष्य है कि हर छात्र को गुणवत्तापूर्ण शिक्षा मिले।",
     englishContent: "Education is the power that drives the nation forward. Under Digital India, our goal is quality education for every student.",
     image: "🇮🇳",
-    bgGradient: "from-orange-50 via-white to-green-50",
-    badge: "Prime Minister's Vision"
-  },
-  {
-    id: 2,
-    title: "शिक्षा मंत्रालय की पहल",
-    subtitle: "Ministry of Education Initiative",
-    content: "NEP 2020 के तहत शिक्षा व्यवस्था में क्रांतिकारी बदलाव। डिजिटल प्लेटफॉर्म के माध्यम से सभी शिक्षण संस्थानों का एकीकरण।",
-    englishContent: "Revolutionary changes in education system under NEP 2020. Integration of all educational institutions through digital platforms.",
-    image: "📚",
     bgGradient: "from-blue-50 via-white to-purple-50",
-    badge: "Ministry Update"
+    badge: "PM's Vision"
   },
   {
     id: 3,
-    title: "आत्मनिर्भर भारत में शिक्षा",
-    subtitle: "Education in Self-Reliant India",
-    content: "स्किल इंडिया और डिजिटल इंडिया के माध्यम से युवाओं को रोजगार के लिए तैयार करना। 21वीं सदी की चुनौतियों के लिए तैयार भारत।",
-    englishContent: "Preparing youth for employment through Skill India and Digital India. India ready for 21st century challenges.",
-    image: "🚀",
+    title: "INSPIRE छात्रवृत्ति - अंतिम तिथि 15 मई",
+    subtitle: "INSPIRE Scholarship - Last Date May 15",
+    content: "विज्ञान और प्रौद्योगिकी में उत्कृष्टता के लिए ₹80,000 प्रति वर्ष। कक्षा 12 में शीर्ष 1% छात्र पात्र हैं।",
+    englishContent: "₹80,000 per year for excellence in Science & Technology. Top 1% students in Class 12 are eligible.",
+    image: "🔬",
     bgGradient: "from-green-50 via-white to-blue-50",
-    badge: "Skill Development"
+    badge: "Scholarship News"
   },
   {
     id: 4,
-    title: "75वां स्वतंत्रता दिवस विशेष",
-    subtitle: "75th Independence Day Special",
-    content: "आज़ादी का अमृत महोत्सव - शिक्षा के क्षेत्र में भारत की उपलब्धियों का जश्न। गुणवत्तापूर्ण शिक्षा के साथ विकसित भारत की ओर।",
-    englishContent: "Azadi Ka Amrit Mahotsav - Celebrating India's achievements in education. Towards developed India with quality education.",
+    title: "75वां स्वतंत्रता दिवस - आज़ादी का अमृत महोत्सव",
+    subtitle: "75th Independence Day - Azadi Ka Amrit Mahotsav",
+    content: "शिक्षा के क्षेत्र में भारत की उपलब्धियों का जश्न। 50,000+ संस्थान, 4.5 करोड़ छात्र - एक डिजिटल प्लेटफॉर्म पर।",
+    englishContent: "Celebrating India's educational achievements. 50,000+ institutions, 4.5 Crore students - One Digital Platform.",
     image: "🎉",
     bgGradient: "from-orange-100 via-white to-green-100",
-    badge: "75 Years Celebration"
+    badge: "75 Years Special"
   },
   {
     id: 5,
-    title: "डिजिटल इंडिया मिशन",
-    subtitle: "Digital India Mission",
-    content: "तकनीक के माध्यम से शिक्षा में पारदर्शिता और जवाबदेही। ऑनलाइन प्लेटफॉर्म से छात्रवृत्ति और योजनाओं तक आसान पहुंच।",
-    englishContent: "Transparency and accountability in education through technology. Easy access to scholarships and schemes via online platforms.",
-    image: "💻",
+    title: "NEP 2020 - शिक्षा नीति में बदलाव",
+    subtitle: "NEP 2020 - Transforming Education Policy",
+    content: "5+3+3+4 पाठ्यक्रम संरचना लागू। कौशल विकास, व्यावसायिक शिक्षा और समग्र विकास पर जोर।",
+    englishContent: "Implementing 5+3+3+4 curriculum structure. Focus on skill development, vocational education and holistic growth.",
+    image: "📚",
     bgGradient: "from-purple-50 via-white to-blue-50",
-    badge: "Digital Innovation"
+    badge: "Policy Update"
+  },
+  {
+    id: 6,
+    title: "डिजिटल डिग्री - ब्लॉकचेन सत्यापन",
+    subtitle: "Digital Degrees - Blockchain Verification",
+    content: "अब डिजिटल प्रमाणपत्र DigiLocker में उपलब्ध। तत्काल सत्यापन, जीवन भर वैध - कागज रहित भारत की ओर।",
+    englishContent: "Digital certificates now available on DigiLocker. Instant verification, lifetime validity - Towards paperless India.",
+    image: "💻",
+    bgGradient: "from-blue-50 via-white to-cyan-50",
+    badge: "Digital India"
   }
 ];
 
@@ -94,8 +104,51 @@ export const GovernmentSlideshow = () => {
       <div className="h-2 bg-gradient-to-r from-orange-500 via-white to-green-500 rounded-t-lg"></div>
       
       <Card className={`relative overflow-hidden bg-gradient-to-br ${current.bgGradient} border-2 border-slate-200 shadow-lg min-h-[300px]`}>
+        {/* Azadi Ka Amrit Mahotsav Logo - Top Right */}
+        <div className="azadi-logo-slideshow absolute top-4 right-4 bg-white rounded-lg p-2 shadow-md border border-orange-500 z-10">
+          <div className="flex flex-col items-center">
+            <div className="relative w-20 h-14">
+              <div className="absolute left-0 top-0 flex items-center">
+                <span className="text-2xl font-bold" style={{color: '#B7975A'}}>75</span>
+                <div className="relative ml-0.5">
+                  <div className="w-7 h-7 rounded-full border border-blue-800 flex items-center justify-center bg-white">
+                    <div className="w-6 h-6 relative">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-1.5 h-1.5 bg-blue-800 rounded-full"></div>
+                      </div>
+                      {Array.from({length: 24}).map((_, i) => (
+                        <div 
+                          key={i}
+                          className="absolute w-px h-3 bg-blue-800"
+                          style={{
+                            left: '50%',
+                            top: '50%',
+                            transform: `rotate(${i * 15}deg) translateY(-50%)`,
+                            transformOrigin: 'center'
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="absolute -right-8 top-1/2 transform -translate-y-1/2 w-14 h-6">
+                    <div className="h-full flex flex-col">
+                      <div className="h-1/3 bg-orange-500 rounded-r"></div>
+                      <div className="h-1/3 bg-white"></div>
+                      <div className="h-1/3 bg-green-600 rounded-r"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="text-center -mt-1">
+              <div className="text-[10px] font-bold leading-tight" style={{color: '#B7975A'}}>Azadi Ka</div>
+              <div className="text-xs font-bold leading-tight" style={{color: '#B7975A'}}>Amrit Mahotsav</div>
+            </div>
+          </div>
+        </div>
+        
         {/* Government Seal Background */}
-        <div className="absolute top-4 right-4 w-24 h-24 opacity-10">
+        <div className="absolute top-4 left-4 w-24 h-24 opacity-10">
           <div className="w-full h-full bg-blue-800 rounded-full flex items-center justify-center">
             <div className="w-16 h-16 border-2 border-white rounded-full relative flex items-center justify-center">
               <div className="absolute w-2 h-2 bg-white rounded-full"></div>
