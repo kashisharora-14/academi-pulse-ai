@@ -93,33 +93,6 @@ export const Header = () => {
           </div>
         </div>
       </div>
-
-      {/* Government Initiative Banner - Below Main Header */}
-      <div className="bg-gradient-to-r from-orange-50 via-white to-green-50 border-t border-gray-200">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-center gap-4">
-            {/* 75 Years Independence Celebration */}
-            <div className="flex items-center justify-center gap-3 flex-wrap">
-              <Badge className="bg-blue-800 text-white px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-2 shadow-md">
-                <Shield className="w-4 h-4" />
-                <span className="hidden sm:inline">Government of India Initiative | </span>भारत सरकार की पहल
-              </Badge>
-              
-              <div className="bg-gradient-to-r from-orange-100 via-white to-green-100 border-2 border-blue-200 rounded-full px-4 py-2 shadow-md">
-                <div className="flex items-center gap-2 text-xs md:text-sm font-semibold text-blue-800">
-                  <span className="text-lg">🇮🇳</span>
-                  <span>आज़ादी का अमृत महोत्सव | Celebrating 75 Years of Independence</span>
-                </div>
-              </div>
-              
-              <Button variant="outline" size="sm" className="hidden lg:flex text-xs border-blue-600 text-blue-800 hover:bg-blue-50">
-                <Globe className="w-3 h-3 mr-1" />
-                Digital India
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
     </header>
   );
 };

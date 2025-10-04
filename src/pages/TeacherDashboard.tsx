@@ -324,26 +324,6 @@ const TeacherDashboard = () => {
         <div className="mb-6 p-4 bg-gradient-to-r from-orange-100 via-white to-green-100 border border-orange-200 rounded-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              {/* Indian Government Emblem */}
-              <div className="w-16 h-16 bg-blue-800 rounded-full flex items-center justify-center relative">
-                <div className="w-12 h-12 relative">
-                  {/* Ashoka Chakra */}
-                  <div className="w-12 h-12 border-3 border-white rounded-full relative flex items-center justify-center">
-                    <div className="absolute w-2 h-2 bg-white rounded-full"></div>
-                    {/* 24 Spokes */}
-                    {Array.from({length: 24}).map((_, i) => (
-                      <div 
-                        key={i}
-                        className="absolute w-0.5 h-4 bg-white origin-bottom"
-                        style={{
-                          transform: `rotate(${i * 15}deg) translateY(-8px)`,
-                          transformOrigin: 'center 16px'
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
               <div>
                 <h2 className="text-lg font-bold text-slate-800">भारत सरकार • Government of India</h2>
                 <p className="text-sm text-slate-600">शिक्षा मंत्रालय • Ministry of Education</p>
@@ -1057,25 +1037,9 @@ const TeacherDashboard = () => {
                   <div className="h-2 bg-gradient-to-r from-orange-500 via-white to-green-500"></div>
 
                   <div className="p-5">
-                    {/* Government Emblem and Title */}
+                    {/* Student ID Header */}
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 bg-blue-800 rounded-full flex items-center justify-center">
-                          <div className="w-5 h-5 border border-white rounded-full relative flex items-center justify-center">
-                            <div className="absolute w-1 h-1 bg-white rounded-full"></div>
-                            {/* Mini Ashoka Chakra */}
-                            {Array.from({length: 12}).map((_, i) => (
-                              <div 
-                                key={i}
-                                className="absolute w-0.5 h-1.5 bg-white origin-bottom"
-                                style={{
-                                  transform: `rotate(${i * 30}deg) translateY(-2px)`,
-                                  transformOrigin: 'center 6px'
-                                }}
-                              />
-                            ))}
-                          </div>
-                        </div>
                         <div className="text-xs text-blue-800 font-medium">GoI Student ID</div>
                       </div>
                       <Badge variant={student.status === 'online' ? 'default' : 'secondary'} className="text-xs">
