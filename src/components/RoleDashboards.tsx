@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import { 
   UserCircle, 
   GraduationCap, 
@@ -60,6 +61,8 @@ const roles = [
 ];
 
 export const RoleDashboards = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="roles" className="py-12 md:py-20 lg:py-32">
       <div className="container mx-auto px-4">
@@ -102,7 +105,11 @@ export const RoleDashboards = () => {
                 ))}
               </ul>
 
-              <Button variant="outline" className="w-full text-sm md:text-base group-hover:bg-primary group-hover:text-primary-foreground">
+              <Button 
+                variant="outline" 
+                className="w-full text-sm md:text-base group-hover:bg-primary group-hover:text-primary-foreground"
+                onClick={() => navigate('/auth')}
+              >
                 Explore
                 <ArrowRight className="ml-2 h-3.5 w-3.5 md:h-4 md:w-4 transition-transform group-hover:translate-x-1" />
               </Button>

@@ -1,5 +1,8 @@
 
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import { 
   Shield, 
   Phone, 
@@ -7,10 +10,18 @@ import {
   MapPin,
   ExternalLink,
   Globe,
-  FileText
+  FileText,
+  Construction
 } from "lucide-react";
 
 export const Footer = () => {
+  const [showFutureDialog, setShowFutureDialog] = useState(false);
+
+  const handleLinkClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowFutureDialog(true);
+  };
+
   return (
     <footer className="bg-slate-800 text-white">
       {/* Main Footer Content */}
@@ -55,31 +66,31 @@ export const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                <a href="#" onClick={handleLinkClick} className="text-slate-300 hover:text-white flex items-center cursor-pointer">
                   <ExternalLink className="w-3 h-3 mr-2" />
                   Ministry of Education
                 </a>
               </li>
               <li>
-                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                <a href="#" onClick={handleLinkClick} className="text-slate-300 hover:text-white flex items-center cursor-pointer">
                   <ExternalLink className="w-3 h-3 mr-2" />
                   Digital India
                 </a>
               </li>
               <li>
-                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                <a href="#" onClick={handleLinkClick} className="text-slate-300 hover:text-white flex items-center cursor-pointer">
                   <ExternalLink className="w-3 h-3 mr-2" />
                   National Portal of India
                 </a>
               </li>
               <li>
-                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                <a href="#" onClick={handleLinkClick} className="text-slate-300 hover:text-white flex items-center cursor-pointer">
                   <ExternalLink className="w-3 h-3 mr-2" />
                   PM-USHA
                 </a>
               </li>
               <li>
-                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                <a href="#" onClick={handleLinkClick} className="text-slate-300 hover:text-white flex items-center cursor-pointer">
                   <ExternalLink className="w-3 h-3 mr-2" />
                   SWAYAM
                 </a>
@@ -92,31 +103,31 @@ export const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Policies & Compliance</h4>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                <a href="#" onClick={handleLinkClick} className="text-slate-300 hover:text-white flex items-center cursor-pointer">
                   <FileText className="w-3 h-3 mr-2" />
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                <a href="#" onClick={handleLinkClick} className="text-slate-300 hover:text-white flex items-center cursor-pointer">
                   <FileText className="w-3 h-3 mr-2" />
                   Terms of Service
                 </a>
               </li>
               <li>
-                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                <a href="#" onClick={handleLinkClick} className="text-slate-300 hover:text-white flex items-center cursor-pointer">
                   <FileText className="w-3 h-3 mr-2" />
                   Data Protection
                 </a>
               </li>
               <li>
-                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                <a href="#" onClick={handleLinkClick} className="text-slate-300 hover:text-white flex items-center cursor-pointer">
                   <FileText className="w-3 h-3 mr-2" />
                   Accessibility
                 </a>
               </li>
               <li>
-                <a href="#" className="text-slate-300 hover:text-white flex items-center">
+                <a href="#" onClick={handleLinkClick} className="text-slate-300 hover:text-white flex items-center cursor-pointer">
                   <FileText className="w-3 h-3 mr-2" />
                   RTI Information
                 </a>
@@ -160,6 +171,28 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* Future Implementation Dialog */}
+      <Dialog open={showFutureDialog} onOpenChange={setShowFutureDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="flex items-center justify-center mb-4">
+              <div className="h-16 w-16 bg-orange-100 rounded-full flex items-center justify-center">
+                <Construction className="h-8 w-8 text-orange-600" />
+              </div>
+            </div>
+            <DialogTitle className="text-center text-xl">Future Implementation</DialogTitle>
+            <DialogDescription className="text-center text-base pt-2">
+              This link is yet to be implemented and will be available in the upcoming releases of the National Education Data Platform.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex justify-center pt-4">
+            <Button onClick={() => setShowFutureDialog(false)} className="bg-blue-600 hover:bg-blue-700">
+              Got it
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </footer>
   );
 };

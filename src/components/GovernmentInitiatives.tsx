@@ -1,9 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Calendar, Users, Award } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { ExternalLink, Calendar, Users, Award, Construction } from 'lucide-react';
 
 const initiatives = [
   {
@@ -41,6 +42,8 @@ const initiatives = [
 ];
 
 export const GovernmentInitiatives = () => {
+  const [showFutureDialog, setShowFutureDialog] = useState(false);
+
   return (
     <section className="py-8 md:py-12 bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="container mx-auto px-4">
@@ -123,6 +126,7 @@ export const GovernmentInitiatives = () => {
                 {/* Action Button */}
                 <Button 
                   className={`w-full bg-gradient-to-r ${initiative.color} text-white font-semibold hover:shadow-lg transition-all group-hover:scale-105`}
+                  onClick={() => setShowFutureDialog(true)}
                 >
                   Participate Now
                   <ExternalLink className="ml-2 w-4 h-4" />
@@ -154,7 +158,10 @@ export const GovernmentInitiatives = () => {
                   Be part of India's educational transformation journey
                 </p>
               </div>
-              <Button className="bg-blue-800 hover:bg-blue-900 text-white font-semibold whitespace-nowrap">
+              <Button 
+                className="bg-blue-800 hover:bg-blue-900 text-white font-semibold whitespace-nowrap"
+                onClick={() => setShowFutureDialog(true)}
+              >
                 View All Programs
                 <Award className="ml-2 w-4 h-4" />
               </Button>
@@ -162,6 +169,28 @@ export const GovernmentInitiatives = () => {
           </Card>
         </div>
       </div>
+
+      {/* Future Implementation Dialog */}
+      <Dialog open={showFutureDialog} onOpenChange={setShowFutureDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="flex items-center justify-center mb-4">
+              <div className="h-16 w-16 bg-orange-100 rounded-full flex items-center justify-center">
+                <Construction className="h-8 w-8 text-orange-600" />
+              </div>
+            </div>
+            <DialogTitle className="text-center text-xl">Future Implementation</DialogTitle>
+            <DialogDescription className="text-center text-base pt-2">
+              This feature is yet to be implemented and will be available in the upcoming releases of the National Education Data Platform.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex justify-center pt-4">
+            <Button onClick={() => setShowFutureDialog(false)} className="bg-blue-600 hover:bg-blue-700">
+              Got it
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
