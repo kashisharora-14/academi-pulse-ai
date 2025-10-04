@@ -42,11 +42,6 @@ export const Header = () => {
       <div className="container mx-auto px-4 py-3 md:py-4">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center space-x-3 md:space-x-4 flex-1 min-w-0">
-            <img 
-              src="/ministry-education-logo.png" 
-              alt="Ministry of Education" 
-              className="h-12 md:h-16 w-auto hidden sm:block"
-            />
             <div className="min-w-0 flex-1">
               <h1 className="text-sm md:text-lg lg:text-xl font-bold text-slate-800 truncate">
                 National Education Data Platform
