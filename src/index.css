@@ -436,9 +436,15 @@
 
 .enhanced-tab-trigger[data-state="active"] {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  color: white;
+  color: white !important;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
   font-weight: 600;
+}
+
+.enhanced-tab-trigger[data-state="active"] svg,
+.enhanced-tab-trigger[data-state="active"] .enhanced-tab-icon {
+  color: white !important;
+  stroke: white !important;
 }
 
 .enhanced-tab-trigger[data-state="active"]::before {
@@ -686,4 +692,14 @@
     width: 16px;
     height: 16px;
   }
+}
+
+/* Global fix: Ensure all active tabs have white text across all portals */
+[role="tablist"] button[data-state="active"] {
+  color: white !important;
+}
+
+[role="tablist"] button[data-state="active"] svg {
+  color: white !important;
+  stroke: white !important;
 }
