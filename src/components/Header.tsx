@@ -42,24 +42,6 @@ export const Header = () => {
       <div className="container mx-auto px-4 py-3 md:py-4">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center space-x-3 md:space-x-4 flex-1 min-w-0">
-            {/* Azadi Ka Amrit Mahotsav Logo */}
-            <div className="flex-shrink-0">
-              <img 
-                src="/azadi-logo.png" 
-                alt="Azadi Ka Amrit Mahotsav" 
-                className="h-14 md:h-16 w-auto object-contain"
-              />
-            </div>
-
-            {/* Ministry of Education Logo */}
-            <div className="flex-shrink-0">
-              <img 
-                src="/ministry-education-logo.png" 
-                alt="Ministry of Education" 
-                className="h-14 md:h-16 w-auto object-contain"
-              />
-            </div>
-
             <div className="min-w-0 flex-1">
               <h1 className="text-sm md:text-lg lg:text-xl font-bold text-slate-800 truncate">
                 National Education Data Platform
