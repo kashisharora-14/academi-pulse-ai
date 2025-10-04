@@ -368,6 +368,20 @@ const institutionLocations = [
     placement: 76.9,
     research: 62.5,
     dropout: 9.8
+  },
+  {
+    id: "21",
+    name: "Panjab University",
+    position: [30.7610, 76.7684] as [number, number],
+    data: "NIRF Rank: 27, Score: 64.1",
+    performance: 'good' as const,
+    city: "Chandigarh",
+    type: "Central University",
+    students: 12500,
+    nirfRank: 27,
+    placement: 77.3,
+    research: 68.7,
+    dropout: 8.9
   }
 ];
 

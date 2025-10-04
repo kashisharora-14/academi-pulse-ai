@@ -180,6 +180,20 @@ const GovernmentDashboard = () => {
       city: "Amritsar",
       type: "University"
     },
+    {
+      id: "18",
+      name: "Panjab University",
+      position: [30.7610, 76.7684] as [number, number],
+      nirfRank: 27,
+      dropout: 8.9,
+      placement: 77,
+      research: 69,
+      performance: 'good',
+      data: "NIRF: 27 | Placement: 77% | Research: 69 | Status: Good",
+      students: 12500,
+      city: "Chandigarh",
+      type: "Central University"
+    },
 
     // Average Performers - Need Monitoring
     {
