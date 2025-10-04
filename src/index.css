@@ -199,6 +199,19 @@
   background: radial-gradient(circle, #000080 30%, transparent 31%);
 }
 
+.india-flag-border {
+  position: relative;
+  background: linear-gradient(to bottom, 
+    #FF9933 0%, #FF9933 2%, 
+    #FFFFFF 2%, #FFFFFF 4%, 
+    #138808 4%, #138808 6%,
+    transparent 6%, transparent 94%,
+    #FF9933 94%, #FF9933 96%, 
+    #FFFFFF 96%, #FFFFFF 98%, 
+    #138808 98%, #138808 100%
+  );
+}
+
 .government-seal {
   background: linear-gradient(135deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
   border: 2px solid #000080;
