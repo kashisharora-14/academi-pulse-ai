@@ -7,6 +7,11 @@ export const GovernmentSlideshow = () => {
 
   const slides = [
     {
+      quote: "Empowering the future through education - Building a strong foundation for our children",
+      author: "Shri Narendra Modi, Hon'ble Prime Minister of India",
+      image: "/attached_assets/image_1759607765586.png"
+    },
+    {
       quote: "Education is not just about going to school and getting a degree. It's about widening your knowledge and absorbing the truth about life.",
       author: "Shri Narendra Modi, Hon'ble Prime Minister of India",
       image: null
