@@ -8,23 +8,33 @@ export const GovernmentSlideshow = () => {
   const slides = [
     {
       quote: "Education is not just about going to school and getting a degree. It's about widening your knowledge and absorbing the truth about life.",
-      author: "Shri Narendra Modi, Hon'ble Prime Minister of India"
+      author: "Shri Narendra Modi, Hon'ble Prime Minister of India",
+      image: null
+    },
+    {
+      quote: "Share your ideas & Suggestions with PM for Mann Ki Baat",
+      author: "Mann Ki Baat - October 26, 2025",
+      image: "/attached_assets/image_1759607412610.png"
+    },
+    {
+      quote: "Swachh Evam Harit Vidyalaya Rating (SHVR) 2025-26 - Building Clean and Green Schools",
+      author: "Ministry of Education Initiative",
+      image: "/attached_assets/Gemini_Generated_Image_74fown74fown74fo_1759607417401.png"
+    },
+    {
+      quote: "Viksit Bharat Buildathon 2025 - Empowering school students to build solutions for a self-reliant India",
+      author: "A nationwide innovation movement",
+      image: "/attached_assets/Gemini_Generated_Image_cimlq1cimlq1ciml_1759607421491.png"
     },
     {
       quote: "The future belongs to those who believe in the power of their dreams. Education empowers us to turn those dreams into reality.",
-      author: "Shri Narendra Modi, Hon'ble Prime Minister of India"
+      author: "Shri Narendra Modi, Hon'ble Prime Minister of India",
+      image: null
     },
     {
       quote: "Every child is like a seed which has the potential to grow. Let us nourish every child with the power of education and see them bloom into confident citizens.",
-      author: "Shri Narendra Modi, Hon'ble Prime Minister of India"
-    },
-    {
-      quote: "We need to prepare our youth not just for degrees but for life. Education should create entrepreneurs, innovators and job creators.",
-      author: "Shri Narendra Modi, Hon'ble Prime Minister of India"
-    },
-    {
-      quote: "Digital India is empowering our students with technology. Let us leverage this to transform our education system and build a knowledge economy.",
-      author: "Shri Narendra Modi, Hon'ble Prime Minister of India"
+      author: "Shri Narendra Modi, Hon'ble Prime Minister of India",
+      image: null
     }
   ];
 
@@ -73,17 +83,35 @@ export const GovernmentSlideshow = () => {
           <div className="mb-3">
             <div className="inline-flex items-center gap-2 px-4 py-1 bg-gradient-to-r from-orange-500 via-white to-green-600 rounded-full">
               <span className="text-2xl">🇮🇳</span>
-              <span className="font-bold text-blue-800 text-sm">PM's Message on Education</span>
+              <span className="font-bold text-blue-800 text-sm">Government Initiatives</span>
               <span className="text-2xl">🇮🇳</span>
             </div>
           </div>
           
-          <blockquote className="text-base md:text-lg lg:text-xl font-medium text-slate-800 italic leading-relaxed">
-            "{slides[currentSlide].quote}"
-          </blockquote>
-          <p className="mt-3 text-xs md:text-sm font-semibold text-blue-800">
-            — {slides[currentSlide].author}
-          </p>
+          {slides[currentSlide].image ? (
+            <div className="flex flex-col items-center">
+              <img 
+                src={slides[currentSlide].image} 
+                alt={slides[currentSlide].quote}
+                className="max-w-full h-auto rounded-lg shadow-lg mb-4 max-h-64 object-contain"
+              />
+              <p className="text-sm md:text-base font-medium text-slate-700 mt-2">
+                {slides[currentSlide].quote}
+              </p>
+              <p className="mt-2 text-xs md:text-sm font-semibold text-blue-800">
+                — {slides[currentSlide].author}
+              </p>
+            </div>
+          ) : (
+            <div>
+              <blockquote className="text-base md:text-lg lg:text-xl font-medium text-slate-800 italic leading-relaxed">
+                "{slides[currentSlide].quote}"
+              </blockquote>
+              <p className="mt-3 text-xs md:text-sm font-semibold text-blue-800">
+                — {slides[currentSlide].author}
+              </p>
+            </div>
+          )}
         </div>
 
         <button
