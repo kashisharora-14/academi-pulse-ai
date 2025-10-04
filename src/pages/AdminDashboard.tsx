@@ -442,7 +442,7 @@ const AdminDashboard = () => {
         <Tabs defaultValue="overview" className="space-y-6">
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
-            <TabsList className="gov-tabs-list grid w-full grid-cols-14">
+            <TabsList className="gov-tabs-list flex w-full flex-wrap justify-start">
               <TabsTrigger value="overview" className="gov-tab-trigger">
                 <Building2 className="h-4 w-4 enhanced-tab-icon" />
                 Overview

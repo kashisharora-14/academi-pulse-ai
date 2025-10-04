@@ -476,6 +476,8 @@
   padding: 6px;
   box-shadow: 0 4px 16px rgba(217, 119, 6, 0.15);
   position: relative;
+  display: flex !important;
+  flex-wrap: wrap;
   gap: 4px;
   overflow-x: auto;
   scrollbar-width: thin;
@@ -530,11 +532,12 @@
 }
 
 .gov-tab-trigger:hover {
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(59, 130, 246, 0.15);
   border-color: #3b82f6;
-  color: #1e40af;
+  color: #1e3a8a;
+  font-weight: 700;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .gov-tab-trigger[data-state="active"] {
