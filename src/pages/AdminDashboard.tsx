@@ -12,6 +12,19 @@ import { QRCodeGenerator } from "@/components/QRCodeGenerator";
 import { ExportTools } from "@/components/ExportTools";
 import PolicyReport from "@/components/PolicyReport";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
+import {
   LogOut,
   Users,
   Building2,
@@ -385,9 +398,32 @@ const institutionLocations = [
   }
 ];
 
+const dropoutRiskInstitutions = [
+  { id: "10", name: "Pune Engineering College", city: "Pune", dropout: 15.3, increase: 12.5, students: 3500 },
+  { id: "11", name: "Rajasthan Technical University", city: "Kota", dropout: 18.5, increase: 14.2, students: 8500 },
+  { id: "12", name: "Bihar Engineering College", city: "Patna", dropout: 24.7, increase: 18.7, students: 2800 },
+  { id: "13", name: "Uttar Pradesh State University", city: "Lucknow", dropout: 28.3, increase: 22.1, students: 15000 },
+  { id: "19", name: "Odisha Engineering Institute", city: "Bhubaneswar", dropout: 22.1, increase: 16.8, students: 3200 }
+];
+
+const complianceGapInstitutions = [
+  { id: "7", name: "Banaras Hindu University", city: "Varanasi", issue: "NAAC reaccreditation pending", deadline: "2025-06-30" },
+  { id: "8", name: "Anna University", city: "Chennai", issue: "NAAC reaccreditation pending", deadline: "2025-07-15" },
+  { id: "16", name: "Hyderabad Central University", city: "Hyderabad", issue: "NAAC reaccreditation pending", deadline: "2025-05-20" }
+];
+
+const excellenceOpportunityInstitutions = [
+  { id: "9", name: "Jadavpur University", city: "Kolkata", nirfRank: 12, potential: 8, score: 74.2 },
+  { id: "15", name: "NIT Surathkal", city: "Mangalore", nirfRank: 13, potential: 10, score: 72.5 },
+  { id: "20", name: "Kerala State University", city: "Thiruvananthapuram", nirfRank: 28, potential: 22, score: 63.7 }
+];
+
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<any>(null);
+  const [dropoutDialogOpen, setDropoutDialogOpen] = useState(false);
+  const [complianceDialogOpen, setComplianceDialogOpen] = useState(false);
+  const [excellenceDialogOpen, setExcellenceDialogOpen] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -418,6 +454,30 @@ const AdminDashboard = () => {
       setUser({ email: cred.email, user_metadata: { name: cred.name } });
       navigate(`/${role}-dashboard`);
     }
+  };
+
+  const handleDropoutIntervention = (institutionId: string, action: string) => {
+    const institution = dropoutRiskInstitutions.find(inst => inst.id === institutionId);
+    toast.success(`Dropout intervention action "${action}" initiated for ${institution?.name}`, {
+      description: "Support team will be notified and intervention plan will be created within 48 hours."
+    });
+    setDropoutDialogOpen(false);
+  };
+
+  const handleComplianceReview = (institutionId: string) => {
+    const institution = complianceGapInstitutions.find(inst => inst.id === institutionId);
+    toast.success(`Compliance review scheduled for ${institution?.name}`, {
+      description: "Accreditation team will contact the institution within 5 business days."
+    });
+    setComplianceDialogOpen(false);
+  };
+
+  const handleExcellenceSupport = (institutionId: string, supportType: string) => {
+    const institution = excellenceOpportunityInstitutions.find(inst => inst.id === institutionId);
+    toast.success(`Excellence support "${supportType}" approved for ${institution?.name}`, {
+      description: "NIRF improvement resources and mentorship will be allocated."
+    });
+    setExcellenceDialogOpen(false);
   };
 
   return (
@@ -1045,24 +1105,222 @@ const AdminDashboard = () => {
                         <AlertTriangle className="h-5 w-5 text-red-600" />
                         <h5 className="font-semibold text-red-800">Urgent: Dropout Risk</h5>
                       </div>
-                      <p className="text-sm text-red-700">15 institutions show &gt;10% increase in dropout rates</p>
-                      <Button size="sm" className="mt-2 bg-red-600">Take Action</Button>
+                      <p className="text-sm text-red-700">{dropoutRiskInstitutions.length} institutions show &gt;10% increase in dropout rates</p>
+                      <Dialog open={dropoutDialogOpen} onOpenChange={setDropoutDialogOpen}>
+                        <DialogTrigger asChild>
+                          <Button size="sm" className="mt-2 bg-red-600 hover:bg-red-700">Take Action</Button>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+                          <DialogHeader>
+                            <DialogTitle className="flex items-center gap-2 text-red-800">
+                              <AlertTriangle className="h-5 w-5" />
+                              Dropout Risk Intervention
+                            </DialogTitle>
+                            <DialogDescription>
+                              Review institutions with critical dropout rates and initiate intervention programs
+                            </DialogDescription>
+                          </DialogHeader>
+                          <div className="space-y-4 py-4">
+                            {dropoutRiskInstitutions.map((inst) => (
+                              <Card key={inst.id} className="p-4 border-l-4 border-red-400">
+                                <div className="space-y-3">
+                                  <div className="flex justify-between items-start">
+                                    <div>
+                                      <h4 className="font-semibold text-lg">{inst.name}</h4>
+                                      <p className="text-sm text-muted-foreground">{inst.city}</p>
+                                    </div>
+                                    <Badge variant="destructive">{inst.increase}% Increase</Badge>
+                                  </div>
+                                  <div className="grid grid-cols-3 gap-4 text-sm">
+                                    <div>
+                                      <p className="text-muted-foreground">Current Dropout Rate</p>
+                                      <p className="font-bold text-red-600">{inst.dropout}%</p>
+                                    </div>
+                                    <div>
+                                      <p className="text-muted-foreground">Total Students</p>
+                                      <p className="font-bold">{inst.students.toLocaleString()}</p>
+                                    </div>
+                                    <div>
+                                      <p className="text-muted-foreground">At-Risk Students</p>
+                                      <p className="font-bold text-orange-600">{Math.round(inst.students * inst.dropout / 100)}</p>
+                                    </div>
+                                  </div>
+                                  <div className="flex gap-2">
+                                    <Button 
+                                      size="sm" 
+                                      onClick={() => handleDropoutIntervention(inst.id, "Mentorship Program")}
+                                      className="flex-1"
+                                    >
+                                      Deploy Mentorship Program
+                                    </Button>
+                                    <Button 
+                                      size="sm" 
+                                      variant="outline"
+                                      onClick={() => handleDropoutIntervention(inst.id, "Financial Aid Review")}
+                                      className="flex-1"
+                                    >
+                                      Review Financial Aid
+                                    </Button>
+                                    <Button 
+                                      size="sm" 
+                                      variant="outline"
+                                      onClick={() => handleDropoutIntervention(inst.id, "Academic Support")}
+                                      className="flex-1"
+                                    >
+                                      Academic Support
+                                    </Button>
+                                  </div>
+                                </div>
+                              </Card>
+                            ))}
+                          </div>
+                        </DialogContent>
+                      </Dialog>
                     </div>
                     <div className="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
                       <div className="flex items-center gap-2 mb-2">
                         <Clock className="h-5 w-5 text-yellow-600" />
                         <h5 className="font-semibold text-yellow-800">Moderate: Compliance Gap</h5>
                       </div>
-                      <p className="text-sm text-yellow-700">28 institutions pending NAAC reaccreditation</p>
-                      <Button size="sm" variant="outline" className="mt-2">Review</Button>
+                      <p className="text-sm text-yellow-700">{complianceGapInstitutions.length} institutions pending NAAC reaccreditation</p>
+                      <Dialog open={complianceDialogOpen} onOpenChange={setComplianceDialogOpen}>
+                        <DialogTrigger asChild>
+                          <Button size="sm" variant="outline" className="mt-2 border-yellow-600 text-yellow-700 hover:bg-yellow-50">Review</Button>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+                          <DialogHeader>
+                            <DialogTitle className="flex items-center gap-2 text-yellow-800">
+                              <Clock className="h-5 w-5" />
+                              Compliance Gap Review
+                            </DialogTitle>
+                            <DialogDescription>
+                              Review institutions with pending NAAC accreditation and schedule reviews
+                            </DialogDescription>
+                          </DialogHeader>
+                          <div className="space-y-4 py-4">
+                            {complianceGapInstitutions.map((inst) => (
+                              <Card key={inst.id} className="p-4 border-l-4 border-yellow-400">
+                                <div className="space-y-3">
+                                  <div className="flex justify-between items-start">
+                                    <div>
+                                      <h4 className="font-semibold text-lg">{inst.name}</h4>
+                                      <p className="text-sm text-muted-foreground">{inst.city}</p>
+                                    </div>
+                                    <Badge variant="outline" className="border-yellow-600 text-yellow-700">Pending</Badge>
+                                  </div>
+                                  <div className="grid grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                      <p className="text-muted-foreground">Issue</p>
+                                      <p className="font-medium">{inst.issue}</p>
+                                    </div>
+                                    <div>
+                                      <p className="text-muted-foreground">Deadline</p>
+                                      <p className="font-bold text-orange-600">{inst.deadline}</p>
+                                    </div>
+                                  </div>
+                                  <div className="flex gap-2">
+                                    <Button 
+                                      size="sm" 
+                                      onClick={() => handleComplianceReview(inst.id)}
+                                      className="flex-1"
+                                    >
+                                      Schedule Review
+                                    </Button>
+                                    <Button 
+                                      size="sm" 
+                                      variant="outline"
+                                      onClick={() => {
+                                        toast.info(`Extension request noted for ${inst.name}`);
+                                        setComplianceDialogOpen(false);
+                                      }}
+                                      className="flex-1"
+                                    >
+                                      Request Extension
+                                    </Button>
+                                  </div>
+                                </div>
+                              </Card>
+                            ))}
+                          </div>
+                        </DialogContent>
+                      </Dialog>
                     </div>
                     <div className="p-4 bg-orange-50 rounded-lg border-l-4 border-orange-400">
                       <div className="flex items-center gap-2 mb-2">
                         <Target className="h-5 w-5 text-orange-600" />
                         <h5 className="font-semibold text-orange-800">Opportunity: Excellence</h5>
                       </div>
-                      <p className="text-sm text-orange-700">12 institutions ready for NIRF ranking improvement</p>
-                      <Button size="sm" variant="outline" className="mt-2">Support</Button>
+                      <p className="text-sm text-orange-700">{excellenceOpportunityInstitutions.length} institutions ready for NIRF ranking improvement</p>
+                      <Dialog open={excellenceDialogOpen} onOpenChange={setExcellenceDialogOpen}>
+                        <DialogTrigger asChild>
+                          <Button size="sm" variant="outline" className="mt-2 border-orange-600 text-orange-700 hover:bg-orange-50">Support</Button>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+                          <DialogHeader>
+                            <DialogTitle className="flex items-center gap-2 text-orange-800">
+                              <Target className="h-5 w-5" />
+                              Excellence Support Program
+                            </DialogTitle>
+                            <DialogDescription>
+                              Provide targeted support to institutions with potential for NIRF ranking improvement
+                            </DialogDescription>
+                          </DialogHeader>
+                          <div className="space-y-4 py-4">
+                            {excellenceOpportunityInstitutions.map((inst) => (
+                              <Card key={inst.id} className="p-4 border-l-4 border-orange-400">
+                                <div className="space-y-3">
+                                  <div className="flex justify-between items-start">
+                                    <div>
+                                      <h4 className="font-semibold text-lg">{inst.name}</h4>
+                                      <p className="text-sm text-muted-foreground">{inst.city}</p>
+                                    </div>
+                                    <Badge variant="outline" className="border-green-600 text-green-700">High Potential</Badge>
+                                  </div>
+                                  <div className="grid grid-cols-3 gap-4 text-sm">
+                                    <div>
+                                      <p className="text-muted-foreground">Current NIRF Rank</p>
+                                      <p className="font-bold">#{inst.nirfRank}</p>
+                                    </div>
+                                    <div>
+                                      <p className="text-muted-foreground">Potential Rank</p>
+                                      <p className="font-bold text-green-600">#{inst.potential}</p>
+                                    </div>
+                                    <div>
+                                      <p className="text-muted-foreground">Current Score</p>
+                                      <p className="font-bold">{inst.score}</p>
+                                    </div>
+                                  </div>
+                                  <div className="flex gap-2">
+                                    <Button 
+                                      size="sm" 
+                                      onClick={() => handleExcellenceSupport(inst.id, "Research Grant")}
+                                      className="flex-1"
+                                    >
+                                      Allocate Research Grant
+                                    </Button>
+                                    <Button 
+                                      size="sm" 
+                                      variant="outline"
+                                      onClick={() => handleExcellenceSupport(inst.id, "Faculty Development")}
+                                      className="flex-1"
+                                    >
+                                      Faculty Development
+                                    </Button>
+                                    <Button 
+                                      size="sm" 
+                                      variant="outline"
+                                      onClick={() => handleExcellenceSupport(inst.id, "Mentorship")}
+                                      className="flex-1"
+                                    >
+                                      NIRF Mentorship
+                                    </Button>
+                                  </div>
+                                </div>
+                              </Card>
+                            ))}
+                          </div>
+                        </DialogContent>
+                      </Dialog>
                     </div>
                   </div>
                 </div>
