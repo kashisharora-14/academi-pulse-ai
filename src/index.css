@@ -543,9 +543,15 @@
 .gov-tab-trigger[data-state="active"] {
   background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   border-color: #1e40af;
-  color: white;
+  color: white !important;
   box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
   transform: translateY(-1px);
+}
+
+.gov-tab-trigger[data-state="active"] svg,
+.gov-tab-trigger[data-state="active"] .enhanced-tab-icon {
+  color: white !important;
+  stroke: white !important;
 }
 
 .gov-tab-trigger[data-state="active"]::after {
