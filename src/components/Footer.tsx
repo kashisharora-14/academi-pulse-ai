@@ -169,6 +169,19 @@ export const Footer = () => {
               </div>
             </div>
           </div>
+
+          {/* Team Information */}
+          <div className="mt-4 pt-4 border-t border-slate-700">
+            <div className="flex justify-center">
+              <div className="text-slate-400 text-xs flex items-center gap-2">
+                <span>Developed by Team</span>
+                <span className="font-bold text-blue-400">RE-CONNECT</span>
+                <span>•</span>
+                <span>Team ID:</span>
+                <span className="font-bold text-yellow-400">#99958</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

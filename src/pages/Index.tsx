@@ -10,6 +10,7 @@ import { GraduationCap, UserCircle, Building2, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
+import { TeamNotificationDialog } from "@/components/TeamNotificationDialog";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -17,11 +18,12 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
+      <TeamNotificationDialog />
       <main>
         <Hero />
         <GovernmentInitiatives />
 
-            
+
         <Features />
         <AIFeatures />
         <RoleDashboards />
