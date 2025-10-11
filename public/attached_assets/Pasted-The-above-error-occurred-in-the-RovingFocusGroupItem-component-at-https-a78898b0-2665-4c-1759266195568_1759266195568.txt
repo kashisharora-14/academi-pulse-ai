@@ -1,0 +1,26 @@
+The above error occurred in the <RovingFocusGroupItem> component:
+
+    at https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/node_modules/.vite/deps/@radix-ui_react-tabs.js?v=3d0de3a7:548:11
+    at https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/node_modules/.vite/deps/@radix-ui_react-tabs.js?v=3d0de3a7:823:11
+    at _c2 (https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/src/components/ui/tabs.tsx:44:61)
+    at div
+    at div
+    at div
+    at https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/node_modules/.vite/deps/@radix-ui_react-tabs.js?v=3d0de3a7:338:13
+    at Provider (https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/node_modules/.vite/deps/@radix-ui_react-tabs.js?v=3d0de3a7:37:15)
+    at https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/node_modules/.vite/deps/@radix-ui_react-tabs.js?v=3d0de3a7:775:11
+    at main
+    at div
+    at InstitutionDashboard (https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/src/pages/InstitutionDashboard.tsx:204:22)
+    at RenderedRoute (https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=50109574:4088:5)
+    at Routes (https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=50109574:4558:5)
+    at Router (https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=50109574:4501:15)
+    at BrowserRouter (https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=50109574:5247:5)
+    at Provider (https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/node_modules/.vite/deps/chunk-CFBGAGYC.js?v=b173355f:28:15)
+    at TooltipProvider (https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=296c4660:2277:5)
+    at QueryClientProvider (https://a78898b0-2665-4c03-b1b4-2f3f99155eec-00-2x9j92sp42038.picard.replit.dev/node_modules/.vite/deps/@tanstack_react-query.js?v=a6aac28f:2934:3)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+`RovingFocusGroupItem` must be used within `RovingFocusGroup`
