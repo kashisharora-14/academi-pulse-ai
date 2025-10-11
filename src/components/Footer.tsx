@@ -178,7 +178,7 @@ export const Footer = () => {
                 <span className="font-bold text-blue-400">RE-CONNECT</span>
                 <span>•</span>
                 <span>Team ID:</span>
-                <span className="font-bold text-yellow-400">#99958</span>
+                <span className="font-bold text-yellow-400">99958</span>
               </div>
             </div>
           </div>
