@@ -5,27 +5,32 @@ import { Button } from "@/components/ui/button";
 
 export const TeamNotificationDialog = () => {
   const [showNotification, setShowNotification] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Show notification on initial load
+    // Check if notification has been seen
     const hasSeenNotification = sessionStorage.getItem('teamNotificationSeen');
     if (!hasSeenNotification) {
-      // Delay to allow page to load
-      setTimeout(() => setShowNotification(true), 1000);
+      // Show notification after a brief delay
+      setShowNotification(true);
+      setTimeout(() => setIsVisible(true), 100);
     }
   }, []);
 
   const handleClose = () => {
-    sessionStorage.setItem('teamNotificationSeen', 'true');
-    setShowNotification(false);
+    setIsVisible(false);
+    setTimeout(() => {
+      sessionStorage.setItem('teamNotificationSeen', 'true');
+      setShowNotification(false);
+    }, 300);
   };
 
   if (!showNotification) return null;
 
   return (
     <div 
-      className={`fixed top-20 right-4 z-50 w-96 bg-white rounded-lg shadow-2xl border-2 border-blue-200 transition-all duration-500 ease-out ${
-        showNotification ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+      className={`fixed top-20 right-4 z-50 w-96 bg-white rounded-lg shadow-2xl border-2 border-blue-200 transition-all duration-500 ease-out transform ${
+        isVisible ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
       }`}
     >
       <div className="p-6">
