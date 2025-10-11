@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -22,7 +21,7 @@ export const GovernmentSlideshow = () => {
       image: "/attached_assets/image_1759607412610.png"
     },
     {
-      quote: "Swachh Evam Harit Vidyalaya Rating (SHVR) 2025-26 - Building Clean and Green Schools",
+      quote: "Swachh evam Harit Vidyalaya Rating (SHVR) 2025-26 - Building Clean and Green Schools",
       author: "Ministry of Education Initiative",
       image: "/attached_assets/Gemini_Generated_Image_74fown74fown74fo_1759607417401.png"
     },
@@ -66,11 +65,11 @@ export const GovernmentSlideshow = () => {
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-orange-500 to-orange-500"></div>
         <div className="absolute top-1 left-0 right-0 h-1 bg-gradient-to-r from-white via-white to-white"></div>
         <div className="absolute top-2 left-0 right-0 h-1 bg-gradient-to-r from-green-600 via-green-600 to-green-600"></div>
-        
+
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-600 via-green-600 to-green-600"></div>
         <div className="absolute bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-white via-white to-white"></div>
         <div className="absolute bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-orange-500 to-orange-500"></div>
-        
+
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-500 via-white to-green-600"></div>
         <div className="absolute right-0 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-500 via-white to-green-600"></div>
       </div>
@@ -92,7 +91,7 @@ export const GovernmentSlideshow = () => {
               <span className="text-2xl">🇮🇳</span>
             </div>
           </div>
-          
+
           {slides[currentSlide].image ? (
             <div className="flex flex-col items-center">
               <img 
