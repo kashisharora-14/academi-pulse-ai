@@ -7,12 +7,20 @@ export const GovernmentSlideshow = () => {
 
   const slides = [
     {
-      image: "/attached_assets/Gemini_Generated_Image_2ltnva2ltnva2ltn_1760722002146.png",
+      image: "/attached_assets/image_1760727621341.png",
+      alt: "Scheme Mapping"
+    },
+    {
+      image: "/attached_assets/image_1760727624742.png",
       alt: "Student Life Cycle Tracker"
     },
     {
-      image: "/attached_assets/Gemini_Generated_Image_245sgf245sgf245s_1760721996998.png",
-      alt: "Institution Ranking Analytics"
+      image: "/attached_assets/image_1760727628054.png",
+      alt: "Teacher Performance Dashboard"
+    },
+    {
+      image: "/attached_assets/image_1760727631263.png",
+      alt: "Unified Data Reporistry"
     }
   ];
 
@@ -38,8 +46,8 @@ export const GovernmentSlideshow = () => {
 
   return (
     <div className="relative w-full mb-8">
-      {/* Main Banner Container */}
-      <div className="relative w-full h-[300px] md:h-[400px] lg:h-[450px] overflow-hidden rounded-lg shadow-2xl">
+      {/* Main Banner Container - NSP Portal Style */}
+      <div className="relative w-full h-[200px] md:h-[280px] lg:h-[320px] overflow-hidden rounded-lg shadow-2xl bg-gradient-to-r from-slate-50 to-blue-50">
         {/* Slides */}
         <div className="relative w-full h-full">
           {slides.map((slide, index) => (
@@ -52,7 +60,7 @@ export const GovernmentSlideshow = () => {
               <img
                 src={slide.image}
                 alt={slide.alt}
-                className="w-full h-full object-contain bg-white"
+                className="w-full h-full object-cover"
               />
             </div>
           ))}
