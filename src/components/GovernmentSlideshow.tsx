@@ -7,11 +7,11 @@ export const GovernmentSlideshow = () => {
 
   const slides = [
     {
-      image: "/attached_assets/image_1760722002146.png",
+      image: "/attached_assets/Gemini_Generated_Image_2ltnva2ltnva2ltn_1760722002146.png",
       alt: "Student Life Cycle Tracker"
     },
     {
-      image: "/attached_assets/image_1760721996998.png",
+      image: "/attached_assets/Gemini_Generated_Image_245sgf245sgf245s_1760721996998.png",
       alt: "Institution Ranking Analytics"
     }
   ];
