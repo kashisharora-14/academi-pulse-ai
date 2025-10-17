@@ -45,11 +45,11 @@ export const GovernmentSlideshow = () => {
   };
 
   return (
-    <div className="relative w-full mb-8 md:mb-10 lg:mb-12">
+    <div className="relative w-full mb-6">
       {/* Main Banner Container - India.gov.in Style */}
       <div className="relative w-full overflow-hidden rounded-xl shadow-2xl bg-gradient-to-br from-blue-50 to-slate-100 border-2 border-blue-100">
         {/* Slides Container with fixed aspect ratio */}
-        <div className="relative w-full" style={{ paddingBottom: '40%' }}>
+        <div className="relative w-full" style={{ paddingBottom: '28%' }}>
           <div className="absolute inset-0">
             {slides.map((slide, index) => (
               <div

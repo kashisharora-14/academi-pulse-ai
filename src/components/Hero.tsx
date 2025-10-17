@@ -123,78 +123,7 @@ export const Hero = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-orange-50 via-white to-green-50 py-8 md:py-12 lg:py-16 overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Large decorative circles */}
-        <motion.div
-          className="absolute -top-20 -left-20 w-96 h-96 bg-gradient-to-br from-orange-200 to-orange-300 rounded-full opacity-40 blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 30, 0],
-            y: [0, 20, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute top-40 -right-32 w-[500px] h-[500px] bg-gradient-to-br from-blue-200 to-indigo-300 rounded-full opacity-40 blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -40, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute -bottom-32 left-1/3 w-[450px] h-[450px] bg-gradient-to-br from-green-200 to-emerald-300 rounded-full opacity-40 blur-3xl"
-          animate={{
-            scale: [1, 1.4, 1],
-            rotate: [0, 90, 180],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-        
-        {/* Decorative patterns */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-30">
-          <div className="absolute top-20 right-32 w-40 h-40 border-4 border-orange-400 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-60 left-60 w-32 h-32 border-4 border-green-500 rounded-lg rotate-45 animate-pulse"></div>
-          <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full animate-bounce opacity-50"></div>
-          <div className="absolute bottom-32 right-48 w-20 h-20 border-4 border-yellow-500 rounded-full"></div>
-          <div className="absolute top-48 left-1/4 w-16 h-16 bg-gradient-to-br from-pink-400 to-rose-500 rounded-lg rotate-12"></div>
-        </div>
-        
-        {/* Geometric patterns */}
-        <svg className="absolute top-0 left-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <circle cx="20" cy="20" r="1" fill="#FF9933"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)"/>
-        </svg>
-      </div>
-
-      {/* Tricolor Header Bar */}
-      <motion.div 
-        className="absolute top-0 w-full h-4 bg-gradient-to-r from-orange-500 via-white to-green-600"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-white to-green-600 animate-pulse opacity-50"></div>
-      </motion.div>
+    <section className="relative bg-white overflow-hidden">
       
       <motion.div 
         className="container mx-auto px-4 relative z-10"
@@ -202,7 +131,7 @@ export const Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        <div className="text-center mb-8 md:mb-12">
+        <div className="text-center">
           
           {/* Government Slideshow */}
           <motion.div variants={itemVariants}>
