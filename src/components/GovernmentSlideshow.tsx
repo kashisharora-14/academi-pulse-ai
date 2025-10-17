@@ -7,20 +7,20 @@ export const GovernmentSlideshow = () => {
 
   const slides = [
     {
-      image: "/attached_assets/image_1760727621341.png",
-      alt: "Scheme Mapping"
+      image: "/scheme-mapping.png",
+      alt: "Scheme Mapping - Track government scheme participation and benefit distribution with real-time monitoring"
     },
     {
-      image: "/attached_assets/image_1760727624742.png",
-      alt: "Student Life Cycle Tracker"
+      image: "/student-lifecycle.png",
+      alt: "Student Life Cycle Tracker - Complete journey from enrollment to alumni with academic performance, projects, and placements tracking"
     },
     {
-      image: "/attached_assets/image_1760727628054.png",
-      alt: "Teacher Performance Dashboard"
+      image: "/teacher-performance.png",
+      alt: "Teacher Performance Dashboard - APAR ID-based tracking of teaching outcomes, research contributions, and training achievements"
     },
     {
-      image: "/attached_assets/image_1760727631263.png",
-      alt: "Unified Data Reporistry"
+      image: "/unified-data.png",
+      alt: "Unified Data Repository - Aadhaar/APAR/AISHE linked database ensuring data integrity across students, teachers, and institutions"
     }
   ];
 
