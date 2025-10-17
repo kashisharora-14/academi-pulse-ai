@@ -71,7 +71,7 @@ export const GovernmentSlideshow = () => {
         {/* Navigation Buttons */}
         <button
           onClick={prevSlide}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-orange-500/80 hover:bg-orange-600 text-white p-1.5 md:p-2 rounded-full shadow-lg transition-all hover:scale-110"
+          className="absolute left-2 top-2 z-20 bg-orange-500/80 hover:bg-orange-600 text-white p-1.5 md:p-2 rounded-full shadow-lg transition-all hover:scale-110"
           aria-label="Previous slide"
         >
           <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
@@ -79,7 +79,7 @@ export const GovernmentSlideshow = () => {
 
         <button
           onClick={nextSlide}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-orange-500/80 hover:bg-orange-600 text-white p-1.5 md:p-2 rounded-full shadow-lg transition-all hover:scale-110"
+          className="absolute right-2 top-2 z-20 bg-orange-500/80 hover:bg-orange-600 text-white p-1.5 md:p-2 rounded-full shadow-lg transition-all hover:scale-110"
           aria-label="Next slide"
         >
           <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
