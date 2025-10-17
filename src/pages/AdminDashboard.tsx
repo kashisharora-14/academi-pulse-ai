@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { authHelpers } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -426,17 +426,16 @@ const AdminDashboard = () => {
   const [excellenceDialogOpen, setExcellenceDialogOpen] = useState(false);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!session) {
-        navigate("/auth");
-      } else {
-        setUser(session.user);
-      }
-    });
+    const user = authHelpers.getCurrentUser();
+    if (!user) {
+      navigate("/auth");
+    } else {
+      setUser({ id: user.id, email: user.email } as any);
+    }
   }, [navigate]);
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    authHelpers.logout();
     navigate("/auth");
   };
 

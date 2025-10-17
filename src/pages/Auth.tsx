@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { authHelpers } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -183,41 +183,8 @@ const Auth = () => {
   const handleDemoLogin = async (email: string, password: string, role: string) => {
     setLoading(role);
     try {
-      // Try to sign in
-      let { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      // If user doesn't exist, create account
-      if (error?.message.includes("Invalid login credentials")) {
-        const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-          email,
-          password,
-        });
-
-        if (signUpError) throw signUpError;
-
-        // Insert role
-        if (signUpData.user) {
-          const { error: roleError } = await supabase
-            .from("user_roles")
-            .insert({ user_id: signUpData.user.id, role: role as any });
-
-          if (roleError) console.error("Role insert error:", roleError);
-        }
-
-        // Sign in after signup
-        const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
-
-        if (loginError) throw loginError;
-        data = loginData;
-      } else if (error) {
-        throw error;
-      }
+      // Simple demo authentication
+      authHelpers.login(email, role);
 
       toast({
         title: "Login Successful",
@@ -228,7 +195,7 @@ const Auth = () => {
     } catch (error: any) {
       toast({
         title: "Login Failed",
-        description: error.message,
+        description: error.message || "An error occurred",
         variant: "destructive",
       });
     } finally {
