@@ -19,7 +19,7 @@ export const GovernmentSlideshow = () => {
       alt: "Teacher Performance Dashboard - APAR ID-based tracking of teaching outcomes, research contributions, and training achievements"
     },
     {
-      image: "/unified-data.png",
+      image: "/unified-data-clean.png",
       alt: "Unified Data Repository - Aadhaar/APAR/AISHE linked database ensuring data integrity across students, teachers, and institutions"
     }
   ];
