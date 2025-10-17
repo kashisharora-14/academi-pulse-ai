@@ -7,16 +7,12 @@ export const GovernmentSlideshow = () => {
 
   const slides = [
     {
-      image: "/attached_assets/image_1760720008688.png",
+      image: "/attached_assets/image_1760722002146.png",
+      alt: "Student Life Cycle Tracker"
+    },
+    {
+      image: "/attached_assets/image_1760721996998.png",
       alt: "Institution Ranking Analytics"
-    },
-    {
-      image: "/attached_assets/image_1760721237685.png",
-      alt: "Swachh Evam Harit Vidyalaya Rating"
-    },
-    {
-      image: "/attached_assets/Gemini_Generated_Image_74fown74fown74fo_1760721751648.png",
-      alt: "Viksit Bharat Buildathon 2025"
     }
   ];
 
