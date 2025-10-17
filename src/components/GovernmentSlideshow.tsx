@@ -61,7 +61,7 @@ export const GovernmentSlideshow = () => {
                 <img
                   src={slide.image}
                   alt={slide.alt}
-                  className="w-full h-full object-contain p-4 md:p-6"
+                  className="w-full h-full object-cover"
                 />
               </div>
             ))}
