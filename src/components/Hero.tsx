@@ -204,22 +204,6 @@ export const Hero = () => {
       >
         <div className="text-center mb-8 md:mb-12">
           
-          {/* Banner Image */}
-          <motion.div 
-            variants={itemVariants}
-            className="mb-6 md:mb-8"
-          >
-            <motion.img 
-              src="/attached_assets/image_1760720008688.png"
-              alt="Institution Ranking Analytics"
-              className="w-full max-w-6xl mx-auto rounded-2xl shadow-2xl border-4 border-gradient-to-r from-orange-400 via-blue-500 to-green-500"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              whileHover={{ scale: 1.02 }}
-            />
-          </motion.div>
-
           {/* Government Slideshow */}
           <motion.div variants={itemVariants}>
             <GovernmentSlideshow />

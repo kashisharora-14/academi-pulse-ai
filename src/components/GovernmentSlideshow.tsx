@@ -6,6 +6,11 @@ export const GovernmentSlideshow = () => {
 
   const slides = [
     {
+      quote: "Institution Ranking Analytics - AI-powered analysis using NIRF parameters, compliance metrics and scheme participation data",
+      author: "Digital India Education Initiative",
+      image: "/attached_assets/image_1760720008688.png"
+    },
+    {
       quote: "Empowering the future through education - Building a strong foundation for our children",
       author: "Shri Narendra Modi, Hon'ble Prime Minister of India",
       image: "/attached_assets/image_1759607765586.png"
