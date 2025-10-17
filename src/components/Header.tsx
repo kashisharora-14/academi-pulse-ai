@@ -13,9 +13,9 @@ export const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="bg-white border-b-4 border-blue-800 shadow-sm">
+    <header className="bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-800 border-b-4 border-orange-400 shadow-lg">
       {/* Top Government Bar */}
-      <div className="bg-blue-800 text-white py-1.5 md:py-2">
+      <div className="bg-gradient-to-r from-orange-600 via-yellow-500 to-green-600 text-white py-1.5 md:py-2">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center text-xs md:text-sm">
             <div className="flex items-center space-x-3 md:space-x-6">
@@ -43,10 +43,10 @@ export const Header = () => {
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center space-x-3 md:space-x-4 flex-1 min-w-0">
             <div className="min-w-0 flex-1">
-              <h1 className="text-sm md:text-lg lg:text-xl font-bold text-slate-800 truncate">
+              <h1 className="text-sm md:text-lg lg:text-xl font-bold text-white truncate drop-shadow-lg">
                 National Education Data Platform
               </h1>
-              <p className="text-xs md:text-sm text-slate-600 hidden sm:block">
+              <p className="text-xs md:text-sm text-blue-100 hidden sm:block drop-shadow-md">
                 Ministry of Education | भारत सरकार | Government of India
               </p>
               <div className="flex items-center gap-2 mt-1">
@@ -63,7 +63,7 @@ export const Header = () => {
           <div className="flex items-center space-x-2 md:space-x-3">
             <Button 
               onClick={() => navigate("/auth")}
-              className="bg-blue-800 hover:bg-blue-900 text-white font-medium px-3 md:px-4 lg:px-6 text-xs md:text-sm"
+              className="bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white font-medium px-3 md:px-4 lg:px-6 text-xs md:text-sm shadow-lg border-2 border-white/30"
             >
               <span className="hidden sm:inline">Login / Register</span>
               <span className="sm:hidden">Login</span>

@@ -123,11 +123,11 @@ export const Hero = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-8 md:py-12 lg:py-16 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 py-8 md:py-12 lg:py-16 overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+          className="absolute top-20 left-10 w-72 h-72 bg-orange-400 rounded-full mix-blend-overlay filter blur-xl opacity-30"
           animate={{
             scale: [1, 1.2, 1],
             x: [0, 50, 0],
@@ -140,7 +140,7 @@ export const Hero = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+          className="absolute bottom-20 right-10 w-96 h-96 bg-pink-400 rounded-full mix-blend-overlay filter blur-xl opacity-30"
           animate={{
             scale: [1, 1.3, 1],
             x: [0, -50, 0],
@@ -153,7 +153,7 @@ export const Hero = () => {
           }}
         />
         <motion.div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-yellow-400 rounded-full mix-blend-overlay filter blur-xl opacity-30"
           animate={{
             scale: [1, 1.4, 1],
             rotate: [0, 180, 360],
@@ -164,11 +164,18 @@ export const Hero = () => {
             ease: "linear"
           }}
         />
+        
+        {/* Decorative patterns */}
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-10 right-20 w-32 h-32 border-4 border-white/20 rounded-full"></div>
+          <div className="absolute bottom-40 left-40 w-24 h-24 border-4 border-yellow-400/30 rounded-lg rotate-45"></div>
+          <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-gradient-to-br from-orange-400/40 to-pink-500/40 rounded-full"></div>
+        </div>
       </div>
 
       {/* Government Header Bar */}
       <motion.div 
-        className="absolute top-0 w-full h-2 bg-gradient-to-r from-orange-500 via-white to-green-500"
+        className="absolute top-0 w-full h-3 bg-gradient-to-r from-orange-500 via-white to-green-500"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -184,14 +191,14 @@ export const Hero = () => {
           
           <motion.div variants={itemVariants}>
             <motion.h1 
-              className="text-3xl md:text-4xl lg:text-6xl font-bold text-slate-800 mb-4 md:mb-6 leading-tight px-2"
+              className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight px-2 drop-shadow-lg"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               National Education
               <motion.span 
-                className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"
+                className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-300 to-pink-300"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
@@ -202,7 +209,7 @@ export const Hero = () => {
           </motion.div>
           
           <motion.p 
-            className="text-sm md:text-lg lg:text-xl text-slate-600 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed px-4"
+            className="text-sm md:text-lg lg:text-xl text-blue-50 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed px-4 drop-shadow-md"
             variants={itemVariants}
           >
             Unified digital ecosystem for seamless data management across educational institutions, 
@@ -225,33 +232,23 @@ export const Hero = () => {
                 variants={cardVariants}
                 whileHover={{ 
                   scale: 1.05, 
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                  boxShadow: "0 20px 40px rgba(255,255,255,0.2)",
                   transition: { duration: 0.2 }
                 }}
               >
-                <Card className={`p-3 md:p-4 bg-white border-2 relative overflow-hidden group cursor-pointer ${
-                  stat.color === 'blue' ? 'border-blue-200' :
-                  stat.color === 'green' ? 'border-green-200' :
-                  stat.color === 'orange' ? 'border-orange-200' :
-                  'border-purple-200'
+                <Card className={`p-3 md:p-4 border-2 relative overflow-hidden group cursor-pointer ${
+                  stat.color === 'blue' ? 'bg-gradient-to-br from-blue-500 to-blue-600 border-blue-300' :
+                  stat.color === 'green' ? 'bg-gradient-to-br from-green-500 to-emerald-600 border-green-300' :
+                  stat.color === 'orange' ? 'bg-gradient-to-br from-orange-500 to-amber-600 border-orange-300' :
+                  'bg-gradient-to-br from-purple-500 to-fuchsia-600 border-purple-300'
                 }`}>
                   <motion.div
-                    className={`absolute inset-0 bg-gradient-to-br to-transparent opacity-0 group-hover:opacity-100 ${
-                      stat.color === 'blue' ? 'from-blue-50' :
-                      stat.color === 'green' ? 'from-green-50' :
-                      stat.color === 'orange' ? 'from-orange-50' :
-                      'from-purple-50'
-                    }`}
+                    className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100"
                     transition={{ duration: 0.3 }}
                   />
                   <div className="relative z-10">
-                    <div className={`text-xl md:text-2xl font-bold ${
-                      stat.color === 'blue' ? 'text-blue-800' :
-                      stat.color === 'green' ? 'text-green-700' :
-                      stat.color === 'orange' ? 'text-orange-600' :
-                      'text-purple-700'
-                    }`}>{stat.value}</div>
-                    <div className="text-xs md:text-sm text-slate-600">{stat.label}</div>
+                    <div className="text-xl md:text-2xl font-bold text-white drop-shadow-lg">{stat.value}</div>
+                    <div className="text-xs md:text-sm text-white/90 font-medium">{stat.label}</div>
                   </div>
                 </Card>
               </motion.div>
@@ -260,9 +257,9 @@ export const Hero = () => {
 
           {/* Login Section with Enhanced Animations */}
           <motion.div variants={itemVariants}>
-            <Card className="max-w-4xl mx-auto p-4 md:p-6 lg:p-8 bg-white/90 backdrop-blur-sm border-2 border-slate-300 shadow-xl">
+            <Card className="max-w-4xl mx-auto p-4 md:p-6 lg:p-8 bg-white/95 backdrop-blur-md border-2 border-white/50 shadow-2xl">
               <motion.h3 
-                className="text-xl md:text-2xl font-bold text-slate-800 mb-4 md:mb-6 flex items-center justify-center gap-2"
+                className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4 md:mb-6 flex items-center justify-center gap-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
@@ -273,7 +270,7 @@ export const Hero = () => {
               </motion.h3>
               
               <motion.div 
-                className="bg-gradient-to-r from-slate-50 to-blue-50 border-2 border-slate-200 rounded-lg p-3 md:p-4 mb-4 md:mb-6"
+                className="bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 border-2 border-blue-200/50 rounded-lg p-3 md:p-4 mb-4 md:mb-6"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
