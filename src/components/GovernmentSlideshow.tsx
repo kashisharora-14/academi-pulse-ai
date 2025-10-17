@@ -47,7 +47,7 @@ export const GovernmentSlideshow = () => {
   return (
     <div className="relative w-full mb-8">
       {/* Main Banner Container - NSP Portal Style */}
-      <div className="relative w-full h-[200px] md:h-[280px] lg:h-[320px] overflow-hidden rounded-lg shadow-2xl bg-gradient-to-r from-slate-50 to-blue-50">
+      <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden rounded-lg shadow-2xl bg-gradient-to-r from-slate-50 to-blue-50">
         {/* Slides */}
         <div className="relative w-full h-full">
           {slides.map((slide, index) => (
