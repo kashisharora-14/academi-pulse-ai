@@ -85,21 +85,22 @@ export const GovernmentSlideshow = () => {
           <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
         </button>
 
-        {/* Dot Indicators - Positioned at bottom left, semi-transparent */}
-        <div className="absolute bottom-6 md:bottom-8 left-3 md:left-4 z-20 flex gap-2 bg-black/20 px-3 py-2 rounded-full backdrop-blur-sm">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`transition-all ${
-                index === currentSlide
-                  ? 'w-6 md:w-8 h-2.5 md:h-3 bg-orange-500 opacity-90'
-                  : 'w-2.5 md:w-3 h-2.5 md:h-3 bg-white/50 hover:bg-white/70 opacity-70'
-              } rounded-full`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
         </div>
+      
+      {/* Dot Indicators - Outside slideshow container */}
+      <div className="flex justify-center mt-4 gap-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`transition-all ${
+              index === currentSlide
+                ? 'w-8 md:w-10 h-3 bg-orange-500'
+                : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
+            } rounded-full`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
