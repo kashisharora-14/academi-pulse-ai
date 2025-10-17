@@ -7,7 +7,7 @@ export const GovernmentSlideshow = () => {
 
   const slides = [
     {
-      image: "/scheme-mapping-clean.png",
+      image: "/attached_assets/image_1760807436888.png",
       alt: "Scheme Mapping - Track government scheme participation and benefit distribution with real-time monitoring"
     },
     {
