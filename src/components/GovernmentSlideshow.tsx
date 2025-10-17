@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -10,20 +11,12 @@ export const GovernmentSlideshow = () => {
       alt: "Institution Ranking Analytics"
     },
     {
-      image: "/attached_assets/image_1759607765586.png",
-      alt: "PM Modi Education Initiative"
+      image: "/attached_assets/image_1760721237685.png",
+      alt: "Swachh Evam Harit Vidyalaya Rating"
     },
     {
-      image: "/attached_assets/image_1759607412610.png",
-      alt: "Mann Ki Baat"
-    },
-    {
-      image: "/attached_assets/Gemini_Generated_Image_74fown74fown74fo_1759607417401.png",
-      alt: "Swachh evam Harit Vidyalaya"
-    },
-    {
-      image: "/attached_assets/Gemini_Generated_Image_cimlq1cimlq1ciml_1759607421491.png",
-      alt: "Viksit Bharat Buildathon"
+      image: "/attached_assets/Gemini_Generated_Image_74fown74fown74fo_1760721751648.png",
+      alt: "Viksit Bharat Buildathon 2025"
     }
   ];
 
@@ -63,7 +56,7 @@ export const GovernmentSlideshow = () => {
               <img
                 src={slide.image}
                 alt={slide.alt}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain bg-white"
               />
             </div>
           ))}
