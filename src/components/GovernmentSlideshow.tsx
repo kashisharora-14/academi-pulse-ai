@@ -47,20 +47,20 @@ export const GovernmentSlideshow = () => {
   return (
     <div className="relative w-full mb-8">
       {/* Main Banner Container - NSP Portal Style */}
-      <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden rounded-lg shadow-2xl bg-gradient-to-r from-slate-50 to-blue-50">
+      <div className="relative w-full overflow-hidden rounded-lg shadow-2xl bg-white">
         {/* Slides */}
-        <div className="relative w-full h-full">
+        <div className="relative w-full">
           {slides.map((slide, index) => (
             <div
               key={index}
-              className={`absolute inset-0 transition-opacity duration-700 ${
-                index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              className={`transition-opacity duration-700 ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0 absolute inset-0'
               }`}
             >
               <img
                 src={slide.image}
                 alt={slide.alt}
-                className="w-full h-full object-contain"
+                className="w-full h-auto"
               />
             </div>
           ))}
