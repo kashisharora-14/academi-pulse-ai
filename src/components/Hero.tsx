@@ -123,28 +123,16 @@ export const Hero = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 py-8 md:py-12 lg:py-16 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-orange-50 via-white to-green-50 py-8 md:py-12 lg:py-16 overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Large decorative circles */}
         <motion.div
-          className="absolute top-20 left-10 w-72 h-72 bg-orange-400 rounded-full mix-blend-overlay filter blur-xl opacity-30"
+          className="absolute -top-20 -left-20 w-96 h-96 bg-gradient-to-br from-orange-200 to-orange-300 rounded-full opacity-40 blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-pink-400 rounded-full mix-blend-overlay filter blur-xl opacity-30"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -50, 0],
-            y: [0, -40, 0],
+            x: [0, 30, 0],
+            y: [0, 20, 0],
           }}
           transition={{
             duration: 10,
@@ -153,10 +141,23 @@ export const Hero = () => {
           }}
         />
         <motion.div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-yellow-400 rounded-full mix-blend-overlay filter blur-xl opacity-30"
+          className="absolute top-40 -right-32 w-[500px] h-[500px] bg-gradient-to-br from-blue-200 to-indigo-300 rounded-full opacity-40 blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            x: [0, -40, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute -bottom-32 left-1/3 w-[450px] h-[450px] bg-gradient-to-br from-green-200 to-emerald-300 rounded-full opacity-40 blur-3xl"
           animate={{
             scale: [1, 1.4, 1],
-            rotate: [0, 180, 360],
+            rotate: [0, 90, 180],
           }}
           transition={{
             duration: 15,
@@ -166,20 +167,34 @@ export const Hero = () => {
         />
         
         {/* Decorative patterns */}
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-10 right-20 w-32 h-32 border-4 border-white/20 rounded-full"></div>
-          <div className="absolute bottom-40 left-40 w-24 h-24 border-4 border-yellow-400/30 rounded-lg rotate-45"></div>
-          <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-gradient-to-br from-orange-400/40 to-pink-500/40 rounded-full"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-30">
+          <div className="absolute top-20 right-32 w-40 h-40 border-4 border-orange-400 rounded-full animate-pulse"></div>
+          <div className="absolute bottom-60 left-60 w-32 h-32 border-4 border-green-500 rounded-lg rotate-45 animate-pulse"></div>
+          <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full animate-bounce opacity-50"></div>
+          <div className="absolute bottom-32 right-48 w-20 h-20 border-4 border-yellow-500 rounded-full"></div>
+          <div className="absolute top-48 left-1/4 w-16 h-16 bg-gradient-to-br from-pink-400 to-rose-500 rounded-lg rotate-12"></div>
         </div>
+        
+        {/* Geometric patterns */}
+        <svg className="absolute top-0 left-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <circle cx="20" cy="20" r="1" fill="#FF9933"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)"/>
+        </svg>
       </div>
 
-      {/* Government Header Bar */}
+      {/* Tricolor Header Bar */}
       <motion.div 
-        className="absolute top-0 w-full h-3 bg-gradient-to-r from-orange-500 via-white to-green-500"
+        className="absolute top-0 w-full h-4 bg-gradient-to-r from-orange-500 via-white to-green-600"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
-      />
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-white to-green-600 animate-pulse opacity-50"></div>
+      </motion.div>
       
       <motion.div 
         className="container mx-auto px-4 relative z-10"
@@ -191,14 +206,16 @@ export const Hero = () => {
           
           <motion.div variants={itemVariants}>
             <motion.h1 
-              className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight px-2 drop-shadow-lg"
+              className="text-3xl md:text-4xl lg:text-6xl font-extrabold mb-4 md:mb-6 leading-tight px-2"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              National Education
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-blue-700 to-green-700">
+                National Education
+              </span>
               <motion.span 
-                className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-300 to-pink-300"
+                className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 mt-2"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
@@ -209,11 +226,14 @@ export const Hero = () => {
           </motion.div>
           
           <motion.p 
-            className="text-sm md:text-lg lg:text-xl text-blue-50 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed px-4 drop-shadow-md"
+            className="text-sm md:text-lg lg:text-xl text-slate-700 font-medium mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed px-4"
             variants={itemVariants}
           >
-            Unified digital ecosystem for seamless data management across educational institutions, 
-            government schemes, and stakeholder coordination under Digital India initiative.
+            <span className="bg-gradient-to-r from-orange-600 to-green-700 bg-clip-text text-transparent font-semibold">
+              Unified digital ecosystem
+            </span> for seamless data management across educational institutions, 
+            government schemes, and stakeholder coordination under 
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent font-semibold"> Digital India initiative</span>.
           </motion.p>
 
           {/* Government Slideshow */}
@@ -231,24 +251,28 @@ export const Hero = () => {
                 key={index}
                 variants={cardVariants}
                 whileHover={{ 
-                  scale: 1.05, 
-                  boxShadow: "0 20px 40px rgba(255,255,255,0.2)",
+                  scale: 1.08, 
+                  y: -5,
                   transition: { duration: 0.2 }
                 }}
               >
-                <Card className={`p-3 md:p-4 border-2 relative overflow-hidden group cursor-pointer ${
-                  stat.color === 'blue' ? 'bg-gradient-to-br from-blue-500 to-blue-600 border-blue-300' :
-                  stat.color === 'green' ? 'bg-gradient-to-br from-green-500 to-emerald-600 border-green-300' :
-                  stat.color === 'orange' ? 'bg-gradient-to-br from-orange-500 to-amber-600 border-orange-300' :
-                  'bg-gradient-to-br from-purple-500 to-fuchsia-600 border-purple-300'
+                <Card className={`p-4 md:p-6 border-3 relative overflow-hidden group cursor-pointer shadow-2xl ${
+                  stat.color === 'blue' ? 'bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600 border-blue-400' :
+                  stat.color === 'green' ? 'bg-gradient-to-br from-green-600 via-emerald-500 to-teal-600 border-green-400' :
+                  stat.color === 'orange' ? 'bg-gradient-to-br from-orange-600 via-amber-500 to-yellow-600 border-orange-400' :
+                  'bg-gradient-to-br from-purple-600 via-fuchsia-500 to-pink-600 border-purple-400'
                 }`}>
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100"
+                    className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent opacity-0 group-hover:opacity-100"
                     transition={{ duration: 0.3 }}
                   />
+                  <motion.div
+                    className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:scale-150"
+                    transition={{ duration: 0.5 }}
+                  />
                   <div className="relative z-10">
-                    <div className="text-xl md:text-2xl font-bold text-white drop-shadow-lg">{stat.value}</div>
-                    <div className="text-xs md:text-sm text-white/90 font-medium">{stat.label}</div>
+                    <div className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-2xl mb-1">{stat.value}</div>
+                    <div className="text-xs md:text-sm text-white/95 font-semibold uppercase tracking-wide">{stat.label}</div>
                   </div>
                 </Card>
               </motion.div>
@@ -257,16 +281,19 @@ export const Hero = () => {
 
           {/* Login Section with Enhanced Animations */}
           <motion.div variants={itemVariants}>
-            <Card className="max-w-4xl mx-auto p-4 md:p-6 lg:p-8 bg-white/95 backdrop-blur-md border-2 border-white/50 shadow-2xl">
+            <Card className="max-w-4xl mx-auto p-4 md:p-6 lg:p-8 bg-white border-4 border-gradient-to-r from-orange-400 via-blue-500 to-green-500 shadow-2xl relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-blue-50 to-green-50 opacity-50"></div>
               <motion.h3 
-                className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4 md:mb-6 flex items-center justify-center gap-2"
+                className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-4 md:mb-6 flex items-center justify-center gap-2 relative z-10"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
               >
-                <Sparkles className="w-6 h-6 text-yellow-500" />
-                Access Dashboard
-                <Sparkles className="w-6 h-6 text-yellow-500" />
+                <Sparkles className="w-6 h-6 md:w-7 md:h-7 text-orange-500 animate-pulse" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-blue-700 to-green-700">
+                  Access Dashboard
+                </span>
+                <Sparkles className="w-6 h-6 md:w-7 md:h-7 text-green-500 animate-pulse" />
               </motion.h3>
               
               <motion.div 
