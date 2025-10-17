@@ -204,37 +204,21 @@ export const Hero = () => {
       >
         <div className="text-center mb-8 md:mb-12">
           
-          <motion.div variants={itemVariants}>
-            <motion.h1 
-              className="text-3xl md:text-4xl lg:text-6xl font-extrabold mb-4 md:mb-6 leading-tight px-2"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-blue-700 to-green-700">
-                National Education
-              </span>
-              <motion.span 
-                className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 mt-2"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-              >
-                Data Integration Platform
-              </motion.span>
-            </motion.h1>
-          </motion.div>
-          
-          <motion.p 
-            className="text-sm md:text-lg lg:text-xl text-slate-700 font-medium mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed px-4"
+          {/* Banner Image */}
+          <motion.div 
             variants={itemVariants}
+            className="mb-6 md:mb-8"
           >
-            <span className="bg-gradient-to-r from-orange-600 to-green-700 bg-clip-text text-transparent font-semibold">
-              Unified digital ecosystem
-            </span> for seamless data management across educational institutions, 
-            government schemes, and stakeholder coordination under 
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent font-semibold"> Digital India initiative</span>.
-          </motion.p>
+            <motion.img 
+              src="/attached_assets/image_1760720008688.png"
+              alt="Institution Ranking Analytics"
+              className="w-full max-w-6xl mx-auto rounded-2xl shadow-2xl border-4 border-gradient-to-r from-orange-400 via-blue-500 to-green-500"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              whileHover={{ scale: 1.02 }}
+            />
+          </motion.div>
 
           {/* Government Slideshow */}
           <motion.div variants={itemVariants}>
