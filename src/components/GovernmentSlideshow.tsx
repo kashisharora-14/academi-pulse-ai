@@ -15,7 +15,7 @@ export const GovernmentSlideshow = () => {
       alt: "Student Life Cycle Tracker - Complete journey from enrollment to alumni with academic performance, projects, and placements tracking"
     },
     {
-      image: "/teacher-performance.png",
+      image: "/teacher-performance-clean.png",
       alt: "Teacher Performance Dashboard - APAR ID-based tracking of teaching outcomes, research contributions, and training achievements"
     },
     {
