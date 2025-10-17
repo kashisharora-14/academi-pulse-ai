@@ -68,10 +68,10 @@ export const GovernmentSlideshow = () => {
           </div>
         </div>
 
-        {/* Navigation Buttons */}
+        {/* Navigation Buttons - Centered Vertically */}
         <button
           onClick={prevSlide}
-          className="absolute left-2 top-2 z-20 bg-orange-500/80 hover:bg-orange-600 text-white p-1.5 md:p-2 rounded-full shadow-lg transition-all hover:scale-110"
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-orange-500/80 hover:bg-orange-600 text-white p-1.5 md:p-2 rounded-full shadow-lg transition-all hover:scale-110"
           aria-label="Previous slide"
         >
           <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
@@ -79,14 +79,14 @@ export const GovernmentSlideshow = () => {
 
         <button
           onClick={nextSlide}
-          className="absolute right-2 top-2 z-20 bg-orange-500/80 hover:bg-orange-600 text-white p-1.5 md:p-2 rounded-full shadow-lg transition-all hover:scale-110"
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-orange-500/80 hover:bg-orange-600 text-white p-1.5 md:p-2 rounded-full shadow-lg transition-all hover:scale-110"
           aria-label="Next slide"
         >
           <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
         </button>
 
-        {/* Dot Indicators */}
-        <div className="absolute bottom-3 md:bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2 bg-black/30 px-3 py-2 rounded-full backdrop-blur-sm">
+        {/* Dot Indicators - Positioned on Left Side */}
+        <div className="absolute bottom-3 md:bottom-4 left-3 md:left-4 z-20 flex gap-2 bg-black/30 px-3 py-2 rounded-full backdrop-blur-sm">
           {slides.map((_, index) => (
             <button
               key={index}
