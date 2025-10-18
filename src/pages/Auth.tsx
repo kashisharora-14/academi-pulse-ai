@@ -298,8 +298,8 @@ const Auth = () => {
                 <TabsContent value="aadhaar" className="space-y-6 mt-6">
                   <div className="text-center">
                     <CreditCard className="h-12 w-12 mx-auto mb-4 text-primary" />
-                    <h3 className="text-xl font-semibold mb-2 text-gray-900">Aadhaar-based Authentication</h3>
-                    <p className="text-sm text-gray-700">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-900">Aadhaar-based Authentication</h3>
+                    <p className="text-sm text-gray-800 dark:text-gray-800 font-medium">
                       Secure login using your 12-digit Aadhaar number and OTP verification
                     </p>
                   </div>
@@ -307,7 +307,7 @@ const Auth = () => {
                   {verificationStep === 1 && (
                     <div className="space-y-4">
                       <div>
-                        <label className="text-sm font-medium mb-2 block text-gray-900">
+                        <label className="text-sm font-semibold mb-2 block text-gray-900 dark:text-gray-900">
                           Enter Aadhaar Number
                         </label>
                         <Input
@@ -318,7 +318,7 @@ const Auth = () => {
                           className="text-center text-lg tracking-wider border-2 border-gray-300"
                           maxLength={14}
                         />
-                        <p className="text-xs text-gray-600 mt-1 text-center">
+                        <p className="text-xs text-gray-700 dark:text-gray-700 mt-1 text-center font-medium">
                           Demo Aadhaar numbers: 1234-5678-9012, 2345-6789-0123, 3456-7890-1234, 4567-8901-2345
                         </p>
                       </div>
@@ -347,13 +347,13 @@ const Auth = () => {
                     <div className="space-y-4">
                       <div className="text-center">
                         <CheckCircle className="h-8 w-8 mx-auto mb-2 text-green-500" />
-                        <p className="text-sm text-gray-700">
+                        <p className="text-sm text-gray-800 dark:text-gray-800 font-medium">
                           OTP sent to mobile number ending with ****789
                         </p>
                       </div>
                       
                       <div>
-                        <label className="text-sm font-medium mb-2 block text-gray-900">
+                        <label className="text-sm font-semibold mb-2 block text-gray-900 dark:text-gray-900">
                           Enter 6-digit OTP
                         </label>
                         <Input
@@ -364,7 +364,7 @@ const Auth = () => {
                           className="text-center text-2xl tracking-widest border-2 border-gray-300"
                           maxLength={6}
                         />
-                        <p className="text-xs text-gray-600 mt-1 text-center">
+                        <p className="text-xs text-gray-700 dark:text-gray-700 mt-1 text-center font-medium">
                           Demo OTP: 123456
                         </p>
                       </div>
@@ -394,15 +394,15 @@ const Auth = () => {
                 <TabsContent value="email" className="space-y-6 mt-6">
                   <div className="text-center">
                     <User className="h-12 w-12 mx-auto mb-4 text-primary" />
-                    <h3 className="text-xl font-semibold mb-2 text-gray-900">Email Authentication</h3>
-                    <p className="text-sm text-gray-700">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-900">Email Authentication</h3>
+                    <p className="text-sm text-gray-800 dark:text-gray-800 font-medium">
                       Login using your registered email address and password
                     </p>
                   </div>
 
                   <div className="space-y-4">
                     <div>
-                      <label className="text-sm font-medium mb-2 block text-gray-900">Email Address</label>
+                      <label className="text-sm font-semibold mb-2 block text-gray-900 dark:text-gray-900">Email Address</label>
                       <Input
                         type="email"
                         placeholder="your-email@nedp.gov.in"
@@ -413,7 +413,7 @@ const Auth = () => {
                     </div>
                     
                     <div>
-                      <label className="text-sm font-medium mb-2 block text-gray-900">Password</label>
+                      <label className="text-sm font-semibold mb-2 block text-gray-900 dark:text-gray-900">Password</label>
                       <div className="relative">
                         <Input
                           type={showPassword ? "text" : "password"}
