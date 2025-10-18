@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Maximize2, MapPin, BarChart } from "lucide-react";
+import { Maximize2, MapPin, BarChart, GraduationCap, TrendingUp } from "lucide-react";
 
 const galleryItems = [
   {
     id: 1,
     title: "Campus Events & Interactive Map",
-    description: "Navigate through campus events, library timings, and department success metrics with an interactive map interface",
+    description: "Navigate through campus events, library timings, department success metrics, and university rankings with an interactive map interface",
     image: "/campus-events.png",
     icon: MapPin,
     color: "from-green-500 to-emerald-600"
@@ -20,6 +20,22 @@ const galleryItems = [
     image: "/scheme-mapping.png",
     icon: BarChart,
     color: "from-orange-500 to-red-600"
+  },
+  {
+    id: 3,
+    title: "National Student Life Cycle Tracker",
+    description: "Seamless journey from enrollment to alumni with complete academic performance metrics, projects, and alumni network tracking",
+    image: "/student-lifecycle-tracker.png",
+    icon: GraduationCap,
+    color: "from-blue-600 to-blue-700"
+  },
+  {
+    id: 4,
+    title: "Institution Ranking Analytics",
+    description: "AI-powered analysis using NIRF parameters, compliance metrics, and scheme participation data for comprehensive institution evaluation",
+    image: "/institution-ranking.png",
+    icon: TrendingUp,
+    color: "from-orange-600 to-orange-700"
   }
 ];
 
@@ -42,11 +58,11 @@ export const InteractiveGallery = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-            Interactive Features Gallery
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 via-blue-600 to-green-600 bg-clip-text text-transparent">
+            Interactive Platform Features
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore our comprehensive platform features through interactive visualizations
+            Explore our comprehensive analytics and tracking systems through interactive visualizations
           </p>
         </motion.div>
 
@@ -58,7 +74,7 @@ export const InteractiveGallery = () => {
                 key={item.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
                 <Card 
@@ -69,7 +85,7 @@ export const InteractiveGallery = () => {
                     <div className="relative">
                       <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-10 group-hover:opacity-20 transition-opacity duration-300`} />
                       
-                      <div className="relative overflow-hidden aspect-video">
+                      <div className="relative overflow-hidden aspect-video bg-gray-100">
                         <img
                           src={item.image}
                           alt={item.title}
@@ -90,7 +106,7 @@ export const InteractiveGallery = () => {
 
                       <div className="p-6 bg-white">
                         <div className="flex items-start gap-3 mb-3">
-                          <div className={`p-3 rounded-lg bg-gradient-to-br ${item.color}`}>
+                          <div className={`p-3 rounded-lg bg-gradient-to-br ${item.color} shadow-md`}>
                             <Icon className="w-6 h-6 text-white" />
                           </div>
                           <div className="flex-1">

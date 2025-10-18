@@ -1,11 +1,11 @@
 import { Header } from "@/components/Header";
+import { HeroGallery } from "@/components/HeroGallery";
 import { Hero } from "@/components/Hero";
 import { Features } from "@/components/Features";
 import { AIFeatures } from "@/components/AIFeatures";
 import { RoleDashboards } from "@/components/RoleDashboards";
 import { DashboardPreview } from "@/components/DashboardPreview";
 import { GovernmentInitiatives } from "@/components/GovernmentInitiatives";
-import { InteractiveGallery } from "@/components/InteractiveGallery";
 import { Footer } from "@/components/Footer";
 import { GraduationCap, UserCircle, Building2, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -21,9 +21,9 @@ const Index = () => {
       <Header />
       <TeamNotificationDialog />
       <main>
+        <HeroGallery />
         <Hero />
         <GovernmentInitiatives />
-        <InteractiveGallery />
         <Features />
         <AIFeatures />
         <RoleDashboards />

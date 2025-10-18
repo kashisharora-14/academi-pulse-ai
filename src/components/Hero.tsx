@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
-import { GovernmentSlideshow } from "@/components/GovernmentSlideshow";
 import { motion } from "framer-motion";
 import { 
   GraduationCap, 
@@ -133,11 +132,6 @@ export const Hero = () => {
       >
         <div className="text-center">
           
-          {/* Government Slideshow */}
-          <motion.div variants={itemVariants}>
-            <GovernmentSlideshow />
-          </motion.div>
-
           {/* Key Statistics with Animation */}
           <motion.div 
             className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-8 md:mb-12 max-w-4xl mx-auto"
