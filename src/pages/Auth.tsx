@@ -298,8 +298,8 @@ const Auth = () => {
                 <TabsContent value="aadhaar" className="space-y-6 mt-6">
                   <div className="text-center">
                     <CreditCard className="h-12 w-12 mx-auto mb-4 text-primary" />
-                    <h3 className="text-xl font-semibold mb-2">Aadhaar-based Authentication</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Aadhaar-based Authentication</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
                       Secure login using your 12-digit Aadhaar number and OTP verification
                     </p>
                   </div>
@@ -307,7 +307,7 @@ const Auth = () => {
                   {verificationStep === 1 && (
                     <div className="space-y-4">
                       <div>
-                        <label className="text-sm font-medium mb-2 block">
+                        <label className="text-sm font-medium mb-2 block text-gray-900 dark:text-gray-100">
                           Enter Aadhaar Number
                         </label>
                         <Input
@@ -353,7 +353,7 @@ const Auth = () => {
                       </div>
                       
                       <div>
-                        <label className="text-sm font-medium mb-2 block">
+                        <label className="text-sm font-medium mb-2 block text-gray-900 dark:text-gray-100">
                           Enter 6-digit OTP
                         </label>
                         <Input
@@ -394,15 +394,15 @@ const Auth = () => {
                 <TabsContent value="email" className="space-y-6 mt-6">
                   <div className="text-center">
                     <User className="h-12 w-12 mx-auto mb-4 text-primary" />
-                    <h3 className="text-xl font-semibold mb-2">Email Authentication</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Email Authentication</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
                       Login using your registered email address and password
                     </p>
                   </div>
 
                   <div className="space-y-4">
                     <div>
-                      <label className="text-sm font-medium mb-2 block">Email Address</label>
+                      <label className="text-sm font-medium mb-2 block text-gray-900 dark:text-gray-100">Email Address</label>
                       <Input
                         type="email"
                         placeholder="your-email@nedp.gov.in"
@@ -412,7 +412,7 @@ const Auth = () => {
                     </div>
                     
                     <div>
-                      <label className="text-sm font-medium mb-2 block">Password</label>
+                      <label className="text-sm font-medium mb-2 block text-gray-900 dark:text-gray-100">Password</label>
                       <div className="relative">
                         <Input
                           type={showPassword ? "text" : "password"}
