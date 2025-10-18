@@ -283,17 +283,35 @@ const Auth = () => {
           {/* Authentication Methods */}
           <Card className="max-w-2xl mx-auto">
             <div className="p-6">
+              {/* Custom Tab Buttons */}
+              <div className="grid grid-cols-2 gap-2 bg-gray-100 p-2 rounded-lg mb-6">
+                <button
+                  onClick={() => setAuthMethod("aadhaar")}
+                  className={`flex items-center justify-center gap-2 px-4 py-3 rounded-md font-bold text-sm transition-all ${
+                    authMethod === "aadhaar"
+                      ? "bg-white text-black shadow-sm"
+                      : "bg-transparent text-black hover:bg-white/50"
+                  }`}
+                  style={{ color: '#000000', fontWeight: 'bold' }}
+                >
+                  <CreditCard className="h-4 w-4" />
+                  Aadhaar Authentication
+                </button>
+                <button
+                  onClick={() => setAuthMethod("email")}
+                  className={`flex items-center justify-center gap-2 px-4 py-3 rounded-md font-bold text-sm transition-all ${
+                    authMethod === "email"
+                      ? "bg-white text-black shadow-sm"
+                      : "bg-transparent text-black hover:bg-white/50"
+                  }`}
+                  style={{ color: '#000000', fontWeight: 'bold' }}
+                >
+                  <User className="h-4 w-4" />
+                  Email Login
+                </button>
+              </div>
+
               <Tabs value={authMethod} onValueChange={(value: any) => setAuthMethod(value)}>
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="aadhaar" className="flex items-center gap-2">
-                    <CreditCard className="h-4 w-4" />
-                    Aadhaar Authentication
-                  </TabsTrigger>
-                  <TabsTrigger value="email" className="flex items-center gap-2">
-                    <User className="h-4 w-4" />
-                    Email Login
-                  </TabsTrigger>
-                </TabsList>
 
                 <TabsContent value="aadhaar" className="space-y-6 mt-6">
                   <div className="text-center">
