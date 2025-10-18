@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { MapPin, BarChart, GraduationCap, TrendingUp, MessageSquare, Sparkles, ChevronRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { useNavigate } from "react-router-dom";
 
 const galleryItems = [
@@ -64,8 +65,15 @@ const galleryItems = [
 
 export const HeroGallery = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedTitle, setSelectedTitle] = useState<string>("");
   const controls = useAnimation();
   const navigate = useNavigate();
+
+  const handleImageClick = (image: string, title: string) => {
+    setSelectedImage(image);
+    setSelectedTitle(title);
+  };
 
   return (
     <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/50 overflow-hidden">
@@ -120,15 +128,25 @@ export const HeroGallery = () => {
                   <div className={`grid lg:grid-cols-2 gap-0 ${isEven ? '' : 'lg:grid-flow-dense'}`}>
                     {/* Image Side */}
                     <div className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                      <div className="relative aspect-[4/3] lg:aspect-auto lg:h-full bg-gray-100">
+                      <div 
+                        className="relative aspect-[4/3] lg:aspect-auto lg:h-full bg-gray-100 cursor-pointer group"
+                        onClick={() => handleImageClick(item.image, item.title)}
+                      >
                         <img
                           src={item.image}
                           alt={item.title}
-                          className="w-full h-full object-contain p-4 lg:p-6"
+                          className="w-full h-full object-contain p-4 lg:p-6 transition-transform group-hover:scale-105"
                         />
 
                         {/* Gradient Overlay on hover */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 hover:opacity-10 transition-opacity duration-300`} />
+                        <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+                        
+                        {/* Click to view indicator */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="bg-white/90 px-4 py-2 rounded-lg shadow-lg">
+                            <p className="text-sm font-semibold text-gray-700">Click to view full size</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -178,6 +196,23 @@ export const HeroGallery = () => {
           })}
         </div>
       </div>
+
+      {/* Image Preview Dialog */}
+      <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-5xl w-[95vw] max-h-[90vh] overflow-auto p-0">
+          <DialogTitle className="sr-only">{selectedTitle}</DialogTitle>
+          <div className="relative w-full">
+            <img
+              src={selectedImage || ""}
+              alt={selectedTitle}
+              className="w-full h-auto"
+            />
+          </div>
+          <div className="p-4 bg-gray-50 border-t">
+            <h3 className="text-lg font-semibold text-gray-800">{selectedTitle}</h3>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
