@@ -5,6 +5,7 @@ import { AIFeatures } from "@/components/AIFeatures";
 import { RoleDashboards } from "@/components/RoleDashboards";
 import { DashboardPreview } from "@/components/DashboardPreview";
 import { GovernmentInitiatives } from "@/components/GovernmentInitiatives";
+import { InteractiveGallery } from "@/components/InteractiveGallery";
 import { Footer } from "@/components/Footer";
 import { GraduationCap, UserCircle, Building2, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,8 +23,7 @@ const Index = () => {
       <main>
         <Hero />
         <GovernmentInitiatives />
-
-
+        <InteractiveGallery />
         <Features />
         <AIFeatures />
         <RoleDashboards />
