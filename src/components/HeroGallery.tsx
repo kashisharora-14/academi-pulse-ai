@@ -195,25 +195,25 @@ const TiltCard = ({ item, onClick, index }: { item: typeof galleryItems[0], onCl
           </motion.div>
         </div>
 
-        {/* Card Footer with Gradient */}
+        {/* Card Footer with Solid Gradient Background */}
         <motion.div 
-          className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-br ${item.gradient} text-white`}
+          className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-br ${item.gradient} text-white shadow-lg`}
           style={{ transformStyle: "preserve-3d", transform: "translateZ(40px)" }}
         >
           <div className="flex items-center gap-3 mb-2">
             <motion.div 
-              className="bg-white/20 backdrop-blur-sm p-2.5 rounded-lg"
+              className="bg-white/30 backdrop-blur-sm p-2.5 rounded-lg shadow-md"
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
-              <Icon className="w-5 h-5" />
+              <Icon className="w-5 h-5 text-white drop-shadow-lg" />
             </motion.div>
-            <h3 className="font-bold text-base md:text-lg leading-tight flex items-center gap-2">
+            <h3 className="font-bold text-base md:text-lg leading-tight flex items-center gap-2 drop-shadow-md">
               {item.title}
-              <Sparkles className="w-4 h-4 opacity-70" />
+              <Sparkles className="w-4 h-4 opacity-90 drop-shadow-md" />
             </h3>
           </div>
-          <p className="text-xs md:text-sm text-white/95 ml-12 leading-relaxed">
+          <p className="text-xs md:text-sm text-white font-medium ml-12 leading-relaxed drop-shadow-md">
             {item.description}
           </p>
         </motion.div>
@@ -267,21 +267,15 @@ export const HeroGallery = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-center mb-10 md:mb-12"
           >
-            <motion.div className="inline-block mb-4">
-              <motion.div
-                animate={{ 
-                  rotate: [0, 5, -5, 0],
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 via-blue-100 to-green-100 px-6 py-2 rounded-full border-2 border-orange-200/50"
-              >
+            <div className="inline-block mb-4">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 via-blue-100 to-green-100 px-6 py-2 rounded-full border-2 border-orange-200/50">
                 <Sparkles className="w-5 h-5 text-orange-500" />
                 <span className="text-sm md:text-base font-semibold text-gray-700">
                   Comprehensive Education Analytics
                 </span>
                 <Sparkles className="w-5 h-5 text-blue-500" />
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             <motion.h2 
               animate={controls}
