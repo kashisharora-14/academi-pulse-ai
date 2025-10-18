@@ -155,11 +155,11 @@ const TiltCard = ({ item, onClick, index }: { item: typeof galleryItems[0], onCl
           transition={{ duration: 0.8 }}
         />
 
-        <div className="relative overflow-hidden aspect-[4/3]">
+        <div className="relative overflow-hidden aspect-[16/10]">
           <motion.img
             src={item.image}
             alt={item.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain bg-white"
             style={{ 
               transformStyle: "preserve-3d", 
               transform: "translateZ(30px)" 
@@ -310,7 +310,7 @@ export const HeroGallery = () => {
 
       {/* Enhanced Modal */}
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-7xl w-[95vw] p-0 bg-black/95 border-none">
+        <DialogContent className="max-w-5xl w-[90vw] p-4 bg-white border-none">
           <DialogTitle className="sr-only">{selectedTitle}</DialogTitle>
           <motion.div
             initial={{ scale: 0.8, opacity: 0, rotateX: -20 }}
@@ -321,17 +321,17 @@ export const HeroGallery = () => {
           >
             <motion.button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 z-50 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-full p-3 transition-all"
+              className="absolute -top-2 -right-2 z-50 bg-red-500 hover:bg-red-600 text-white rounded-full p-2 transition-all shadow-lg"
               whileHover={{ scale: 1.1, rotate: 90 }}
               whileTap={{ scale: 0.9 }}
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </motion.button>
             {selectedImage && (
               <motion.img
                 src={selectedImage}
                 alt={selectedTitle}
-                className="w-full h-auto rounded-lg"
+                className="w-full h-auto rounded-lg max-h-[80vh] object-contain"
                 layoutId={selectedImage}
               />
             )}
