@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { MapPin, BarChart, GraduationCap, TrendingUp, MessageSquare, Sparkles, ChevronRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 const galleryItems = [
   {
@@ -64,6 +65,7 @@ const galleryItems = [
 export const HeroGallery = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const controls = useAnimation();
+  const navigate = useNavigate();
 
   return (
     <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/50 overflow-hidden">
@@ -156,7 +158,10 @@ export const HeroGallery = () => {
                         {item.details}
                       </p>
 
-                      <div className={`flex items-center gap-2 ${item.accentColor} font-semibold text-sm`}>
+                      <button 
+                        onClick={() => navigate('/auth')}
+                        className={`flex items-center gap-2 ${item.accentColor} font-semibold text-sm hover:underline cursor-pointer transition-all`}
+                      >
                         <span>Learn more about this feature</span>
                         <motion.div
                           animate={{ x: [0, 5, 0] }}
@@ -164,7 +169,7 @@ export const HeroGallery = () => {
                         >
                           <ChevronRight className="w-5 h-5" />
                         </motion.div>
-                      </div>
+                      </button>
                     </div>
                   </div>
                 </Card>
