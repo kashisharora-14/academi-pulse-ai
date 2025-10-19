@@ -20,6 +20,7 @@ import {
   DialogTrigger,
   DialogFooter,
 } from "@/components/ui/dialog";
+import { Tooltip as UITooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -516,62 +517,132 @@ const AdminDashboard = () => {
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
             <TabsList className="gov-tabs-list flex w-full flex-wrap justify-start">
-              <TabsTrigger value="overview" className="gov-tab-trigger">
-                <Building2 className="h-4 w-4 enhanced-tab-icon" />
-                Overview
-              </TabsTrigger>
-              <TabsTrigger value="institutions" className="gov-tab-trigger">
-                <Users className="h-4 w-4 enhanced-tab-icon" />
-                Institutions
-              </TabsTrigger>
-              <TabsTrigger value="schemes" className="gov-tab-trigger">
-                <Award className="h-4 w-4 enhanced-tab-icon" />
-                Schemes
-              </TabsTrigger>
-              <TabsTrigger value="analytics" className="gov-tab-trigger">
-                <BarChart3 className="h-4 w-4 enhanced-tab-icon" />
-                Analytics
-              </TabsTrigger>
-              <TabsTrigger value="compliance" className="gov-tab-trigger">
-                <CheckCircle className="h-4 w-4 enhanced-tab-icon" />
-                Compliance
-              </TabsTrigger>
-              <TabsTrigger value="interop" className="gov-tab-trigger">
-                <Database className="h-4 w-4 enhanced-tab-icon" />
-                Interop
-              </TabsTrigger>
-              <TabsTrigger value="policy" className="gov-tab-trigger">
-                <FileText className="h-4 w-4 enhanced-tab-icon" />
-                Policy
-              </TabsTrigger>
-              <TabsTrigger value="security" className="gov-tab-trigger">
-                <Shield className="h-4 w-4 enhanced-tab-icon" />
-                Security
-              </TabsTrigger>
-              <TabsTrigger value="authority-requests" className="gov-tab-trigger">
-                <Shield className="h-4 w-4 enhanced-tab-icon" />
-                Authority
-              </TabsTrigger>
-              <TabsTrigger value="ratings" className="gov-tab-trigger">
-                <Star className="h-4 w-4 enhanced-tab-icon" />
-                Ratings
-              </TabsTrigger>
-              <TabsTrigger value="map" className="gov-tab-trigger">
-                <MapPin className="h-4 w-4 enhanced-tab-icon" />
-                Geo-Analytics
-              </TabsTrigger>
-              <TabsTrigger value="qr" className="gov-tab-trigger">
-                <QrCode className="h-4 w-4 enhanced-tab-icon" />
-                QR Codes
-              </TabsTrigger>
-              <TabsTrigger value="export" className="gov-tab-trigger">
-                <Download className="h-4 w-4 enhanced-tab-icon" />
-                Export
-              </TabsTrigger>
-              <TabsTrigger value="ai" className="gov-tab-trigger">
-                <Bot className="h-4 w-4 enhanced-tab-icon" />
-                AI Insights
-              </TabsTrigger>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="overview" className="gov-tab-trigger">
+                    <Building2 className="h-4 w-4 enhanced-tab-icon" />
+                    Overview
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>National education system dashboard</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="institutions" className="gov-tab-trigger">
+                    <Users className="h-4 w-4 enhanced-tab-icon" />
+                    Institutions
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Manage educational institutions</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="schemes" className="gov-tab-trigger">
+                    <Award className="h-4 w-4 enhanced-tab-icon" />
+                    Schemes
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Government schemes and programs</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="analytics" className="gov-tab-trigger">
+                    <BarChart3 className="h-4 w-4 enhanced-tab-icon" />
+                    Analytics
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Educational analytics and insights</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="compliance" className="gov-tab-trigger">
+                    <CheckCircle className="h-4 w-4 enhanced-tab-icon" />
+                    Compliance
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Track institutional compliance</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="interop" className="gov-tab-trigger">
+                    <Database className="h-4 w-4 enhanced-tab-icon" />
+                    Interop
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Data interoperability and integration</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="policy" className="gov-tab-trigger">
+                    <FileText className="h-4 w-4 enhanced-tab-icon" />
+                    Policy
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Education policies and regulations</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="security" className="gov-tab-trigger">
+                    <Shield className="h-4 w-4 enhanced-tab-icon" />
+                    Security
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>System security and access control</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="authority-requests" className="gov-tab-trigger">
+                    <Shield className="h-4 w-4 enhanced-tab-icon" />
+                    Authority
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Authority requests and permissions</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="ratings" className="gov-tab-trigger">
+                    <Star className="h-4 w-4 enhanced-tab-icon" />
+                    Ratings
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>View institutional ratings</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="map" className="gov-tab-trigger">
+                    <MapPin className="h-4 w-4 enhanced-tab-icon" />
+                    Geo-Analytics
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Geographic analytics and mapping</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="qr" className="gov-tab-trigger">
+                    <QrCode className="h-4 w-4 enhanced-tab-icon" />
+                    QR Codes
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Generate QR codes for institutions</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="export" className="gov-tab-trigger">
+                    <Download className="h-4 w-4 enhanced-tab-icon" />
+                    Export
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Export data and reports</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="ai" className="gov-tab-trigger">
+                    <Bot className="h-4 w-4 enhanced-tab-icon" />
+                    AI Insights
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>AI-powered policy insights</TooltipContent>
+              </UITooltip>
             </TabsList>
           </div>
 

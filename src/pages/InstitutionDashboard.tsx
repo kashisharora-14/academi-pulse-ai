@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tooltip as UITooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Progress } from "@/components/ui/progress";
 import { Chatbot } from "@/components/Chatbot";
 import { MapView } from "@/components/MapView";
@@ -306,58 +307,123 @@ const InstitutionDashboard = () => {
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
             <TabsList className="enhanced-tabs-list grid w-full grid-cols-13">
-              <TabsTrigger value="overview" className="enhanced-tab-trigger">
-                <Building2 className="h-4 w-4 enhanced-tab-icon" />
-                Overview
-              </TabsTrigger>
-              <TabsTrigger value="analytics" className="enhanced-tab-trigger bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-300 font-semibold">
-                <Award className="h-4 w-4 enhanced-tab-icon" />
-                NIRF Analytics
-              </TabsTrigger>
-              <TabsTrigger value="academics" className="enhanced-tab-trigger">
-                <BookOpen className="h-4 w-4 enhanced-tab-icon" />
-                Academics
-              </TabsTrigger>
-              <TabsTrigger value="placements" className="enhanced-tab-trigger">
-                <Users className="h-4 w-4 enhanced-tab-icon" />
-                Placements
-              </TabsTrigger>
-              <TabsTrigger value="research" className="enhanced-tab-trigger">
-                <FileText className="h-4 w-4 enhanced-tab-icon" />
-                Research
-              </TabsTrigger>
-              <TabsTrigger value="compliance" className="enhanced-tab-trigger">
-                <CheckCircle className="h-4 w-4 enhanced-tab-icon" />
-                Compliance
-              </TabsTrigger>
-              <TabsTrigger value="schemes" className="enhanced-tab-trigger">
-                <DollarSign className="h-4 w-4 enhanced-tab-icon" />
-                Schemes
-              </TabsTrigger>
-              <TabsTrigger value="faculty" className="enhanced-tab-trigger">
-                <GraduationCap className="h-4 w-4 enhanced-tab-icon" />
-                Faculty
-              </TabsTrigger>
-              <TabsTrigger value="authority-requests" className="enhanced-tab-trigger">
-                <Shield className="h-4 w-4 enhanced-tab-icon" />
-                Authority
-              </TabsTrigger>
-              <TabsTrigger value="ratings" className="enhanced-tab-trigger">
-                <Star className="h-4 w-4 enhanced-tab-icon" />
-                Ratings
-              </TabsTrigger>
-              <TabsTrigger value="campus" className="enhanced-tab-trigger">
-                <Building2 className="h-4 w-4 enhanced-tab-icon" />
-                Campus
-              </TabsTrigger>
-              <TabsTrigger value="qr" className="enhanced-tab-trigger">
-                <QrCode className="h-4 w-4 enhanced-tab-icon" />
-                QR Code
-              </TabsTrigger>
-              <TabsTrigger value="export" className="enhanced-tab-trigger">
-                <Download className="h-4 w-4 enhanced-tab-icon" />
-                Export
-              </TabsTrigger>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="overview" className="enhanced-tab-trigger">
+                    <Building2 className="h-4 w-4 enhanced-tab-icon" />
+                    Overview
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Institution dashboard and metrics</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="analytics" className="enhanced-tab-trigger bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-300 font-semibold">
+                    <Award className="h-4 w-4 enhanced-tab-icon" />
+                    NIRF Analytics
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>NIRF ranking and analytics</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="academics" className="enhanced-tab-trigger">
+                    <BookOpen className="h-4 w-4 enhanced-tab-icon" />
+                    Academics
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Academic programs and departments</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="placements" className="enhanced-tab-trigger">
+                    <Users className="h-4 w-4 enhanced-tab-icon" />
+                    Placements
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Placement records and statistics</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="research" className="enhanced-tab-trigger">
+                    <FileText className="h-4 w-4 enhanced-tab-icon" />
+                    Research
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Research publications and funding</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="compliance" className="enhanced-tab-trigger">
+                    <CheckCircle className="h-4 w-4 enhanced-tab-icon" />
+                    Compliance
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>NAAC, NBA, and AICTE compliance</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="schemes" className="enhanced-tab-trigger">
+                    <DollarSign className="h-4 w-4 enhanced-tab-icon" />
+                    Schemes
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Government schemes and funding</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="faculty" className="enhanced-tab-trigger">
+                    <GraduationCap className="h-4 w-4 enhanced-tab-icon" />
+                    Faculty
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Faculty management and performance</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="authority-requests" className="enhanced-tab-trigger">
+                    <Shield className="h-4 w-4 enhanced-tab-icon" />
+                    Authority
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Authority requests and permissions</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="ratings" className="enhanced-tab-trigger">
+                    <Star className="h-4 w-4 enhanced-tab-icon" />
+                    Ratings
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>View student and faculty ratings</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="campus" className="enhanced-tab-trigger">
+                    <Building2 className="h-4 w-4 enhanced-tab-icon" />
+                    Campus
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Campus map and affiliated colleges</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="qr" className="enhanced-tab-trigger">
+                    <QrCode className="h-4 w-4 enhanced-tab-icon" />
+                    QR Code
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Generate QR codes for profile sharing</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="export" className="enhanced-tab-trigger">
+                    <Download className="h-4 w-4 enhanced-tab-icon" />
+                    Export
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Export data and reports</TooltipContent>
+              </UITooltip>
             </TabsList>
           </div>
 

@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Tooltip as UITooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -251,50 +252,105 @@ const StudentDashboard = () => {
           {/* Desktop Tabs */}
           <div className="hidden lg:block">
             <TabsList className="enhanced-tabs-list grid w-full grid-cols-11">
-              <TabsTrigger value="overview" className="enhanced-tab-trigger">
-                <GraduationCap className="h-4 w-4 enhanced-tab-icon" />
-                Overview
-              </TabsTrigger>
-              <TabsTrigger value="lifecycle" className="enhanced-tab-trigger">
-                <Target className="h-4 w-4 enhanced-tab-icon" />
-                Life Cycle
-              </TabsTrigger>
-              <TabsTrigger value="journey" className="enhanced-tab-trigger">
-                <Route className="h-4 w-4 enhanced-tab-icon" />
-                Journey
-              </TabsTrigger>
-              <TabsTrigger value="gamification" className="enhanced-tab-trigger">
-                <Trophy className="h-4 w-4 enhanced-tab-icon" />
-                Achievements
-              </TabsTrigger>
-              <TabsTrigger value="digilocker" className="enhanced-tab-trigger">
-                <FolderLock className="h-4 w-4 enhanced-tab-icon" />
-                DigiLocker
-              </TabsTrigger>
-              <TabsTrigger value="qr" className="enhanced-tab-trigger">
-                <QrCode className="h-4 w-4 enhanced-tab-icon" />
-                QR Code
-              </TabsTrigger>
-              <TabsTrigger value="export" className="enhanced-tab-trigger">
-                <Download className="h-4 w-4 enhanced-tab-icon" />
-                Export
-              </TabsTrigger>
-              <TabsTrigger value="ai" className="enhanced-tab-trigger">
-                <Sparkles className="h-4 w-4 enhanced-tab-icon" />
-                AI Assistant
-              </TabsTrigger>
-              <TabsTrigger value="academics" className="enhanced-tab-trigger">
-                <BookOpen className="h-4 w-4 enhanced-tab-icon" />
-                Academics
-              </TabsTrigger>
-              <TabsTrigger value="schemes" className="enhanced-tab-trigger">
-                <Award className="h-4 w-4 enhanced-tab-icon" />
-                Schemes
-              </TabsTrigger>
-              <TabsTrigger value="chat" className="enhanced-tab-trigger">
-                <Users className="h-4 w-4 enhanced-tab-icon" />
-                EduBot
-              </TabsTrigger>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="overview" className="enhanced-tab-trigger">
+                    <GraduationCap className="h-4 w-4 enhanced-tab-icon" />
+                    Overview
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>View academic performance and progress</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="lifecycle" className="enhanced-tab-trigger">
+                    <Target className="h-4 w-4 enhanced-tab-icon" />
+                    Life Cycle
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Track your complete academic journey</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="journey" className="enhanced-tab-trigger">
+                    <Route className="h-4 w-4 enhanced-tab-icon" />
+                    Journey
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Map your educational pathway</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="gamification" className="enhanced-tab-trigger">
+                    <Trophy className="h-4 w-4 enhanced-tab-icon" />
+                    Achievements
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>View badges and achievements</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="digilocker" className="enhanced-tab-trigger">
+                    <FolderLock className="h-4 w-4 enhanced-tab-icon" />
+                    DigiLocker
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Secure digital document storage</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="qr" className="enhanced-tab-trigger">
+                    <QrCode className="h-4 w-4 enhanced-tab-icon" />
+                    QR Code
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Generate QR codes for profile sharing</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="export" className="enhanced-tab-trigger">
+                    <Download className="h-4 w-4 enhanced-tab-icon" />
+                    Export
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Export data and reports</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="ai" className="enhanced-tab-trigger">
+                    <Sparkles className="h-4 w-4 enhanced-tab-icon" />
+                    AI Assistant
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>AI-powered recommendations and guidance</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="academics" className="enhanced-tab-trigger">
+                    <BookOpen className="h-4 w-4 enhanced-tab-icon" />
+                    Academics
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>View courses and academic records</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="schemes" className="enhanced-tab-trigger">
+                    <Award className="h-4 w-4 enhanced-tab-icon" />
+                    Schemes
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Apply for scholarships and schemes</TooltipContent>
+              </UITooltip>
+              <UITooltip>
+                <TooltipTrigger asChild>
+                  <TabsTrigger value="chat" className="enhanced-tab-trigger">
+                    <Users className="h-4 w-4 enhanced-tab-icon" />
+                    EduBot
+                  </TabsTrigger>
+                </TooltipTrigger>
+                <TooltipContent>Chat with AI education assistant</TooltipContent>
+              </UITooltip>
             </TabsList>
           </div>
 
