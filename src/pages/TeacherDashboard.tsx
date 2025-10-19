@@ -8,6 +8,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Tooltip as UITooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Chatbot } from "@/components/Chatbot";
 import { MapView } from "@/components/MapView";
 import { QRCodeGenerator } from "@/components/QRCodeGenerator";
@@ -340,58 +341,123 @@ const TeacherDashboard = () => {
 
         <Tabs defaultValue="overview" className="space-y-6">
           <TabsList className="inline-flex h-auto items-center justify-start rounded-md bg-muted p-1 text-muted-foreground w-full overflow-x-auto flex-wrap gap-1">
-            <TabsTrigger value="overview" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
-              <UserCircle className="h-4 w-4" />
-              Overview
-            </TabsTrigger>
-            <TabsTrigger value="teaching" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
-              <BookOpen className="h-4 w-4" />
-              Teaching
-            </TabsTrigger>
-            <TabsTrigger value="research" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
-              <FileText className="h-4 w-4" />
-              Research
-            </TabsTrigger>
-            <TabsTrigger value="apar" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
-              <Award className="h-4 w-4" />
-              APAR
-            </TabsTrigger>
-            <TabsTrigger value="students" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
-              <GraduationCap className="h-4 w-4" />
-              Students
-            </TabsTrigger>
-            <TabsTrigger value="student-management" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
-              <Users className="h-4 w-4" />
-              Management
-            </TabsTrigger>
-            <TabsTrigger value="development" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
-              <TrendingUp className="h-4 w-4" />
-              Development
-            </TabsTrigger>
-            <TabsTrigger value="schedule" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
-              <Calendar className="h-4 w-4" />
-              Schedule
-            </TabsTrigger>
-            <TabsTrigger value="qr" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
-              <QrCode className="h-4 w-4" />
-              QR Code
-            </TabsTrigger>
-            <TabsTrigger value="export" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
-              <Download className="h-4 w-4" />
-              Export
-            </TabsTrigger>
-            <TabsTrigger value="ratings" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
-              <Star className="h-4 w-4" />
-              Ratings
-            </TabsTrigger>
-            <TabsTrigger value="analytics" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
-              <BarChart3 className="h-4 w-4" />
-              Analytics
-            </TabsTrigger>
-            <TabsTrigger value="authority-requests" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
-              <Shield className="h-4 w-4" />
-              Authority
-            </TabsTrigger>
+            <UITooltip>
+              <TooltipTrigger asChild>
+                <TabsTrigger value="overview" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
+                  <UserCircle className="h-4 w-4" />
+                  Overview
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>View performance dashboard and key metrics</TooltipContent>
+            </UITooltip>
+            <UITooltip>
+              <TooltipTrigger asChild>
+                <TabsTrigger value="teaching" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
+                  <BookOpen className="h-4 w-4" />
+                  Teaching
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>Manage courses and teaching activities</TooltipContent>
+            </UITooltip>
+            <UITooltip>
+              <TooltipTrigger asChild>
+                <TabsTrigger value="research" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
+                  <FileText className="h-4 w-4" />
+                  Research
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>Track research papers and publications</TooltipContent>
+            </UITooltip>
+            <UITooltip>
+              <TooltipTrigger asChild>
+                <TabsTrigger value="apar" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
+                  <Award className="h-4 w-4" />
+                  APAR
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>Annual Performance Assessment Report</TooltipContent>
+            </UITooltip>
+            <UITooltip>
+              <TooltipTrigger asChild>
+                <TabsTrigger value="students" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
+                  <GraduationCap className="h-4 w-4" />
+                  Students
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>View currently logged in students</TooltipContent>
+            </UITooltip>
+            <UITooltip>
+              <TooltipTrigger asChild>
+                <TabsTrigger value="student-management" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
+                  <Users className="h-4 w-4" />
+                  Management
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>Manage student records and performance</TooltipContent>
+            </UITooltip>
+            <UITooltip>
+              <TooltipTrigger asChild>
+                <TabsTrigger value="development" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
+                  <TrendingUp className="h-4 w-4" />
+                  Development
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>Professional development and training</TooltipContent>
+            </UITooltip>
+            <UITooltip>
+              <TooltipTrigger asChild>
+                <TabsTrigger value="schedule" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
+                  <Calendar className="h-4 w-4" />
+                  Schedule
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>View and manage class schedule</TooltipContent>
+            </UITooltip>
+            <UITooltip>
+              <TooltipTrigger asChild>
+                <TabsTrigger value="qr" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
+                  <QrCode className="h-4 w-4" />
+                  QR Code
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>Generate QR codes for profile sharing</TooltipContent>
+            </UITooltip>
+            <UITooltip>
+              <TooltipTrigger asChild>
+                <TabsTrigger value="export" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
+                  <Download className="h-4 w-4" />
+                  Export
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>Export data and reports</TooltipContent>
+            </UITooltip>
+            <UITooltip>
+              <TooltipTrigger asChild>
+                <TabsTrigger value="ratings" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
+                  <Star className="h-4 w-4" />
+                  Ratings
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>View student ratings and feedback</TooltipContent>
+            </UITooltip>
+            <UITooltip>
+              <TooltipTrigger asChild>
+                <TabsTrigger value="analytics" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
+                  <BarChart3 className="h-4 w-4" />
+                  Analytics
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>Detailed analytics and insights</TooltipContent>
+            </UITooltip>
+            <UITooltip>
+              <TooltipTrigger asChild>
+                <TabsTrigger value="authority-requests" className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium gap-2">
+                  <Shield className="h-4 w-4" />
+                  Authority
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>Authority requests and permissions</TooltipContent>
+            </UITooltip>
           </TabsList>
 
           
